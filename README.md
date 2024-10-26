@@ -65,4 +65,4 @@ For questions or support, please reach out to us via [GitHub Issues](https://git
 
 ## 📜 License
 
-This project is licensed under the MIT [License].
+This project is licensed under the LGPL-2.1 [License](https://github.com/XBastille/DeepFX-Studio/blob/main/LICENSE).
