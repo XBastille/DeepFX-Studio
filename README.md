@@ -49,7 +49,7 @@ Stay tuned for progress updates as we work on implementing and refining each fea
 
 ## 💻 Installation
 
-To run DeepFX Studio locally:
+Explore our Codebase:
 
 1. Clone this repository:
    ```bash
