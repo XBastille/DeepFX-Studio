@@ -1,0 +1,144 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: poppins;
+    overflow: hidden;
+}
+.video{
+    margin-left: 550px;
+    overflow: hidden;
+    height: 100vh;
+}
+.video video{
+    height: 100vh;
+    margin-right: 100px;
+}
+.container{
+    border: 20px solid black;
+    width: 100%;
+    height: 100vh;
+    margin-left: 15%;
+    margin-top: 95px;
+    border-radius: 1rem;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+
+}
+.container nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 60px;
+    top: 0px;
+}
+.container nav .right ul li a{
+    position: relative;
+    text-decoration: none;
+}
+.container nav .right ul li a::after{
+    content: '';
+    width: 0%;
+    height: 3px;
+    background: #6c29ab;
+    position: absolute;
+    left: 0px;
+    top: 20px;
+    transition: 0.5s;
+}
+.container nav .right ul li a:hover::after{
+    width: 100%;
+}
+.container nav .right ul{
+    display: flex;
+    
+}
+.container nav .right ul li{
+    list-style-type: none;
+    margin-left: 120px;
+}
+.container .row{
+    display: flex;
+    width: 40rem;
+    height: 100vh;
+    background-color: #000000;
+}
+
+.row .leftpart{
+    background-color: #000000;
+    
+}
+form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 7rem;
+    margin-left: -7px;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+}
+form input{
+    padding: 15px;
+    border-radius: 1rem;
+    margin: 10px 0;
+    width: 450px;
+    color: black;
+    
+}
+form button{
+    padding: 18px;
+    width: 460px;
+    border-radius: 1rem;
+    margin-top: 40px;
+    margin-left: 10px ;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: none;
+    transition: 0.5s;
+    cursor: pointer;
+    color: #000000;
+}
+form button:hover{
+    transform: translateY(-5px);
+}
+form a{
+    color: white;
+    text-decoration: none;
+}
+.or{
+    display: flex;
+    margin-top: 550px;
+    margin-left: 145px;
+}
+.or h4{
+    margin: 0 10px;
+}
+.line{
+    width: 170px;
+    height: 1px;
+    background-color: white;
+    margin-top: 11px;
+}
+.icons{
+    margin-top: 20px;
+    margin-left: 275px;
+}
+.icons i{
+    margin-left: 20px;
+    font-size: 30px;
+}
+.rightPart h1{
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 300px;
+    font-size: 80px;
+}
+.icons i:hover{
+    cursor: pointer;
+    transform: translateY(-10px);
+}
