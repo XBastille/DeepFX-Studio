@@ -127,6 +127,7 @@ form a{
 .icons{
     margin-top: 20px;
     margin-left: 275px;
+    position: relative;
 }
 .icons i{
     margin-left: 20px;
