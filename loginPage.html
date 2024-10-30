@@ -24,9 +24,18 @@
     <div class="container">
         <div class="row">
             <div class="leftPart">
+                <div class="logo">
+                    <h2>logo</h2>
+                </div>
+                <div class="login">
+                    <h1>LOGIN</h1>
+                </div>
                 <form action="" class="userInput">
-                    <input type="text" placeholder="USERNAME">
-                    <input type="text" placeholder="PASSWORD">
+                    <input type="text" placeholder="USERNAME" required>
+                    <input type="password" placeholder="PASSWORD" id="password" required>
+                    <div class="show">
+                        <img src="Media/eye-open-blue.png" alt="">
+                    </div>
                     <div class="forget">
                         <a href="#">Forget Password</a>
 
@@ -34,7 +43,7 @@
                     <div class="btn">
                         <button>LOG IN</button>
                     </div>
-                    <a href="#">Dont have an account?, Sign up!</a>
+                    <a href="signup_page.html">Dont have an account?, Sign up!</a>
                 </form>
                 <div class="or">
                     <div class="line"></div>
@@ -49,7 +58,10 @@
             </div>
             <div class="rightPart">
 
-                <h1>WELCOME <br> BACK</h1>
+                <h1>
+                    <P id="welcome">WELCOME</P>
+                    <P id="back">BACK</P>
+                </h1>
             </div>
         </div>
     </div>
