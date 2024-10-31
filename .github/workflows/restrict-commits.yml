@@ -20,13 +20,13 @@ jobs:
           AUTHOR: ${{ github.actor }}
         run: |
           if [[ "$BRANCH_NAME" == "SoapMac" && "$AUTHOR" != "Soap-mac" ]]; then
-            echo "Error: Only Collaborator1 can push to 'SoapMac'."
+            echo "Error: Only Soap-mac can push to 'SoapMac'."
             exit 1
           elif [[ "$BRANCH_NAME" == "Frontend" && "$AUTHOR" != "abhinab-choudhury" ]]; then
-            echo "Error: Only Collaborator2 can push to 'Frontend'."
+            echo "Error: Only abhinab-choudhury can push to 'Frontend'."
             exit 1
           elif [[ "$BRANCH_NAME" == "Backend" && "$AUTHOR" != "abhinab-choudhury" ]]; then
-            echo "Error: Only Collaborator2 can push to 'Backend'."
+            echo "Error: Only abhinab-choudhury can push to 'Backend'."
             exit 1
           elif [[ "$BRANCH_NAME" == "testing" || "$BRANCH_NAME" == "main" ]]; then
             echo "Error: Pushes to 'testing' or 'main' are restricted."
