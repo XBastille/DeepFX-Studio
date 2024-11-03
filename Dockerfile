@@ -38,7 +38,7 @@ ENV DEBUG="${DEBUG}" \
     PYTHONUNBUFFERED="true" \
     PATH="${PATH}:/home/python/.local/bin" \
     USER="python"\
-    NPM_BIN_PATH="/usr/bin/npm"
+    NPM_BIN_PATH="/usr/local/bin/npm"
 
 # Set the entrypoint
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

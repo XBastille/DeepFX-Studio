@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block body %}
-  <div class="flex flex-row justify-center items-center bg-gray-900 w-[100%] mb:pb-0 min-h-screen">
+  <div class="flex flex-row justify-center items-center bg-gray-900 w-[100%] min-h-screen">
     <div class="mx-auto flex flex-col justify-center px-5 pt-0 md:max-w-1/2 lg:max-w-1/2">
       <a class="mt-10 text-white" href={% url "app:index_view" %}>
         <div class="flex items-center">
@@ -50,7 +50,7 @@
           </div>
         </div>
         <div>
-          <form class="mb-2" action={% url 'app:signin' %} method="POST">
+          <form action={% url 'app:signin' %} method="POST">
             {% csrf_token %}
             <div class="grid gap-2">
               <div>
@@ -64,10 +64,10 @@
             </div>
             <button class="mt-4 w-full h-10 px-4 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-500 transition" type="submit">Sign in</button>
           </form>
-          <p class="font-light text-white text-sm">
+          <p class="font-light text-white text-sm mt-3">
             <a href={% url "app:forget-password" %} class="font-bold hover:underline">Forgot password?</a>
           </p>
-          <p class="font-light text-white text-sm">
+          <p class="font-light text-white text-sm mb-3 md:mb-0">
             Don't have an account? <a href="{% url 'app:signup' %}" class="font-bold hover:underline">Sign up</a>
           </p>
         </div>

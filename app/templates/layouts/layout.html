@@ -19,6 +19,8 @@
     crossorigin="anonymous" 
     referrerpolicy="no-referrer"
   />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href={% static "styles/style.css" %} >
   {% tailwind_css %}
 </head>
 
@@ -26,7 +28,7 @@
 
   {% comment %} Navbar {% endcomment %}
 
-  <main class="bg-gray-950 text-white min-h-screen">
+  <main class="bg-black text-white min-h-screen min-w-full">
     {% block body %} {% endblock %}
   </main>
 
