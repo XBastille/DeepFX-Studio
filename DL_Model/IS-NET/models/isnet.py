@@ -431,7 +431,6 @@ class ISNetGTEncoder(nn.Module):
         hx = x
 
         hxin = self.conv_in(hx)
-        # hx = self.pool_in(hxin)
 
         #stage 1
         hx1 = self.stage1(hxin)
@@ -476,8 +475,6 @@ class ISNetGTEncoder(nn.Module):
         d6 = self.side6(hx6)
         d6 = _upsample_like(d6,x)
 
-        # d0 = self.outconv(torch.cat((d1,d2,d3,d4,d5,d6),1))
-
         return [F.sigmoid(d1), F.sigmoid(d2), F.sigmoid(d3), F.sigmoid(d4), F.sigmoid(d5), F.sigmoid(d6)], [hx1,hx2,hx3,hx4,hx5,hx6]
 
 class ISNetDIS(nn.Module):
@@ -519,16 +516,13 @@ class ISNetDIS(nn.Module):
         self.side5 = nn.Conv2d(512,out_ch,3,padding=1)
         self.side6 = nn.Conv2d(512,out_ch,3,padding=1)
 
-        # self.outconv = nn.Conv2d(6*out_ch,out_ch,1)
 
     def compute_loss_kl(self, preds, targets, dfs, fs, mode='MSE'):
 
-        # return muti_loss_fusion(preds,targets)
         return muti_loss_fusion_kl(preds, targets, dfs, fs, mode=mode)
 
     def compute_loss(self, preds, targets):
 
-        # return muti_loss_fusion(preds,targets)
         return muti_loss_fusion(preds, targets)
 
     def forward(self,x):
@@ -536,7 +530,6 @@ class ISNetDIS(nn.Module):
         hx = x
 
         hxin = self.conv_in(hx)
-        #hx = self.pool_in(hxin)
 
         #stage 1
         hx1 = self.stage1(hxin)
@@ -597,6 +590,5 @@ class ISNetDIS(nn.Module):
         d6 = self.side6(hx6)
         d6 = _upsample_like(d6,x)
 
-        # d0 = self.outconv(torch.cat((d1,d2,d3,d4,d5,d6),1))
 
         return [F.sigmoid(d1), F.sigmoid(d2), F.sigmoid(d3), F.sigmoid(d4), F.sigmoid(d5), F.sigmoid(d6)],[hx1d,hx2d,hx3d,hx4d,hx5d,hx6]
