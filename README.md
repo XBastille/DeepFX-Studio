@@ -2,6 +2,47 @@
 
 Welcome to **DeepFX Studio**! This AI-powered toolkit provides a suite of advanced image editing features powered by cutting-edge deep learning techniques. From enhancing image quality to creative transformations, DeepFX Studio is designed to be a comprehensive solution for all your image processing needs.
 
+## Local development
+
+To run the example project:
+
+1. create a virtual enviroment and activate it
+
+2. Install dependencies via `pip`:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. Run development server:
+
+    ```bash
+    python manage.py runserver
+    ```
+
+4. using `which npm` or `where npm' to local your npm (it is different for windows and linux)
+
+5. Open two separate terminal and run `python manage.py tailwind start` in one teminal and `python manage.py runserver` in other terminal
+
+. Open `http://localhost:8000` in a browser. You should see the main page.
+
+
+## Docker setup
+
+1. Build containers via `docker-compose`:
+
+    ```bash
+    docker-compose build
+    ```
+
+2. Start containers:
+
+    ```bash
+    docker-compose up
+    ```
+
+3. Open `http://localhost:8000` in a browser. You should see the main page.
+
 ## 🚀 Features
 
 DeepFX Studio offers the following capabilities:
