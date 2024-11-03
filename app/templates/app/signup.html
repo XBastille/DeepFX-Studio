@@ -1,0 +1,113 @@
+{% extends 'layouts/layout.html' %}
+{% load static %}
+
+{% block title %}
+  Signup |
+{% endblock %}
+
+{% block navbar %} {% endblock %}
+
+{% block body %}
+  <div class="flex flex-row justify-center items-center bg-gray-900 w-[100%] min-h-screen">
+    <div class="mx-auto flex flex-col justify-center px-5 pt-0 md:max-w-1/2 lg:max-w-1/2">
+      <a class="mt-6 text-white" href={% url "app:index_view" %}>
+        <div class="flex items-center">
+          <svg stroke="currentColor" fill="currentColor" viewBox="0 0 320 512" class="mr-2 h-4 w-4" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z"></path>
+          </svg>
+          <p class="text-sm">Back to the website</p>
+        </div>
+      </a>
+      <div class="my-auto flex flex-col w-full max-w-lg mx-auto mt-8">
+        <p class="text-3xl font-bold text-white">Sign Up</p>
+        <p class="mt-2 mb-4 text-zinc-400">Create an account to get started. Fill in your details below!</p>
+        <div class="mt-8">
+          <div class="pb-2">
+            <input type="hidden" name="provider" value="google" />
+            <button class="flex items-center justify-center w-full h-10 px-4 text-sm font-medium text-white bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 transition" type="submit">
+              <span class="mr-2">
+                <img src={% static "images/Google.svg" %} alt="Google Logo" class="h-5 w-5" >
+              </span>
+              <span>Google</span>
+            </button>
+          </div>
+          <div class="pb-2">
+            <input type="hidden" name="provider" value="github" />
+            <button class="flex items-center justify-center w-full h-10 px-4 text-sm font-medium text-white bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 transition" type="submit">
+              <span class="mr-2">
+                <img src={% static "images/Github.svg" %} alt="Github Logo" class="h-5 w-5" >
+              </span>
+              <span>Github</span>
+            </button>
+          </div>
+        </div>
+        <div class="relative my-2">
+          <div class="flex items-center">
+            <div class="flex-grow border-t border-gray-700"></div>
+            <span class="mx-2 text-zinc-400">OR</span>
+            <div class="flex-grow border-t border-gray-700"></div>
+          </div>
+        </div>
+        <div>
+          <form class="mb-4" action="{% url 'app:signup' %}" method="post">
+            {% csrf_token %}
+            <div class="grid gap-4">
+              <div>
+                <label class="text-white mb-2" for="username">Username</label>
+                <input class="w-full h-12 rounded-lg border border-gray-700 bg-gray-800 my-1 px-4 py-1 text-sm text-white placeholder:text-zinc-400 focus:outline-none" id="username" placeholder="Username" type="text" name="username" required />
+              </div>
+              <div>
+                <label class="text-white mb-2" for="email">Email</label>
+                <input class="w-full h-12 rounded-lg border border-gray-700 bg-gray-800 my-1 px-4 py-1 text-sm text-white placeholder:text-zinc-400 focus:outline-none" id="email" placeholder="name@example.com" type="email" name="email" required />
+              </div>
+              <div class="grid grid-cols-2 gap-2">
+                <div>
+                  <label class="text-white mb-2" for="password">Password</label>
+                  <input class="w-full h-12 rounded-lg border border-gray-700 bg-gray-800 my-1 px-4 py-1 text-sm text-white placeholder:text-zinc-400 focus:outline-none" id="password" placeholder="Password" type="password" name="password" required />
+                </div>
+                <div>
+                  <label class="text-white mb-2" for="confirm-password">Confirm Password</label>
+                  <input class="w-full h-12 rounded-lg border border-gray-700 bg-gray-800 my-1 px-4 py-1 text-sm text-white placeholder:text-zinc-400 focus:outline-none" id="confirm-password" type="password" name="confirm-password" required />
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="mt-4 w-full h-10 px-4 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-500 transition">Sign Up</button>
+          </form>
+          <p class="font-light text-white text-sm">
+            <a href="#" class="font-bold hover:underline">Forgot password?</a>
+          </p>
+          <p class="font-light text-white text-sm">
+            Do you have an account? <a href={% url "app:signin" %} class="font-bold hover:underline">Sign in</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="w-[60%] h-screen hidden lg:block">
+      <video autoplay muted loop class="object-cover w-full h-full">
+        <source src="{% static 'videos/video.mp4' %}" type="video/mp4" />Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
+
+  {% if error_message %}
+  <div id="message-box" class="min-w-[200px] rounded-md h-auto px-4 py-4 absolute bottom-0 right-0 bg-white text-black flex flex-rowjustify-between items-center">
+    <p class="mr-4 text-center sm:text-left">{{ error_message }}</p>
+    <button class="ml-auto mt-2 sm:mt-0">
+      <img onclick="
+        setTimeout(function () {
+          let element = document.getElementById('message-box')
+          if(element.classList.contains('hidden')) {
+            element.classList.remove('hidden')
+          } else {
+            element.classList.add('hidden')
+          }
+        }, 200)" 
+      src="{% static 'images/Close.svg' %}" alt="close" class="w-8 hover:bg-gray-400 hover:rounded-md p-2 active:bg-gray-400 active:rounded-md text-gray-950">
+    </button>
+  </div>
+  {% endif %}
+
+
+  
+{% endblock %}
+

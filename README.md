@@ -2,6 +2,7 @@
 
 Welcome to **DeepFX Studio**! This AI-powered toolkit provides a suite of advanced image editing features powered by cutting-edge deep learning techniques. From enhancing image quality to creative transformations, DeepFX Studio is designed to be a comprehensive solution for all your image processing needs.
 
+
 ## 🚀 Features
 
 DeepFX Studio offers the following capabilities:
@@ -47,6 +48,7 @@ DeepFX Studio offers the following capabilities:
 *Development Start Date*: **October 26, 2024**  
 Stay tuned for progress updates as we work on implementing and refining each feature!
 
+
 ## 💻Local development
 
 To run the example project:
@@ -91,3 +93,23 @@ To run the example project:
 ## 📬 Contact
 
 For questions or support, please reach out to us via [GitHub Issues](https://github.com/your-username/deepfx-studio/issues).
+=======
+## 💻 Installation
+
+Explore our Codebase:
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/XBastille/deepfx-studio.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd deepfx-studio
+   ```
+## 📬 Contact
+
+For questions or support, please reach out to us via [GitHub Issues](https://github.com/your-username/deepfx-studio/issues).
+
+## 📜 License
+
+This project is licensed under the LGPL-2.1 [License](https://github.com/XBastille/DeepFX-Studio/blob/main/LICENSE).

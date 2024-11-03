@@ -1,0 +1,18 @@
+# pyproject.toml
+
+[tool.black]
+line-length = 88  # Recommended for Django code readability
+target-version = ['py38', 'py39', 'py310']  # Python versions typically used with Django projects
+skip-string-normalization = true  # Keeps Django's single-quote style for strings
+include = '\.pyi?$'  # Ensures only Python files are formatted
+exclude = '''
+/(
+    migrations  # Django migrations should not be reformatted
+    | static  # Avoid formatting static files in the Django project
+    | templates  # Django HTML templates are excluded
+    | node_modules  # Skip any Node.js dependency files
+    | __pycache__  # Skip compiled Python files
+    | .git  # Exclude Git metadata folder
+    | venv  # Skip virtual environment files
+)/
+'''

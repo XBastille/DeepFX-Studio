@@ -1,0 +1,72 @@
+{% load static tailwind_tags %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" type="image/jpeg" href={% static 'images/logo.jpeg' %} >
+  <title> {% block title%} {% endblock %} DeepFX Studio</title>
+  <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    >
+  <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer"
+  />
+  {% tailwind_css %}
+</head>
+
+<body style="font-family: 'Poppins';">
+
+  {% comment %} Navbar {% endcomment %}
+  {% block navbar %}
+  <nav class="bg-gray-950 shadow-md">
+    <div class="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href={% url 'app:index_view' %} class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src={% static 'images/logo.jpeg'%} alt="logo" class="w-10 h-10" >
+        <span class="text-xl text-white font-bold">DeepFX Studio</span>
+      </a>
+      <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <button type="button"
+          class="text-gray-400 hover:underline text-sm font-semibold">
+          Sign in
+        </button>
+      </div>
+    </div>
+  </nav>
+  {% endblock %}
+
+  <main class="bg-gray-800 text-white">
+    {% block body %} {% endblock %}
+  </main>
+
+  {% block banner %}
+  <footer
+    class="w-full p-4 bg-gray-800 border-t border-gray-500 shadow md:flex md:items-center md:justify-between md:p-6">
+    <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a href="https://flowbite.com/"
+        class="hover:underline">DeepFX Studio™</a>. All Rights Reserved.
+    </span>
+    <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+      <li>
+        <a href={% url "app:about_view" %} class="hover:underline me-4 md:me-6">About</a>
+      </li>
+      <li>
+        <a href={% url "app:privacy_view" %} class="hover:underline me-4 md:me-6">Privacy Policy</a>
+      </li>
+      <li>
+        <a href={% url "app:terms-and-conditions_view" %} class="hover:underline me-4 md:me-6">Terms</a>
+      </li>
+      <li>
+        <a href={% url "app:service_view" %} class="hover:underline me-4 md:me-6">Service</a>
+      </li>
+    </ul>
+  </footer>
+  {% endblock %}
+</body>
+
+</html>
