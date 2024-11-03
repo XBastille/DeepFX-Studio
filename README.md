@@ -47,9 +47,7 @@ DeepFX Studio offers the following capabilities:
 *Development Start Date*: **October 26, 2024**  
 Stay tuned for progress updates as we work on implementing and refining each feature!
 
-## 💻 Installation
-
-## Local development
+## 💻Local development
 
 To run the example project:
 
