@@ -2,46 +2,6 @@
 
 Welcome to **DeepFX Studio**! This AI-powered toolkit provides a suite of advanced image editing features powered by cutting-edge deep learning techniques. From enhancing image quality to creative transformations, DeepFX Studio is designed to be a comprehensive solution for all your image processing needs.
 
-## Local development
-
-To run the example project:
-
-1. create a virtual enviroment and activate it
-
-2. Install dependencies via `pip`:
-
-    ```bash
-    pip install -r requirements.txt
-    ```
-
-3. Run development server:
-
-    ```bash
-    python manage.py runserver
-    ```
-
-4. using `which npm` or `where npm' to local your npm (it is different for windows and linux)
-
-5. Open two separate terminal and run `python manage.py tailwind start` in one teminal and `python manage.py runserver` in other terminal
-
-. Open `http://localhost:8000` in a browser. You should see the main page.
-
-
-## Docker setup
-
-1. Build containers via `docker-compose`:
-
-    ```bash
-    docker compose build
-    ```
-
-2. Start containers:
-
-    ```bash
-    docker compose up
-    ```
-
-3. Open `http://localhost:8000` in a browser. You should see the main page.
 
 ## 🚀 Features
 
@@ -88,6 +48,57 @@ DeepFX Studio offers the following capabilities:
 *Development Start Date*: **October 26, 2024**  
 Stay tuned for progress updates as we work on implementing and refining each feature!
 
+
+## 💻Local development
+
+To run the example project:
+
+1. create a virtual enviroment and activate it
+
+2. Install dependencies via `pip`:
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+3. Run development server:
+
+    ```bash
+    python manage.py runserver
+    ```
+
+4. using `which npm`(linux) or `where npm`(windows) to local your npm (it is different for windows and linux)
+
+5. Run `python manage.py tailwind install`
+
+6. Run `cd theme` then `cd static_src` then `npm install` then run to the project root directory
+
+7. Open two separate terminal and run `python manage.py tailwind start` in one teminal and `python manage.py runserver` in other terminal
+
+. Open `http://localhost:8000` in a browser. You should see the main page.
+
+
+## Docker setup
+   
+   ###### For windows user got into deepfx_studio\settings.py then find NPM_BIN_PATH for windows and then run this command if it didn't work them local you npm in you computer then place the path in NPM_BIN_PATH
+
+1. Build containers via `docker-compose`:
+
+    ```bash
+    docker compose build
+    ```
+2. Start containers:
+
+    ```bash
+    docker compose up
+    ```
+
+3. Open `http://localhost:8000` in a browser. You should see the login page and sign up only
+   
+## 📬 Contact
+
+For questions or support, please reach out to us via [GitHub Issues](https://github.com/your-username/deepfx-studio/issues).
+=======
 ## 💻 Installation
 
 Explore our Codebase:

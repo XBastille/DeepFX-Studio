@@ -37,7 +37,8 @@ RUN chmod +x /usr/local/bin/entrypoint.sh
 ENV DEBUG="${DEBUG}" \
     PYTHONUNBUFFERED="true" \
     PATH="${PATH}:/home/python/.local/bin" \
-    USER="python"
+    USER="python"\
+    NPM_BIN_PATH="/usr/bin/npm"
 
 # Set the entrypoint
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]

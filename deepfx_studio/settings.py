@@ -37,16 +37,21 @@ INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "app",
-    # for tailwind-css
-    "tailwind",
-    "theme",
-    # for tailwind-css hot-reload
-    "django_browser_reload",
+    "django.contrib.messages", 
 ]
+
+EXTERNAL_APPS = [
+    "app",
+    "theme",
+    "tailwind",
+    "django_browser_reload",
+    "django.contrib.staticfiles",
+]
+
+INSTALLED_APPS = INSTALLED_APPS + EXTERNAL_APPS
+
 TAILWIND_APP_NAME = "theme"
+TAILWIND_DEV_MODE = DEBUG
 
 # Include the IP for the production server in production
 INTERNAL_IPS = ["127.0.0.1"]
@@ -137,8 +142,11 @@ SITE_ID = 1
 MEDIA_URL = "/media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-STATIC_URL = "static/"
-STATICFILES_DIR = [os.path.join(BASE_DIR, 'media')]
+STATIC_URL = "/static/"
+
+STATIC_ROOT = BASE_DIR / "static"
+
+STATICFILES_DIR = [os.path.join(BASE_DIR, 'static')]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

@@ -11,6 +11,7 @@ django-browser-reload==1.17.0
 django-jazzmin==3.0.1
 django-tailwind==3.8.0
 idna==3.10
+MarkupSafe==3.0.2
 mypy-extensions==1.0.0
 oauthlib==3.2.2
 packaging==24.1

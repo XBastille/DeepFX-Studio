@@ -41,7 +41,7 @@ def signup(request):
         repeat_password = request.POST["confirm-password"]
 
         if password != repeat_password:
-            return render(request, 'app/signup.html', {"error_message": "Passwords do not match"})
+            return render(request, 'app/signup.html', {"error_message": "The passwords entered do not match. Please try again."})
         else:
             try:
                 newUser = User.objects.create_user(
@@ -51,7 +51,7 @@ def signup(request):
                 login(request, newUser)
                 return redirect(reverse('app:dashboard_view'))
             except IntegrityError:
-                return render(request, 'app/signup.html', {"error_message": "Username/Email already taken"})
+                return render(request, 'app/signup.html', {"error_message": "This username or email is already in use. Please choose a different one."})
     else:
         return render(request, 'app/signup.html')
 
@@ -67,11 +67,17 @@ def signin(request):
             return redirect(reverse('app:dashboard_view'))
 
         else:
-            return render(request, 'app/signin.html', {"error_message": "Invalid Credentials"})
+            return render(request, 'app/signin.html', {"error_message": "Your credentials could not be verified. Please try again."})
     else:
-        return render(request, 'app/signin.html', {"error_message": "Invalid Credentials"})
+        return render(request, 'app/signin.html')
 
 
 def signout(request):
     logout(request)
     return render(request, 'app/index.html')
+
+def reset_password(request):
+    return render(request, 'app/reset-password.html')
+
+def forget_password(request):
+    return render(request, 'app/forgot-password.html')
