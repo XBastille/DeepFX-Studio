@@ -49,10 +49,10 @@ body{
   content: '';
   width: 0;
   height: 3px;
-  background: rgb(71, 71, 223);
+  background: linear-gradient(to right, #003366, #006699);
   position: absolute;
   left: 0px;
-  top: 22px;
+  top: 25px;
   transition: 0.5s;
 }
 .menus ul li a:hover::after{
@@ -66,9 +66,9 @@ body{
 .mainarea .leftside{
   /* display: flex; */
   /* flex-direction: column; */
-  height: 85vh;
+  height: 75vh;
   width: 220px;
-  margin-top: 0px;
+  margin-top: 90px;
   position: fixed;
   background-color: transparent;
   /* border: 1px solid white; */
@@ -78,10 +78,10 @@ body{
   /* border: 1px solid white; */
   display: flex;
   padding: 4px;
-  border-radius: 1rem;
+  border-radius: 25px;
   margin-top: 30px;
   padding-left: 20px;
-  font-size: 18px;
+  font-size: 15px;
   transition: 0.3s;
   width: 150px;
   height: 30px;
@@ -89,11 +89,8 @@ body{
   margin-left: 20px;
 }
 .clicked{
-  /* background: linear-gradient(to bottom, #add8e6, #4682B4, #000000); */
-  background: linear-gradient(to bottom, #1a1a2e, #16213e, #0f3460, #000000);
-  border: 2px solid; 
-  border-image: linear-gradient(to bottom, #0f3460, #1a1a2e, #000000);
-  /* border: 2px solid white; */
+  /* border: 1px solid rgba(1, 45, 70, 0.7); */
+  background: linear-gradient(180deg, rgba(1, 45, 70, 0.7) 0%, rgba(50, 50, 50, 1) 90%, rgba(1, 45, 70, 0.7) 100%);
 }
 
 .mainarea .leftside div i{
@@ -137,7 +134,8 @@ body{
   margin-top: 5px;
 } */
 .mainarea .leftside div:hover{
-  background-color: grey;
+  background-color: rgb(34, 34, 34);
+  box-shadow: 0px 2px 20px rgba(150, 210, 248, 0.7);
   cursor: pointer;
   /* color: blue; */
 
@@ -146,9 +144,48 @@ body{
 .account{
   position: absolute;
   bottom: 0;
-  background-color: rgb(85, 84, 84);
+  
+  background-color: rgb(34, 34, 34);
 }
 
+
 .rightside{
+  width: 80%;
   margin-left: 300px;
+}
+.rightside .head-line{
+  display: flex;
+  justify-content: space-between;
+}
+.greeting{
+  margin-top: 50px;
+}
+.greeting h1{
+  font-size: 40px;
+}
+.newproject{
+  border: 1px solid white;
+  height: 25px;
+  width: 130px;
+  border-radius: 1rem;
+  padding: 10px;
+  align-items: center;
+  text-align: center;
+  color: black;
+  background-color: aliceblue;
+  margin-right: 150px;
+  margin-top: 60px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s;
+}
+.newproject i{
+  margin-right: 10px;
+  background-color: aliceblue;
+}
+.newproject:hover{
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(135, 206, 250, 0.7);
 }
