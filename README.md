@@ -67,20 +67,10 @@ To run the example project:
     python manage.py runserver
     ```
 
-4. using `which npm`(linux) or `where npm`(windows) to local your npm (it is different for windows and linux)
-
-5. Run `python manage.py tailwind install`
-
-6. Run `cd theme` then `cd static_src` then `npm install` then run to the project root directory
-
-7. Open two separate terminal and run `python manage.py tailwind start` in one teminal and `python manage.py runserver` in other terminal
-
 . Open `http://localhost:8000` in a browser. You should see the main page.
 
 
 ## Docker setup
-   
-   ###### For windows user got into deepfx_studio\settings.py then find NPM_BIN_PATH for windows and then run this command if it didn't work them local you npm in you computer then place the path in NPM_BIN_PATH
 
 1. Build containers via `docker-compose`:
 

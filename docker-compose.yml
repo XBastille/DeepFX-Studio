@@ -1,22 +1,13 @@
 version: '3.8'
 
-x-app: &default-app
-  build:
-    context: "."
-  volumes:
-    - .:/app
-  restart: "unless-stopped"
-
 services:
   web:
-    <<: *default-app
-    # No command needed here, it's handled by the entrypoint script
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
     ports:
       - "8000:8000"
 
-  tailwind:
-    <<: *default-app
-    command: "python manage.py tailwind start"
-    tty: true
-    volumes:
-      - .:/app  # Ensure the current directory is mounted
+# No separate db service needed for SQLite
+
