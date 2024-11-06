@@ -1,14 +1,9 @@
-// const chat = document.querySelector('.sidelist');
-// const arrow = document.querySelector('.fa-chevron-down');
-
-
-// arrow.addEventListener('click',()=>{
-//     chat.classList.toggle('showList');
-// })
-
-
 const options = document.querySelectorAll('.mainarea .leftside div');
 const wishing = document.querySelector('.wish');
+const option1 = document.querySelector('.option1');
+const option2 = document.querySelector('.option2');
+const option3 = document.querySelector('.option3');
+
 
 options.forEach(option => {
 
@@ -18,7 +13,23 @@ options.forEach(option => {
         option.classList.add('clicked')
     })
 
-})
+});
+
+option1.addEventListener('click',()=>{
+    option1.classList.add('selected');
+    option2.classList.remove('selected');
+    option3.classList.remove('selected');
+});
+option2.addEventListener('click',()=>{
+    option1.classList.remove('selected');
+    option2.classList.add('selected');
+    option3.classList.remove('selected');
+});
+option3.addEventListener('click',()=>{
+    option1.classList.remove('selected');
+    option2.classList.remove('selected');
+    option3.classList.add('selected');
+});
 
 function greeting() {
     var date = new Date()
