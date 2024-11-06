@@ -3,7 +3,7 @@
 *{
   margin: 0;
   padding: 0;
-  background-color: black;
+  background-color: #1C1C1C;
   font-family: 'poppins',sans-serif;
   
 }
@@ -68,7 +68,7 @@ body{
   /* flex-direction: column; */
   height: 75vh;
   width: 220px;
-  margin-top: 90px;
+  margin-top: 70px;
   position: fixed;
   background-color: transparent;
   /* border: 1px solid white; */
@@ -90,7 +90,9 @@ body{
 }
 .clicked{
   /* border: 1px solid rgba(1, 45, 70, 0.7); */
-  background: linear-gradient(180deg, rgba(1, 45, 70, 0.7) 0%, rgba(50, 50, 50, 1) 90%, rgba(1, 45, 70, 0.7) 100%);
+  /* background: linear-gradient(180deg, rgba(1, 45, 70, 0.7) 0%, rgba(50, 50, 50, 1) 90%, rgba(1, 45, 70, 0.7) 100%); */
+  background: linear-gradient(180deg, rgba(0, 76, 109, 0.9) 0%, rgba(60, 60, 60, 1) 90%, rgba(0, 76, 109, 0.9) 100%);
+
 }
 
 .mainarea .leftside div i{
@@ -188,4 +190,47 @@ body{
 .newproject:hover{
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(135, 206, 250, 0.7);
+}
+.gridoptions{
+  display: flex;
+  justify-content: flex-start;
+}
+.optionname{
+  margin-left: 60px;
+  font-size: 25px;
+}
+.line{
+  cursor: pointer;
+  position: relative;
+}
+.line::after{
+  content: '';
+  width: 0;
+  height: 3px;
+  background: linear-gradient(to right, #003366, #006699);
+  position: absolute;
+  left: 0px;
+  top: 40px;
+  transition: 0.3s;
+}
+.line:hover::after{
+  width: 100%;
+}
+.selected::after{
+  width: 60%;
+}
+hr{
+  margin-top: 10px;
+}
+.gridarea{
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+  grid-gap: 40px;
+  grid-auto-rows: 200px;
+  margin-top: 50px;
+}
+.boxes{
+  border: 1px solid white;
+  border-radius: 20px;
+
 }
