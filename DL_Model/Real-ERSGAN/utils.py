@@ -10,18 +10,20 @@ ROOT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
 class RealESRGANer():
-    """A helper class for upsampling images with RealESRGAN.
-
-    Args:
-        scale (int): Upsampling scale factor used in the networks. It is usually 2 or 4.
-        model_path (str): The path to the pretrained model. It can be urls (will first download it automatically).
-        model (nn.Module): The defined network. Default: None.
-        tile (int): As too large images result in the out of GPU memory issue, so this tile option will first crop
-            input images into tiles, and then process each of them. Finally, they will be merged into one image.
-            0 denotes for do not use tile. Default: 0.
-        tile_pad (int): The pad size for each tile, to remove border artifacts. Default: 10.
-        pre_pad (int): Pad the input images to avoid border artifacts. Default: 10.
-        half (float): Whether to use half precision during inference. Default: False.
+    """
+    Implements Real-ESRGAN super-resolution model functionality
+    
+    Arguments:
+    scale -- integer defining the upscaling factor
+    model_path -- string path to the model weights file
+    dni_weight -- optional weights for deep network interpolation
+    model -- the neural network model to be used
+    tile -- integer size of tiles for processing large images
+    tile_pad -- integer padding size for tiles
+    pre_pad -- integer padding size for preprocessing
+    half -- boolean to enable half-precision computation
+    device -- torch device to run computations on
+    gpu_id -- optional specific GPU device ID to use
     """
 
     def __init__(self,
@@ -64,9 +66,18 @@ class RealESRGANer():
             self.model = self.model.half()
 
     def dni(self, net_a, net_b, dni_weight, key='params', loc='cpu'):
-        """Deep network interpolation.
-
-        ``Paper: Deep Network Interpolation for Continuous Imagery Effect Transition``
+        """
+        Performs Deep Network Interpolation between two models
+        
+        Arguments:
+        net_a -- path to first model weights
+        net_b -- path to second model weights  
+        dni_weight -- interpolation weights for combining models
+        key -- dictionary key for accessing model parameters
+        loc -- device location to load models to
+        
+        Returns:
+        net_a -- interpolated model weights dictionary
         """
         net_a = torch.load(net_a, map_location=torch.device(loc))
         net_b = torch.load(net_b, map_location=torch.device(loc))
@@ -75,7 +86,17 @@ class RealESRGANer():
         return net_a
 
     def pre_process(self, img):
-        """Pre-process, such as pre-pad and mod pad, so that the images can be divisible
+        """
+        Prepares input image for model processing
+        
+        Arguments:
+        img -- input image array to be preprocessed
+        
+        Effects:
+        - Converts image to torch tensor
+        - Applies padding if needed
+        - Handles modulo padding for scale factor
+        - Stores processed image in self.img
         """
         img = torch.from_numpy(np.transpose(img, (2, 0, 1))).float()
         self.img = img.unsqueeze(0).to(self.device)
@@ -100,10 +121,16 @@ class RealESRGANer():
         self.output = self.model(self.img)
 
     def tile_process(self):
-        """It will first crop input images to tiles, and then process each tile.
-        Finally, all the processed tiles are merged into one images.
-
-        Modified from: https://github.com/ata4/esrgan-launcher
+        """
+        Processes large images in tiles to manage memory
+        
+        Effects:
+        - Splits input image into tiles
+        - Processes each tile through the model
+        - Reconstructs full output from processed tiles
+        - Stores result in self.output
+        
+        The method handles overlapping tiles with padding to avoid boundary artifacts
         """
         batch, channel, height, width = self.img.shape
         output_height = height * self.scale
