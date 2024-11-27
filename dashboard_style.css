@@ -31,21 +31,21 @@ body{
   height: 90px;
   /* background-color: grey; */
 }
-.menus ul{
+.menus-ul{
   display: flex;
   justify-content: space-around;
   align-items: center;
   list-style-type: none;
 
 }
-.menus ul li a{
+.menus-ul li a{
   text-decoration: none;
   margin-right: 170px;
   color: white;
   font-size: 20px;
   position: relative;
 }
-.menus ul li a::after{
+.menus-ul li a::after{
   content: '';
   width: 0;
   height: 3px;
@@ -55,10 +55,74 @@ body{
   top: 25px;
   transition: 0.5s;
 }
-.menus ul li a:hover::after{
+.menus-ul li a:hover::after{
   width: 100%;
 }
-
+.dropdown{
+  display: none;
+  position: absolute;
+  z-index: 9;
+  top: 60px;
+  left: 300px;
+  width: 1200px;
+  height: 250px;
+  /* border: 2px solid white; */
+  border-radius: 24px;
+  
+  
+}
+.dropdown-menus{
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 20px;
+  /* background-color: rgb(47, 47, 47); */
+  border: 2px;
+  border-radius: 24px;
+  box-shadow: 0 4px 10px rgba(135, 206, 250, 0.7);
+}
+.dropdown-menus ul{
+  /* margin-top: 15px; */
+  /* background-color: rgb(47, 47, 47); */
+}
+.dropdown-menus li{
+  margin-left: 25px;
+  list-style-type: none;
+  /* background-color: rgb(47, 47, 47); */
+  cursor: pointer;
+}
+.dropdown-menus p{
+  /* background-color: rgb(47, 47, 47); */
+  height: 55px;
+}
+.dropdown-menu{
+  text-decoration: underline;
+}
+.contact{
+  border: 1px solid white;
+  height: 25px;
+  width: 130px;
+  border-radius: 1rem;
+  padding: 10px;
+  align-items: center;
+  text-align: center;
+  color: black;
+  background-color: aliceblue;
+  /* margin-right: 150px;
+  margin-top: 60px; */
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s;
+}
+.contact:hover{
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(135, 206, 250, 0.7);
+}
 .mainarea{
   padding: 0 20px;
   display: flex;
@@ -89,8 +153,6 @@ body{
   margin-left: 20px;
 }
 .clicked{
-  /* border: 1px solid rgba(1, 45, 70, 0.7); */
-  /* background: linear-gradient(180deg, rgba(1, 45, 70, 0.7) 0%, rgba(50, 50, 50, 1) 90%, rgba(1, 45, 70, 0.7) 100%); */
   background: linear-gradient(180deg, rgba(0, 76, 109, 0.9) 0%, rgba(60, 60, 60, 1) 90%, rgba(0, 76, 109, 0.9) 100%);
 
 }
@@ -104,43 +166,10 @@ body{
   margin-left: 30px;
 }
 
-/* .chat .sideLine{
-  width: 1px;
-  height: 20px;
-  background-color: white;
-}
-.chatlist{
-  display: none;
-}
-.sidelist{
-  list-style-type: none;
-  font-size: 15px;
-  
-  /* margin-top: 10px; 
-  margin-bottom: 50px;
-  display: none;
-}
-.sidelist li{
-  margin-left: 50px;
-  /* margin-bottom: 5px; 
-}
-.showList{
-  list-style-type: none;
-  font-size: 15px;
-  margin-left: 10px;
-  margin-top: 10px;
-  height: 50px;
-  display: block;
-}
-.sidelist ul li{
-  margin-top: 5px;
-} */
 .mainarea .leftside div:hover{
   background-color: rgb(34, 34, 34);
   box-shadow: 0px 2px 20px rgba(150, 210, 248, 0.7);
   cursor: pointer;
-  /* color: blue; */
-
 }
 
 .account{
@@ -162,8 +191,29 @@ body{
 .greeting{
   margin-top: 50px;
 }
-.greeting h1{
+.wish{
+  position: absolute;
+  top: 500px;
   font-size: 40px;
+  /* transform: translateY(100%); */
+  animation-name: appear;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+.userName{
+  position: absolute;
+  top: 500px;
+  font-size: 40px;
+  opacity: 0;
+  /* transform: translateY(100%); */
+  animation-name: appearuser;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+.greeting h1:nth-of-type(2){
+  animation-delay: 1s;
 }
 .newproject{
   border: 1px solid white;
@@ -184,8 +234,11 @@ body{
   transition: box-shadow 0.3s;
 }
 .newproject i{
+  font-size: 20px;
   margin-right: 10px;
+  /* margin-top: 40px; */
   background-color: aliceblue;
+  color: #1C1C1C;
 }
 .newproject:hover{
   cursor: pointer;
@@ -197,6 +250,7 @@ body{
 }
 .optionname{
   margin-left: 60px;
+  margin-top: 40px;
   font-size: 25px;
 }
 .line{
@@ -210,7 +264,7 @@ body{
   background: linear-gradient(to right, #003366, #006699);
   position: absolute;
   left: 0px;
-  top: 40px;
+  top: 35px;
   transition: 0.3s;
 }
 .line:hover::after{
@@ -233,4 +287,27 @@ hr{
   border: 1px solid white;
   border-radius: 20px;
 
+}
+
+@keyframes appear {
+  0% {
+      opacity: 0;
+      top: 200px;
+  }
+
+  100% {
+      opacity: 1;
+      top: 120px;
+  }
+}
+@keyframes appearuser {
+  0% {
+      opacity: 0;
+      top: 250px;
+  }
+
+  100% {
+      opacity: 1;
+      top: 180px;
+  }
 }
