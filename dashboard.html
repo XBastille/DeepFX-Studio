@@ -31,7 +31,7 @@
       <div class="dropdown">
         <div class="dropdown-menus">
           <div class="more-about-us">
-            <p class="dropdown-menu">MORE ABOUT US <br></p>
+            <p class="dropdown-menu more-about-us-menu">MORE ABOUT US <br></p>
             <ul >
               
               <li >About Us</li>
@@ -39,7 +39,7 @@
             </ul>
           </div>
           <div class="social">
-            <p class="dropdown-menu">Social <br></p>
+            <p class="dropdown-menu social-menu">Social <br></p>
             <ul>
               <li>Linkedin</li>
               <li>X</li>
@@ -64,15 +64,6 @@
         <div class="edit">
           <i class="fa-solid fa-pen-to-square"></i>Edit
         </div>
-        <!-- <div class="chat">
-          <i class="fa-solid fa-message"></i>Chat<i class="fa-solid fa-chevron-down"></i>
-        </div>
-        <ul class="sidelist">
-          <li>General chaos</li>
-          <li>Prompt Craft</li>
-          <li>Daily Theme</li>
-          <li>Newbies</li>
-        </ul> -->
         <div class="donate">
           <i class="fa-solid fa-hand-holding-dollar"></i>Donate
         </div>
@@ -87,7 +78,6 @@
         </div>
 
       </div>
-      <!-- <div class="line"></div> -->
       <div class="rightside">
         <div class="head-line">
           <div class="greeting">
@@ -97,20 +87,29 @@
           <div class="newproject">
             <i class="fa-solid fa-plus"></i>NEW
           </div>
+          <div class="popup-container" id="popupContainer">
+            <div class="popup">
+                <button class="close-btn"><i class="fa-solid fa-xmark"></i></button>
+                <h2>Create New Project</h2>
+                <form id="createProjectForm">
+                    <input type="text" id="projectName" placeholder="Project Name" class="project-name">
+                    <p class="name-warning"></p>
+                    <textarea id="projectDescription" placeholder="Project Description" rows="4" cols="50" class="project-desc"></textarea>
+                    <p class="desc-warning"></p>
+                    <button type="button" class="btn">Create Project</button>
+                </form>
+            </div>
+        </div>
         </div>
         <br><br>
         <div class="gridoptions">
           <p class="optionname line option1 selected">RECENT</p>
-          <p class="optionname line option2">ALL</p>
+          <p class="optionname line option2">FAVOURITES</p>
           <p class="optionname line option3"></p>
         </div>
         <hr>
         <div class="gridarea">
-          <div class="boxes"></div>
-          <div class="boxes"></div>
-          <div class="boxes"></div>
-          <div class="boxes"></div>
-          
+                    
         </div>
       </div>
     </div>
