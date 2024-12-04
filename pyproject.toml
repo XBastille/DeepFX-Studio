@@ -1,0 +1,27 @@
+[tool.black]
+line-length = 88
+target-version = ['py311']
+include = '\.pyi?$'
+exclude = '''
+/(
+    migrations  # Django migrations should not be reformatted
+    | static  # Avoid formatting static files in the Django project
+    | templates  # Django HTML templates are excluded
+    | node_modules  # Skip any Node.js dependency files
+    | __pycache__  # Skip compiled Python files
+    | .git  # Exclude Git metadata folder
+    | venv  # Skip virtual environment files
+)/
+'''
+
+[tool.isort]
+profile = "django"
+combine_as_imports = true
+include_trailing_comma = true
+line_length = 88
+multi_line_output = 3
+known_first_party = ["config"]
+
+[tool.djlint]
+profile = "django"
+ignore = "H031"

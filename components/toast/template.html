@@ -1,0 +1,35 @@
+{% load static tailwind_tags %}
+{% load component_tags %}
+{% load static %}
+<section class="bg-gray-800">
+    <div class="mx-auto sm:container">
+        <div class="flex justify-end">
+            <div id="alert-box"
+                 class="flex gap-4 w-fit max-w-[490px] items-center rounded-lg border p-5 border-black bg-gray-800">
+                <!-- Icon Section -->
+                <div class="flex h-[45px] w-[45px] sm:h-[60px] sm:w-[60px] items-center justify-center rounded-[5px] bg-red-600 text-white">
+                    <img height=""
+                         width=""
+                         src="{% static 'images/i-icon.svg' %}"
+                         alt="Info Icon"
+                         class="h-full w-full object-contain" />
+                </div>
+                <!-- Content Section -->
+                <div class="flex-1">
+                    <h6 class="text-base font-semibold sm:text-lg text-red-600">{{ title }}</h6>
+                    <p class="text-sm text-gray-300">{{ content }}</p>
+                </div>
+                <!-- Close Button -->
+                <button class="bg-white p-4 border rounded-md"
+                        aria-label="Close alert"
+                        onclick=" (function() { const message_box = document.getElementById('message-box'); message_box.style.display='none' })() ">
+                    <img class="text-white rounded-sm"
+                         height="15px"
+                         width="15px"
+                         src="{% static 'images/Close.svg' %}"
+                         alt="Close Icon" />
+                </button>
+            </div>
+        </div>
+    </div>
+</section>

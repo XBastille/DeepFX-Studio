@@ -1,0 +1,36 @@
+name: Restrict Commits by Branch and User
+
+on:
+  push:
+    branches:
+      - SoapMac
+      - Frontend
+      - Backend
+      - testing
+      - main
+
+jobs:
+  restrict-commits:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check Commit Permissions
+        env:
+          BRANCH_NAME: ${{ github.ref_name }}
+          AUTHOR: ${{ github.actor }}
+        run: |
+          if [[ "$BRANCH_NAME" == "SoapMac" && "$AUTHOR" != "Soap-mac" ]]; then
+            echo "Error: Only Soap-mac can push to 'SoapMac'."
+            exit 1
+          elif [[ "$BRANCH_NAME" == "Frontend" && "$AUTHOR" != "abhinab-choudhury" ]]; then
+            echo "Error: Only abhinab-choudhury can push to 'Frontend'."
+            exit 1
+          elif [[ "$BRANCH_NAME" == "Backend" && "$AUTHOR" != "abhinab-choudhury" ]]; then
+            echo "Error: Only abhinab-choudhury can push to 'Backend'."
+            exit 1
+          elif [[ "$BRANCH_NAME" == "testing" || "$BRANCH_NAME" == "main" ]]; then
+            echo "Error: Pushes to 'testing' or 'main' are restricted."
+            exit 1
+          else
+            echo "Commit allowed."
+          fi
