@@ -18,6 +18,11 @@ const gridpic = document.querySelector('.gridpic');
 const boxicon = document.querySelectorAll('.gridicon');
 
 
+const elements = [];
+const max = 3;
+const usedNames = new Set();
+
+
 
 options.forEach(option => {
 
@@ -88,6 +93,7 @@ boxicon.forEach(heart => {
 
 createbtn.addEventListener('click',()=>{
     console.log(projectName.value);
+    nameWarning.innerHTML="";
     if(!projectName.value){
         nameWarning.innerHTML="project name is required";
         descWarning.innerHTML="";
@@ -103,6 +109,11 @@ createbtn.addEventListener('click',()=>{
     gridpic.appendChild(gridicon);
 
     let gridtitle = document.createElement('p');
+    if(usedNames.has(projectName.value)){
+        nameWarning.innerHTML="This project already exists";
+        return;
+    }
+    usedNames.add(projectName.value);
     gridtitle.innerText = projectName.value;
 
     let gridname = document.createElement('div');
@@ -116,6 +127,12 @@ createbtn.addEventListener('click',()=>{
 
     newgrid.appendChild(gridpic);
     newgrid.appendChild(gridname);
+
+    elements.push(newgrid);
+    if(elements.length>max){
+        const oldest = elements.shift();
+        gridarea.removeChild(oldest);
+    }
 
 
 })
