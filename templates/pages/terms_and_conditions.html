@@ -1,0 +1,43 @@
+{% extends "layouts/base-layout.html" %}
+{% load static %}
+{% block title %}
+    Terms And Conditions | DeepFX-Studio
+{% endblock title %}
+{% block navbar %}
+{% endblock navbar %}
+{% block body %}
+    <div class="container max-w-7xl p-5 md:mx-auto py-10">
+        <h1 class="font-silkscreen text-2xl md:text-6xl">terms-and-conditions</h1>
+        <div class="my-10">
+            <h3 class="font-silkscreen text-2xl">Introduction</h3>
+            <p class="my-10 font-mono">
+                Welcome to <a href="{% url "website:index_view" %}"
+    class="hover:underline underline-offset-2"><strong>DeepFX-Studio!</strong></a> By accessing or using our open-source platform, you agree to comply with and be bound by the following Terms and Conditions, together with our Privacy Policy. If you disagree with any part of these terms, please do not use our website or services.
+            </p>
+        </div>
+        <div class="my-10">
+            <h3 class="font-silkscreen text-2xl">Definitions</h3>
+            <ul class="my-10 font-mono list-inside list-disc">
+                <li>
+                    <b>"Company"</b> refers to DeepFX-Studio.
+                </li>
+                <li>
+                    <b>"User"</b> refers to anyone who accesses or uses our open-source platform.
+                </li>
+                <li>
+                    <b>"Content"</b> refers to any data, images, or materials provided through our platform.
+                </li>
+            </ul>
+        </div>
+        <div class="my-10">
+            <h3 class="font-silkscreen text-2xl">Use of Our Open-Source Services</h3>
+            <p class="my-10 font-mono">
+                DeepFX-Studio provides open-source tools for image manipulation, including background removal, colorization, and other enhancement techniques. Users agree to:
+                <ul class="my-3 font-mono list-inside list-disc">
+                    <li>Use our services responsibly and solely for lawful purposes.</li>
+                    <li>Avoid attempting unauthorized access to our systems or misuse of our resources.</li>
+                </ul>
+            </p>
+        </div>
+    </div>
+{% endblock body %}

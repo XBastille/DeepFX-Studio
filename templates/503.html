@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description"
+              content="Our service is temporarily unavailable due to maintenance or high demand. Please check back later for access.">
+        <title>503 - Service Unavailable</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+              rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <div class="flex items-center justify-center min-h-screen bg-gray-900 text-gray-100 font-roboto">
+            <div class="text-center">
+                <h1 class="text-7xl font-bold mb-4">503</h1>
+                <p class="text-xl font-semibold mb-6">Service Unavailable</p>
+                <p class="text-gray-400 mb-6">Our service is currently down for maintenance. Please check back later.</p>
+                <a href="{% url "website:index_view" %}"
+                   class="text-indigo-500 hover:text-indigo-300 font-medium">Return to Homepage</a>
+            </div>
+        </div>
+    </body>
+</html>
