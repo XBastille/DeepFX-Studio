@@ -75,7 +75,7 @@ if __name__ == "__main__":
     output_dir = "./results"
     sam_model_type = "vit_h"
     sam_ckpt = "pretrained_models/sam_vit_h_4b8939.pth"
-    operation_type = "replace"  # or "replace"
+    operation_type = "fill"  # or "replace"
 
     generate_masks(
         input_img=input_img,
