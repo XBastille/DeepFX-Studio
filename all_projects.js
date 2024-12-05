@@ -9,7 +9,7 @@ const navmenu = document.querySelector('.nav-menu');
 const dropdownShow = document.querySelector('.dropdown-show');
 const projectDropdown = document.querySelector('.project-dropdown');
 
-/*options.forEach(option => {
+options.forEach(option => {
 
     option.addEventListener('click', () => {
         document.querySelector('.clicked')?.classList.remove('clicked');
@@ -17,7 +17,7 @@ const projectDropdown = document.querySelector('.project-dropdown');
         option.classList.add('clicked')
     })
 
-});*/
+});
 
 // option1.addEventListener('click',()=>{
 //     option1.classList.add('selected');
@@ -49,24 +49,24 @@ dropdown.addEventListener('mouseleave',()=>{
     dropdown.style.display='none';
 })
 
-// function greeting() {
-//     var date = new Date()
-//     var hours = date.getHours();
-//     var wish;
+function greeting() {
+    var date = new Date()
+    var hours = date.getHours();
+    var wish;
 
-//     if (hours < 12) {
-//         wish = 'Good Morning';
-//         wishing.innerHTML=wish;
-//     }
-//     else if (hours > 12 && hours < 16) {
-//         wish = 'Good Afternoon';
-//         wishing.innerHTML=wish;
-//     }
-//     else {
-//         wish = 'Good Evening';
-//         wishing.innerHTML=wish;
-//     }
-// }
+    if (hours < 12) {
+        wish = 'Good Morning';
+        wishing.innerHTML=wish;
+    }
+    else if (hours > 12 && hours < 16) {
+        wish = 'Good Afternoon';
+        wishing.innerHTML=wish;
+    }
+    else {
+        wish = 'Good Evening';
+        wishing.innerHTML=wish;
+    }
+}
 
-// greeting();
+greeting();
 
