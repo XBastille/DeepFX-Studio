@@ -86,7 +86,7 @@ if __name__ == "__main__":
     input_img = "input_path"
     img_stem = Path(input_img).stem
     masks_dir = f"./results/{img_stem}"
-    mask_mode = "sam"  # or "sam"
+    mask_mode = "manual"  # or "sam"
     text_prompt = ""
     
     apply_fill(
