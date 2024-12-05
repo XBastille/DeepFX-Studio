@@ -171,7 +171,12 @@ body {
   align-items: center;
   margin-left: 20px;
 }
-
+.mainarea .leftside div a{
+  color: aliceblue;
+  text-decoration: none;
+  /* background: linear-gradient(180deg, rgba(0, 76, 109, 0.9) 0%, rgba(60, 60, 60, 1) 90%, rgba(0, 76, 109, 0.9) 100%); */
+  background: transparent;
+}
 .clicked {
   background: linear-gradient(180deg, rgba(0, 76, 109, 0.9) 0%, rgba(60, 60, 60, 1) 90%, rgba(0, 76, 109, 0.9) 100%);
 
