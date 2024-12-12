@@ -1,60 +1,78 @@
-*{
+* {
     margin: 0;
     padding: 0;
     background-color: black;
     color: aliceblue;
     font-family: 'poppins';
 }
-.back{
+
+.logo img {
+    position: fixed;
+    height: 80px;
+    width: 80px;
+    margin-top: 30px;
+    margin-left: 20px;
+}
+
+.back {
+    position: fixed;
     height: 40px;
     width: 40px;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 20px;
-    margin-left: 20px;
+    top: 120px;
+    left: 30px;
 }
-.back i{
+
+.back i {
     font-size: 25px;
     color: aliceblue;
     background: transparent;
 }
-.back:hover{
+
+.back:hover {
     /* border: 2px solid black; */
     border-radius: 50%;
     background-color: rgb(81, 80, 80);
 }
-.heading img{
+
+.heading img {
     /* background-color: black; */
     margin-top: 20px;
     margin-left: 48%;
     height: 60px;
     /* width: 60px; */
 }
-.tool-name{
+
+.tool-name {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
-.tool-name p{
+
+.tool-name p {
     font-size: 40px;
     font-weight: 700;
     line-height: 56px;
     margin-top: -19px;
 }
-.tool-desc{
+
+.tool-desc {
     display: flex;
     justify-content: center;
     margin-top: 14px;
 }
-.tool-desc p{
+
+.tool-desc p {
     font-size: 16px;
     font-weight: 400;
     line-height: 19px;
     margin-top: -9px;
 }
-.main-area{
+
+.main-area {
     margin-top: 40px;
     margin-left: 20%;
     width: 60%;
@@ -64,18 +82,31 @@
     align-items: center;
     height: 90vh;
 }
-.video{
+
+.video {
     height: 100%;
     width: 100%;
     border: 2px solid white;
+    border-radius: 20px;
 }
-.upload{
-    margin-left: 20px;
+
+video {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+
+}
+
+.upload {
+    margin-left: 50px;
     height: 100%;
     width: 100%;
 }
-.drag-and-drop{
+
+.drag-and-drop {
     border: 2px solid white;
+    border-radius: 20px;
     height: 70%;
     width: 100%;
     display: flex;
@@ -83,15 +114,22 @@
     align-items: center;
 
 }
-.hide{
+
+.drag-and-drop:hover {
+    cursor: pointer;
+}
+
+.hide {
     display: none;
 }
-.drag-and-drop i{
+
+.drag-and-drop i {
     display: block;
     font-size: 30px;
     margin-left: 120px;
 }
-.preview{
+
+.preview {
     /* position: absolute; */
     height: 70%;
     width: 100%;
@@ -99,37 +137,34 @@
     top: 280px;
     left: 795px;
 }
-.example{
-    /* height: 10%; */
-    text-align: center;
-}
-.example p{
-    margin-top: 20px;
-    margin-bottom: 14px;
-    font-size: 15px;
-}
-.example p i{
-    margin-right: 10px;
-    /* font-size: 20px; */
-    height: 20px;
-}
-.example-grid{
-    /* margin-top: 20px; */
-    height: 20%;
-    width: 100%;
-    border: 2px solid white; 
-    border-radius: 20px;
-    background-color: #2b2a2a;
-    display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  /* grid-gap: 10px; */
-  grid-auto-rows: 10px;
-  /* margin-top: 50px; */
-}
-.grid{
-    margin:20px 20px;
-    height: 90px;
-    border: 1px solid white;
-  border-radius: 20px;
 
+.generate {
+    border: 1px solid white;
+    height: 30px;
+    width: 100%;
+    border-radius: 1rem;
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+    color: black;
+    background-color: aliceblue;
+    /* margin-left: 120px; */
+    margin-top: 60px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s;
+}
+
+.generate i {
+    font-size: 20px;
+    margin-right: 10px;
+    background-color: aliceblue;
+    color: #1C1C1C;
+}
+
+.generate:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 30px rgba(135, 206, 250, 0.7);
 }

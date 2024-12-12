@@ -9,6 +9,10 @@ back.addEventListener('click',()=>{
     window.close();
 })
 
+dragAndDrop.addEventListener('click',()=>{
+    fileInput.click();
+})
+
 dragAndDrop.addEventListener('dragover',(e)=>{
     e.preventDefault();
     dragAndDrop.style.border='2px dashed white';
@@ -19,12 +23,18 @@ dragAndDrop.addEventListener('dragleave',(e)=>{
     dragAndDrop.style.border='2px solid white';
     msg.innerHTML = 'Drop Image Here or Click to Upload';
 });
+
+fileInput.addEventListener('change',()=>{
+    const file = this.files[0];
+    preview(file);
+})
+
 dragAndDrop.addEventListener('drop',(e)=>{
     e.preventDefault();
     icon.style.display='none';
     msg.style.display='none';
-    const files = e.dataTransfer.files;
-    const file = files[0];
+    fileInput.files = e.dataTransfer.files;
+    const file = e.dataTransfer.files[0];
     if(file){
         console.log('file uploaded');
     }
@@ -37,17 +47,23 @@ dragAndDrop.addEventListener('drop',(e)=>{
 
 
 function preview(file){
+    const img = document.querySelectorAll('.preview');
+    const imgName = document.querySelectorAll('.img-name');
+    img.forEach(item =>{
+        item.remove();
+    });
+    imgName.forEach(item =>{
+        item.remove();
+    });
+
     const reader = new FileReader();
-    reader.onload=()=>{
+    reader.onload =() =>{
         const url = reader.result;
-        console.log(url);
         const img = document.createElement('img');
         img.src = url;
         img.className = 'preview';
-        // const span = document.createElement('span');
-        // span.className = 'img-name';
         content.appendChild(img);
-        // dragAndDrop.appendChild('span');
+
     }
     reader.readAsDataURL(file);
 }
