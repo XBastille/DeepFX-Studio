@@ -27,20 +27,11 @@ DeepFX Studio offers the following capabilities:
 7. **Age Progression and Regression**  
    - Simulate aging effects to see younger or older versions of the person in the image.
 
-8. **Image Denoising**  
-   - Reduce noise in images, enhancing clarity and making them appear cleaner.
-
-9. **Auto-Background Blur (Portrait Mode)**  
+8. **Auto-Background Blur (Portrait Mode)**  
    - Create a soft bokeh effect on the background, enhancing the subject's focus.
 
-10. **Photo Restoration (Black & White to Color)**  
-    - Restore old or damaged photos, adding color and clarity for a refreshed look.
-
-11. **HDR Effect (High Dynamic Range)**  
+9. **HDR Effect (High Dynamic Range)**  
     - Enhance images with a high dynamic range for more vivid colors and rich details.
-
-12. **AI-Powered Image Captioning**  
-    - Automatically generate descriptive captions for images, adding context and meaning.
 
 ## 📅 Project Status
 
