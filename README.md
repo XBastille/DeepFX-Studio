@@ -1,5 +1,7 @@
 # DeepFX Studio
 
+# 🎉 Dockerfile for Background Remover has been added! 🚀👩‍💻
+
 Welcome to **DeepFX Studio**! This AI-powered toolkit provides a suite of advanced image editing features powered by cutting-edge deep learning techniques. From enhancing image quality to creative transformations, DeepFX Studio is designed to be a comprehensive solution for all your image processing needs.
 
 ## 🚀 Features
@@ -65,19 +67,19 @@ To run the example project:
 
 ## Docker setup
 
-1. Build containers via `docker-compose`:
+1. Build containers via `docker`:
 
     ```bash
-    docker compose build
+    docker build -t background-remover .
     ```
 
 2. Start containers:
 
     ```bash
-    docker compose up
+    docker run -p 8000:8000 background-remover
     ```
 
-3. Open `http://localhost:8000` in a browser. You should see the login page and sign up only
+3. Open `http://localhost:8000` in a browser and have fun with the state-of-the-art Background remover
    
 ## 📬 Contact
 
