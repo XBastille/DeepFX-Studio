@@ -58,10 +58,6 @@ To run the example project:
     python manage.py runserver
     ```
 
-4. using `which npm` or `where npm' to local your npm (it is different for windows and linux)
-
-5. Open two separate terminal and run `python manage.py tailwind start` in one teminal and `python manage.py runserver` in other terminal
-
 . Open `http://localhost:8000` in a browser. You should see the main page.
 
 
