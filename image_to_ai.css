@@ -202,7 +202,7 @@
     width: 60%;
 }
 
-.options-grid {
+.options-grid-ai {
     height: 85%;
     width: 90%;
     /* border: 2px solid white; */
@@ -220,7 +220,7 @@
     scrollbar-color: black;
 }
 
-.options-grid::-webkit-scrollbar {
+.options-grid-ai::-webkit-scrollbar {
     width: 8px;
     /* Set the width of the scrollbar */
 }
@@ -252,4 +252,31 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.options-grid-normal {
+    height: 85%;
+    width: 90%;
+    /* border: 2px solid white; */
+    /* border-radius: 100px; */
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+    /* grid-gap: 40px; */
+    grid-auto-rows: 170px;
+    margin-top: 10px;
+    /* margin-top: -90px;
+        margin-left: 50px; */
+    margin-left: 20px;
+    overflow-y: scroll;
+    scrollbar-width: 0px;
+    scrollbar-color: black;
+}
+
+.options-grid-normal::-webkit-scrollbar {
+    width: 8px;
+    /* Set the width of the scrollbar */
+}
+
+.hidden {
+    display: none;
 }

@@ -6,6 +6,9 @@ const content = document.querySelector('.content');
 const back = document.querySelector('.back');
 const option1 = document.querySelector('.option1');
 const option2 = document.querySelector('.option2');
+const ai = document.querySelector('.options-grid-ai');
+const normal = document.querySelector('.options-grid-normal');
+
 
 back.addEventListener('click', () => {
     window.close();
@@ -73,10 +76,13 @@ function preview(file) {
 option1.addEventListener('click', () => {
     option1.classList.add('selected');
     option2.classList.remove('selected');
-    option3.classList.remove('selected');
+    normal.classList.add('hidden');
+    ai.classList.remove('hidden');
 });
 option2.addEventListener('click', () => {
     option1.classList.remove('selected');
     option2.classList.add('selected');
-    option3.classList.remove('selected');
+    normal.classList.remove('hidden');
+    ai.classList.add('hidden');
 });
+
