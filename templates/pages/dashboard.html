@@ -3,8 +3,9 @@
 {% block title %}
     Dashboard | DeepFX Studio
 {% endblock title %}
-{% block body %}
-    <div class="py-16 text-center">
-        <h1 class="text-3xl font-bold underline relative">Dashboard - {{ user }}</h1>
-    </div>
-{% endblock body %}
+{% block username %}
+    {{ user }}
+{% endblock username %}
+{% block email %}
+    {{ user.email }}
+{% endblock email %}

@@ -11,11 +11,19 @@
                      alt="logo" />
                 <span class="text-xl text-white font-bold">DeepFX Studio</span>
             </a>
+            {% if user.is_authenticated %}
             <div class="flex flex-row md:order-2 space-x-3">
-                <a href={% url "user_auth:signin_view" %}>
+                <a href={% url "dashboard:dashboard_view" %}>
+                    <button class="btn btn-outline">Dashboard</button>
+                </a>
+            </div>
+            {% else %}
+            <div class="flex flex-row md:order-2 space-x-3">
+                <a href={% url "account_login" %}>
                     <button class="btn">Sign In</button>
                 </a>
             </div>
+            {% endif %}
         </div>
     </nav>
     <section class="max-w-7xl mx-auto text-white p-20">

@@ -24,6 +24,8 @@
               rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
               rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+      
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
         <link rel="stylesheet"
               href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
@@ -70,15 +72,6 @@
         {% endblock banner %}
     </body>
     <script>
-        // use a script tag or an external JS file
-        document.addEventListener("DOMContentLoaded", (event) => {
-            gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
-
-            let smooth = ScrollSmoother.create({
-                wrapper:"#smooth-wrapper",
-                content:"#smooth-content",
-            })
-        });
-
+        {% block script %}{% endblock script %}
     </script>
 </html>

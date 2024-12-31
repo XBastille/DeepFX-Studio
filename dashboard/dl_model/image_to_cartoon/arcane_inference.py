@@ -122,7 +122,7 @@ def process_image(input_path, model_path):
 
 if __name__ == "__main__":
     model_path = "models/ArcaneGANv0.4.jit"
-    input_image = "inputs/image_name"
+    input_image = "inputs/img.jpg"
 
     output_path = process_image(input_image, model_path)
     print(f"Image saved to: {output_path}")

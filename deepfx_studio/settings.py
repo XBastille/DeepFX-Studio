@@ -41,6 +41,7 @@ DEBUG = True
 # Application definition
 EXTERNAL_INSTALLED_APP = [
     "website",
+    "background_remover",
     "user_auth",
     "dashboard",
     "tailwind",
@@ -48,6 +49,10 @@ EXTERNAL_INSTALLED_APP = [
     "django_browser_reload",
     # django-components
     "django_components",
+    # django-allauth ui
+    "allauth_ui",
+    "widget_tweaks",
+    "slippers",
     # django allauth
     "allauth",
     "allauth.account",
@@ -71,6 +76,8 @@ TAILWIND_APP_NAME = "theme"
 
 NPM_BIN_PATH = which("npm")
 
+# allauth-ui settings.py
+ALLAUTH_UI_THEME = "dark"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -212,7 +219,6 @@ ACCOUNT_EMAIL_VERIFICATION = "none"
 LOGIN_REDIRECT_URL = "http://localhost:8000/dashboard/"
 
 LOGOUT_REDIRECT_URL = "/"
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
