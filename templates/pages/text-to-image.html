@@ -1,0 +1,99 @@
+{% extends "layouts/base-layout.html" %}
+{% load static %}
+
+{% block metadata %}
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="DeepFX Studio - Advanced AI tools for image manipulation including background removal, colorization, and deepfake effects." />
+  <meta name="keywords" content="DeepFX Studio, AI Image Tools, Background Removal, AI-powered Editing, Deepfake, Colorization" />
+  <meta name="author" content="DeepFX Studio Team" />
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="DeepFX Studio - AI Image Manipulation Tools" />
+  <meta property="og:description" content="Explore cutting-edge AI tools for enhancing and transforming your images effortlessly." />
+  <meta property="og:image" content="{% static 'images/og-image.png' %}" />
+  <meta property="og:url" content="https://deepfxstudio.com" />
+{% endblock %}
+
+{% block title %}
+  Project - DeepFX Studio
+{% endblock %}
+
+{% block body %}
+  <div class="flex h-screen bg-gray-950 text-gray-200">
+    <!-- Sidebar -->
+    <aside class="hidden md:block w-1/4 bg-[#191e24] p-4 border-r border-gray-700">
+      <h2 class="text-xl font-bold mb-4">Settings</h2>
+      <ul class="space-y-4">
+        <li class="hover:bg-gray-700 p-2 rounded cursor-pointer">Upload Settings</li>
+        <li class="hover:bg-gray-700 p-2 rounded cursor-pointer">AI Tools</li>
+        <li class="hover:bg-gray-700 p-2 rounded cursor-pointer">User Preferences</li>
+      </ul>
+    </aside>
+
+    <!-- Collapsible Sidebar for Smaller Screens -->
+    <div id="mobileSidebar" class="hidden fixed inset-0 bg-black bg-opacity-50 z-30">
+      <div class="bg-[#1a1a1a] w-3/4 h-full p-4">
+        <div class="flex flex-row justify-between">
+          <h2 class="text-xl font-bold mb-4">Settings</h2>
+          <button class="btn btn-circle text-white bg-gray-800 rounded" onclick="toggleSidebar()"><img class="w-[15px] h-[15px]" src="{% static 'images/Close.svg' %}" alt="close-btn" height="" width="" /></button>
+        </div>
+        <ul class="space-y-4">
+          <li class="hover:bg-gray-700 p-2 rounded cursor-pointer">Upload Settings</li>
+          <li class="hover:bg-gray-700 p-2 rounded cursor-pointer">AI Tools</li>
+          <li class="hover:bg-gray-700 p-2 rounded cursor-pointer">User Preferences</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="flex-1 p-4 md:p-6">
+      <!-- Header -->
+      <header class="flex h-[12%] items-center justify-between p-4 bg-[#191e24] rounded mb-6">
+        <div class="md:hidden bg-[#191e24]">
+          <button class="text-white bg-orange-500 rounded p-2" onclick="toggleSidebar()"><img src="{% static 'images/menu.svg' %}" alt="menu-btn" width="18px" height="18px" /></button>
+        </div>
+        <div class="flex flex-col justify-start">
+          <span class="text-xs">Project Name</span>
+          <h1 class="text-xl md:text-2xl font-bold">Image Improp</h1>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="avatar w-8 md:w-10 h-8 md:h-10 rounded-full bg-gray-700 flex items-center justify-center">
+            <span>AC</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Image Manipulation Area -->
+      <section class="h-[85%] w-full flex flex-col justify-start items-start bg-[#191e24] rounded-lg shadow-lg">
+        <div class="border border-dashed rounded-lg border-white w-[92%] m-5 md:mx-10">
+          <form class="bg-[#191e24] p-4 rounded-lg">
+            <div class="flex items-center gap-4">
+              <input type="file" class="file-input file-input-bordered file-input-md w-full bg-gray-800 text-gray-300" />
+              <button type="button" class="text-md bg-orange-500 text-white py-2 px-4 rounded-md hover:bg-orange-600">
+                <img src="{% static 'images/upload.svg' %}" alt="upload-btn" height="20px" width="20px" class="inline-block" />
+               </button>
+            </div>
+            <div class="m-5 flex flex-col w-fit">
+                <label for="model" class="font-bold my-1">Choose you Image Generation Model:</label>
+                <select id="model" name="image_to_cartoon" class="rounded-md text-black">
+                    <option value="bg_remove">Background Removal</option>
+                    <option value="shinkai">Makoto Shinkai Style</option>
+                    <option value="portrait_sketch">Portrait Sketch Style</option>
+                    <option value="paprika">Paprika Style</option>
+                </select>
+            </div>
+          </form>
+          <div class="flex flex-row justify-evenly w-auto h-[200px] m-8">
+            <div class="w-[20%] h-[100%] border border-dashed"></div>
+            <div class="w-[20%] h-[100%] border border-dashed"></div>
+            <div class="w-[20%] h-[100%] border border-dashed"></div>
+            <div class="w-[20%] h-[100%] border border-dashed"></div>
+          </div>
+        </div>
+      </section>
+    </section>
+  </div>
+{% endblock %}
+
+{% block banner %}
+
+{% endblock %}

@@ -46,6 +46,7 @@ module.exports = {
         fontFamily: {
             silkscreen: ['Silkscreen', 'sans-serif'], // Custom font
             spaceMono: ['Space Mono', 'monospace'], // Custom font
+            mono: ['Fira Code', 'monospace'], // Add your desired mono font here
         },
         keyframes: {
             moveToTop: {

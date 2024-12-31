@@ -1,0 +1,56 @@
+{% extends "layouts/base-layout.html" %}
+{% load static %}
+{% block metadata %}
+    <meta name="description"
+          content="Remove backgrounds from images instantly with DeepFX Studio’s powerful AI-driven Background Remover tool. Try it now to create stunning visuals with clean, professional results." />
+    <meta name="keywords"
+          content="AI Background Remover, Remove Image Background, DeepFX Studio, Image Editing, Professional Background Removal, AI Image Tools, Instant Background Removal, Image Manipulation" />
+    <meta name="author" content="DeepFX Studio Team" />
+    <meta property="og:title" content="AI Background Remover - DeepFX Studio" />
+    <meta property="og:description" content="Remove backgrounds from images instantly with DeepFX Studio’s powerful AI-driven Background Remover tool. Try it now for professional results." />
+    <meta property="og:image" content="{% static 'images/og-image.jpg' %}" />
+    <meta property="og:url" content="https://www.deepfxstudio.com/background-remover" />
+{% endblock metadata %}
+{% block title %}
+    AI Background Remover - DeepFX Studio | Instant Background Removal Tool
+{% endblock title %}
+{% block body %}
+<div class="bg-gradient-to-b from-gray-900 to-black text-aliceblue font-poppins min-h-screen">
+    <div class="p-10 cursor-pointer">    
+        <i class="fa-solid fa-arrow-left text-xl text-aliceblue"></i>
+    </div>
+    <div class="flex justify-center items-center">
+        <img class="mx-auto w-12" src="{% static 'images/bg-remove.jpg' %}" >
+    </div>
+
+    <div class="heading text-center">
+        <div class="tool-name pt-10">
+            <p class="text-5xl font-bold text-white" id="tool-name">Background Remover</p>
+        </div>
+        <div class="tool-desc my-4">
+            <p class="text-lg text-gray-300" id="tool-desc">Experience flawless background removal in seconds with AI precision</p>
+        </div>
+    </div>
+
+    {% comment %} <script src="backgroundRemover.js"></script> {% endcomment %}
+</div>
+{% endblock body %}
+
+{% block script %}
+    // use a script tag or an external JS file
+    document.addEventListener("DOMContentLoaded", (event) => {
+        gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
+
+        let smooth = ScrollSmoother.create({
+            wrapper:"#smooth-wrapper",
+            content:"#smooth-content",
+        })
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Fade in and slide up animation for heading and description
+        gsap.from("#tool-name", { opacity: 0, y: 30, duration: 1, delay: 0.3 });
+        gsap.from("#tool-desc", { opacity: 0, y: 30, duration: 1, delay: 0.4 });
+    });
+
+{% endblock script %}

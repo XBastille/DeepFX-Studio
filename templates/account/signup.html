@@ -56,11 +56,12 @@
                     type="submit">Sign Up</button>
         </form>
         <p class="font-light text-white text-sm mt-3">
-            <a href="" class="font-bold hover:underline">Forgot password?</a>
+            <a href="{% url "account_reset_password" %}"
+               class="font-bold hover:underline">Forgot password?</a>
         </p>
         <p class="font-light text-white text-sm mb-3 md:mb-0">
-            Already has an account? <a href="{% url "user_auth:signin_view" %}"
-    class="font-bold hover:underline">Sign in</a>
+            Already has an account?
+            <a href="{% url "account_login" %}" class="font-bold hover:underline">Sign in</a>
         </p>
     </div>
 {% endblock form %}

@@ -82,7 +82,7 @@ def process_single_image(input_path, model_path, device="gpu"):
 
 
 if __name__ == "__main__":
-    model_path = "models/model_name"
-    input_image = "inputs/image_name"
+    model_path = "models/Shinkai.onnx"
+    input_image = "inputs/img.jpg"
     output_path = process_single_image(input_image, model_path)
     print(f"Image saved to: {output_path}")
