@@ -1,16 +1,18 @@
 import os
+import os.path
 import warnings
 
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import torch.nn.functional as F
-from data_loader_cache import img_preprocess, img_reader
-from models import *
+from background_remover.is_net.models import *
 from PIL import Image
 from torch.autograd import Variable
 from torchvision import transforms
 from torchvision.transforms.functional import normalize
+from background_remover.is_net.data_loader_cache import img_preprocess, img_reader
+from deepfx_studio.settings import BASE_DIR
 
 warnings.filterwarnings("ignore")
 
@@ -59,7 +61,7 @@ def build_model(hypar, device):
     if hypar["model_digit"] == "half":
         net.half()
         for layer in net.modules():
-            if isinstance(layer, nn.BatchNorm2d):
+            if isinstance(layer, torch.nn.DataParallel.reset.BatchNorm2d):
                 layer.float()
 
     net.to(device)
@@ -119,7 +121,7 @@ def predict(net, inputs_val, shapes_val, hypar, device):
 
 
 hypar = {
-    "model_path": "saved_models",
+    "model_path": "./background_remover/is_net/saved_models",
     "restore_model": "isnet.pth",
     "interm_sup": False,
     "model_digit": "full",
@@ -133,7 +135,7 @@ hypar = {
 net = build_model(hypar, device)
 
 
-def save_inference(input_image_path, output_dir="outputs"):
+def save_inference(input_image_path, output_dir=os.path.join(BASE_DIR,'static/outputs')):
     os.makedirs(output_dir, exist_ok=True)
 
     base_name = os.path.splitext(os.path.basename(input_image_path))[0]
@@ -156,5 +158,3 @@ def save_inference(input_image_path, output_dir="outputs"):
     return mask_path, rgba_path
 
 
-input_path = "your_image_path"
-mask_path, rgba_path = save_inference(input_path)

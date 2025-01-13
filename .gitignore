@@ -168,3 +168,6 @@ cython_debug/
 
 # Optionally, ignore folders named 'models' everywhere
 **/models/
+
+
+todo.md
