@@ -15,7 +15,7 @@
     AI Background Remover - DeepFX Studio | Instant Background Removal Tool
 {% endblock title %}
 {% block body %}
-<div class="bg-gradient-to-b from-gray-900 to-black text-aliceblue font-poppins min-h-screen">
+<div class="bg-gradient-to-b from-gray-900 to-black text-aliceblue font-poppins min-h-screen pb-20">
     <div class="p-10 cursor-pointer">    
         <i class="fa-solid fa-arrow-left text-xl text-aliceblue"></i>
     </div>
@@ -25,32 +25,54 @@
 
     <div class="heading text-center">
         <div class="tool-name pt-10">
-            <p class="text-5xl font-bold text-white" id="tool-name">Background Remover</p>
+            <p class="text-2xl md:text-5xl font-bold text-white" id="tool-name">Background Remover</p>
         </div>
         <div class="tool-desc my-4">
-            <p class="text-lg text-gray-300" id="tool-desc">Experience flawless background removal in seconds with AI precision</p>
+            <p class="text-sm md:text-lg text-gray-300" id="tool-desc">Experience flawless background removal in seconds with AI precision</p>
         </div>
     </div>
 
-    {% comment %} <script src="backgroundRemover.js"></script> {% endcomment %}
+    <div id="form-section" class="flex md:flex-row flex-col md:w-[60vw] md:mx-auto justify-center items-center flex-wrap m-10 gap-10">
+        <!-- Video Section -->
+        <div class="w-full md:w-[45%] h-full flex items-center justify-center">
+            <video class="w-full h-full object-cover rounded-lg" 
+                   src="{% static 'videos/remove_background.mp4' %}" 
+                   autoplay loop muted></video>
+        </div>
+    
+        <!-- Upload Section -->
+        <form id="upload-form" action="/background-remover/generate_image/" enctype="multipart/form-data" method="post" class="w-full md:w-[40%] flex flex-col justify-between gap-6">
+            {% csrf_token %}
+            <!-- Upload Box -->
+            <div onclick="document.querySelector('#file_input').click()" class="uploadBox flex flex-col items-center justify-center border-2 border-dashed border-gray-600 rounded-lg p-8 h-fit md:h-56">
+                {% comment %} <i class="fa-solid fa-cloud-arrow-up text-gray-500 m-3"></i> {% endcomment %}
+                <img src="{% static './images/upload.svg' %}" class="text-gray-500 m-3"" alt="upload" />
+                <p id="upload-container" class="text-center text-sm text-gray-300 mb-4 font-light">Drop Image Here <br/> Click to Upload</p>
+                <input id="file_input" type="file" name="file" accept=".jpg, .jpeg, .webp, .png" class="hidden">
+            </div>
+    
+            <!-- Thumbnails -->
+            <div class="flex justify-center gap-5">
+                <img class="w-20 h-20 rounded-md border border-gray-600 object-cover" 
+                     src="{% static 'images/img1.jpg' %}" alt="Sample 1">
+                <img class="w-20 h-20 rounded-md border border-gray-600 object-cover" 
+                     src="{% static 'images/img2.jpg' %}" alt="Sample 2">
+                <img class="w-20 h-20 rounded-md border border-gray-600 object-cover" 
+                     src="{% static 'images/img3.jpg' %}" alt="Sample 3">
+                <img class="w-20 h-20 rounded-md border border-gray-600 object-cover" 
+                     src="{% static 'images/img4.jpg' %}" alt="Sample 4">
+            </div>
+            <button type="submit" class="btn w-full">Generate</button>
+        </form>
+    </div>
+    {% if processed_image %}
+        <div class="flex flex-col mx-auto w-full text-center my-20">
+            <p>Processed Image Path: {{ processed_image }}</p>
+            <img class="aspect-square rounded-md" src="static/{{processed_image}}" alt="Processed Image" />
+        <div>
+    {% endif %}
 </div>
 {% endblock body %}
 
-{% block script %}
-    // use a script tag or an external JS file
-    document.addEventListener("DOMContentLoaded", (event) => {
-        gsap.registerPlugin(ScrollTrigger, ScrollSmoother)
+<script src="{% static "./scripts/bg-remover.js" %}"></script>
 
-        let smooth = ScrollSmoother.create({
-            wrapper:"#smooth-wrapper",
-            content:"#smooth-content",
-        })
-    });
-
-    document.addEventListener("DOMContentLoaded", function() {
-        // Fade in and slide up animation for heading and description
-        gsap.from("#tool-name", { opacity: 0, y: 30, duration: 1, delay: 0.3 });
-        gsap.from("#tool-desc", { opacity: 0, y: 30, duration: 1, delay: 0.4 });
-    });
-
-{% endblock script %}

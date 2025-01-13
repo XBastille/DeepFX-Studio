@@ -8,7 +8,7 @@ django-allauth==65.3.0
 django-allauth-ui==1.5.0
 django-browser-reload==1.17.0
 django-tailwind==3.8.0
-django-components==0.114
+django-components==0.123
 idna==3.10
 pycparser==2.22
 PyJWT==2.10.1
@@ -28,5 +28,7 @@ torch==2.0.1
 torchvision==0.15.2
 slippers==0.6.2
 django-widget-tweaks==1.5.0
+pandas==2.2.3
+fastprogress==1.0.3
 # generated using pigar generate                  
 
