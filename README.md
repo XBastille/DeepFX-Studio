@@ -61,7 +61,7 @@ To run the example project:
 . Open `http://localhost:8000` in a browser. You should see the main page.
 
 
-## Docker setup
+## 🐳 Docker setup
 
 1. Build containers via `docker`:
 
