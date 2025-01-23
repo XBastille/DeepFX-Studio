@@ -1,88 +1,72 @@
-import os
-
-import cv2
-import numpy as np
 import onnxruntime as ort
-
+import os, cv2
+import numpy as np
 
 def check_folder(path):
     if not os.path.exists(path):
         os.makedirs(path)
     return path
 
-
 def get_model_name(model_path):
     return os.path.splitext(os.path.basename(model_path))[0]
-
 
 def get_unique_output_path(input_path, output_dir, model_name):
     input_filename = os.path.splitext(os.path.basename(input_path))[0]
     output_subdir = os.path.join(output_dir, model_name)
     check_folder(output_subdir)
-
+    
     base_path = os.path.join(output_subdir, f"{input_filename}.jpg")
     if not os.path.exists(base_path):
         return base_path
-
+    
     counter = 1
-    while os.path.exists(
-        os.path.join(output_subdir, f"{input_filename}_{counter}.jpg")
-    ):
+    while os.path.exists(os.path.join(output_subdir, f"{input_filename}_{counter}.jpg")):
         counter += 1
     return os.path.join(output_subdir, f"{input_filename}_{counter}.jpg")
 
+def transform_input_img(img, model_name):
+    height, width = img.shape[:2]
+    def calculate_dims(dims):
+        if 'tiny' in os.path.basename(model_name):
+            return 256 if dims < 256 else dims - dims % 16
+        return 256 if dims < 256 else dims - dims % 8
+    processed = cv2.resize(img, (calculate_dims(width), calculate_dims(height)))
+    normalized = cv2.cvtColor(processed, cv2.COLOR_BGR2RGB).astype(np.float32)
+    final = (normalized / 127.5) - 1.0
+    return final
 
-def process_image(img, model_name):
-    h, w = img.shape[:2]
+def prepare_input_data(img_location, model_name):
+    original = cv2.imread(img_location).astype(np.float32)
+    transformed = transform_input_img(original, model_name)
+    batched = np.expand_dims(transformed, axis=0)
+    return batched, original.shape
 
-    def to_8s(x):
-        if "tiny" in os.path.basename(model_name):
-            return 256 if x < 256 else x - x % 16
-        else:
-            return 256 if x < 256 else x - x % 8
+def export_processed_img(generated_data, target_path, dimensions):
+    denormalized = (np.squeeze(generated_data) + 1.) / 2 * 255
+    bounded = np.clip(denormalized, 0, 255).astype(np.uint8)
+    resized = cv2.resize(bounded, dimensions)
+    cv2.imwrite(target_path, cv2.cvtColor(resized, cv2.COLOR_RGB2BGR))
 
-    img = cv2.resize(img, (to_8s(w), to_8s(h)))
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB).astype(np.float32) / 127.5 - 1.0
-    return img
-
-
-def load_test_data(image_path, model_name):
-    img0 = cv2.imread(image_path).astype(np.float32)
-    img = process_image(img0, model_name)
-    img = np.expand_dims(img, axis=0)
-    return img, img0.shape
-
-
-def save_images(images, image_path, size):
-    images = (np.squeeze(images) + 1.0) / 2 * 255
-    images = np.clip(images, 0, 255).astype(np.uint8)
-    images = cv2.resize(images, size)
-    cv2.imwrite(image_path, cv2.cvtColor(images, cv2.COLOR_RGB2BGR))
-
-
-def process_single_image(input_path, model_path, device="gpu"):
-    if ort.get_device() == "GPU" and device == "gpu":
-        session = ort.InferenceSession(
-            model_path, providers=["CUDAExecutionProvider", "CPUExecutionProvider"]
-        )
+def execute_inference(source_path, model_path, compute_device="gpu"):
+    if ort.get_device() == 'GPU' and compute_device == "gpu":
+        inference_engine = ort.InferenceSession(model_path, 
+                                              providers=['CUDAExecutionProvider', 'CPUExecutionProvider'])
     else:
-        session = ort.InferenceSession(model_path, providers=["CPUExecutionProvider"])
-
-    x = session.get_inputs()[0].name
-    y = session.get_outputs()[0].name
-
-    model_name = get_model_name(model_path)
-    output_path = get_unique_output_path(input_path, "outputs", model_name)
-
-    sample_image, shape = load_test_data(input_path, model_path)
-    fake_img = session.run(None, {x: sample_image})
-    save_images(fake_img[0], output_path, (shape[1], shape[0]))
-
-    return output_path
-
+        inference_engine = ort.InferenceSession(model_path, 
+                                              providers=['CPUExecutionProvider'])
+    input_tensor = inference_engine.get_inputs()[0].name
+    output_tensor = inference_engine.get_outputs()[0].name
+    model_identifier = get_model_name(model_path)
+    result_path = get_unique_output_path(source_path, "outputs", model_identifier)
+    
+    input_tensor_data, original_dims = prepare_input_data(source_path, model_path)
+    generated_output = inference_engine.run(None, {input_tensor: input_tensor_data})
+    export_processed_img(generated_output[0], result_path, 
+                         (original_dims[1], original_dims[0]))
+    return result_path
 
 if __name__ == "__main__":
     model_path = "models/model_name"
-    input_image = "inputs/image_name"
-    output_path = process_single_image(input_image, model_path)
+    input_img = "inputs/image_name"
+    output_path = execute_inference(input_img, model_path)
     print(f"Image saved to: {output_path}")
