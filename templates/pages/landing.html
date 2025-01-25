@@ -1,59 +1,75 @@
 {% extends "layouts/base-layout.html" %}
 {% load static %}
 {% block body %}
-    <nav class="pt-3 lg:pt-20">
-        <div class="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto p-4">
-            <a href="{% url 'website:index_view' %}" class="flex items-center space-x-3">
-                <img height="40px" width="40px" src="{% static 'images/logo.png' %}" alt="logo" />
-                <span class="text-xl text-white font-bold">DeepFX Studio</span>
-            </a>
-            {% if user.is_authenticated %}
-            <div class="flex flex-row md:order-2 space-x-3">
-                <a href={% url 'dashboard:dashboard_view' %}>
-                    <button class="btn btn-outline">Dashboard</button>
+    <div class="pt-5 pb-10">
+        <nav   nav class="pt-3">
+            <div class="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto p-4">
+                <a href="{% url 'website:index_view' %}" class="flex items-center space-x-3">
+                    <img height="40px" width="40px" src="{% static 'images/logo.png' %}" alt="logo" />
+                    <span class="text-xl text-white font-bold">DeepFX Studio</span>
                 </a>
+                {% if user.is_authenticated %}
+                <div class="flex flex-row md:order-2 space-x-3">
+                    <a href={% url 'dashboard:dashboard_view' %}>
+                        <button class="btn btn-outline btn-primary">Dashboard</button>
+                    </a>
+                </div>
+                {% else %}
+                <div class="flex flex-row md:order-2 space-x-3">
+                    <a href={% url 'account_login' %}>
+                        <button class="btn btn-primary">Get Started</button>
+                    </a>
+                </div>
+                {% endif %}
             </div>
-            {% else %}
-            <div class="flex flex-row md:order-2 space-x-3">
-                <a href={% url 'account_login' %}>
-                    <button class="btn">Sign In</button>
-                </a>
-            </div>
-            {% endif %}
-        </div>
-    </nav>
-    
-    <section 
-        class="max-w-7xl mx-auto shadow-lg p-10 md:p-20 lg:rounded-2xl relative overflow-hidden"
-        style="background-image: url({% static 'images/bg-image.webp' %});">
-        <!-- Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80"></div>
+        </nav>
 
-        <div class="relative z-10">
-            <p class="font-silkscreen text-3xl md:text-5xl font-extrabold text-white mb-6">
-                Generate Unique Images Tailored to Your Specifications
-            </p>
+        <section 
+            class="max-w-7xl mx-auto shadow-lg p-10 md:p-20 lg:rounded-2xl relative overflow-hidden"
+            style="background-image: url({% static 'images/bg-image.webp' %}); background-size: cover;">
+            <!-- Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80"></div>
 
-            <div class="mt-10">
-                <p class="text-base md:text-lg text-gray-200 font-medium bg-white/10 backdrop-blur-lg p-5 rounded-lg">
-                    AI-driven platform to generate, convert, and mutate images into stunning art pieces, empowering your creativity and vision.
+            <div class="relative z-10">
+                <p class="font-silkscreen text-3xl md:text-5xl font-extrabold text-white mb-6">
+                    Generate Unique Images Tailored to Your Specifications
                 </p>
-            </div>
-        </div>
-    </section>
 
-    <section class="max-w-7xl mx-auto shadow-lg p-10 rounded-2xl border-gray-900 border-2 mt-10">
-        <div class="stack">
-            <img
-            src="https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.webp"
-            class="rounded" />
-            <img
-              onclick="alert('Clicked')"
-              src="https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.webp"
-              class="rounded" />
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.webp"
-              class="rounded" />
-        </div>
-    </section>
+                <div class="mt-4">
+                    <p class="w-full max-w-2xl text-sm md:text-base text-gray-100 font-medium p-6 md:p-8 rounded-lg shadow-lg backdrop-blur-sm leading-relaxed backdrop-blur-lg">
+                        <span class="block text-base md:text-xl font-semibold text-white mb-4">
+                            Imagine it, and let DeepFX Studio transform your vision into stunning visual masterpieces.
+                        </span>
+                        From restoring old memories to creating futuristic edits, our cutting-edge AI tools bring your ideas to life.
+                        <br>
+                        Unleash the power of features like <span class="font-semibold text-white">Neural Style Transfer</span>, 
+                        <span class="font-semibold text-white">Background Removal</span>, 
+                        <span class="font-semibold text-white">Cartoonization</span>, and more.
+                        <br>
+                        <i class="block mt-2 text-gray-200">
+                            — All designed to elevate your projects to the next level.
+                        </i>
+                    </p>
+
+                    <div>
+                        <form class="flex max-w-full w-fit flex-col sm:flex-row items-center p-5 rounded-lg space-y-4 sm:space-y-0 sm:space-x-4 shadow-md">
+                            <input 
+                                type="text" 
+                                placeholder="Enter your idea..." 
+                                class="input input-bordered w-full sm:w-2/3 text-gray-900 font-medium" />
+                            <button type="submit" class="btn btn-primary w-full sm:w-auto">
+                                Generate AI Image
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="stack-component" class="max-w-7xl mx-auto shadow-lg p-10 rounded-2xl border-gray-900 md:border-2 mt-10">
+        </section>
+    </div>
+    
+    <script src="{% static './scripts/landing.js' %}"></script>
 {% endblock body %}

@@ -2,7 +2,7 @@ from django_components import Component, register, types
 
 
 @register("toast")
-class Calendar(Component):
+class Toast(Component):
     template_name = "template.html"
 
     def get_context_data(self, title, content):

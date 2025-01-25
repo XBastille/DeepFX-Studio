@@ -1,6 +1,9 @@
 # Use a lightweight Python base image
 FROM python:3.12-slim-bookworm
 
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
+
 # Set the working directory in the container
 WORKDIR /app
 
@@ -36,6 +39,10 @@ ENV DEBUG="false" \
 
 # Copy the rest of the project
 COPY --chown=python:python . .
+
+# Download the isnet models
+RUN mkdir -p background_remover/is_net/saved_models
+RUN curl -L -o background_remover/is_net/saved_models/isnet.pth https://github.com/XBastille/DeepFX-Studio/releases/download/models/isnet.pth
 
 # Install and build Tailwind assets
 RUN SECRET_KEY=dummy python manage.py tailwind install --no-input \
