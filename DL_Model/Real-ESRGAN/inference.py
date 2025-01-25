@@ -3,8 +3,7 @@ from PIL import Image
 import numpy as np
 
 from rrdbnet_arch import RRDBNet
-from utils import extend_edges, create_overlapping_patches, reconstruct_from_patches, \
-                   remove_padding
+from utils import extend_edges, create_overlapping_patches, reconstruct_from_patches, remove_padding
 
 class RealESRGAN:
     def __init__(self, device, scale=4):
