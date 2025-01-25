@@ -42,6 +42,7 @@ DEBUG = True
 EXTERNAL_INSTALLED_APP = [
     "website",
     "background_remover",
+    "artistic_image_creator",
     "user_auth",
     "dashboard",
     "tailwind",

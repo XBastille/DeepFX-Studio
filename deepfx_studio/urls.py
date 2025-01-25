@@ -26,6 +26,7 @@ urlpatterns = [
     path("", include("user_auth.urls")),
     path("", include("django_components.urls")),
     path("background-remover/",include("background_remover.urls")), # background-remover
+    path("artistic-image-creator/", include("artistic_image_creator.urls")),
     path("accounts/", include("allauth.urls")),  # all OAuth operations will be performed under this route
     path("__reload__/", include("django_browser_reload.urls")),
 ]
