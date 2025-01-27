@@ -10,4 +10,5 @@ urlpatterns = [
     path("about/", views.about_view, name="about_view"),
     path("privacy/", views.privacy_view, name="privacy_view"),
     path("terms/", views.terms_view, name="terms_view"),
+    path("clear-session/", views.clear_session, name="clear_session"),
 ]

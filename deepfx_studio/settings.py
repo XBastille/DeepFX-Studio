@@ -48,13 +48,10 @@ EXTERNAL_INSTALLED_APP = [
     "tailwind",
     "theme",
     "django_browser_reload",
-    # django-components
     "django_components",
-    # django-allauth ui
     "allauth_ui",
     "widget_tweaks",
     "slippers",
-    # django allauth
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
@@ -224,12 +221,12 @@ LOGOUT_REDIRECT_URL = "/"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
-MEDIA_URL = '/media/' 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-FILE_UPLOAD_MAX_MEMORY_SIZE = 10485760 # 10 MB 
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+FILE_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10 MB
 
 # Directory for global static files
 STATICFILES_DIRS = [

@@ -72,6 +72,10 @@ To run the example project:
 
 3. Open `http://localhost:8000` in a browser. You should see the main page.
 
+4. From pre-commit run
+   ```bash
+   pre-commit run --all-files
+   ```
 
 ## 🐳 Docker setup
 

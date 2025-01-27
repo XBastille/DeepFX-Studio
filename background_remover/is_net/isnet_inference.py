@@ -6,12 +6,13 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 import torch.nn.functional as F
-from background_remover.is_net.models import *
 from PIL import Image
 from torch.autograd import Variable
 from torchvision import transforms
 from torchvision.transforms.functional import normalize
+
 from background_remover.is_net.data_loader_cache import img_preprocess, img_reader
+from background_remover.is_net.models import *
 from deepfx_studio.settings import BASE_DIR
 
 warnings.filterwarnings("ignore")
@@ -135,7 +136,9 @@ hypar = {
 net = build_model(hypar, device)
 
 
-def save_inference(input_image_path, output_dir=os.path.join(BASE_DIR,'static/outputs')):
+def save_inference(
+    input_image_path, output_dir=os.path.join(BASE_DIR, "static/outputs")
+):
     os.makedirs(output_dir, exist_ok=True)
 
     base_name = os.path.splitext(os.path.basename(input_image_path))[0]
@@ -156,5 +159,3 @@ def save_inference(input_image_path, output_dir=os.path.join(BASE_DIR,'static/ou
     im_rgba.save(rgba_path, "PNG")
 
     return mask_path, rgba_path
-
-

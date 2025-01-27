@@ -1,0 +1,17 @@
+{% extends "pages/background_remover.html" %}
+
+{% block body %}
+    {% if processed_image %}
+    <div class="processed_image_content flex justify-center items-center flex-col border-white rounded-md">
+        <img src="data:image/png;base64,{{processed_image}}" alt="Processed Image" class="mb-4">
+        <div class="button-group flex gap-4">
+            <a href="data:image/png;base64,{{processed_image}}" download="processed_image.png" class="btn px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Download</a>
+            <a href="{% url 'background-remover:background_remover' %}" class="btn px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600">Back</a>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if error %}
+        <h1 class="text-2xl text-center mt-8">{{error}}</h1>
+    {% endif %}
+{% endblock body %}
