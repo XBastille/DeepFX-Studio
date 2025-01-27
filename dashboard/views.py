@@ -6,7 +6,9 @@ from django.shortcuts import render
 
 @login_required
 def dashboard_view(request):
+    request.session.flush()
     return render(request, "pages/dashboard.html")
+
 
 # this will contain URL to redirect different pages
 """
