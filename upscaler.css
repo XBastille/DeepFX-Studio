@@ -10,8 +10,8 @@
     position: fixed;
     height: 80px;
     width: 80px;
-    margin-top: 30px;
-    margin-left: 20px;
+    margin-top: 20px;
+    margin-left: 80px;
 }
 
 .back {
@@ -22,7 +22,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 120px;
+    top: 40px;
     left: 30px;
 }
 
@@ -174,6 +174,18 @@ video {
     margin-left: 50px;
     height: 100%;
     width: 100%;
+}
+
+.close-icon {
+    /* display: none; */
+    position: absolute;
+    top: 180px;
+    right: 280px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 9999;
+    background: transparent;
+    pointer-events: auto;
 }
 
 .drag-and-drop {
