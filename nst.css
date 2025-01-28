@@ -10,8 +10,8 @@
     position: fixed;
     height: 80px;
     width: 80px;
-    top: 30px;
-    left: 100px;
+    margin-top: 20px;
+    margin-left: 80px;
 }
 
 .back {
@@ -22,9 +22,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 50px;
-    left: 20px;
-
+    top: 40px;
+    left: 30px;
 }
 
 .back i {
@@ -129,6 +128,37 @@
 
 .drag-and-drop:hover {
     cursor: pointer;
+}
+
+.icon1 {
+    position: absolute;
+    top: 250px;
+    right: 765px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 9999;
+    display: none;
+    background: transparent;
+    pointer-events: auto !important;
+}
+
+.icon2 {
+    position: absolute;
+    top: 250px;
+    right: 300px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 9999;
+    display: none;
+    background: transparent;
+    pointer-events: auto !important;
+}
+
+.plus {
+    position: absolute;
+    top: 480px;
+    right: 737px;
+    font-size: 30px;
 }
 
 .hide {
