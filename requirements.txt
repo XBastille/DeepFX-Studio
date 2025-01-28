@@ -19,15 +19,19 @@ sqlparse==0.5.2
 urllib3==2.2.3
 matplotlib==3.8.2
 numpy==1.23.5
+onnxruntime==1.20.1
 Pillow==10.1.0
+requests==2.32.3
 scikit-image==0.21.0
 scipy==1.11.3
 tensorflow==2.14.0
 tensorflow-hub==0.14.0
+transformers==4.48.1
 torch==2.0.1
 torchvision==0.15.2
 slippers==0.6.2
 django-widget-tweaks==1.5.0
 pandas==2.2.3
 fastprogress==1.0.3
+ffmpeg==1.4
 # generated using pigar generate

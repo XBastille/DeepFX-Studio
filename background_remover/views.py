@@ -1,12 +1,8 @@
 import base64
-import io
-import json
 import os
 # from urllib.parse import urlencode
 import tempfile
 
-import django.urls
-# from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from django.shortcuts import redirect, render, reverse
 from PIL import Image
