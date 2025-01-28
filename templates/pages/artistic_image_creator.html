@@ -27,7 +27,7 @@
             <img height=""
                  width=""
                  class="mx-auto w-12"
-                 src="{% static 'images/bg-remove.jpg' %}">
+                 src="{% static 'images/aristic-image-logo.svg' %}">
         </div>
         <div class="heading text-center">
             <div class="tool-name pt-10">
@@ -35,21 +35,112 @@
             </div>
             <div class="tool-desc my-4">
                 <p class="text-sm md:text-lg text-gray-300" id="tool-desc">
-                    Create stunning artwork by blending your images with AI-powered style transfer. Transform your content into a masterpiece with ease!
+                    Transform your visuals by blending content with artificial brillance
                 </p>
             </div>
         </div>
         <div id="form-section"
-             class="flex md:flex-row flex-col md:w-[60vw] md:mx-auto justify-center items-center flex-wrap m-10 gap-10">
+             class="flex md:flex-row flex-col md:mx-auto justify-center items-center flex-wrap m-10 gap-10">
+            <form id="upload-form"
+                  action="{% url 'artistic-image-creator:artistic_image_creator_api' %}"
+                  method="post"
+                  enctype="multipart/form-data"
+                  class="w-full md:w-[40%] flex flex-col justify-between gap-6">
+                {% csrf_token %}
+                <div class="flex flex-col md:flex-row gap-1">
+                    {% comment %} input-image {% endcomment %}
+                    <div id="uploadBox"
+                         class="flex flex-col items-center justify-center rounded-lg p-3 h-[20] md:h-56 border-dashed border-gray-600 border-2 w-[50%]">
+                        <img height=""
+                             width=""
+                             id="upload_image"
+                             src="{% static 'images/upload.svg' %}"
+                             class="text-gray-500 m-3 w-8 h-8"
+                             alt="upload" />
+                        <p id="upload_container"
+                           class="text-center text-sm text-gray-300 mb-4 font-light">
+                            Drop Image Here
+                            <br />
+                            Click to Upload
+                        </p>
+                    </div>
+                    <input hidden
+                           id="file_input"
+                           type="file"
+                           name="file"
+                           accept=".jpg, .jpeg, .png">
+                    {% comment %} art-style-image {% endcomment %}
+                    <div id="uploadBoxArtStyle"
+                         class="flex flex-col items-center justify-center rounded-lg p-3 h-[20] md:h-56 border-dashed border-gray-600 border-2 w-[50%]">
+                        <img height=""
+                             width=""
+                             id="upload_image_art_style"
+                             src="{% static 'images/upload.svg' %}"
+                             class="text-gray-500 m-3 w-8 h-8"
+                             alt="upload" />
+                        <p id="upload_container"
+                           class="text-center text-sm text-gray-300 mb-4 font-light">
+                            Drop the Art Style Image Here
+                            <br />
+                            Click to Upload
+                        </p>
+                    </div>
+                    <input hidden
+                           id="file_input_art_style"
+                           type="file"
+                           name="art_file"
+                           accept=".jpg, .jpeg, .png">
+                </div>
+                <button id="generateBtn" type="submit" class="btn w-full cursor-pointer">
+                    <i class="fa-solid fa-palette animate-spin"></i>
+                    GENERATE
+                </button>
+            </form>
         </div>
-        {% if processed_image %}
-            <div class="flex flex-col mx-auto w-full text-center my-20">
-                <p>Processed Image Path: {{ processed_image }}</p>
-                <img height=""
-                     width=""
-                     class="aspect-square rounded-md"
-                     src="data:image/png;base64, {{ processed_image }}"
-                     alt="Processed Image" />
-                <div>{% endif %}</div>
-            <script src="{% static "./scripts/artistic_image_creator.js" %}"></script>
-        {% endblock body %}
+        {% if request.session.processed_image %}
+            <div class="processed_image_content flex justify-center items-center flex-col">
+                <div class="relative">
+                    <button onclick="my_modal_4.showModal()"
+                            class="btn absolute top-2 left-2 border rounded-full bg-black cursor-pointer">
+                        <i class="fa-solid fa-arrows-up-down-left-right fa-lg bg-white"></i>
+                    </button>
+                    <dialog id="my_modal_4" class="modal">
+                        <div class="modal-box w-fit max-w-5xl">
+                            <img height=""
+                                 width=""
+                                 src="data:image/png;base64,{{ request.session.processed_image }}"
+                                 alt="Processed Image"
+                                 class="mb-4 rounded-md border-2 border-gray-300 shadow-lg max-w-xs md:max-w-md bg-[url('https://png.pngtree.com/thumb_back/fw800/background/20220703/pngtree-gray-and-white-checkered-illustration-perfect-for-a-background-photo-image_32339476.jpg')] bg-cover bg-cente">
+                            <div class="modal-action">
+                                <form method="dialog">
+                                    <button class="btn">Close</button>
+                                </form>
+                            </div>
+                        </div>
+                    </dialog>
+                    <img src="data:image/png;base64,{{ request.session.processed_image }}"
+                         alt="Processed Image"
+                         class="mb-4 rounded-md border-2 border-gray-300 shadow-lg max-w-xs md:max-w-md bg-[url('https://png.pngtree.com/thumb_back/fw800/background/20220703/pngtree-gray-and-white-checkered-illustration-perfect-for-a-background-photo-image_32339476.jpg')] bg-cover bg-cente"
+                         height=""
+                         width="">
+                </div>
+                <div class="button-group flex gap-4">
+                    <a href="data:image/png;base64,{{ request.session.processed_image }}"
+                       download="processed_image.png"
+                       class="btn btn-wide text-lg rounded-md px-4 py-2 bg-blue-500 text-white hover:bg-blue-600">
+                        Download
+                    </a>
+                    <a href="{% url 'website:clear_session' %}"
+                       class="btn rounded-md px-4 py-2 bg-red-500 text-white hover:bg-red-600">Delete</a>
+                </div>
+            </div>
+        {% endif %}
+        {% if request.session.error %}
+            <div id="message-box"
+                 class="absolute top-5 left-5 right-5 md:left-auto md:top-10 md:right-10 animate-appear">
+                {% component "toast" title="Error Occured" content="{{ request.session.error }}" %}{% endcomponent %}
+            </div>
+        {% endif %}
+    </div>
+    <script src="{% static "./scripts/artistic_image_creator.js" %}"></script>
+{% endblock body %}

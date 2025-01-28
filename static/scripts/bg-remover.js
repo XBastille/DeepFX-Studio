@@ -60,7 +60,7 @@ uploadBox.addEventListener("drop", (event) => {
             return;
         }
     } else {
-        alert(`Invalid file type. Please upload an image.`)
+        alert(`Invalid file type. Please upload an image.\nValid Image Types are: .jpg, .jpeg, .png`);
         return;
     }
 });

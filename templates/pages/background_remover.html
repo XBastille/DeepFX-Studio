@@ -143,7 +143,7 @@
                 </div>
             </div>
         {% endif %}
-        {% if error_message %}
+        {% if request.session.error %}
             <div id="message-box"
                  class="absolute top-5 left-5 right-5 md:left-auto md:top-10 md:right-10 animate-appear">
                 {% component "toast" title="Error Occured" content="{{ request.session.error }}" %}{% endcomponent %}
