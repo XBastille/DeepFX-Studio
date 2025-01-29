@@ -78,14 +78,15 @@ To run the example project:
    ```
 
 ## 🐳 Docker setup
+**1. Create a .env file in your project directory and add your own environment variables**
 
-1. Build containers via `docker-compose`:
+2. Build containers via `docker-compose`:
 
     ```bash
     docker-compose build
     ```
 
-2. Start containers:
+3. Start containers:
 
     ```bash
     docker-compose up
