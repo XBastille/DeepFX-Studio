@@ -1,0 +1,35 @@
+{% extends "layouts/base-layout.html" %}
+{% load static %}
+{% block metadata %}
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+          content="Enhance image quality effortlessly with DeepFX Studio's AI-powered Image Upscale. Improve resolution, sharpness, and details with a single click." />
+    <meta name="keywords"
+          content="AI Image Upscale, Image Upscaling, DeepFX Studio, AI Photo Enhancement, Image Quality Improvement, AI Super Resolution, Photo Sharpening" />
+    <meta name="author" content="DeepFX Studio Team" />
+    <meta name="robots" content="index, follow" />
+{% endblock metadata %}
+{% block title %}
+    AI Image Upscale - DeepFX Studio
+{% endblock title %}
+{% block body %}
+<div class="bg-gradient-to-b from-gray-900 to-black text-aliceblue font-poppins min-h-screen pb-20">
+    <div class="flex justify-center items-center pt-10">
+        <img class="mx-auto w-12"
+            src="{% static 'images/ai_upscale.svg' %}"
+            alt="AI Image Upscale Logo">
+    </div>
+    <div class="heading text-center">
+        <div class="tool-name pt-10">
+            <p class="text-2xl md:text-5xl font-bold text-white" id="tool-name">
+                AI Image Upscale
+            </p>
+        </div>
+        <div class="tool-desc my-4">
+            <p class="text-sm md:text-lg text-gray-300" id="tool-desc">
+                Improve image quality, enhance details, and upscale resolution with AI-powered enhancement.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock body %}

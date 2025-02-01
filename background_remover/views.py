@@ -1,15 +1,10 @@
 import base64
 import os
-# from urllib.parse import urlencode
 import tempfile
-
 from django.http import JsonResponse
 from django.shortcuts import redirect, render, reverse
 from PIL import Image
-
 from background_remover.is_net.isnet_inference import save_inference
-
-# from background_remover.models import ProcessedImage
 
 
 def background_remover(request):
@@ -59,7 +54,7 @@ def api_background_remover(request):
             # query_params = urlencode({"processed_image": output_image})
 
             # processed_image = ProcessedImage.objects.create(orginal_image_data=input_image,processed_image_data=output_image);
-            request.session["processed_image"] = output_image
+            request.session["background_remover_processed_image"] = output_image
             return redirect(reverse("background-remover:background_remover"))
 
             # return render(request, "pages/result_page.html", {"processed_image": output_image})
@@ -74,7 +69,7 @@ def api_background_remover(request):
             #     "message": f"An error occurred: {str(e)}"
             # }, status=500)
     else:
-        request.session["error"] = "Invalid request method. Use POST."
+        request.session["background_remover_error"] = "Invalid request method. Use POST."
         # error_message = urlencode({"error": "Invalid request method. Use POST."})
         return redirect(reverse("background-remover:background_remover"))
 

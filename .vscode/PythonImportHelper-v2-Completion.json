@@ -7977,6 +7977,150 @@
         "documentation": {}
     },
     {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "include",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "reverse",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "path",
+        "importPath": "django.urls",
+        "description": "django.urls",
+        "isExtraImport": true,
+        "detail": "django.urls",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
         "label": "render",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
@@ -8105,94 +8249,6 @@
         "documentation": {}
     },
     {
-        "label": "reverse",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
-        "label": "path",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
-        "label": "path",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
-        "label": "path",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
-        "label": "include",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
-        "label": "path",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
-        "label": "path",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
-        "label": "reverse",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
-        "label": "path",
-        "importPath": "django.urls",
-        "description": "django.urls",
-        "isExtraImport": true,
-        "detail": "django.urls",
-        "documentation": {}
-    },
-    {
-        "label": "JsonResponse",
-        "importPath": "django.http",
-        "description": "django.http",
-        "isExtraImport": true,
-        "detail": "django.http",
-        "documentation": {}
-    },
-    {
-        "label": "JsonResponse",
-        "importPath": "django.http",
-        "description": "django.http",
-        "isExtraImport": true,
-        "detail": "django.http",
-        "documentation": {}
-    },
-    {
         "label": "NeuralStyleTransfer",
         "importPath": "artistic_image_creator.nst.nst",
         "description": "artistic_image_creator.nst.nst",
@@ -8318,6 +8374,14 @@
         "description": "django.contrib.auth.decorators",
         "isExtraImport": true,
         "detail": "django.contrib.auth.decorators",
+        "documentation": {}
+    },
+    {
+        "label": "flush_image_data",
+        "importPath": "website.views",
+        "description": "website.views",
+        "isExtraImport": true,
+        "detail": "website.views",
         "documentation": {}
     },
     {
@@ -20264,6 +20328,42 @@
         "documentation": {}
     },
     {
+        "label": "app_name",
+        "kind": 5,
+        "importPath": "ai_eraser.urls",
+        "description": "ai_eraser.urls",
+        "peekOfCode": "app_name = \"ai-eraser\"\nurlpatterns = [\n    path(\"\", views.ai_eraser, name=\"ai_eraser\"),\n    path(\n        \"generate/\", views.api_ai_eraser, name=\"ai_eraser_api\"\n    ),\n]",
+        "detail": "ai_eraser.urls",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "ai_eraser.urls",
+        "description": "ai_eraser.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\"\", views.ai_eraser, name=\"ai_eraser\"),\n    path(\n        \"generate/\", views.api_ai_eraser, name=\"ai_eraser_api\"\n    ),\n]",
+        "detail": "ai_eraser.urls",
+        "documentation": {}
+    },
+    {
+        "label": "ai_eraser",
+        "kind": 2,
+        "importPath": "ai_eraser.views",
+        "description": "ai_eraser.views",
+        "peekOfCode": "def ai_eraser(request):\n    return render(request, \"pages/ai_eraser.html\")\ndef api_ai_eraser(request):\n    return JsonResponse({\"status\": \"200\"})",
+        "detail": "ai_eraser.views",
+        "documentation": {}
+    },
+    {
+        "label": "api_ai_eraser",
+        "kind": 2,
+        "importPath": "ai_eraser.views",
+        "description": "ai_eraser.views",
+        "peekOfCode": "def api_ai_eraser(request):\n    return JsonResponse({\"status\": \"200\"})",
+        "detail": "ai_eraser.views",
+        "documentation": {}
+    },
+    {
         "label": "check_folder",
         "kind": 2,
         "importPath": "ai_filter.inference.arcane_inference",
@@ -20471,6 +20571,42 @@
         "documentation": {}
     },
     {
+        "label": "app_name",
+        "kind": 5,
+        "importPath": "ai_filter.urls",
+        "description": "ai_filter.urls",
+        "peekOfCode": "app_name = \"ai-filter\"\nurlpatterns = [\n    path(\"\", views.ai_filter, name=\"ai_filter\"),\n    path(\n        \"generate/\", views.api_ai_filter, name=\"ai_filter_api\"\n    ),\n]",
+        "detail": "ai_filter.urls",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "ai_filter.urls",
+        "description": "ai_filter.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\"\", views.ai_filter, name=\"ai_filter\"),\n    path(\n        \"generate/\", views.api_ai_filter, name=\"ai_filter_api\"\n    ),\n]",
+        "detail": "ai_filter.urls",
+        "documentation": {}
+    },
+    {
+        "label": "ai_filter",
+        "kind": 2,
+        "importPath": "ai_filter.views",
+        "description": "ai_filter.views",
+        "peekOfCode": "def ai_filter(request):\n    return render(request, \"pages/ai_filter.html\")\ndef api_ai_filter(request):\n    return JsonResponse({\"status\": \"200\"})",
+        "detail": "ai_filter.views",
+        "documentation": {}
+    },
+    {
+        "label": "api_ai_filter",
+        "kind": 2,
+        "importPath": "ai_filter.views",
+        "description": "ai_filter.views",
+        "peekOfCode": "def api_ai_filter(request):\n    return JsonResponse({\"status\": \"200\"})",
+        "detail": "ai_filter.views",
+        "documentation": {}
+    },
+    {
         "label": "upscale_image",
         "kind": 2,
         "importPath": "ai_image_upscale.real_ersgan.ersgan_inference",
@@ -20507,12 +20643,84 @@
         "documentation": {}
     },
     {
+        "label": "app_name",
+        "kind": 5,
+        "importPath": "ai_image_upscale.urls",
+        "description": "ai_image_upscale.urls",
+        "peekOfCode": "app_name = \"ai-image-upscale\"\nurlpatterns = [\n    path(\"\", views.ai_image_upscale, name=\"ai_image_upscale\"),\n    path(\n        \"generate/\", views.api_ai_image_upscale, name=\"ai_image_upscale_api\"\n    ),\n]",
+        "detail": "ai_image_upscale.urls",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "ai_image_upscale.urls",
+        "description": "ai_image_upscale.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\"\", views.ai_image_upscale, name=\"ai_image_upscale\"),\n    path(\n        \"generate/\", views.api_ai_image_upscale, name=\"ai_image_upscale_api\"\n    ),\n]",
+        "detail": "ai_image_upscale.urls",
+        "documentation": {}
+    },
+    {
+        "label": "ai_image_upscale",
+        "kind": 2,
+        "importPath": "ai_image_upscale.views",
+        "description": "ai_image_upscale.views",
+        "peekOfCode": "def ai_image_upscale(request):\n    return render(request, \"pages/ai_upscale.html\")\ndef api_ai_image_upscale(request):\n    return JsonResponse({\"status\": \"200\"})",
+        "detail": "ai_image_upscale.views",
+        "documentation": {}
+    },
+    {
+        "label": "api_ai_image_upscale",
+        "kind": 2,
+        "importPath": "ai_image_upscale.views",
+        "description": "ai_image_upscale.views",
+        "peekOfCode": "def api_ai_image_upscale(request):\n    return JsonResponse({\"status\": \"200\"})",
+        "detail": "ai_image_upscale.views",
+        "documentation": {}
+    },
+    {
         "label": "TextToImageGeneratorConfig",
         "kind": 6,
         "importPath": "ai_text_to_image_generator.apps",
         "description": "ai_text_to_image_generator.apps",
         "peekOfCode": "class TextToImageGeneratorConfig(AppConfig):\n    default_auto_field = \"django.db.models.BigAutoField\"\n    name = \"ai_text_to_image_generator\"",
         "detail": "ai_text_to_image_generator.apps",
+        "documentation": {}
+    },
+    {
+        "label": "app_name",
+        "kind": 5,
+        "importPath": "ai_text_to_image_generator.urls",
+        "description": "ai_text_to_image_generator.urls",
+        "peekOfCode": "app_name = \"ai-text-to-image\"\nurlpatterns = [\n    path(\"\", views.text_to_image, name=\"ai_text_to_image\"),\n    path(\n        \"generate/\", views.api_text_to_image, name=\"ai_text_to_image_api\"\n    ),\n]",
+        "detail": "ai_text_to_image_generator.urls",
+        "documentation": {}
+    },
+    {
+        "label": "urlpatterns",
+        "kind": 5,
+        "importPath": "ai_text_to_image_generator.urls",
+        "description": "ai_text_to_image_generator.urls",
+        "peekOfCode": "urlpatterns = [\n    path(\"\", views.text_to_image, name=\"ai_text_to_image\"),\n    path(\n        \"generate/\", views.api_text_to_image, name=\"ai_text_to_image_api\"\n    ),\n]",
+        "detail": "ai_text_to_image_generator.urls",
+        "documentation": {}
+    },
+    {
+        "label": "text_to_image",
+        "kind": 2,
+        "importPath": "ai_text_to_image_generator.views",
+        "description": "ai_text_to_image_generator.views",
+        "peekOfCode": "def text_to_image(request):\n    return render(request, \"pages/text-to-image.html\")\ndef api_text_to_image(request):\n    return JsonResponse({\"status\": \"200\"})",
+        "detail": "ai_text_to_image_generator.views",
+        "documentation": {}
+    },
+    {
+        "label": "api_text_to_image",
+        "kind": 2,
+        "importPath": "ai_text_to_image_generator.views",
+        "description": "ai_text_to_image_generator.views",
+        "peekOfCode": "def api_text_to_image(request):\n    return JsonResponse({\"status\": \"200\"})",
+        "detail": "ai_text_to_image_generator.views",
         "documentation": {}
     },
     {
@@ -20538,7 +20746,7 @@
         "kind": 5,
         "importPath": "artistic_image_creator.urls",
         "description": "artistic_image_creator.urls",
-        "peekOfCode": "app_name = \"artistic-image-creator\"\nurlpatterns = [\n    path(\"\", views.artistic_image_creator, name=\"artistic_image_creator\"),\n    path(\"generate/\", views.api_artistic_image_creator, name=\"artistic_image_creator_api\"),\n]",
+        "peekOfCode": "app_name = \"artistic-image-creator\"\nurlpatterns = [\n    path(\"\", views.artistic_image_creator, name=\"artistic_image_creator\"),\n    path(\n        \"generate/\", views.api_artistic_image_creator, name=\"artistic_image_creator_api\"\n    ),\n]",
         "detail": "artistic_image_creator.urls",
         "documentation": {}
     },
@@ -20547,7 +20755,7 @@
         "kind": 5,
         "importPath": "artistic_image_creator.urls",
         "description": "artistic_image_creator.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"\", views.artistic_image_creator, name=\"artistic_image_creator\"),\n    path(\"generate/\", views.api_artistic_image_creator, name=\"artistic_image_creator_api\"),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"\", views.artistic_image_creator, name=\"artistic_image_creator\"),\n    path(\n        \"generate/\", views.api_artistic_image_creator, name=\"artistic_image_creator_api\"\n    ),\n]",
         "detail": "artistic_image_creator.urls",
         "documentation": {}
     },
@@ -20583,7 +20791,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class REBNCONV(nn.Module):\n    def __init__(self,in_ch=3,out_ch=3,dirate=1,stride=1):\n        super(REBNCONV,self).__init__()\n        self.conv_s1 = nn.Conv2d(in_ch,out_ch,3,padding=1*dirate,dilation=1*dirate,stride=stride)\n        self.bn_s1 = nn.BatchNorm2d(out_ch)\n        self.relu_s1 = nn.ReLU(inplace=True)\n    def forward(self,x):\n        hx = x\n        return self.relu_s1(self.bn_s1(self.conv_s1(hx)))\n## upsample tensor 'src' to have the same spatial size with tensor 'tar'",
+        "peekOfCode": "class REBNCONV(nn.Module):\n    def __init__(self, in_ch=3, out_ch=3, dirate=1, stride=1):\n        super(REBNCONV, self).__init__()\n        self.conv_s1 = nn.Conv2d(\n            in_ch, out_ch, 3, padding=1 * dirate, dilation=1 * dirate, stride=stride\n        )\n        self.bn_s1 = nn.BatchNorm2d(out_ch)\n        self.relu_s1 = nn.ReLU(inplace=True)\n    def forward(self, x):\n        hx = x",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20592,7 +20800,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class RSU7(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3, img_size=512):\n        super(RSU7,self).__init__()\n        self.in_ch = in_ch\n        self.mid_ch = mid_ch\n        self.out_ch = out_ch\n        self.rebnconvin = REBNCONV(in_ch,out_ch,dirate=1) ## 1 -> 1/2\n        self.rebnconv1 = REBNCONV(out_ch,mid_ch,dirate=1)\n        self.pool1 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.rebnconv2 = REBNCONV(mid_ch,mid_ch,dirate=1)",
+        "peekOfCode": "class RSU7(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3, img_size=512):\n        super(RSU7, self).__init__()\n        self.in_ch = in_ch\n        self.mid_ch = mid_ch\n        self.out_ch = out_ch\n        self.rebnconvin = REBNCONV(in_ch, out_ch, dirate=1)  ## 1 -> 1/2\n        self.rebnconv1 = REBNCONV(out_ch, mid_ch, dirate=1)\n        self.pool1 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.rebnconv2 = REBNCONV(mid_ch, mid_ch, dirate=1)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20601,7 +20809,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class RSU6(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3):\n        super(RSU6,self).__init__()\n        self.rebnconvin = REBNCONV(in_ch,out_ch,dirate=1)\n        self.rebnconv1 = REBNCONV(out_ch,mid_ch,dirate=1)\n        self.pool1 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.rebnconv2 = REBNCONV(mid_ch,mid_ch,dirate=1)\n        self.pool2 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.rebnconv3 = REBNCONV(mid_ch,mid_ch,dirate=1)\n        self.pool3 = nn.MaxPool2d(2,stride=2,ceil_mode=True)",
+        "peekOfCode": "class RSU6(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3):\n        super(RSU6, self).__init__()\n        self.rebnconvin = REBNCONV(in_ch, out_ch, dirate=1)\n        self.rebnconv1 = REBNCONV(out_ch, mid_ch, dirate=1)\n        self.pool1 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.rebnconv2 = REBNCONV(mid_ch, mid_ch, dirate=1)\n        self.pool2 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.rebnconv3 = REBNCONV(mid_ch, mid_ch, dirate=1)\n        self.pool3 = nn.MaxPool2d(2, stride=2, ceil_mode=True)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20610,7 +20818,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class RSU5(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3):\n        super(RSU5,self).__init__()\n        self.rebnconvin = REBNCONV(in_ch,out_ch,dirate=1)\n        self.rebnconv1 = REBNCONV(out_ch,mid_ch,dirate=1)\n        self.pool1 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.rebnconv2 = REBNCONV(mid_ch,mid_ch,dirate=1)\n        self.pool2 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.rebnconv3 = REBNCONV(mid_ch,mid_ch,dirate=1)\n        self.pool3 = nn.MaxPool2d(2,stride=2,ceil_mode=True)",
+        "peekOfCode": "class RSU5(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3):\n        super(RSU5, self).__init__()\n        self.rebnconvin = REBNCONV(in_ch, out_ch, dirate=1)\n        self.rebnconv1 = REBNCONV(out_ch, mid_ch, dirate=1)\n        self.pool1 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.rebnconv2 = REBNCONV(mid_ch, mid_ch, dirate=1)\n        self.pool2 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.rebnconv3 = REBNCONV(mid_ch, mid_ch, dirate=1)\n        self.pool3 = nn.MaxPool2d(2, stride=2, ceil_mode=True)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20619,7 +20827,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class RSU4(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3):\n        super(RSU4,self).__init__()\n        self.rebnconvin = REBNCONV(in_ch,out_ch,dirate=1)\n        self.rebnconv1 = REBNCONV(out_ch,mid_ch,dirate=1)\n        self.pool1 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.rebnconv2 = REBNCONV(mid_ch,mid_ch,dirate=1)\n        self.pool2 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.rebnconv3 = REBNCONV(mid_ch,mid_ch,dirate=1)\n        self.rebnconv4 = REBNCONV(mid_ch,mid_ch,dirate=2)",
+        "peekOfCode": "class RSU4(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3):\n        super(RSU4, self).__init__()\n        self.rebnconvin = REBNCONV(in_ch, out_ch, dirate=1)\n        self.rebnconv1 = REBNCONV(out_ch, mid_ch, dirate=1)\n        self.pool1 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.rebnconv2 = REBNCONV(mid_ch, mid_ch, dirate=1)\n        self.pool2 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.rebnconv3 = REBNCONV(mid_ch, mid_ch, dirate=1)\n        self.rebnconv4 = REBNCONV(mid_ch, mid_ch, dirate=2)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20628,7 +20836,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class RSU4F(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3):\n        super(RSU4F,self).__init__()\n        self.rebnconvin = REBNCONV(in_ch,out_ch,dirate=1)\n        self.rebnconv1 = REBNCONV(out_ch,mid_ch,dirate=1)\n        self.rebnconv2 = REBNCONV(mid_ch,mid_ch,dirate=2)\n        self.rebnconv3 = REBNCONV(mid_ch,mid_ch,dirate=4)\n        self.rebnconv4 = REBNCONV(mid_ch,mid_ch,dirate=8)\n        self.rebnconv3d = REBNCONV(mid_ch*2,mid_ch,dirate=4)\n        self.rebnconv2d = REBNCONV(mid_ch*2,mid_ch,dirate=2)",
+        "peekOfCode": "class RSU4F(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3):\n        super(RSU4F, self).__init__()\n        self.rebnconvin = REBNCONV(in_ch, out_ch, dirate=1)\n        self.rebnconv1 = REBNCONV(out_ch, mid_ch, dirate=1)\n        self.rebnconv2 = REBNCONV(mid_ch, mid_ch, dirate=2)\n        self.rebnconv3 = REBNCONV(mid_ch, mid_ch, dirate=4)\n        self.rebnconv4 = REBNCONV(mid_ch, mid_ch, dirate=8)\n        self.rebnconv3d = REBNCONV(mid_ch * 2, mid_ch, dirate=4)\n        self.rebnconv2d = REBNCONV(mid_ch * 2, mid_ch, dirate=2)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20637,7 +20845,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class myrebnconv(nn.Module):\n    def __init__(self, in_ch=3,\n                       out_ch=1,\n                       kernel_size=3,\n                       stride=1,\n                       padding=1,\n                       dilation=1,\n                       groups=1):\n        super(myrebnconv,self).__init__()\n        self.conv = nn.Conv2d(in_ch,",
+        "peekOfCode": "class myrebnconv(nn.Module):\n    def __init__(\n        self,\n        in_ch=3,\n        out_ch=1,\n        kernel_size=3,\n        stride=1,\n        padding=1,\n        dilation=1,\n        groups=1,",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20646,7 +20854,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class ISNetGTEncoder(nn.Module):\n    def __init__(self,in_ch=1,out_ch=1):\n        super(ISNetGTEncoder,self).__init__()\n        self.conv_in = myrebnconv(in_ch,16,3,stride=2,padding=1) # nn.Conv2d(in_ch,64,3,stride=2,padding=1)\n        self.stage1 = RSU7(16,16,64)\n        self.pool12 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.stage2 = RSU6(64,16,64)\n        self.pool23 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.stage3 = RSU5(64,32,128)\n        self.pool34 = nn.MaxPool2d(2,stride=2,ceil_mode=True)",
+        "peekOfCode": "class ISNetGTEncoder(nn.Module):\n    def __init__(self, in_ch=1, out_ch=1):\n        super(ISNetGTEncoder, self).__init__()\n        self.conv_in = myrebnconv(\n            in_ch, 16, 3, stride=2, padding=1\n        )  # nn.Conv2d(in_ch,64,3,stride=2,padding=1)\n        self.stage1 = RSU7(16, 16, 64)\n        self.pool12 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.stage2 = RSU6(64, 16, 64)\n        self.pool23 = nn.MaxPool2d(2, stride=2, ceil_mode=True)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20655,7 +20863,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class ISNetDIS(nn.Module):\n    def __init__(self,in_ch=3,out_ch=1):\n        super(ISNetDIS,self).__init__()\n        self.conv_in = nn.Conv2d(in_ch,64,3,stride=2,padding=1)\n        self.pool_in = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.stage1 = RSU7(64,32,64)\n        self.pool12 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.stage2 = RSU6(64,32,128)\n        self.pool23 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.stage3 = RSU5(128,64,256)",
+        "peekOfCode": "class ISNetDIS(nn.Module):\n    def __init__(self, in_ch=3, out_ch=1):\n        super(ISNetDIS, self).__init__()\n        self.conv_in = nn.Conv2d(in_ch, 64, 3, stride=2, padding=1)\n        self.pool_in = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.stage1 = RSU7(64, 32, 64)\n        self.pool12 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.stage2 = RSU6(64, 32, 128)\n        self.pool23 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.stage3 = RSU5(128, 64, 256)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20664,7 +20872,7 @@
         "kind": 2,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "def muti_loss_fusion(preds, target):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if(preds[i].shape[2]!=target.shape[2] or preds[i].shape[3]!=target.shape[3]):\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(target, size=preds[i].size()[2:], mode='bilinear', align_corners=True)\n            loss = loss + bce_loss(preds[i],tmp_target)\n        else:\n            loss = loss + bce_loss(preds[i],target)",
+        "peekOfCode": "def muti_loss_fusion(preds, target):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if preds[i].shape[2] != target.shape[2] or preds[i].shape[3] != target.shape[3]:\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(\n                target, size=preds[i].size()[2:], mode=\"bilinear\", align_corners=True\n            )\n            loss = loss + bce_loss(preds[i], tmp_target)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20673,7 +20881,7 @@
         "kind": 2,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "def muti_loss_fusion_kl(preds, target, dfs, fs, mode='MSE'):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if(preds[i].shape[2]!=target.shape[2] or preds[i].shape[3]!=target.shape[3]):\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(target, size=preds[i].size()[2:], mode='bilinear', align_corners=True)\n            loss = loss + bce_loss(preds[i],tmp_target)\n        else:\n            loss = loss + bce_loss(preds[i],target)",
+        "peekOfCode": "def muti_loss_fusion_kl(preds, target, dfs, fs, mode=\"MSE\"):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if preds[i].shape[2] != target.shape[2] or preds[i].shape[3] != target.shape[3]:\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(\n                target, size=preds[i].size()[2:], mode=\"bilinear\", align_corners=True\n            )\n            loss = loss + bce_loss(preds[i], tmp_target)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20682,7 +20890,7 @@
         "kind": 5,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "bce_loss = nn.BCELoss(size_average=True)\ndef muti_loss_fusion(preds, target):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if(preds[i].shape[2]!=target.shape[2] or preds[i].shape[3]!=target.shape[3]):\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(target, size=preds[i].size()[2:], mode='bilinear', align_corners=True)\n            loss = loss + bce_loss(preds[i],tmp_target)\n        else:",
+        "peekOfCode": "bce_loss = nn.BCELoss(size_average=True)\ndef muti_loss_fusion(preds, target):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if preds[i].shape[2] != target.shape[2] or preds[i].shape[3] != target.shape[3]:\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(\n                target, size=preds[i].size()[2:], mode=\"bilinear\", align_corners=True\n            )",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20691,7 +20899,7 @@
         "kind": 5,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "fea_loss = nn.MSELoss(size_average=True)\nkl_loss = nn.KLDivLoss(size_average=True)\nl1_loss = nn.L1Loss(size_average=True)\nsmooth_l1_loss = nn.SmoothL1Loss(size_average=True)\ndef muti_loss_fusion_kl(preds, target, dfs, fs, mode='MSE'):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if(preds[i].shape[2]!=target.shape[2] or preds[i].shape[3]!=target.shape[3]):\n            # tmp_target = _upsample_like(target,preds[i])",
+        "peekOfCode": "fea_loss = nn.MSELoss(size_average=True)\nkl_loss = nn.KLDivLoss(size_average=True)\nl1_loss = nn.L1Loss(size_average=True)\nsmooth_l1_loss = nn.SmoothL1Loss(size_average=True)\ndef muti_loss_fusion_kl(preds, target, dfs, fs, mode=\"MSE\"):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if preds[i].shape[2] != target.shape[2] or preds[i].shape[3] != target.shape[3]:\n            # tmp_target = _upsample_like(target,preds[i])",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20700,7 +20908,7 @@
         "kind": 5,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "kl_loss = nn.KLDivLoss(size_average=True)\nl1_loss = nn.L1Loss(size_average=True)\nsmooth_l1_loss = nn.SmoothL1Loss(size_average=True)\ndef muti_loss_fusion_kl(preds, target, dfs, fs, mode='MSE'):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if(preds[i].shape[2]!=target.shape[2] or preds[i].shape[3]!=target.shape[3]):\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(target, size=preds[i].size()[2:], mode='bilinear', align_corners=True)",
+        "peekOfCode": "kl_loss = nn.KLDivLoss(size_average=True)\nl1_loss = nn.L1Loss(size_average=True)\nsmooth_l1_loss = nn.SmoothL1Loss(size_average=True)\ndef muti_loss_fusion_kl(preds, target, dfs, fs, mode=\"MSE\"):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if preds[i].shape[2] != target.shape[2] or preds[i].shape[3] != target.shape[3]:\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20709,7 +20917,7 @@
         "kind": 5,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "l1_loss = nn.L1Loss(size_average=True)\nsmooth_l1_loss = nn.SmoothL1Loss(size_average=True)\ndef muti_loss_fusion_kl(preds, target, dfs, fs, mode='MSE'):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if(preds[i].shape[2]!=target.shape[2] or preds[i].shape[3]!=target.shape[3]):\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(target, size=preds[i].size()[2:], mode='bilinear', align_corners=True)\n            loss = loss + bce_loss(preds[i],tmp_target)",
+        "peekOfCode": "l1_loss = nn.L1Loss(size_average=True)\nsmooth_l1_loss = nn.SmoothL1Loss(size_average=True)\ndef muti_loss_fusion_kl(preds, target, dfs, fs, mode=\"MSE\"):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if preds[i].shape[2] != target.shape[2] or preds[i].shape[3] != target.shape[3]:\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(\n                target, size=preds[i].size()[2:], mode=\"bilinear\", align_corners=True",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20718,7 +20926,7 @@
         "kind": 5,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "smooth_l1_loss = nn.SmoothL1Loss(size_average=True)\ndef muti_loss_fusion_kl(preds, target, dfs, fs, mode='MSE'):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if(preds[i].shape[2]!=target.shape[2] or preds[i].shape[3]!=target.shape[3]):\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(target, size=preds[i].size()[2:], mode='bilinear', align_corners=True)\n            loss = loss + bce_loss(preds[i],tmp_target)\n        else:",
+        "peekOfCode": "smooth_l1_loss = nn.SmoothL1Loss(size_average=True)\ndef muti_loss_fusion_kl(preds, target, dfs, fs, mode=\"MSE\"):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if preds[i].shape[2] != target.shape[2] or preds[i].shape[3] != target.shape[3]:\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(\n                target, size=preds[i].size()[2:], mode=\"bilinear\", align_corners=True\n            )",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -30888,7 +31096,7 @@
         "kind": 2,
         "importPath": "dashboard.views",
         "description": "dashboard.views",
-        "peekOfCode": "def dashboard_view(request):\n    request.session.flush()\n    return render(request, \"pages/dashboard.html\")\n# this will contain URL to redirect different pages\n\"\"\"\n    - /background-remover/ : Background Remover Page\n    - /style-generator/: Style Generator Page using nst model\n    - /cartoonize/: this page will list all the styles avilable\n    - /cartoonize/arcane-style: Arcane-like images\n    - /cartoonize/shinkai-style: Shinkai-like images",
+        "peekOfCode": "def dashboard_view(request):\n    flush_image_data(request)\n    return render(request, \"pages/dashboard.html\")\n# this will contain URL to redirect different pages\n\"\"\"\n    - /background-remover/ : Background Remover Page\n    - /style-generator/: Style Generator Page using nst model\n    - /cartoonize/: this page will list all the styles avilable\n    - /cartoonize/arcane-style: Arcane-like images\n    - /cartoonize/shinkai-style: Shinkai-like images",
         "detail": "dashboard.views",
         "documentation": {}
     },
@@ -30969,7 +31177,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "DEBUG = True\n# Production\n# DEBUG = False\n# ALLOWED_HOSTS = [\"*\"]\n# Application definition\nEXTERNAL_INSTALLED_APP = [\n    \"website\",\n    \"background_remover\",\n    \"artistic_image_creator\",\n    \"user_auth\",",
+        "peekOfCode": "DEBUG = True\n# Production\n# DEBUG = False\n# ALLOWED_HOSTS = [\"*\"]\n# Application definition\nEXTERNAL_INSTALLED_APP = [\n    \"website\",\n    \"background_remover\",\n    \"artistic_image_creator\",\n    \"ai_text_to_image_generator\",",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30978,7 +31186,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "EXTERNAL_INSTALLED_APP = [\n    \"website\",\n    \"background_remover\",\n    \"artistic_image_creator\",\n    \"user_auth\",\n    \"dashboard\",\n    \"tailwind\",\n    \"theme\",\n    \"django_browser_reload\",\n    \"django_components\",",
+        "peekOfCode": "EXTERNAL_INSTALLED_APP = [\n    \"website\",\n    \"background_remover\",\n    \"artistic_image_creator\",\n    \"ai_text_to_image_generator\",\n    \"ai_image_upscale\",\n    \"ai_filter\",\n    \"ai_eraser\",\n    \"user_auth\",\n    \"dashboard\",",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -31257,7 +31465,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.urls",
         "description": "deepfx_studio.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"admin/\", admin.site.urls),\n    path(\"\", include(\"website.urls\")),\n    path(\"\", include(\"dashboard.urls\")),\n    path(\"\", include(\"user_auth.urls\")),\n    path(\"\", include(\"django_components.urls\")),\n    path(\n        \"background-remover/\", include(\"background_remover.urls\")\n    ),  # background-remover\n    path(\"artistic-image-creator/\", include(\"artistic_image_creator.urls\")),",
+        "peekOfCode": "urlpatterns = [\n    path(\"admin/\", admin.site.urls),\n    path(\"\", include(\"website.urls\")),\n    path(\"\", include(\"dashboard.urls\")),\n    path(\"\", include(\"user_auth.urls\")),\n    path(\"\", include(\"django_components.urls\")),\n    path(\n        \"background-remover/\", include(\"background_remover.urls\")\n    ),\n    path(\"artistic-image-creator/\", include(\"artistic_image_creator.urls\")),",
         "detail": "deepfx_studio.urls",
         "documentation": {}
     },
@@ -31370,11 +31578,20 @@
         "documentation": {}
     },
     {
+        "label": "flush_image_data",
+        "kind": 2,
+        "importPath": "website.views",
+        "description": "website.views",
+        "peekOfCode": "def flush_image_data(request, session_keys = []):\n    if(session_keys == []):\n        for key in total_session_keys:\n            request.session.pop(key, None)\n    else:\n        for key in session_keys:\n            request.session.pop(key, None)\ndef index_view(request):\n    flush_image_data(request)\n    return render(request, \"pages/landing.html\")",
+        "detail": "website.views",
+        "documentation": {}
+    },
+    {
         "label": "index_view",
         "kind": 2,
         "importPath": "website.views",
         "description": "website.views",
-        "peekOfCode": "def index_view(request):\n    request.session.flush()\n    return render(request, \"pages/landing.html\")\ndef about_view(request):\n    request.session.flush()\n    return render(request, \"pages/about.html\")\ndef service_view(request):\n    request.session.flush()\n    return render(request, \"pages/service.html\")\ndef privacy_view(request):",
+        "peekOfCode": "def index_view(request):\n    flush_image_data(request)\n    return render(request, \"pages/landing.html\")\ndef about_view(request):\n    flush_image_data(request)\n    return render(request, \"pages/about.html\")\ndef service_view(request):\n    flush_image_data(request)\n    return render(request, \"pages/service.html\")\ndef privacy_view(request):",
         "detail": "website.views",
         "documentation": {}
     },
@@ -31383,7 +31600,7 @@
         "kind": 2,
         "importPath": "website.views",
         "description": "website.views",
-        "peekOfCode": "def about_view(request):\n    request.session.flush()\n    return render(request, \"pages/about.html\")\ndef service_view(request):\n    request.session.flush()\n    return render(request, \"pages/service.html\")\ndef privacy_view(request):\n    request.session.flush()\n    return render(request, \"pages/privacy.html\")\ndef terms_view(request):",
+        "peekOfCode": "def about_view(request):\n    flush_image_data(request)\n    return render(request, \"pages/about.html\")\ndef service_view(request):\n    flush_image_data(request)\n    return render(request, \"pages/service.html\")\ndef privacy_view(request):\n    flush_image_data(request)\n    return render(request, \"pages/privacy.html\")\ndef terms_view(request):",
         "detail": "website.views",
         "documentation": {}
     },
@@ -31392,7 +31609,7 @@
         "kind": 2,
         "importPath": "website.views",
         "description": "website.views",
-        "peekOfCode": "def service_view(request):\n    request.session.flush()\n    return render(request, \"pages/service.html\")\ndef privacy_view(request):\n    request.session.flush()\n    return render(request, \"pages/privacy.html\")\ndef terms_view(request):\n    request.session.flush()\n    return render(request, \"pages/terms_and_conditions.html\")\ndef clear_session(request):",
+        "peekOfCode": "def service_view(request):\n    flush_image_data(request)\n    return render(request, \"pages/service.html\")\ndef privacy_view(request):\n    flush_image_data(request)\n    return render(request, \"pages/privacy.html\")\ndef terms_view(request):\n    flush_image_data(request)\n    return render(request, \"pages/terms_and_conditions.html\")\ndef clear_session(request):",
         "detail": "website.views",
         "documentation": {}
     },
@@ -31401,7 +31618,7 @@
         "kind": 2,
         "importPath": "website.views",
         "description": "website.views",
-        "peekOfCode": "def privacy_view(request):\n    request.session.flush()\n    return render(request, \"pages/privacy.html\")\ndef terms_view(request):\n    request.session.flush()\n    return render(request, \"pages/terms_and_conditions.html\")\ndef clear_session(request):\n    request.session.flush()\n    referer_url = request.META.get(\"HTTP_REFERER\", \"/\")\n    return redirect(referer_url)",
+        "peekOfCode": "def privacy_view(request):\n    flush_image_data(request)\n    return render(request, \"pages/privacy.html\")\ndef terms_view(request):\n    flush_image_data(request)\n    return render(request, \"pages/terms_and_conditions.html\")\ndef clear_session(request):\n    flush_image_data(request)\n    referer_url = request.META.get(\"HTTP_REFERER\", \"/\")\n    return redirect(referer_url)",
         "detail": "website.views",
         "documentation": {}
     },
@@ -31410,7 +31627,7 @@
         "kind": 2,
         "importPath": "website.views",
         "description": "website.views",
-        "peekOfCode": "def terms_view(request):\n    request.session.flush()\n    return render(request, \"pages/terms_and_conditions.html\")\ndef clear_session(request):\n    request.session.flush()\n    referer_url = request.META.get(\"HTTP_REFERER\", \"/\")\n    return redirect(referer_url)",
+        "peekOfCode": "def terms_view(request):\n    flush_image_data(request)\n    return render(request, \"pages/terms_and_conditions.html\")\ndef clear_session(request):\n    flush_image_data(request)\n    referer_url = request.META.get(\"HTTP_REFERER\", \"/\")\n    return redirect(referer_url)",
         "detail": "website.views",
         "documentation": {}
     },
@@ -31419,7 +31636,16 @@
         "kind": 2,
         "importPath": "website.views",
         "description": "website.views",
-        "peekOfCode": "def clear_session(request):\n    request.session.flush()\n    referer_url = request.META.get(\"HTTP_REFERER\", \"/\")\n    return redirect(referer_url)",
+        "peekOfCode": "def clear_session(request):\n    flush_image_data(request)\n    referer_url = request.META.get(\"HTTP_REFERER\", \"/\")\n    return redirect(referer_url)",
+        "detail": "website.views",
+        "documentation": {}
+    },
+    {
+        "label": "total_session_keys",
+        "kind": 5,
+        "importPath": "website.views",
+        "description": "website.views",
+        "peekOfCode": "total_session_keys = [\n    \"background_remover_processed_image\", \"background_remover_error\",\n    \"artistic_processed_image\", \"artistic_image_error\",\n    \"upscale_processed_image\", \"upscale_image_error\",\n    \"filter_processed_image\", \"filter_image_error\",\n    \"ai_eraser_processed_image\", \"ai_eraser_image_error\"\n]\n# this function is responsible for erasing session data\n# of the processed image and response error\ndef flush_image_data(request, session_keys = []):",
         "detail": "website.views",
         "documentation": {}
     },

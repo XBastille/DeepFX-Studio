@@ -1,7 +1,7 @@
 import base64
+import logging
 import os
 import tempfile
-import logging
 
 from django.http import JsonResponse
 from django.shortcuts import redirect, render, reverse
@@ -12,8 +12,10 @@ from artistic_image_creator.nst.nst import NeuralStyleTransfer
 # Set up logging
 logger = logging.getLogger(__name__)
 
+
 def artistic_image_creator(request):
     return render(request, "pages/artistic_image_creator.html")
+
 
 def api_artistic_image_creator(request):
     request.session.flush()
@@ -25,7 +27,7 @@ def api_artistic_image_creator(request):
                 return JsonResponse(
                     {"status": "error", "message": "No file uploaded."}, status=400
                 )
-            
+
             if "art_file" not in request.FILES:
                 return JsonResponse(
                     {"status": "error", "message": "No Art-File uploaded."}, status=400
@@ -49,7 +51,9 @@ def api_artistic_image_creator(request):
             temp_art_file.close()
 
             # Process the image
-            model_path = "https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2"
+            model_path = (
+                "https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2"
+            )
             nst = NeuralStyleTransfer(model_path=model_path)
             content_image_path = temp_file_input.name
             style_image_path = temp_art_file.name
@@ -65,13 +69,13 @@ def api_artistic_image_creator(request):
             os.unlink(processed_img)
 
             # Store the processed image in the session
-            request.session["processed_image"] = output_image
+            request.session["artistic_processed_image"] = output_image
             return redirect(reverse("artistic-image-creator:artistic_image_creator"))
 
         except Exception as e:
             logger.error(f"An error occurred: {str(e)}")
-            request.session["error"] = f"An error occurred: {str(e)}"
+            request.session["artistic_image_error"] = f"An error occurred: {str(e)}"
             return redirect(reverse("artistic-image-creator:artistic_image_creator"))
     else:
-        request.session["error"] = "Invalid request method. Use POST."
+        request.session["artistic_image_error"] = "Invalid request method. Use POST."
         return redirect(reverse("artistic-image-creator:artistic_image_creator"))
