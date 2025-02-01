@@ -1,11 +1,18 @@
-import torch
-import numpy as np
 from pathlib import Path
-from matplotlib import pyplot as plt
 
+import numpy as np
+import torch
+from matplotlib import pyplot as plt
 from sam_segment import predict_masks_with_sam
-from utils import load_img_to_array, save_array_to_img, dilate_mask, \
-    show_mask, show_points, get_clicked_point
+from utils import (
+    dilate_mask,
+    get_clicked_point,
+    load_img_to_array,
+    save_array_to_img,
+    show_mask,
+    show_points,
+)
+
 
 def generate_masks(
     input_img,
@@ -16,7 +23,7 @@ def generate_masks(
     output_dir,
     sam_model_type,
     sam_ckpt,
-    operation_type="fill"  
+    operation_type="fill",
 ):
     device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -54,17 +61,17 @@ def generate_masks(
 
         save_array_to_img(mask, mask_p)
 
-        dpi = plt.rcParams['figure.dpi']
+        dpi = plt.rcParams["figure.dpi"]
         height, width = img.shape[:2]
-        plt.figure(figsize=(width/dpi/0.77, height/dpi/0.77))
+        plt.figure(figsize=(width / dpi / 0.77, height / dpi / 0.77))
         plt.imshow(img)
-        plt.axis('off')
-        show_points(plt.gca(), [latest_coords], point_labels,
-                    size=(width*0.04)**2)
-        plt.savefig(img_points_p, bbox_inches='tight', pad_inches=0)
+        plt.axis("off")
+        show_points(plt.gca(), [latest_coords], point_labels, size=(width * 0.04) ** 2)
+        plt.savefig(img_points_p, bbox_inches="tight", pad_inches=0)
         show_mask(plt.gca(), mask, random_color=False)
-        plt.savefig(img_mask_p, bbox_inches='tight', pad_inches=0)
+        plt.savefig(img_mask_p, bbox_inches="tight", pad_inches=0)
         plt.close()
+
 
 if __name__ == "__main__":
     input_img = "input_path"
@@ -86,5 +93,5 @@ if __name__ == "__main__":
         output_dir=output_dir,
         sam_model_type=sam_model_type,
         sam_ckpt=sam_ckpt,
-        operation_type=operation_type
+        operation_type=operation_type,
     )

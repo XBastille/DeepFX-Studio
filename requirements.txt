@@ -1,4 +1,5 @@
 asgiref==3.8.1
+basicsr==1.4.2
 certifi==2024.8.30
 cffi==1.17.1
 charset-normalizer==3.4.0
@@ -10,6 +11,7 @@ django-browser-reload==1.17.0
 django-tailwind==3.8.0
 django-components==0.123
 idna==3.10
+opencv-python==4.11.0.86
 pycparser==2.22
 PyJWT==2.10.1
 python-dotenv==1.0.1

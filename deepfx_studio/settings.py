@@ -142,8 +142,8 @@ SOCIALACCOUNT_PROVIDERS = {
     "google": {
         "SCOPE": ["profile", "email"],
         "APP": {
-            "client_id": os.environ["GOOGLE_CLIENT_ID"],
-            "secret": os.environ["GOOGLE_CLIENT_SECRET"],
+            "client_id": GOOGLE_CLIENT_ID,
+            "secret": GOOGLE_CLIENT_SECRET,
         },
         "AUTH_PARAMS": {
             "access_type": "online",
@@ -154,8 +154,8 @@ SOCIALACCOUNT_PROVIDERS = {
             "user",
         ],
         "APP": {
-            "client_id": os.environ["GITHUB_CLIENT_ID"],
-            "secret": os.environ["GITHUB_CLIENT_SECRET"],
+            "client_id": GITHUB_CLIENT_ID,
+            "secret": GITHUB_CLIENT_SECRET,
             "key": "",
             "redirect_uri": "http://127.0.0.1:8000/accounts/github/login/callback",
         },

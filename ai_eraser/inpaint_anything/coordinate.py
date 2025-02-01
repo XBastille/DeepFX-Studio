@@ -1,5 +1,6 @@
-import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
+import matplotlib.pyplot as plt
+
 
 def on_click(event):
     x, y = event.xdata, event.ydata
@@ -8,25 +9,14 @@ def on_click(event):
     else:
         print("Click was outside the image bounds.")
 
-image_path = 'input_path' 
+
+image_path = "input_path"
 
 img = mpimg.imread(image_path)
 fig, ax = plt.subplots()
 ax.imshow(img)
-ax.set_title('Click on the image to get coordinates')
+ax.set_title("Click on the image to get coordinates")
 
-fig.canvas.mpl_connect('button_press_event', on_click)
+fig.canvas.mpl_connect("button_press_event", on_click)
 
 plt.show()
-
-
-
-
-
-
-
-
-
-
-
-

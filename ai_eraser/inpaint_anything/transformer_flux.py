@@ -4,7 +4,6 @@ import numpy as np
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
 from diffusers.configuration_utils import ConfigMixin, register_to_config
 from diffusers.loaders import FromOriginalModelMixin, PeftAdapterMixin
 from diffusers.models.attention import FeedForward
@@ -13,6 +12,11 @@ from diffusers.models.attention_processor import (
     FluxAttnProcessor2_0,
     FluxSingleAttnProcessor2_0,
 )
+from diffusers.models.embeddings import (
+    CombinedTimestepGuidanceTextProjEmbeddings,
+    CombinedTimestepTextProjEmbeddings,
+)
+from diffusers.models.modeling_outputs import Transformer2DModelOutput
 from diffusers.models.modeling_utils import ModelMixin
 from diffusers.models.normalization import (
     AdaLayerNormContinuous,
@@ -27,12 +31,6 @@ from diffusers.utils import (
     unscale_lora_layers,
 )
 from diffusers.utils.torch_utils import maybe_allow_in_graph
-from diffusers.models.embeddings import (
-    CombinedTimestepGuidanceTextProjEmbeddings,
-    CombinedTimestepTextProjEmbeddings,
-)
-from diffusers.models.modeling_outputs import Transformer2DModelOutput
-
 
 logger = logging.get_logger(__name__)  # pylint: disable=invalid-name
 
