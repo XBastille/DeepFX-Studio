@@ -1,0 +1,34 @@
+{% extends "layouts/base-layout.html" %}
+{% load static %}
+{% block metadata %}
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+          content="Enhance your images with DeepFX Studio's AI-powered filters. Apply stunning artistic transformations effortlessly using advanced style transfer technology." />
+    <meta name="keywords"
+          content="AI Image Filters, AI Art Generator, Style Transfer, DeepFX Studio, AI Image Editing, Artistic Transformation, Neural Style Transfer, Image Processing" />
+    <meta name="author" content="DeepFX Studio Team" />
+{% endblock metadata %}
+{% block title %}
+    AI Filter - DeepFX Studio
+{% endblock title %}
+{% block body %}
+<div class="bg-gradient-to-b from-gray-900 to-black text-aliceblue font-poppins min-h-screen pb-20">
+    <div class="flex justify-center items-center  pt-10">
+        <img class="mx-auto w-12"
+            src="{% static 'images/ai_filter.svg' %}"
+            alt="AI Filter Logo">
+    </div>
+    <div class="heading text-center">
+        <div class="tool-name pt-10">
+            <p class="text-2xl md:text-5xl font-bold text-white" id="tool-name">
+                AI Filter
+            </p>
+        </div>
+        <div class="tool-desc my-4">
+            <p class="text-sm md:text-lg text-gray-300" id="tool-desc">
+                Apply AI-powered artistic filters to transform your images into stunning artwork.
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock body %}

@@ -20,10 +20,7 @@
 {% endblock title %}
 {% block body %}
     <div class="bg-gradient-to-b from-gray-900 to-black text-aliceblue font-poppins min-h-screen pb-20">
-        <div class="p-10 cursor-pointer">
-            <i class="fa-solid fa-arrow-left text-xl text-aliceblue"></i>
-        </div>
-        <div class="flex justify-center items-center">
+        <div class="flex justify-center items-center pt-10">
             <img height=""
                  width=""
                  class="mx-auto w-12"
@@ -97,7 +94,7 @@
                 </button>
             </form>
         </div>
-        {% if request.session.processed_image %}
+        {% if request.session.artistic_processed_image %}
             <div class="processed_image_content flex justify-center items-center flex-col">
                 <div class="relative">
                     <button onclick="my_modal_4.showModal()"
@@ -108,7 +105,7 @@
                         <div class="modal-box w-fit max-w-5xl">
                             <img height=""
                                  width=""
-                                 src="data:image/png;base64,{{ request.session.processed_image }}"
+                                 src="data:image/png;base64,{{ request.session.artistic_processed_image }}"
                                  alt="Processed Image"
                                  class="mb-4 rounded-md border-2 border-gray-300 shadow-lg max-w-xs md:max-w-md bg-[url('https://png.pngtree.com/thumb_back/fw800/background/20220703/pngtree-gray-and-white-checkered-illustration-perfect-for-a-background-photo-image_32339476.jpg')] bg-cover bg-cente">
                             <div class="modal-action">
@@ -118,14 +115,14 @@
                             </div>
                         </div>
                     </dialog>
-                    <img src="data:image/png;base64,{{ request.session.processed_image }}"
+                    <img src="data:image/png;base64,{{ request.session.artistic_processed_image }}"
                          alt="Processed Image"
                          class="mb-4 rounded-md border-2 border-gray-300 shadow-lg max-w-xs md:max-w-md bg-[url('https://png.pngtree.com/thumb_back/fw800/background/20220703/pngtree-gray-and-white-checkered-illustration-perfect-for-a-background-photo-image_32339476.jpg')] bg-cover bg-cente"
                          height=""
                          width="">
                 </div>
                 <div class="button-group flex gap-4">
-                    <a href="data:image/png;base64,{{ request.session.processed_image }}"
+                    <a href="data:image/png;base64,{{ request.session.artistic_processed_image }}"
                        download="processed_image.png"
                        class="btn btn-wide text-lg rounded-md px-4 py-2 bg-blue-500 text-white hover:bg-blue-600">
                         Download
@@ -135,10 +132,10 @@
                 </div>
             </div>
         {% endif %}
-        {% if request.session.error %}
+        {% if request.session.artistic_image_error %}
             <div id="message-box"
                  class="absolute top-5 left-5 right-5 md:left-auto md:top-10 md:right-10 animate-appear">
-                {% component "toast" title="Error Occured" content="{{ request.session.error }}" %}{% endcomponent %}
+                {% component "toast" title="Error Occured" content="{{ request.session.artistic_image_error }}" %}{% endcomponent %}
             </div>
         {% endif %}
     </div>

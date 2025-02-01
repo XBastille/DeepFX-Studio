@@ -79,5 +79,6 @@ module.exports = {
         require('@tailwindcss/typography'),
         require('@tailwindcss/aspect-ratio'),
         require('daisyui'),
+        require("tailwind-scrollbar"),
     ],
 }

@@ -1,12 +1,15 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
+from website.views import flush_image_data
+
 # Create your views here.
 
 
 @login_required
 def dashboard_view(request):
-    request.session.flush()
+    flush_image_data(request)
+
     return render(request, "pages/dashboard.html")
 
 

@@ -1,1 +1,1 @@
-from .isnet import ISNetGTEncoder, ISNetDIS
+from .isnet import ISNetDIS, ISNetGTEncoder
