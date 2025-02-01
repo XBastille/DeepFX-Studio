@@ -3,11 +3,16 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 import torch
 import torch.nn as nn
-
 from diffusers.configuration_utils import ConfigMixin, register_to_config
 from diffusers.loaders import PeftAdapterMixin
-from diffusers.models.modeling_utils import ModelMixin
 from diffusers.models.attention_processor import AttentionProcessor
+from diffusers.models.controlnet import BaseOutput, zero_module
+from diffusers.models.embeddings import (
+    CombinedTimestepGuidanceTextProjEmbeddings,
+    CombinedTimestepTextProjEmbeddings,
+)
+from diffusers.models.modeling_outputs import Transformer2DModelOutput
+from diffusers.models.modeling_utils import ModelMixin
 from diffusers.utils import (
     USE_PEFT_BACKEND,
     is_torch_version,
@@ -15,18 +20,7 @@ from diffusers.utils import (
     scale_lora_layers,
     unscale_lora_layers,
 )
-from diffusers.models.controlnet import BaseOutput, zero_module
-from diffusers.models.embeddings import (
-    CombinedTimestepGuidanceTextProjEmbeddings,
-    CombinedTimestepTextProjEmbeddings,
-)
-from diffusers.models.modeling_outputs import Transformer2DModelOutput
-from transformer_flux import (
-    EmbedND,
-    FluxSingleTransformerBlock,
-    FluxTransformerBlock,
-)
-
+from transformer_flux import EmbedND, FluxSingleTransformerBlock, FluxTransformerBlock
 
 logger = logging.get_logger(__name__)  # pylint: disable=invalid-name
 
@@ -126,7 +120,11 @@ class FluxControlNetModel(ModelMixin, ConfigMixin, PeftAdapterMixin):
         # set recursively
         processors = {}
 
-        def fn_recursive_add_processors(name: str, module: torch.nn.Module, processors: Dict[str, AttentionProcessor]):
+        def fn_recursive_add_processors(
+            name: str,
+            module: torch.nn.Module,
+            processors: Dict[str, AttentionProcessor],
+        ):
             if hasattr(module, "get_processor"):
                 processors[f"{name}.processor"] = module.get_processor()
 

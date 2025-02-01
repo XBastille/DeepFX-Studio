@@ -7,7 +7,7 @@ from django.http import JsonResponse
 from django.shortcuts import redirect, render, reverse
 from PIL import Image
 
-from artistic_image_creator.nst import NeuralStyleTransfer
+from artistic_image_creator.nst.nst import NeuralStyleTransfer
 
 # Set up logging
 logger = logging.getLogger(__name__)

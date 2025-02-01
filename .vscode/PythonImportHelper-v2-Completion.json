@@ -679,6 +679,14 @@
         "documentation": {}
     },
     {
+        "label": "imshow",
+        "importPath": "matplotlib.pyplot",
+        "description": "matplotlib.pyplot",
+        "isExtraImport": true,
+        "detail": "matplotlib.pyplot",
+        "documentation": {}
+    },
+    {
         "label": "img_preprocess",
         "importPath": "data_loader_cache",
         "description": "data_loader_cache",
@@ -732,6 +740,22 @@
         "isExtraImport": true,
         "importPath": "PIL",
         "description": "PIL",
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
+        "detail": "PIL",
+        "documentation": {}
+    },
+    {
+        "label": "Image",
+        "importPath": "PIL",
+        "description": "PIL",
+        "isExtraImport": true,
         "detail": "PIL",
         "documentation": {}
     },
@@ -1046,6 +1070,14 @@
         "documentation": {}
     },
     {
+        "label": "EagerTensor",
+        "importPath": "tensorflow.python.framework.ops",
+        "description": "tensorflow.python.framework.ops",
+        "isExtraImport": true,
+        "detail": "tensorflow.python.framework.ops",
+        "documentation": {}
+    },
+    {
         "label": "cv2",
         "kind": 6,
         "isExtraImport": true,
@@ -1167,22 +1199,6 @@
         "documentation": {}
     },
     {
-        "label": "load_img_to_array",
-        "importPath": "utils",
-        "description": "utils",
-        "isExtraImport": true,
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_array_to_img",
-        "importPath": "utils",
-        "description": "utils",
-        "isExtraImport": true,
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
         "label": "dilate_mask",
         "importPath": "utils",
         "description": "utils",
@@ -1191,7 +1207,7 @@
         "documentation": {}
     },
     {
-        "label": "\\",
+        "label": "get_clicked_point",
         "importPath": "utils",
         "description": "utils",
         "isExtraImport": true,
@@ -1215,7 +1231,7 @@
         "documentation": {}
     },
     {
-        "label": "load_img_to_array",
+        "label": "show_mask",
         "importPath": "utils",
         "description": "utils",
         "isExtraImport": true,
@@ -1223,55 +1239,7 @@
         "documentation": {}
     },
     {
-        "label": "save_array_to_img",
-        "importPath": "utils",
-        "description": "utils",
-        "isExtraImport": true,
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "dilate_mask",
-        "importPath": "utils",
-        "description": "utils",
-        "isExtraImport": true,
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "\\",
-        "importPath": "utils",
-        "description": "utils",
-        "isExtraImport": true,
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "load_img_to_array",
-        "importPath": "utils",
-        "description": "utils",
-        "isExtraImport": true,
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "load_img_to_array",
-        "importPath": "utils",
-        "description": "utils",
-        "isExtraImport": true,
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "save_array_to_img",
-        "importPath": "utils",
-        "description": "utils",
-        "isExtraImport": true,
-        "detail": "utils",
-        "documentation": {}
-    },
-    {
-        "label": "load_img_to_array",
+        "label": "show_points",
         "importPath": "utils",
         "description": "utils",
         "isExtraImport": true,
@@ -1303,7 +1271,39 @@
         "documentation": {}
     },
     {
-        "label": "\\",
+        "label": "load_img_to_array",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_array_to_img",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "show_mask",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "show_points",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "load_img_to_array",
         "importPath": "utils",
         "description": "utils",
         "isExtraImport": true,
@@ -1320,6 +1320,62 @@
     },
     {
         "label": "save_array_to_img",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "load_img_to_array",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "dilate_mask",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "get_clicked_point",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "load_img_to_array",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_array_to_img",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "show_mask",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "show_points",
         "importPath": "utils",
         "description": "utils",
         "isExtraImport": true,
@@ -1351,7 +1407,31 @@
         "documentation": {}
     },
     {
-        "label": "\\",
+        "label": "load_img_to_array",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "save_array_to_img",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "show_mask",
+        "importPath": "utils",
+        "description": "utils",
+        "isExtraImport": true,
+        "detail": "utils",
+        "documentation": {}
+    },
+    {
+        "label": "show_points",
         "importPath": "utils",
         "description": "utils",
         "isExtraImport": true,
@@ -6239,7 +6319,15 @@
         "documentation": {}
     },
     {
-        "label": "\\",
+        "label": "to_2tuple",
+        "importPath": "timm.models.layers",
+        "description": "timm.models.layers",
+        "isExtraImport": true,
+        "detail": "timm.models.layers",
+        "documentation": {}
+    },
+    {
+        "label": "trunc_normal_",
         "importPath": "timm.models.layers",
         "description": "timm.models.layers",
         "isExtraImport": true,
@@ -6255,7 +6343,15 @@
         "documentation": {}
     },
     {
-        "label": "\\",
+        "label": "to_2tuple",
+        "importPath": "timm.models.layers",
+        "description": "timm.models.layers",
+        "isExtraImport": true,
+        "detail": "timm.models.layers",
+        "documentation": {}
+    },
+    {
+        "label": "trunc_normal_",
         "importPath": "timm.models.layers",
         "description": "timm.models.layers",
         "isExtraImport": true,
@@ -6407,6 +6503,38 @@
         "documentation": {}
     },
     {
+        "label": "FluxControlNetInpaintingPipeline",
+        "importPath": "pipeline_flux_controlnet_inpaint",
+        "description": "pipeline_flux_controlnet_inpaint",
+        "isExtraImport": true,
+        "detail": "pipeline_flux_controlnet_inpaint",
+        "documentation": {}
+    },
+    {
+        "label": "FluxControlNetInpaintingPipeline",
+        "importPath": "pipeline_flux_controlnet_inpaint",
+        "description": "pipeline_flux_controlnet_inpaint",
+        "isExtraImport": true,
+        "detail": "pipeline_flux_controlnet_inpaint",
+        "documentation": {}
+    },
+    {
+        "label": "FluxControlNetInpaintingPipeline",
+        "importPath": "pipeline_flux_controlnet_inpaint",
+        "description": "pipeline_flux_controlnet_inpaint",
+        "isExtraImport": true,
+        "detail": "pipeline_flux_controlnet_inpaint",
+        "documentation": {}
+    },
+    {
+        "label": "FluxControlNetInpaintingPipeline",
+        "importPath": "pipeline_flux_controlnet_inpaint",
+        "description": "pipeline_flux_controlnet_inpaint",
+        "isExtraImport": true,
+        "detail": "pipeline_flux_controlnet_inpaint",
+        "documentation": {}
+    },
+    {
         "label": "FluxTransformer2DModel",
         "importPath": "transformer_flux",
         "description": "transformer_flux",
@@ -6500,38 +6628,6 @@
         "description": "transformer_flux",
         "isExtraImport": true,
         "detail": "transformer_flux",
-        "documentation": {}
-    },
-    {
-        "label": "FluxControlNetInpaintingPipeline",
-        "importPath": "pipeline_flux_controlnet_inpaint",
-        "description": "pipeline_flux_controlnet_inpaint",
-        "isExtraImport": true,
-        "detail": "pipeline_flux_controlnet_inpaint",
-        "documentation": {}
-    },
-    {
-        "label": "FluxControlNetInpaintingPipeline",
-        "importPath": "pipeline_flux_controlnet_inpaint",
-        "description": "pipeline_flux_controlnet_inpaint",
-        "isExtraImport": true,
-        "detail": "pipeline_flux_controlnet_inpaint",
-        "documentation": {}
-    },
-    {
-        "label": "FluxControlNetInpaintingPipeline",
-        "importPath": "pipeline_flux_controlnet_inpaint",
-        "description": "pipeline_flux_controlnet_inpaint",
-        "isExtraImport": true,
-        "detail": "pipeline_flux_controlnet_inpaint",
-        "documentation": {}
-    },
-    {
-        "label": "FluxControlNetInpaintingPipeline",
-        "importPath": "pipeline_flux_controlnet_inpaint",
-        "description": "pipeline_flux_controlnet_inpaint",
-        "isExtraImport": true,
-        "detail": "pipeline_flux_controlnet_inpaint",
         "documentation": {}
     },
     {
@@ -6679,38 +6775,6 @@
         "documentation": {}
     },
     {
-        "label": "ModelMixin",
-        "importPath": "diffusers.models.modeling_utils",
-        "description": "diffusers.models.modeling_utils",
-        "isExtraImport": true,
-        "detail": "diffusers.models.modeling_utils",
-        "documentation": {}
-    },
-    {
-        "label": "ModelMixin",
-        "importPath": "diffusers.models.modeling_utils",
-        "description": "diffusers.models.modeling_utils",
-        "isExtraImport": true,
-        "detail": "diffusers.models.modeling_utils",
-        "documentation": {}
-    },
-    {
-        "label": "ModelMixin",
-        "importPath": "diffusers.models.modeling_utils",
-        "description": "diffusers.models.modeling_utils",
-        "isExtraImport": true,
-        "detail": "diffusers.models.modeling_utils",
-        "documentation": {}
-    },
-    {
-        "label": "ModelMixin",
-        "importPath": "diffusers.models.modeling_utils",
-        "description": "diffusers.models.modeling_utils",
-        "isExtraImport": true,
-        "detail": "diffusers.models.modeling_utils",
-        "documentation": {}
-    },
-    {
         "label": "AttentionProcessor",
         "importPath": "diffusers.models.attention_processor",
         "description": "diffusers.models.attention_processor",
@@ -6772,6 +6836,166 @@
         "description": "diffusers.models.attention_processor",
         "isExtraImport": true,
         "detail": "diffusers.models.attention_processor",
+        "documentation": {}
+    },
+    {
+        "label": "BaseOutput",
+        "importPath": "diffusers.models.controlnet",
+        "description": "diffusers.models.controlnet",
+        "isExtraImport": true,
+        "detail": "diffusers.models.controlnet",
+        "documentation": {}
+    },
+    {
+        "label": "zero_module",
+        "importPath": "diffusers.models.controlnet",
+        "description": "diffusers.models.controlnet",
+        "isExtraImport": true,
+        "detail": "diffusers.models.controlnet",
+        "documentation": {}
+    },
+    {
+        "label": "BaseOutput",
+        "importPath": "diffusers.models.controlnet",
+        "description": "diffusers.models.controlnet",
+        "isExtraImport": true,
+        "detail": "diffusers.models.controlnet",
+        "documentation": {}
+    },
+    {
+        "label": "zero_module",
+        "importPath": "diffusers.models.controlnet",
+        "description": "diffusers.models.controlnet",
+        "isExtraImport": true,
+        "detail": "diffusers.models.controlnet",
+        "documentation": {}
+    },
+    {
+        "label": "CombinedTimestepGuidanceTextProjEmbeddings",
+        "importPath": "diffusers.models.embeddings",
+        "description": "diffusers.models.embeddings",
+        "isExtraImport": true,
+        "detail": "diffusers.models.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "CombinedTimestepTextProjEmbeddings",
+        "importPath": "diffusers.models.embeddings",
+        "description": "diffusers.models.embeddings",
+        "isExtraImport": true,
+        "detail": "diffusers.models.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "CombinedTimestepGuidanceTextProjEmbeddings",
+        "importPath": "diffusers.models.embeddings",
+        "description": "diffusers.models.embeddings",
+        "isExtraImport": true,
+        "detail": "diffusers.models.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "CombinedTimestepTextProjEmbeddings",
+        "importPath": "diffusers.models.embeddings",
+        "description": "diffusers.models.embeddings",
+        "isExtraImport": true,
+        "detail": "diffusers.models.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "CombinedTimestepGuidanceTextProjEmbeddings",
+        "importPath": "diffusers.models.embeddings",
+        "description": "diffusers.models.embeddings",
+        "isExtraImport": true,
+        "detail": "diffusers.models.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "CombinedTimestepTextProjEmbeddings",
+        "importPath": "diffusers.models.embeddings",
+        "description": "diffusers.models.embeddings",
+        "isExtraImport": true,
+        "detail": "diffusers.models.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "CombinedTimestepGuidanceTextProjEmbeddings",
+        "importPath": "diffusers.models.embeddings",
+        "description": "diffusers.models.embeddings",
+        "isExtraImport": true,
+        "detail": "diffusers.models.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "CombinedTimestepTextProjEmbeddings",
+        "importPath": "diffusers.models.embeddings",
+        "description": "diffusers.models.embeddings",
+        "isExtraImport": true,
+        "detail": "diffusers.models.embeddings",
+        "documentation": {}
+    },
+    {
+        "label": "Transformer2DModelOutput",
+        "importPath": "diffusers.models.modeling_outputs",
+        "description": "diffusers.models.modeling_outputs",
+        "isExtraImport": true,
+        "detail": "diffusers.models.modeling_outputs",
+        "documentation": {}
+    },
+    {
+        "label": "Transformer2DModelOutput",
+        "importPath": "diffusers.models.modeling_outputs",
+        "description": "diffusers.models.modeling_outputs",
+        "isExtraImport": true,
+        "detail": "diffusers.models.modeling_outputs",
+        "documentation": {}
+    },
+    {
+        "label": "Transformer2DModelOutput",
+        "importPath": "diffusers.models.modeling_outputs",
+        "description": "diffusers.models.modeling_outputs",
+        "isExtraImport": true,
+        "detail": "diffusers.models.modeling_outputs",
+        "documentation": {}
+    },
+    {
+        "label": "Transformer2DModelOutput",
+        "importPath": "diffusers.models.modeling_outputs",
+        "description": "diffusers.models.modeling_outputs",
+        "isExtraImport": true,
+        "detail": "diffusers.models.modeling_outputs",
+        "documentation": {}
+    },
+    {
+        "label": "ModelMixin",
+        "importPath": "diffusers.models.modeling_utils",
+        "description": "diffusers.models.modeling_utils",
+        "isExtraImport": true,
+        "detail": "diffusers.models.modeling_utils",
+        "documentation": {}
+    },
+    {
+        "label": "ModelMixin",
+        "importPath": "diffusers.models.modeling_utils",
+        "description": "diffusers.models.modeling_utils",
+        "isExtraImport": true,
+        "detail": "diffusers.models.modeling_utils",
+        "documentation": {}
+    },
+    {
+        "label": "ModelMixin",
+        "importPath": "diffusers.models.modeling_utils",
+        "description": "diffusers.models.modeling_utils",
+        "isExtraImport": true,
+        "detail": "diffusers.models.modeling_utils",
+        "documentation": {}
+    },
+    {
+        "label": "ModelMixin",
+        "importPath": "diffusers.models.modeling_utils",
+        "description": "diffusers.models.modeling_utils",
+        "isExtraImport": true,
+        "detail": "diffusers.models.modeling_utils",
         "documentation": {}
     },
     {
@@ -7028,134 +7252,6 @@
         "description": "diffusers.utils",
         "isExtraImport": true,
         "detail": "diffusers.utils",
-        "documentation": {}
-    },
-    {
-        "label": "BaseOutput",
-        "importPath": "diffusers.models.controlnet",
-        "description": "diffusers.models.controlnet",
-        "isExtraImport": true,
-        "detail": "diffusers.models.controlnet",
-        "documentation": {}
-    },
-    {
-        "label": "zero_module",
-        "importPath": "diffusers.models.controlnet",
-        "description": "diffusers.models.controlnet",
-        "isExtraImport": true,
-        "detail": "diffusers.models.controlnet",
-        "documentation": {}
-    },
-    {
-        "label": "BaseOutput",
-        "importPath": "diffusers.models.controlnet",
-        "description": "diffusers.models.controlnet",
-        "isExtraImport": true,
-        "detail": "diffusers.models.controlnet",
-        "documentation": {}
-    },
-    {
-        "label": "zero_module",
-        "importPath": "diffusers.models.controlnet",
-        "description": "diffusers.models.controlnet",
-        "isExtraImport": true,
-        "detail": "diffusers.models.controlnet",
-        "documentation": {}
-    },
-    {
-        "label": "CombinedTimestepGuidanceTextProjEmbeddings",
-        "importPath": "diffusers.models.embeddings",
-        "description": "diffusers.models.embeddings",
-        "isExtraImport": true,
-        "detail": "diffusers.models.embeddings",
-        "documentation": {}
-    },
-    {
-        "label": "CombinedTimestepTextProjEmbeddings",
-        "importPath": "diffusers.models.embeddings",
-        "description": "diffusers.models.embeddings",
-        "isExtraImport": true,
-        "detail": "diffusers.models.embeddings",
-        "documentation": {}
-    },
-    {
-        "label": "CombinedTimestepGuidanceTextProjEmbeddings",
-        "importPath": "diffusers.models.embeddings",
-        "description": "diffusers.models.embeddings",
-        "isExtraImport": true,
-        "detail": "diffusers.models.embeddings",
-        "documentation": {}
-    },
-    {
-        "label": "CombinedTimestepTextProjEmbeddings",
-        "importPath": "diffusers.models.embeddings",
-        "description": "diffusers.models.embeddings",
-        "isExtraImport": true,
-        "detail": "diffusers.models.embeddings",
-        "documentation": {}
-    },
-    {
-        "label": "CombinedTimestepGuidanceTextProjEmbeddings",
-        "importPath": "diffusers.models.embeddings",
-        "description": "diffusers.models.embeddings",
-        "isExtraImport": true,
-        "detail": "diffusers.models.embeddings",
-        "documentation": {}
-    },
-    {
-        "label": "CombinedTimestepTextProjEmbeddings",
-        "importPath": "diffusers.models.embeddings",
-        "description": "diffusers.models.embeddings",
-        "isExtraImport": true,
-        "detail": "diffusers.models.embeddings",
-        "documentation": {}
-    },
-    {
-        "label": "CombinedTimestepGuidanceTextProjEmbeddings",
-        "importPath": "diffusers.models.embeddings",
-        "description": "diffusers.models.embeddings",
-        "isExtraImport": true,
-        "detail": "diffusers.models.embeddings",
-        "documentation": {}
-    },
-    {
-        "label": "CombinedTimestepTextProjEmbeddings",
-        "importPath": "diffusers.models.embeddings",
-        "description": "diffusers.models.embeddings",
-        "isExtraImport": true,
-        "detail": "diffusers.models.embeddings",
-        "documentation": {}
-    },
-    {
-        "label": "Transformer2DModelOutput",
-        "importPath": "diffusers.models.modeling_outputs",
-        "description": "diffusers.models.modeling_outputs",
-        "isExtraImport": true,
-        "detail": "diffusers.models.modeling_outputs",
-        "documentation": {}
-    },
-    {
-        "label": "Transformer2DModelOutput",
-        "importPath": "diffusers.models.modeling_outputs",
-        "description": "diffusers.models.modeling_outputs",
-        "isExtraImport": true,
-        "detail": "diffusers.models.modeling_outputs",
-        "documentation": {}
-    },
-    {
-        "label": "Transformer2DModelOutput",
-        "importPath": "diffusers.models.modeling_outputs",
-        "description": "diffusers.models.modeling_outputs",
-        "isExtraImport": true,
-        "detail": "diffusers.models.modeling_outputs",
-        "documentation": {}
-    },
-    {
-        "label": "Transformer2DModelOutput",
-        "importPath": "diffusers.models.modeling_outputs",
-        "description": "diffusers.models.modeling_outputs",
-        "isExtraImport": true,
-        "detail": "diffusers.models.modeling_outputs",
         "documentation": {}
     },
     {
@@ -7209,6 +7305,22 @@
         "documentation": {}
     },
     {
+        "label": "pad_tensor_to_modulo",
+        "importPath": "saicinpainting.evaluation.data",
+        "description": "saicinpainting.evaluation.data",
+        "isExtraImport": true,
+        "detail": "saicinpainting.evaluation.data",
+        "documentation": {}
+    },
+    {
+        "label": "pad_tensor_to_modulo",
+        "importPath": "saicinpainting.evaluation.data",
+        "description": "saicinpainting.evaluation.data",
+        "isExtraImport": true,
+        "detail": "saicinpainting.evaluation.data",
+        "documentation": {}
+    },
+    {
         "label": "move_to_device",
         "importPath": "saicinpainting.evaluation.utils",
         "description": "saicinpainting.evaluation.utils",
@@ -7241,19 +7353,131 @@
         "documentation": {}
     },
     {
-        "label": "pad_tensor_to_modulo",
-        "importPath": "saicinpainting.evaluation.data",
-        "description": "saicinpainting.evaluation.data",
+        "label": "PipelineImageInput",
+        "importPath": "diffusers.image_processor",
+        "description": "diffusers.image_processor",
         "isExtraImport": true,
-        "detail": "saicinpainting.evaluation.data",
+        "detail": "diffusers.image_processor",
         "documentation": {}
     },
     {
-        "label": "pad_tensor_to_modulo",
-        "importPath": "saicinpainting.evaluation.data",
-        "description": "saicinpainting.evaluation.data",
+        "label": "VaeImageProcessor",
+        "importPath": "diffusers.image_processor",
+        "description": "diffusers.image_processor",
         "isExtraImport": true,
-        "detail": "saicinpainting.evaluation.data",
+        "detail": "diffusers.image_processor",
+        "documentation": {}
+    },
+    {
+        "label": "PipelineImageInput",
+        "importPath": "diffusers.image_processor",
+        "description": "diffusers.image_processor",
+        "isExtraImport": true,
+        "detail": "diffusers.image_processor",
+        "documentation": {}
+    },
+    {
+        "label": "VaeImageProcessor",
+        "importPath": "diffusers.image_processor",
+        "description": "diffusers.image_processor",
+        "isExtraImport": true,
+        "detail": "diffusers.image_processor",
+        "documentation": {}
+    },
+    {
+        "label": "AutoencoderKL",
+        "importPath": "diffusers.models.autoencoders",
+        "description": "diffusers.models.autoencoders",
+        "isExtraImport": true,
+        "detail": "diffusers.models.autoencoders",
+        "documentation": {}
+    },
+    {
+        "label": "AutoencoderKL",
+        "importPath": "diffusers.models.autoencoders",
+        "description": "diffusers.models.autoencoders",
+        "isExtraImport": true,
+        "detail": "diffusers.models.autoencoders",
+        "documentation": {}
+    },
+    {
+        "label": "FluxPipelineOutput",
+        "importPath": "diffusers.pipelines.flux.pipeline_output",
+        "description": "diffusers.pipelines.flux.pipeline_output",
+        "isExtraImport": true,
+        "detail": "diffusers.pipelines.flux.pipeline_output",
+        "documentation": {}
+    },
+    {
+        "label": "FluxPipelineOutput",
+        "importPath": "diffusers.pipelines.flux.pipeline_output",
+        "description": "diffusers.pipelines.flux.pipeline_output",
+        "isExtraImport": true,
+        "detail": "diffusers.pipelines.flux.pipeline_output",
+        "documentation": {}
+    },
+    {
+        "label": "DiffusionPipeline",
+        "importPath": "diffusers.pipelines.pipeline_utils",
+        "description": "diffusers.pipelines.pipeline_utils",
+        "isExtraImport": true,
+        "detail": "diffusers.pipelines.pipeline_utils",
+        "documentation": {}
+    },
+    {
+        "label": "DiffusionPipeline",
+        "importPath": "diffusers.pipelines.pipeline_utils",
+        "description": "diffusers.pipelines.pipeline_utils",
+        "isExtraImport": true,
+        "detail": "diffusers.pipelines.pipeline_utils",
+        "documentation": {}
+    },
+    {
+        "label": "FlowMatchEulerDiscreteScheduler",
+        "importPath": "diffusers.schedulers",
+        "description": "diffusers.schedulers",
+        "isExtraImport": true,
+        "detail": "diffusers.schedulers",
+        "documentation": {}
+    },
+    {
+        "label": "FlowMatchEulerDiscreteScheduler",
+        "importPath": "diffusers.schedulers",
+        "description": "diffusers.schedulers",
+        "isExtraImport": true,
+        "detail": "diffusers.schedulers",
+        "documentation": {}
+    },
+    {
+        "label": "randn_tensor",
+        "importPath": "diffusers.utils.torch_utils",
+        "description": "diffusers.utils.torch_utils",
+        "isExtraImport": true,
+        "detail": "diffusers.utils.torch_utils",
+        "documentation": {}
+    },
+    {
+        "label": "maybe_allow_in_graph",
+        "importPath": "diffusers.utils.torch_utils",
+        "description": "diffusers.utils.torch_utils",
+        "isExtraImport": true,
+        "detail": "diffusers.utils.torch_utils",
+        "documentation": {}
+    },
+    {
+        "label": "randn_tensor",
+        "importPath": "diffusers.utils.torch_utils",
+        "description": "diffusers.utils.torch_utils",
+        "isExtraImport": true,
+        "detail": "diffusers.utils.torch_utils",
+        "documentation": {}
+    },
+    {
+        "label": "maybe_allow_in_graph",
+        "importPath": "diffusers.utils.torch_utils",
+        "description": "diffusers.utils.torch_utils",
+        "isExtraImport": true,
+        "detail": "diffusers.utils.torch_utils",
         "documentation": {}
     },
     {
@@ -7318,134 +7542,6 @@
         "description": "transformers",
         "isExtraImport": true,
         "detail": "transformers",
-        "documentation": {}
-    },
-    {
-        "label": "PipelineImageInput",
-        "importPath": "diffusers.image_processor",
-        "description": "diffusers.image_processor",
-        "isExtraImport": true,
-        "detail": "diffusers.image_processor",
-        "documentation": {}
-    },
-    {
-        "label": "VaeImageProcessor",
-        "importPath": "diffusers.image_processor",
-        "description": "diffusers.image_processor",
-        "isExtraImport": true,
-        "detail": "diffusers.image_processor",
-        "documentation": {}
-    },
-    {
-        "label": "PipelineImageInput",
-        "importPath": "diffusers.image_processor",
-        "description": "diffusers.image_processor",
-        "isExtraImport": true,
-        "detail": "diffusers.image_processor",
-        "documentation": {}
-    },
-    {
-        "label": "VaeImageProcessor",
-        "importPath": "diffusers.image_processor",
-        "description": "diffusers.image_processor",
-        "isExtraImport": true,
-        "detail": "diffusers.image_processor",
-        "documentation": {}
-    },
-    {
-        "label": "AutoencoderKL",
-        "importPath": "diffusers.models.autoencoders",
-        "description": "diffusers.models.autoencoders",
-        "isExtraImport": true,
-        "detail": "diffusers.models.autoencoders",
-        "documentation": {}
-    },
-    {
-        "label": "AutoencoderKL",
-        "importPath": "diffusers.models.autoencoders",
-        "description": "diffusers.models.autoencoders",
-        "isExtraImport": true,
-        "detail": "diffusers.models.autoencoders",
-        "documentation": {}
-    },
-    {
-        "label": "FlowMatchEulerDiscreteScheduler",
-        "importPath": "diffusers.schedulers",
-        "description": "diffusers.schedulers",
-        "isExtraImport": true,
-        "detail": "diffusers.schedulers",
-        "documentation": {}
-    },
-    {
-        "label": "FlowMatchEulerDiscreteScheduler",
-        "importPath": "diffusers.schedulers",
-        "description": "diffusers.schedulers",
-        "isExtraImport": true,
-        "detail": "diffusers.schedulers",
-        "documentation": {}
-    },
-    {
-        "label": "randn_tensor",
-        "importPath": "diffusers.utils.torch_utils",
-        "description": "diffusers.utils.torch_utils",
-        "isExtraImport": true,
-        "detail": "diffusers.utils.torch_utils",
-        "documentation": {}
-    },
-    {
-        "label": "maybe_allow_in_graph",
-        "importPath": "diffusers.utils.torch_utils",
-        "description": "diffusers.utils.torch_utils",
-        "isExtraImport": true,
-        "detail": "diffusers.utils.torch_utils",
-        "documentation": {}
-    },
-    {
-        "label": "randn_tensor",
-        "importPath": "diffusers.utils.torch_utils",
-        "description": "diffusers.utils.torch_utils",
-        "isExtraImport": true,
-        "detail": "diffusers.utils.torch_utils",
-        "documentation": {}
-    },
-    {
-        "label": "maybe_allow_in_graph",
-        "importPath": "diffusers.utils.torch_utils",
-        "description": "diffusers.utils.torch_utils",
-        "isExtraImport": true,
-        "detail": "diffusers.utils.torch_utils",
-        "documentation": {}
-    },
-    {
-        "label": "DiffusionPipeline",
-        "importPath": "diffusers.pipelines.pipeline_utils",
-        "description": "diffusers.pipelines.pipeline_utils",
-        "isExtraImport": true,
-        "detail": "diffusers.pipelines.pipeline_utils",
-        "documentation": {}
-    },
-    {
-        "label": "DiffusionPipeline",
-        "importPath": "diffusers.pipelines.pipeline_utils",
-        "description": "diffusers.pipelines.pipeline_utils",
-        "isExtraImport": true,
-        "detail": "diffusers.pipelines.pipeline_utils",
-        "documentation": {}
-    },
-    {
-        "label": "FluxPipelineOutput",
-        "importPath": "diffusers.pipelines.flux.pipeline_output",
-        "description": "diffusers.pipelines.flux.pipeline_output",
-        "isExtraImport": true,
-        "detail": "diffusers.pipelines.flux.pipeline_output",
-        "documentation": {}
-    },
-    {
-        "label": "FluxPipelineOutput",
-        "importPath": "diffusers.pipelines.flux.pipeline_output",
-        "description": "diffusers.pipelines.flux.pipeline_output",
-        "isExtraImport": true,
-        "detail": "diffusers.pipelines.flux.pipeline_output",
         "documentation": {}
     },
     {
@@ -7738,6 +7834,30 @@
     },
     {
         "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
         "importPath": "django.db",
         "description": "django.db",
         "isExtraImport": true,
@@ -7889,7 +8009,7 @@
         "documentation": {}
     },
     {
-        "label": "render",
+        "label": "redirect",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
         "isExtraImport": true,
@@ -7905,7 +8025,31 @@
         "documentation": {}
     },
     {
+        "label": "reverse",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
         "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "reverse",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
         "isExtraImport": true,
@@ -7945,7 +8089,23 @@
         "documentation": {}
     },
     {
+        "label": "redirect",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
         "label": "render",
+        "importPath": "django.shortcuts",
+        "description": "django.shortcuts",
+        "isExtraImport": true,
+        "detail": "django.shortcuts",
+        "documentation": {}
+    },
+    {
+        "label": "reverse",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
         "isExtraImport": true,
@@ -8017,11 +8177,27 @@
         "documentation": {}
     },
     {
-        "label": "*",
-        "importPath": "background_remover.is_net.models",
-        "description": "background_remover.is_net.models",
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
         "isExtraImport": true,
-        "detail": "background_remover.is_net.models",
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "JsonResponse",
+        "importPath": "django.http",
+        "description": "django.http",
+        "isExtraImport": true,
+        "detail": "django.http",
+        "documentation": {}
+    },
+    {
+        "label": "NeuralStyleTransfer",
+        "importPath": "artistic_image_creator.nst.nst",
+        "description": "artistic_image_creator.nst.nst",
+        "isExtraImport": true,
+        "detail": "artistic_image_creator.nst.nst",
         "documentation": {}
     },
     {
@@ -8041,27 +8217,19 @@
         "documentation": {}
     },
     {
+        "label": "*",
+        "importPath": "background_remover.is_net.models",
+        "description": "background_remover.is_net.models",
+        "isExtraImport": true,
+        "detail": "background_remover.is_net.models",
+        "documentation": {}
+    },
+    {
         "label": "BASE_DIR",
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
         "isExtraImport": true,
         "detail": "deepfx_studio.settings",
-        "documentation": {}
-    },
-    {
-        "label": "csrf_exempt",
-        "importPath": "django.views.decorators.csrf",
-        "description": "django.views.decorators.csrf",
-        "isExtraImport": true,
-        "detail": "django.views.decorators.csrf",
-        "documentation": {}
-    },
-    {
-        "label": "JsonResponse",
-        "importPath": "django.http",
-        "description": "django.http",
-        "isExtraImport": true,
-        "detail": "django.http",
         "documentation": {}
     },
     {
@@ -18237,7 +18405,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.image_encoder",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.image_encoder",
-        "peekOfCode": "def window_partition(x: torch.Tensor, window_size: int) -> Tuple[torch.Tensor, Tuple[int, int]]:\n    \"\"\"\n    Partition into non-overlapping windows with padding if needed.\n    Args:\n        x (tensor): input tokens with [B, H, W, C].\n        window_size (int): window size.\n    Returns:\n        windows: windows after partition with [B * num_windows, window_size, window_size, C].\n        (Hp, Wp): padded height and width before partition\n    \"\"\"",
+        "peekOfCode": "def window_partition(\n    x: torch.Tensor, window_size: int\n) -> Tuple[torch.Tensor, Tuple[int, int]]:\n    \"\"\"\n    Partition into non-overlapping windows with padding if needed.\n    Args:\n        x (tensor): input tokens with [B, H, W, C].\n        window_size (int): window size.\n    Returns:\n        windows: windows after partition with [B * num_windows, window_size, window_size, C].",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.image_encoder",
         "documentation": {}
     },
@@ -18246,7 +18414,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.image_encoder",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.image_encoder",
-        "peekOfCode": "def window_unpartition(\n    windows: torch.Tensor, window_size: int, pad_hw: Tuple[int, int], hw: Tuple[int, int]\n) -> torch.Tensor:\n    \"\"\"\n    Window unpartition into original sequences and removing padding.\n    Args:\n        x (tensor): input tokens with [B * num_windows, window_size, window_size, C].\n        window_size (int): window size.\n        pad_hw (Tuple): padded height and width (Hp, Wp).\n        hw (Tuple): original height and width (H, W) before padding.",
+        "peekOfCode": "def window_unpartition(\n    windows: torch.Tensor,\n    window_size: int,\n    pad_hw: Tuple[int, int],\n    hw: Tuple[int, int],\n) -> torch.Tensor:\n    \"\"\"\n    Window unpartition into original sequences and removing padding.\n    Args:\n        x (tensor): input tokens with [B * num_windows, window_size, window_size, C].",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.image_encoder",
         "documentation": {}
     },
@@ -18318,7 +18486,7 @@
         "kind": 6,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class Conv2d_BN(torch.nn.Sequential):\n    def __init__(self, a, b, ks=1, stride=1, pad=0, dilation=1,\n                 groups=1, bn_weight_init=1):\n        super().__init__()\n        self.add_module('c', torch.nn.Conv2d(\n            a, b, ks, stride, pad, dilation, groups, bias=False))\n        bn = torch.nn.BatchNorm2d(b)\n        torch.nn.init.constant_(bn.weight, bn_weight_init)\n        torch.nn.init.constant_(bn.bias, 0)\n        self.add_module('bn', bn)",
+        "peekOfCode": "class Conv2d_BN(torch.nn.Sequential):\n    def __init__(\n        self, a, b, ks=1, stride=1, pad=0, dilation=1, groups=1, bn_weight_init=1\n    ):\n        super().__init__()\n        self.add_module(\n            \"c\", torch.nn.Conv2d(a, b, ks, stride, pad, dilation, groups, bias=False)\n        )\n        bn = torch.nn.BatchNorm2d(b)\n        torch.nn.init.constant_(bn.weight, bn_weight_init)",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -18327,7 +18495,7 @@
         "kind": 6,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class DropPath(TimmDropPath):\n    def __init__(self, drop_prob=None):\n        super().__init__(drop_prob=drop_prob)\n        self.drop_prob = drop_prob\n    def __repr__(self):\n        msg = super().__repr__()\n        msg += f'(drop_prob={self.drop_prob})'\n        return msg\nclass PatchEmbed(nn.Module):\n    def __init__(self, in_chans, embed_dim, resolution, activation):",
+        "peekOfCode": "class DropPath(TimmDropPath):\n    def __init__(self, drop_prob=None):\n        super().__init__(drop_prob=drop_prob)\n        self.drop_prob = drop_prob\n    def __repr__(self):\n        msg = super().__repr__()\n        msg += f\"(drop_prob={self.drop_prob})\"\n        return msg\nclass PatchEmbed(nn.Module):\n    def __init__(self, in_chans, embed_dim, resolution, activation):",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -18336,7 +18504,7 @@
         "kind": 6,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class PatchEmbed(nn.Module):\n    def __init__(self, in_chans, embed_dim, resolution, activation):\n        super().__init__()\n        img_size: Tuple[int, int] = to_2tuple(resolution)\n        self.patches_resolution = (img_size[0] // 4, img_size[1] // 4)\n        self.num_patches = self.patches_resolution[0] * \\\n            self.patches_resolution[1]\n        self.in_chans = in_chans\n        self.embed_dim = embed_dim\n        n = embed_dim",
+        "peekOfCode": "class PatchEmbed(nn.Module):\n    def __init__(self, in_chans, embed_dim, resolution, activation):\n        super().__init__()\n        img_size: Tuple[int, int] = to_2tuple(resolution)\n        self.patches_resolution = (img_size[0] // 4, img_size[1] // 4)\n        self.num_patches = self.patches_resolution[0] * self.patches_resolution[1]\n        self.in_chans = in_chans\n        self.embed_dim = embed_dim\n        n = embed_dim\n        self.seq = nn.Sequential(",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -18345,7 +18513,7 @@
         "kind": 6,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class MBConv(nn.Module):\n    def __init__(self, in_chans, out_chans, expand_ratio,\n                 activation, drop_path):\n        super().__init__()\n        self.in_chans = in_chans\n        self.hidden_chans = int(in_chans * expand_ratio)\n        self.out_chans = out_chans\n        self.conv1 = Conv2d_BN(in_chans, self.hidden_chans, ks=1)\n        self.act1 = activation()\n        self.conv2 = Conv2d_BN(self.hidden_chans, self.hidden_chans,",
+        "peekOfCode": "class MBConv(nn.Module):\n    def __init__(self, in_chans, out_chans, expand_ratio, activation, drop_path):\n        super().__init__()\n        self.in_chans = in_chans\n        self.hidden_chans = int(in_chans * expand_ratio)\n        self.out_chans = out_chans\n        self.conv1 = Conv2d_BN(in_chans, self.hidden_chans, ks=1)\n        self.act1 = activation()\n        self.conv2 = Conv2d_BN(\n            self.hidden_chans,",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -18354,7 +18522,7 @@
         "kind": 6,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class PatchMerging(nn.Module):\n    def __init__(self, input_resolution, dim, out_dim, activation):\n        super().__init__()\n        self.input_resolution = input_resolution\n        self.dim = dim\n        self.out_dim = out_dim\n        self.act = activation()\n        self.conv1 = Conv2d_BN(dim, out_dim, 1, 1, 0)\n        stride_c=2\n        if(out_dim==320 or out_dim==448 or out_dim==576):",
+        "peekOfCode": "class PatchMerging(nn.Module):\n    def __init__(self, input_resolution, dim, out_dim, activation):\n        super().__init__()\n        self.input_resolution = input_resolution\n        self.dim = dim\n        self.out_dim = out_dim\n        self.act = activation()\n        self.conv1 = Conv2d_BN(dim, out_dim, 1, 1, 0)\n        stride_c = 2\n        if out_dim == 320 or out_dim == 448 or out_dim == 576:",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -18363,7 +18531,7 @@
         "kind": 6,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class ConvLayer(nn.Module):\n    def __init__(self, dim, input_resolution, depth,\n                 activation,\n                 drop_path=0., downsample=None, use_checkpoint=False,\n                 out_dim=None,\n                 conv_expand_ratio=4.,\n                 ):\n        super().__init__()\n        self.dim = dim\n        self.input_resolution = input_resolution",
+        "peekOfCode": "class ConvLayer(nn.Module):\n    def __init__(\n        self,\n        dim,\n        input_resolution,\n        depth,\n        activation,\n        drop_path=0.0,\n        downsample=None,\n        use_checkpoint=False,",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -18372,7 +18540,7 @@
         "kind": 6,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class Mlp(nn.Module):\n    def __init__(self, in_features, hidden_features=None,\n                 out_features=None, act_layer=nn.GELU, drop=0.):\n        super().__init__()\n        out_features = out_features or in_features\n        hidden_features = hidden_features or in_features\n        self.norm = nn.LayerNorm(in_features)\n        self.fc1 = nn.Linear(in_features, hidden_features)\n        self.fc2 = nn.Linear(hidden_features, out_features)\n        self.act = act_layer()",
+        "peekOfCode": "class Mlp(nn.Module):\n    def __init__(\n        self,\n        in_features,\n        hidden_features=None,\n        out_features=None,\n        act_layer=nn.GELU,\n        drop=0.0,\n    ):\n        super().__init__()",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -18381,7 +18549,7 @@
         "kind": 6,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class Attention(torch.nn.Module):\n    def __init__(self, dim, key_dim, num_heads=8,\n                 attn_ratio=4,\n                 resolution=(14, 14),\n                 ):\n        super().__init__()\n        # (h, w)\n        assert isinstance(resolution, tuple) and len(resolution) == 2\n        self.num_heads = num_heads\n        self.scale = key_dim ** -0.5",
+        "peekOfCode": "class Attention(torch.nn.Module):\n    def __init__(\n        self,\n        dim,\n        key_dim,\n        num_heads=8,\n        attn_ratio=4,\n        resolution=(14, 14),\n    ):\n        super().__init__()",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -18390,7 +18558,7 @@
         "kind": 6,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class TinyViTBlock(nn.Module):\n    r\"\"\" TinyViT Block.\n    Args:\n        dim (int): Number of input channels.\n        input_resolution (tuple[int, int]): Input resulotion.\n        num_heads (int): Number of attention heads.\n        window_size (int): Window size.\n        mlp_ratio (float): Ratio of mlp hidden dim to embedding dim.\n        drop (float, optional): Dropout rate. Default: 0.0\n        drop_path (float, optional): Stochastic depth rate. Default: 0.0",
+        "peekOfCode": "class TinyViTBlock(nn.Module):\n    r\"\"\"TinyViT Block.\n    Args:\n        dim (int): Number of input channels.\n        input_resolution (tuple[int, int]): Input resulotion.\n        num_heads (int): Number of attention heads.\n        window_size (int): Window size.\n        mlp_ratio (float): Ratio of mlp hidden dim to embedding dim.\n        drop (float, optional): Dropout rate. Default: 0.0\n        drop_path (float, optional): Stochastic depth rate. Default: 0.0",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -18399,7 +18567,7 @@
         "kind": 6,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class BasicLayer(nn.Module):\n    \"\"\" A basic TinyViT layer for one stage.\n    Args:\n        dim (int): Number of input channels.\n        input_resolution (tuple[int]): Input resolution.\n        depth (int): Number of blocks.\n        num_heads (int): Number of attention heads.\n        window_size (int): Local window size.\n        mlp_ratio (float): Ratio of mlp hidden dim to embedding dim.\n        drop (float, optional): Dropout rate. Default: 0.0",
+        "peekOfCode": "class BasicLayer(nn.Module):\n    \"\"\"A basic TinyViT layer for one stage.\n    Args:\n        dim (int): Number of input channels.\n        input_resolution (tuple[int]): Input resolution.\n        depth (int): Number of blocks.\n        num_heads (int): Number of attention heads.\n        window_size (int): Local window size.\n        mlp_ratio (float): Ratio of mlp hidden dim to embedding dim.\n        drop (float, optional): Dropout rate. Default: 0.0",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -18417,7 +18585,7 @@
         "kind": 6,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class TinyViT(nn.Module):\n    def __init__(self, img_size=224, in_chans=3, num_classes=1000,\n                 embed_dims=[96, 192, 384, 768], depths=[2, 2, 6, 2],\n                 num_heads=[3, 6, 12, 24],\n                 window_sizes=[7, 7, 14, 7],\n                 mlp_ratio=4.,\n                 drop_rate=0.,\n                 drop_path_rate=0.1,\n                 use_checkpoint=False,\n                 mbconv_expand_ratio=4.0,",
+        "peekOfCode": "class TinyViT(nn.Module):\n    def __init__(\n        self,\n        img_size=224,\n        in_chans=3,\n        num_classes=1000,\n        embed_dims=[96, 192, 384, 768],\n        depths=[2, 2, 6, 2],\n        num_heads=[3, 6, 12, 24],\n        window_sizes=[7, 7, 14, 7],",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -18426,7 +18594,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "def register_tiny_vit_model(fn):\n    '''Register a TinyViT model\n    It is a wrapper of `register_model` with loading the pretrained checkpoint.\n    '''\n    def fn_wrapper(pretrained=False, **kwargs):\n        model = fn()\n        if pretrained:\n            model_name = fn.__name__\n            assert model_name in _provided_checkpoints, \\\n                f'Sorry that the checkpoint `{model_name}` is not provided yet.'",
+        "peekOfCode": "def register_tiny_vit_model(fn):\n    \"\"\"Register a TinyViT model\n    It is a wrapper of `register_model` with loading the pretrained checkpoint.\n    \"\"\"\n    def fn_wrapper(pretrained=False, **kwargs):\n        model = fn()\n        if pretrained:\n            model_name = fn.__name__\n            assert (\n                model_name in _provided_checkpoints",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -18480,7 +18648,7 @@
         "kind": 5,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "_checkpoint_url_format = \\\n    'https://github.com/wkcn/TinyViT-model-zoo/releases/download/checkpoints/{}.pth'\n_provided_checkpoints = {\n    'tiny_vit_5m_224': 'tiny_vit_5m_22kto1k_distill',\n    'tiny_vit_11m_224': 'tiny_vit_11m_22kto1k_distill',\n    'tiny_vit_21m_224': 'tiny_vit_21m_22kto1k_distill',\n    'tiny_vit_21m_384': 'tiny_vit_21m_22kto1k_384_distill',\n    'tiny_vit_21m_512': 'tiny_vit_21m_22kto1k_512_distill',\n}\ndef register_tiny_vit_model(fn):",
+        "peekOfCode": "_checkpoint_url_format = (\n    \"https://github.com/wkcn/TinyViT-model-zoo/releases/download/checkpoints/{}.pth\"\n)\n_provided_checkpoints = {\n    \"tiny_vit_5m_224\": \"tiny_vit_5m_22kto1k_distill\",\n    \"tiny_vit_11m_224\": \"tiny_vit_11m_22kto1k_distill\",\n    \"tiny_vit_21m_224\": \"tiny_vit_21m_22kto1k_distill\",\n    \"tiny_vit_21m_384\": \"tiny_vit_21m_22kto1k_384_distill\",\n    \"tiny_vit_21m_512\": \"tiny_vit_21m_22kto1k_512_distill\",\n}",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -18489,7 +18657,7 @@
         "kind": 5,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "_provided_checkpoints = {\n    'tiny_vit_5m_224': 'tiny_vit_5m_22kto1k_distill',\n    'tiny_vit_11m_224': 'tiny_vit_11m_22kto1k_distill',\n    'tiny_vit_21m_224': 'tiny_vit_21m_22kto1k_distill',\n    'tiny_vit_21m_384': 'tiny_vit_21m_22kto1k_384_distill',\n    'tiny_vit_21m_512': 'tiny_vit_21m_22kto1k_512_distill',\n}\ndef register_tiny_vit_model(fn):\n    '''Register a TinyViT model\n    It is a wrapper of `register_model` with loading the pretrained checkpoint.",
+        "peekOfCode": "_provided_checkpoints = {\n    \"tiny_vit_5m_224\": \"tiny_vit_5m_22kto1k_distill\",\n    \"tiny_vit_11m_224\": \"tiny_vit_11m_22kto1k_distill\",\n    \"tiny_vit_21m_224\": \"tiny_vit_21m_22kto1k_distill\",\n    \"tiny_vit_21m_384\": \"tiny_vit_21m_22kto1k_384_distill\",\n    \"tiny_vit_21m_512\": \"tiny_vit_21m_22kto1k_512_distill\",\n}\ndef register_tiny_vit_model(fn):\n    \"\"\"Register a TinyViT model\n    It is a wrapper of `register_model` with loading the pretrained checkpoint.",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -18732,7 +18900,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.segment_anything.segment_anything.build_sam",
         "description": "DL_Model.inpaint-anything.segment_anything.segment_anything.build_sam",
-        "peekOfCode": "def build_sam_vit_t(checkpoint=None):\n    prompt_embed_dim = 256\n    image_size = 1024\n    vit_patch_size = 16\n    image_embedding_size = image_size // vit_patch_size\n    mobile_sam = Sam(\n            image_encoder=TinyViT(img_size=1024, in_chans=3, num_classes=1000,\n                embed_dims=[64, 128, 160, 320],\n                depths=[2, 2, 6, 2],\n                num_heads=[2, 4, 5, 10],",
+        "peekOfCode": "def build_sam_vit_t(checkpoint=None):\n    prompt_embed_dim = 256\n    image_size = 1024\n    vit_patch_size = 16\n    image_embedding_size = image_size // vit_patch_size\n    mobile_sam = Sam(\n        image_encoder=TinyViT(\n            img_size=1024,\n            in_chans=3,\n            num_classes=1000,",
         "detail": "DL_Model.inpaint-anything.segment_anything.segment_anything.build_sam",
         "documentation": {}
     },
@@ -18777,7 +18945,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.utils.utils",
         "description": "DL_Model.inpaint-anything.utils.utils",
-        "peekOfCode": "def save_array_to_img(img_arr, img_p):\n    Image.fromarray(img_arr.astype(np.uint8)).save(img_p)\ndef dilate_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)\n    mask = cv2.dilate(\n        mask,\n        np.ones((dilate_factor, dilate_factor), np.uint8),\n        iterations=1\n    )\n    return mask",
+        "peekOfCode": "def save_array_to_img(img_arr, img_p):\n    Image.fromarray(img_arr.astype(np.uint8)).save(img_p)\ndef dilate_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)\n    mask = cv2.dilate(\n        mask, np.ones((dilate_factor, dilate_factor), np.uint8), iterations=1\n    )\n    return mask\ndef erode_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)",
         "detail": "DL_Model.inpaint-anything.utils.utils",
         "documentation": {}
     },
@@ -18786,7 +18954,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.utils.utils",
         "description": "DL_Model.inpaint-anything.utils.utils",
-        "peekOfCode": "def dilate_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)\n    mask = cv2.dilate(\n        mask,\n        np.ones((dilate_factor, dilate_factor), np.uint8),\n        iterations=1\n    )\n    return mask\ndef erode_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)",
+        "peekOfCode": "def dilate_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)\n    mask = cv2.dilate(\n        mask, np.ones((dilate_factor, dilate_factor), np.uint8), iterations=1\n    )\n    return mask\ndef erode_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)\n    mask = cv2.erode(\n        mask, np.ones((dilate_factor, dilate_factor), np.uint8), iterations=1",
         "detail": "DL_Model.inpaint-anything.utils.utils",
         "documentation": {}
     },
@@ -18795,7 +18963,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.utils.utils",
         "description": "DL_Model.inpaint-anything.utils.utils",
-        "peekOfCode": "def erode_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)\n    mask = cv2.erode(\n        mask,\n        np.ones((dilate_factor, dilate_factor), np.uint8),\n        iterations=1\n    )\n    return mask\ndef show_mask(ax, mask: np.ndarray, random_color=False):\n    mask = mask.astype(np.uint8)",
+        "peekOfCode": "def erode_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)\n    mask = cv2.erode(\n        mask, np.ones((dilate_factor, dilate_factor), np.uint8), iterations=1\n    )\n    return mask\ndef show_mask(ax, mask: np.ndarray, random_color=False):\n    mask = mask.astype(np.uint8)\n    if np.max(mask) == 255:\n        mask = mask / 255",
         "detail": "DL_Model.inpaint-anything.utils.utils",
         "documentation": {}
     },
@@ -18813,7 +18981,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.utils.utils",
         "description": "DL_Model.inpaint-anything.utils.utils",
-        "peekOfCode": "def show_points(ax, coords: List[List[float]], labels: List[int], size=375):\n    coords = np.array(coords)\n    labels = np.array(labels)\n    color_table = {0: 'red', 1: 'green'}\n    for label_value, color in color_table.items():\n        points = coords[labels == label_value]\n        ax.scatter(points[:, 0], points[:, 1], color=color, marker='*',\n                   s=size, edgecolor='white', linewidth=1.25)\ndef get_clicked_point(img_path):\n    img = cv2.imread(img_path)",
+        "peekOfCode": "def show_points(ax, coords: List[List[float]], labels: List[int], size=375):\n    coords = np.array(coords)\n    labels = np.array(labels)\n    color_table = {0: \"red\", 1: \"green\"}\n    for label_value, color in color_table.items():\n        points = coords[labels == label_value]\n        ax.scatter(\n            points[:, 0],\n            points[:, 1],\n            color=color,",
         "detail": "DL_Model.inpaint-anything.utils.utils",
         "documentation": {}
     },
@@ -18840,7 +19008,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.apply_removal",
         "description": "DL_Model.inpaint-anything.apply_removal",
-        "peekOfCode": "def apply_removal(\n    input_img,\n    mask_mode,\n    masks_dir,\n    lama_config,\n    lama_ckpt\n):\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    img = load_img_to_array(input_img)\n    masks_dir = Path(masks_dir)",
+        "peekOfCode": "def apply_removal(input_img, mask_mode, masks_dir, lama_config, lama_ckpt):\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    img = load_img_to_array(input_img)\n    masks_dir = Path(masks_dir)\n    if not masks_dir.exists():\n        raise ValueError(f\"Masks directory not found: {masks_dir}\")\n    if mask_mode == \"sam\":\n        mask_files = list(masks_dir.glob(\"mask_*.png\"))\n    else:\n        mask_files = list(masks_dir.glob(\"mask_0.png\"))",
         "detail": "DL_Model.inpaint-anything.apply_removal",
         "documentation": {}
     },
@@ -18885,7 +19053,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.coordinate",
         "description": "DL_Model.inpaint-anything.coordinate",
-        "peekOfCode": "def on_click(event):\n    x, y = event.xdata, event.ydata\n    if x is not None and y is not None:\n        print(f\"Clicked at coordinates: x={x}, y={y}\")\n    else:\n        print(\"Click was outside the image bounds.\")\nimage_path = 'input_path' \nimg = mpimg.imread(image_path)\nfig, ax = plt.subplots()\nax.imshow(img)",
+        "peekOfCode": "def on_click(event):\n    x, y = event.xdata, event.ydata\n    if x is not None and y is not None:\n        print(f\"Clicked at coordinates: x={x}, y={y}\")\n    else:\n        print(\"Click was outside the image bounds.\")\nimage_path = \"input_path\"\nimg = mpimg.imread(image_path)\nfig, ax = plt.subplots()\nax.imshow(img)",
         "detail": "DL_Model.inpaint-anything.coordinate",
         "documentation": {}
     },
@@ -18894,7 +19062,7 @@
         "kind": 5,
         "importPath": "DL_Model.inpaint-anything.coordinate",
         "description": "DL_Model.inpaint-anything.coordinate",
-        "peekOfCode": "image_path = 'input_path' \nimg = mpimg.imread(image_path)\nfig, ax = plt.subplots()\nax.imshow(img)\nax.set_title('Click on the image to get coordinates')\nfig.canvas.mpl_connect('button_press_event', on_click)\nplt.show()",
+        "peekOfCode": "image_path = \"input_path\"\nimg = mpimg.imread(image_path)\nfig, ax = plt.subplots()\nax.imshow(img)\nax.set_title(\"Click on the image to get coordinates\")\nfig.canvas.mpl_connect(\"button_press_event\", on_click)\nplt.show()",
         "detail": "DL_Model.inpaint-anything.coordinate",
         "documentation": {}
     },
@@ -18903,7 +19071,7 @@
         "kind": 5,
         "importPath": "DL_Model.inpaint-anything.coordinate",
         "description": "DL_Model.inpaint-anything.coordinate",
-        "peekOfCode": "img = mpimg.imread(image_path)\nfig, ax = plt.subplots()\nax.imshow(img)\nax.set_title('Click on the image to get coordinates')\nfig.canvas.mpl_connect('button_press_event', on_click)\nplt.show()",
+        "peekOfCode": "img = mpimg.imread(image_path)\nfig, ax = plt.subplots()\nax.imshow(img)\nax.set_title(\"Click on the image to get coordinates\")\nfig.canvas.mpl_connect(\"button_press_event\", on_click)\nplt.show()",
         "detail": "DL_Model.inpaint-anything.coordinate",
         "documentation": {}
     },
@@ -18912,7 +19080,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.create_manual_mask",
         "description": "DL_Model.inpaint-anything.create_manual_mask",
-        "peekOfCode": "def create_manual_mask(input_img, output_dir):\n    img = cv2.imread(input_img)\n    mask = np.zeros(img.shape[:2], dtype=np.uint8)\n    def draw_mask(event, x, y, flags, param):\n        if event == cv2.EVENT_LBUTTONDOWN:\n            cv2.circle(mask, (x,y), 3, 255, -1)\n        elif event == cv2.EVENT_MOUSEMOVE and flags & cv2.EVENT_FLAG_LBUTTON:\n            cv2.circle(mask, (x,y), 3, 255, -1)\n    window_name = \"Draw Mask (Draw with left mouse button, 's' to save, 'q' to quit)\"\n    cv2.namedWindow(window_name)",
+        "peekOfCode": "def create_manual_mask(input_img, output_dir):\n    img = cv2.imread(input_img)\n    mask = np.zeros(img.shape[:2], dtype=np.uint8)\n    def draw_mask(event, x, y, flags, param):\n        if event == cv2.EVENT_LBUTTONDOWN:\n            cv2.circle(mask, (x, y), 3, 255, -1)\n        elif event == cv2.EVENT_MOUSEMOVE and flags & cv2.EVENT_FLAG_LBUTTON:\n            cv2.circle(mask, (x, y), 3, 255, -1)\n    window_name = \"Draw Mask (Draw with left mouse button, 's' to save, 'q' to quit)\"\n    cv2.namedWindow(window_name)",
         "detail": "DL_Model.inpaint-anything.create_manual_mask",
         "documentation": {}
     },
@@ -18921,7 +19089,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.generate_masks",
         "description": "DL_Model.inpaint-anything.generate_masks",
-        "peekOfCode": "def generate_masks(\n    input_img,\n    coords_type,\n    point_coords,\n    point_labels,\n    dilate_kernel_size,\n    output_dir,\n    sam_model_type,\n    sam_ckpt,\n    operation_type=\"fill\"  ",
+        "peekOfCode": "def generate_masks(\n    input_img,\n    coords_type,\n    point_coords,\n    point_labels,\n    dilate_kernel_size,\n    output_dir,\n    sam_model_type,\n    sam_ckpt,\n    operation_type=\"fill\",",
         "detail": "DL_Model.inpaint-anything.generate_masks",
         "documentation": {}
     },
@@ -18930,7 +19098,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.lama_inpaint",
         "description": "DL_Model.inpaint-anything.lama_inpaint",
-        "peekOfCode": "def inpaint_img_with_lama(\n        img: np.ndarray,\n        mask: np.ndarray,\n        config_p: str,\n        ckpt_p: str,\n        mod=8,\n        device=\"cuda\"\n):\n    assert len(mask.shape) == 2\n    if np.max(mask) == 1:",
+        "peekOfCode": "def inpaint_img_with_lama(\n    img: np.ndarray, mask: np.ndarray, config_p: str, ckpt_p: str, mod=8, device=\"cuda\"\n):\n    assert len(mask.shape) == 2\n    if np.max(mask) == 1:\n        mask = mask * 255\n    img = torch.from_numpy(img).float().div(255.0)\n    mask = torch.from_numpy(mask).float()\n    predict_config = OmegaConf.load(config_p)\n    predict_config.model.path = ckpt_p",
         "detail": "DL_Model.inpaint-anything.lama_inpaint",
         "documentation": {}
     },
@@ -18939,7 +19107,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.lama_inpaint",
         "description": "DL_Model.inpaint-anything.lama_inpaint",
-        "peekOfCode": "def build_lama_model(        \n        config_p: str,\n        ckpt_p: str,\n        device=\"cuda\"\n):\n    predict_config = OmegaConf.load(config_p)\n    predict_config.model.path = ckpt_p\n    device = torch.device(device)\n    train_config_path = os.path.join(\n        predict_config.model.path, 'config.yaml')",
+        "peekOfCode": "def build_lama_model(config_p: str, ckpt_p: str, device=\"cuda\"):\n    predict_config = OmegaConf.load(config_p)\n    predict_config.model.path = ckpt_p\n    device = torch.device(device)\n    train_config_path = os.path.join(predict_config.model.path, \"config.yaml\")\n    with open(train_config_path, \"r\") as f:\n        train_config = OmegaConf.create(yaml.safe_load(f))\n    train_config.training_model.predict_only = True\n    train_config.visualizer.kind = \"noop\"\n    checkpoint_path = os.path.join(",
         "detail": "DL_Model.inpaint-anything.lama_inpaint",
         "documentation": {}
     },
@@ -18948,7 +19116,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.lama_inpaint",
         "description": "DL_Model.inpaint-anything.lama_inpaint",
-        "peekOfCode": "def inpaint_img_with_builded_lama(\n        model,\n        img: np.ndarray,\n        mask: np.ndarray,\n        config_p=None,\n        mod=8,\n        device=\"cuda\"\n):\n    assert len(mask.shape) == 2\n    if np.max(mask) == 1:",
+        "peekOfCode": "def inpaint_img_with_builded_lama(\n    model, img: np.ndarray, mask: np.ndarray, config_p=None, mod=8, device=\"cuda\"\n):\n    assert len(mask.shape) == 2\n    if np.max(mask) == 1:\n        mask = mask * 255\n    img = torch.from_numpy(img).float().div(255.0)\n    mask = torch.from_numpy(mask).float()\n    batch = {}\n    batch[\"image\"] = img.permute(2, 0, 1).unsqueeze(0)",
         "detail": "DL_Model.inpaint-anything.lama_inpaint",
         "documentation": {}
     },
@@ -18957,52 +19125,52 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.lama_inpaint",
         "description": "DL_Model.inpaint-anything.lama_inpaint",
-        "peekOfCode": "def setup_args(parser):\n    parser.add_argument(\n        \"--input_img\", type=str, required=True,\n        help=\"Path to a single input img\",\n    )\n    parser.add_argument(\n        \"--input_mask_glob\", type=str, required=True,\n        help=\"Glob to input masks\",\n    )\n    parser.add_argument(",
+        "peekOfCode": "def setup_args(parser):\n    parser.add_argument(\n        \"--input_img\",\n        type=str,\n        required=True,\n        help=\"Path to a single input img\",\n    )\n    parser.add_argument(\n        \"--input_mask_glob\",\n        type=str,",
         "detail": "DL_Model.inpaint-anything.lama_inpaint",
         "documentation": {}
     },
     {
-        "label": "os.environ['OMP_NUM_THREADS']",
+        "label": "os.environ[\"OMP_NUM_THREADS\"]",
         "kind": 5,
         "importPath": "DL_Model.inpaint-anything.lama_inpaint",
         "description": "DL_Model.inpaint-anything.lama_inpaint",
-        "peekOfCode": "os.environ['OMP_NUM_THREADS'] = '1'\nos.environ['OPENBLAS_NUM_THREADS'] = '1'\nos.environ['MKL_NUM_THREADS'] = '1'\nos.environ['VECLIB_MAXIMUM_THREADS'] = '1'\nos.environ['NUMEXPR_NUM_THREADS'] = '1'\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom utils import load_img_to_array, save_array_to_img",
+        "peekOfCode": "os.environ[\"OMP_NUM_THREADS\"] = \"1\"\nos.environ[\"OPENBLAS_NUM_THREADS\"] = \"1\"\nos.environ[\"MKL_NUM_THREADS\"] = \"1\"\nos.environ[\"VECLIB_MAXIMUM_THREADS\"] = \"1\"\nos.environ[\"NUMEXPR_NUM_THREADS\"] = \"1\"\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom utils import load_img_to_array, save_array_to_img",
         "detail": "DL_Model.inpaint-anything.lama_inpaint",
         "documentation": {}
     },
     {
-        "label": "os.environ['OPENBLAS_NUM_THREADS']",
+        "label": "os.environ[\"OPENBLAS_NUM_THREADS\"]",
         "kind": 5,
         "importPath": "DL_Model.inpaint-anything.lama_inpaint",
         "description": "DL_Model.inpaint-anything.lama_inpaint",
-        "peekOfCode": "os.environ['OPENBLAS_NUM_THREADS'] = '1'\nos.environ['MKL_NUM_THREADS'] = '1'\nos.environ['VECLIB_MAXIMUM_THREADS'] = '1'\nos.environ['NUMEXPR_NUM_THREADS'] = '1'\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom utils import load_img_to_array, save_array_to_img\n@torch.no_grad()",
+        "peekOfCode": "os.environ[\"OPENBLAS_NUM_THREADS\"] = \"1\"\nos.environ[\"MKL_NUM_THREADS\"] = \"1\"\nos.environ[\"VECLIB_MAXIMUM_THREADS\"] = \"1\"\nos.environ[\"NUMEXPR_NUM_THREADS\"] = \"1\"\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom utils import load_img_to_array, save_array_to_img\n@torch.no_grad()",
         "detail": "DL_Model.inpaint-anything.lama_inpaint",
         "documentation": {}
     },
     {
-        "label": "os.environ['MKL_NUM_THREADS']",
+        "label": "os.environ[\"MKL_NUM_THREADS\"]",
         "kind": 5,
         "importPath": "DL_Model.inpaint-anything.lama_inpaint",
         "description": "DL_Model.inpaint-anything.lama_inpaint",
-        "peekOfCode": "os.environ['MKL_NUM_THREADS'] = '1'\nos.environ['VECLIB_MAXIMUM_THREADS'] = '1'\nos.environ['NUMEXPR_NUM_THREADS'] = '1'\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom utils import load_img_to_array, save_array_to_img\n@torch.no_grad()\ndef inpaint_img_with_lama(",
+        "peekOfCode": "os.environ[\"MKL_NUM_THREADS\"] = \"1\"\nos.environ[\"VECLIB_MAXIMUM_THREADS\"] = \"1\"\nos.environ[\"NUMEXPR_NUM_THREADS\"] = \"1\"\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom utils import load_img_to_array, save_array_to_img\n@torch.no_grad()\ndef inpaint_img_with_lama(",
         "detail": "DL_Model.inpaint-anything.lama_inpaint",
         "documentation": {}
     },
     {
-        "label": "os.environ['VECLIB_MAXIMUM_THREADS']",
+        "label": "os.environ[\"VECLIB_MAXIMUM_THREADS\"]",
         "kind": 5,
         "importPath": "DL_Model.inpaint-anything.lama_inpaint",
         "description": "DL_Model.inpaint-anything.lama_inpaint",
-        "peekOfCode": "os.environ['VECLIB_MAXIMUM_THREADS'] = '1'\nos.environ['NUMEXPR_NUM_THREADS'] = '1'\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom utils import load_img_to_array, save_array_to_img\n@torch.no_grad()\ndef inpaint_img_with_lama(\n        img: np.ndarray,",
+        "peekOfCode": "os.environ[\"VECLIB_MAXIMUM_THREADS\"] = \"1\"\nos.environ[\"NUMEXPR_NUM_THREADS\"] = \"1\"\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom utils import load_img_to_array, save_array_to_img\n@torch.no_grad()\ndef inpaint_img_with_lama(\n    img: np.ndarray, mask: np.ndarray, config_p: str, ckpt_p: str, mod=8, device=\"cuda\"",
         "detail": "DL_Model.inpaint-anything.lama_inpaint",
         "documentation": {}
     },
     {
-        "label": "os.environ['NUMEXPR_NUM_THREADS']",
+        "label": "os.environ[\"NUMEXPR_NUM_THREADS\"]",
         "kind": 5,
         "importPath": "DL_Model.inpaint-anything.lama_inpaint",
         "description": "DL_Model.inpaint-anything.lama_inpaint",
-        "peekOfCode": "os.environ['NUMEXPR_NUM_THREADS'] = '1'\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom utils import load_img_to_array, save_array_to_img\n@torch.no_grad()\ndef inpaint_img_with_lama(\n        img: np.ndarray,\n        mask: np.ndarray,",
+        "peekOfCode": "os.environ[\"NUMEXPR_NUM_THREADS\"] = \"1\"\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom utils import load_img_to_array, save_array_to_img\n@torch.no_grad()\ndef inpaint_img_with_lama(\n    img: np.ndarray, mask: np.ndarray, config_p: str, ckpt_p: str, mod=8, device=\"cuda\"\n):",
         "detail": "DL_Model.inpaint-anything.lama_inpaint",
         "documentation": {}
     },
@@ -19056,7 +19224,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.sam_segment",
         "description": "DL_Model.inpaint-anything.sam_segment",
-        "peekOfCode": "def predict_masks_with_sam(\n        img: np.ndarray,\n        point_coords: List[List[float]],\n        point_labels: List[int],\n        model_type: str,\n        ckpt_p: str,\n        device=\"cuda\"\n):\n    point_coords = np.array(point_coords)\n    point_labels = np.array(point_labels)",
+        "peekOfCode": "def predict_masks_with_sam(\n    img: np.ndarray,\n    point_coords: List[List[float]],\n    point_labels: List[int],\n    model_type: str,\n    ckpt_p: str,\n    device=\"cuda\",\n):\n    point_coords = np.array(point_coords)\n    point_labels = np.array(point_labels)",
         "detail": "DL_Model.inpaint-anything.sam_segment",
         "documentation": {}
     },
@@ -19065,7 +19233,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.sam_segment",
         "description": "DL_Model.inpaint-anything.sam_segment",
-        "peekOfCode": "def build_sam_model(model_type: str, ckpt_p: str, device=\"cuda\"):\n    sam = sam_model_registry[model_type](checkpoint=ckpt_p)\n    sam.to(device=device)\n    predictor = SamPredictor(sam)\n    return predictor\ndef setup_args(parser):\n    parser.add_argument(\n        \"--input_img\", type=str, required=True,\n        help=\"Path to a single input img\",\n    )",
+        "peekOfCode": "def build_sam_model(model_type: str, ckpt_p: str, device=\"cuda\"):\n    sam = sam_model_registry[model_type](checkpoint=ckpt_p)\n    sam.to(device=device)\n    predictor = SamPredictor(sam)\n    return predictor\ndef setup_args(parser):\n    parser.add_argument(\n        \"--input_img\",\n        type=str,\n        required=True,",
         "detail": "DL_Model.inpaint-anything.sam_segment",
         "documentation": {}
     },
@@ -19074,7 +19242,7 @@
         "kind": 2,
         "importPath": "DL_Model.inpaint-anything.sam_segment",
         "description": "DL_Model.inpaint-anything.sam_segment",
-        "peekOfCode": "def setup_args(parser):\n    parser.add_argument(\n        \"--input_img\", type=str, required=True,\n        help=\"Path to a single input img\",\n    )\n    parser.add_argument(\n        \"--point_coords\", type=float, nargs='+', required=True,\n        help=\"The coordinate of the point prompt, [coord_W coord_H].\",\n    )\n    parser.add_argument(",
+        "peekOfCode": "def setup_args(parser):\n    parser.add_argument(\n        \"--input_img\",\n        type=str,\n        required=True,\n        help=\"Path to a single input img\",\n    )\n    parser.add_argument(\n        \"--point_coords\",\n        type=float,",
         "detail": "DL_Model.inpaint-anything.sam_segment",
         "documentation": {}
     },
@@ -19191,7 +19359,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.image_encoder",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.image_encoder",
-        "peekOfCode": "def window_partition(x: torch.Tensor, window_size: int) -> Tuple[torch.Tensor, Tuple[int, int]]:\n    \"\"\"\n    Partition into non-overlapping windows with padding if needed.\n    Args:\n        x (tensor): input tokens with [B, H, W, C].\n        window_size (int): window size.\n    Returns:\n        windows: windows after partition with [B * num_windows, window_size, window_size, C].\n        (Hp, Wp): padded height and width before partition\n    \"\"\"",
+        "peekOfCode": "def window_partition(\n    x: torch.Tensor, window_size: int\n) -> Tuple[torch.Tensor, Tuple[int, int]]:\n    \"\"\"\n    Partition into non-overlapping windows with padding if needed.\n    Args:\n        x (tensor): input tokens with [B, H, W, C].\n        window_size (int): window size.\n    Returns:\n        windows: windows after partition with [B * num_windows, window_size, window_size, C].",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.image_encoder",
         "documentation": {}
     },
@@ -19200,7 +19368,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.image_encoder",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.image_encoder",
-        "peekOfCode": "def window_unpartition(\n    windows: torch.Tensor, window_size: int, pad_hw: Tuple[int, int], hw: Tuple[int, int]\n) -> torch.Tensor:\n    \"\"\"\n    Window unpartition into original sequences and removing padding.\n    Args:\n        x (tensor): input tokens with [B * num_windows, window_size, window_size, C].\n        window_size (int): window size.\n        pad_hw (Tuple): padded height and width (Hp, Wp).\n        hw (Tuple): original height and width (H, W) before padding.",
+        "peekOfCode": "def window_unpartition(\n    windows: torch.Tensor,\n    window_size: int,\n    pad_hw: Tuple[int, int],\n    hw: Tuple[int, int],\n) -> torch.Tensor:\n    \"\"\"\n    Window unpartition into original sequences and removing padding.\n    Args:\n        x (tensor): input tokens with [B * num_windows, window_size, window_size, C].",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.image_encoder",
         "documentation": {}
     },
@@ -19272,7 +19440,7 @@
         "kind": 6,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class Conv2d_BN(torch.nn.Sequential):\n    def __init__(self, a, b, ks=1, stride=1, pad=0, dilation=1,\n                 groups=1, bn_weight_init=1):\n        super().__init__()\n        self.add_module('c', torch.nn.Conv2d(\n            a, b, ks, stride, pad, dilation, groups, bias=False))\n        bn = torch.nn.BatchNorm2d(b)\n        torch.nn.init.constant_(bn.weight, bn_weight_init)\n        torch.nn.init.constant_(bn.bias, 0)\n        self.add_module('bn', bn)",
+        "peekOfCode": "class Conv2d_BN(torch.nn.Sequential):\n    def __init__(\n        self, a, b, ks=1, stride=1, pad=0, dilation=1, groups=1, bn_weight_init=1\n    ):\n        super().__init__()\n        self.add_module(\n            \"c\", torch.nn.Conv2d(a, b, ks, stride, pad, dilation, groups, bias=False)\n        )\n        bn = torch.nn.BatchNorm2d(b)\n        torch.nn.init.constant_(bn.weight, bn_weight_init)",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -19281,7 +19449,7 @@
         "kind": 6,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class DropPath(TimmDropPath):\n    def __init__(self, drop_prob=None):\n        super().__init__(drop_prob=drop_prob)\n        self.drop_prob = drop_prob\n    def __repr__(self):\n        msg = super().__repr__()\n        msg += f'(drop_prob={self.drop_prob})'\n        return msg\nclass PatchEmbed(nn.Module):\n    def __init__(self, in_chans, embed_dim, resolution, activation):",
+        "peekOfCode": "class DropPath(TimmDropPath):\n    def __init__(self, drop_prob=None):\n        super().__init__(drop_prob=drop_prob)\n        self.drop_prob = drop_prob\n    def __repr__(self):\n        msg = super().__repr__()\n        msg += f\"(drop_prob={self.drop_prob})\"\n        return msg\nclass PatchEmbed(nn.Module):\n    def __init__(self, in_chans, embed_dim, resolution, activation):",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -19290,7 +19458,7 @@
         "kind": 6,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class PatchEmbed(nn.Module):\n    def __init__(self, in_chans, embed_dim, resolution, activation):\n        super().__init__()\n        img_size: Tuple[int, int] = to_2tuple(resolution)\n        self.patches_resolution = (img_size[0] // 4, img_size[1] // 4)\n        self.num_patches = self.patches_resolution[0] * \\\n            self.patches_resolution[1]\n        self.in_chans = in_chans\n        self.embed_dim = embed_dim\n        n = embed_dim",
+        "peekOfCode": "class PatchEmbed(nn.Module):\n    def __init__(self, in_chans, embed_dim, resolution, activation):\n        super().__init__()\n        img_size: Tuple[int, int] = to_2tuple(resolution)\n        self.patches_resolution = (img_size[0] // 4, img_size[1] // 4)\n        self.num_patches = self.patches_resolution[0] * self.patches_resolution[1]\n        self.in_chans = in_chans\n        self.embed_dim = embed_dim\n        n = embed_dim\n        self.seq = nn.Sequential(",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -19299,7 +19467,7 @@
         "kind": 6,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class MBConv(nn.Module):\n    def __init__(self, in_chans, out_chans, expand_ratio,\n                 activation, drop_path):\n        super().__init__()\n        self.in_chans = in_chans\n        self.hidden_chans = int(in_chans * expand_ratio)\n        self.out_chans = out_chans\n        self.conv1 = Conv2d_BN(in_chans, self.hidden_chans, ks=1)\n        self.act1 = activation()\n        self.conv2 = Conv2d_BN(self.hidden_chans, self.hidden_chans,",
+        "peekOfCode": "class MBConv(nn.Module):\n    def __init__(self, in_chans, out_chans, expand_ratio, activation, drop_path):\n        super().__init__()\n        self.in_chans = in_chans\n        self.hidden_chans = int(in_chans * expand_ratio)\n        self.out_chans = out_chans\n        self.conv1 = Conv2d_BN(in_chans, self.hidden_chans, ks=1)\n        self.act1 = activation()\n        self.conv2 = Conv2d_BN(\n            self.hidden_chans,",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -19308,7 +19476,7 @@
         "kind": 6,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class PatchMerging(nn.Module):\n    def __init__(self, input_resolution, dim, out_dim, activation):\n        super().__init__()\n        self.input_resolution = input_resolution\n        self.dim = dim\n        self.out_dim = out_dim\n        self.act = activation()\n        self.conv1 = Conv2d_BN(dim, out_dim, 1, 1, 0)\n        stride_c=2\n        if(out_dim==320 or out_dim==448 or out_dim==576):",
+        "peekOfCode": "class PatchMerging(nn.Module):\n    def __init__(self, input_resolution, dim, out_dim, activation):\n        super().__init__()\n        self.input_resolution = input_resolution\n        self.dim = dim\n        self.out_dim = out_dim\n        self.act = activation()\n        self.conv1 = Conv2d_BN(dim, out_dim, 1, 1, 0)\n        stride_c = 2\n        if out_dim == 320 or out_dim == 448 or out_dim == 576:",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -19317,7 +19485,7 @@
         "kind": 6,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class ConvLayer(nn.Module):\n    def __init__(self, dim, input_resolution, depth,\n                 activation,\n                 drop_path=0., downsample=None, use_checkpoint=False,\n                 out_dim=None,\n                 conv_expand_ratio=4.,\n                 ):\n        super().__init__()\n        self.dim = dim\n        self.input_resolution = input_resolution",
+        "peekOfCode": "class ConvLayer(nn.Module):\n    def __init__(\n        self,\n        dim,\n        input_resolution,\n        depth,\n        activation,\n        drop_path=0.0,\n        downsample=None,\n        use_checkpoint=False,",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -19326,7 +19494,7 @@
         "kind": 6,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class Mlp(nn.Module):\n    def __init__(self, in_features, hidden_features=None,\n                 out_features=None, act_layer=nn.GELU, drop=0.):\n        super().__init__()\n        out_features = out_features or in_features\n        hidden_features = hidden_features or in_features\n        self.norm = nn.LayerNorm(in_features)\n        self.fc1 = nn.Linear(in_features, hidden_features)\n        self.fc2 = nn.Linear(hidden_features, out_features)\n        self.act = act_layer()",
+        "peekOfCode": "class Mlp(nn.Module):\n    def __init__(\n        self,\n        in_features,\n        hidden_features=None,\n        out_features=None,\n        act_layer=nn.GELU,\n        drop=0.0,\n    ):\n        super().__init__()",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -19335,7 +19503,7 @@
         "kind": 6,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class Attention(torch.nn.Module):\n    def __init__(self, dim, key_dim, num_heads=8,\n                 attn_ratio=4,\n                 resolution=(14, 14),\n                 ):\n        super().__init__()\n        # (h, w)\n        assert isinstance(resolution, tuple) and len(resolution) == 2\n        self.num_heads = num_heads\n        self.scale = key_dim ** -0.5",
+        "peekOfCode": "class Attention(torch.nn.Module):\n    def __init__(\n        self,\n        dim,\n        key_dim,\n        num_heads=8,\n        attn_ratio=4,\n        resolution=(14, 14),\n    ):\n        super().__init__()",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -19344,7 +19512,7 @@
         "kind": 6,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class TinyViTBlock(nn.Module):\n    r\"\"\" TinyViT Block.\n    Args:\n        dim (int): Number of input channels.\n        input_resolution (tuple[int, int]): Input resulotion.\n        num_heads (int): Number of attention heads.\n        window_size (int): Window size.\n        mlp_ratio (float): Ratio of mlp hidden dim to embedding dim.\n        drop (float, optional): Dropout rate. Default: 0.0\n        drop_path (float, optional): Stochastic depth rate. Default: 0.0",
+        "peekOfCode": "class TinyViTBlock(nn.Module):\n    r\"\"\"TinyViT Block.\n    Args:\n        dim (int): Number of input channels.\n        input_resolution (tuple[int, int]): Input resulotion.\n        num_heads (int): Number of attention heads.\n        window_size (int): Window size.\n        mlp_ratio (float): Ratio of mlp hidden dim to embedding dim.\n        drop (float, optional): Dropout rate. Default: 0.0\n        drop_path (float, optional): Stochastic depth rate. Default: 0.0",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -19353,7 +19521,7 @@
         "kind": 6,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class BasicLayer(nn.Module):\n    \"\"\" A basic TinyViT layer for one stage.\n    Args:\n        dim (int): Number of input channels.\n        input_resolution (tuple[int]): Input resolution.\n        depth (int): Number of blocks.\n        num_heads (int): Number of attention heads.\n        window_size (int): Local window size.\n        mlp_ratio (float): Ratio of mlp hidden dim to embedding dim.\n        drop (float, optional): Dropout rate. Default: 0.0",
+        "peekOfCode": "class BasicLayer(nn.Module):\n    \"\"\"A basic TinyViT layer for one stage.\n    Args:\n        dim (int): Number of input channels.\n        input_resolution (tuple[int]): Input resolution.\n        depth (int): Number of blocks.\n        num_heads (int): Number of attention heads.\n        window_size (int): Local window size.\n        mlp_ratio (float): Ratio of mlp hidden dim to embedding dim.\n        drop (float, optional): Dropout rate. Default: 0.0",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -19371,7 +19539,7 @@
         "kind": 6,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "class TinyViT(nn.Module):\n    def __init__(self, img_size=224, in_chans=3, num_classes=1000,\n                 embed_dims=[96, 192, 384, 768], depths=[2, 2, 6, 2],\n                 num_heads=[3, 6, 12, 24],\n                 window_sizes=[7, 7, 14, 7],\n                 mlp_ratio=4.,\n                 drop_rate=0.,\n                 drop_path_rate=0.1,\n                 use_checkpoint=False,\n                 mbconv_expand_ratio=4.0,",
+        "peekOfCode": "class TinyViT(nn.Module):\n    def __init__(\n        self,\n        img_size=224,\n        in_chans=3,\n        num_classes=1000,\n        embed_dims=[96, 192, 384, 768],\n        depths=[2, 2, 6, 2],\n        num_heads=[3, 6, 12, 24],\n        window_sizes=[7, 7, 14, 7],",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -19380,7 +19548,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "def register_tiny_vit_model(fn):\n    '''Register a TinyViT model\n    It is a wrapper of `register_model` with loading the pretrained checkpoint.\n    '''\n    def fn_wrapper(pretrained=False, **kwargs):\n        model = fn()\n        if pretrained:\n            model_name = fn.__name__\n            assert model_name in _provided_checkpoints, \\\n                f'Sorry that the checkpoint `{model_name}` is not provided yet.'",
+        "peekOfCode": "def register_tiny_vit_model(fn):\n    \"\"\"Register a TinyViT model\n    It is a wrapper of `register_model` with loading the pretrained checkpoint.\n    \"\"\"\n    def fn_wrapper(pretrained=False, **kwargs):\n        model = fn()\n        if pretrained:\n            model_name = fn.__name__\n            assert (\n                model_name in _provided_checkpoints",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -19434,7 +19602,7 @@
         "kind": 5,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "_checkpoint_url_format = \\\n    'https://github.com/wkcn/TinyViT-model-zoo/releases/download/checkpoints/{}.pth'\n_provided_checkpoints = {\n    'tiny_vit_5m_224': 'tiny_vit_5m_22kto1k_distill',\n    'tiny_vit_11m_224': 'tiny_vit_11m_22kto1k_distill',\n    'tiny_vit_21m_224': 'tiny_vit_21m_22kto1k_distill',\n    'tiny_vit_21m_384': 'tiny_vit_21m_22kto1k_384_distill',\n    'tiny_vit_21m_512': 'tiny_vit_21m_22kto1k_512_distill',\n}\ndef register_tiny_vit_model(fn):",
+        "peekOfCode": "_checkpoint_url_format = (\n    \"https://github.com/wkcn/TinyViT-model-zoo/releases/download/checkpoints/{}.pth\"\n)\n_provided_checkpoints = {\n    \"tiny_vit_5m_224\": \"tiny_vit_5m_22kto1k_distill\",\n    \"tiny_vit_11m_224\": \"tiny_vit_11m_22kto1k_distill\",\n    \"tiny_vit_21m_224\": \"tiny_vit_21m_22kto1k_distill\",\n    \"tiny_vit_21m_384\": \"tiny_vit_21m_22kto1k_384_distill\",\n    \"tiny_vit_21m_512\": \"tiny_vit_21m_22kto1k_512_distill\",\n}",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -19443,7 +19611,7 @@
         "kind": 5,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
-        "peekOfCode": "_provided_checkpoints = {\n    'tiny_vit_5m_224': 'tiny_vit_5m_22kto1k_distill',\n    'tiny_vit_11m_224': 'tiny_vit_11m_22kto1k_distill',\n    'tiny_vit_21m_224': 'tiny_vit_21m_22kto1k_distill',\n    'tiny_vit_21m_384': 'tiny_vit_21m_22kto1k_384_distill',\n    'tiny_vit_21m_512': 'tiny_vit_21m_22kto1k_512_distill',\n}\ndef register_tiny_vit_model(fn):\n    '''Register a TinyViT model\n    It is a wrapper of `register_model` with loading the pretrained checkpoint.",
+        "peekOfCode": "_provided_checkpoints = {\n    \"tiny_vit_5m_224\": \"tiny_vit_5m_22kto1k_distill\",\n    \"tiny_vit_11m_224\": \"tiny_vit_11m_22kto1k_distill\",\n    \"tiny_vit_21m_224\": \"tiny_vit_21m_22kto1k_distill\",\n    \"tiny_vit_21m_384\": \"tiny_vit_21m_22kto1k_384_distill\",\n    \"tiny_vit_21m_512\": \"tiny_vit_21m_22kto1k_512_distill\",\n}\ndef register_tiny_vit_model(fn):\n    \"\"\"Register a TinyViT model\n    It is a wrapper of `register_model` with loading the pretrained checkpoint.",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.modeling.tiny_vit_sam",
         "documentation": {}
     },
@@ -19686,7 +19854,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.segment_anything.segment_anything.build_sam",
         "description": "ai_eraser.inpaint_anything.segment_anything.segment_anything.build_sam",
-        "peekOfCode": "def build_sam_vit_t(checkpoint=None):\n    prompt_embed_dim = 256\n    image_size = 1024\n    vit_patch_size = 16\n    image_embedding_size = image_size // vit_patch_size\n    mobile_sam = Sam(\n            image_encoder=TinyViT(img_size=1024, in_chans=3, num_classes=1000,\n                embed_dims=[64, 128, 160, 320],\n                depths=[2, 2, 6, 2],\n                num_heads=[2, 4, 5, 10],",
+        "peekOfCode": "def build_sam_vit_t(checkpoint=None):\n    prompt_embed_dim = 256\n    image_size = 1024\n    vit_patch_size = 16\n    image_embedding_size = image_size // vit_patch_size\n    mobile_sam = Sam(\n        image_encoder=TinyViT(\n            img_size=1024,\n            in_chans=3,\n            num_classes=1000,",
         "detail": "ai_eraser.inpaint_anything.segment_anything.segment_anything.build_sam",
         "documentation": {}
     },
@@ -19731,7 +19899,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.utils.utils",
         "description": "ai_eraser.inpaint_anything.utils.utils",
-        "peekOfCode": "def save_array_to_img(img_arr, img_p):\n    Image.fromarray(img_arr.astype(np.uint8)).save(img_p)\ndef dilate_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)\n    mask = cv2.dilate(\n        mask,\n        np.ones((dilate_factor, dilate_factor), np.uint8),\n        iterations=1\n    )\n    return mask",
+        "peekOfCode": "def save_array_to_img(img_arr, img_p):\n    Image.fromarray(img_arr.astype(np.uint8)).save(img_p)\ndef dilate_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)\n    mask = cv2.dilate(\n        mask, np.ones((dilate_factor, dilate_factor), np.uint8), iterations=1\n    )\n    return mask\ndef erode_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)",
         "detail": "ai_eraser.inpaint_anything.utils.utils",
         "documentation": {}
     },
@@ -19740,7 +19908,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.utils.utils",
         "description": "ai_eraser.inpaint_anything.utils.utils",
-        "peekOfCode": "def dilate_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)\n    mask = cv2.dilate(\n        mask,\n        np.ones((dilate_factor, dilate_factor), np.uint8),\n        iterations=1\n    )\n    return mask\ndef erode_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)",
+        "peekOfCode": "def dilate_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)\n    mask = cv2.dilate(\n        mask, np.ones((dilate_factor, dilate_factor), np.uint8), iterations=1\n    )\n    return mask\ndef erode_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)\n    mask = cv2.erode(\n        mask, np.ones((dilate_factor, dilate_factor), np.uint8), iterations=1",
         "detail": "ai_eraser.inpaint_anything.utils.utils",
         "documentation": {}
     },
@@ -19749,7 +19917,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.utils.utils",
         "description": "ai_eraser.inpaint_anything.utils.utils",
-        "peekOfCode": "def erode_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)\n    mask = cv2.erode(\n        mask,\n        np.ones((dilate_factor, dilate_factor), np.uint8),\n        iterations=1\n    )\n    return mask\ndef show_mask(ax, mask: np.ndarray, random_color=False):\n    mask = mask.astype(np.uint8)",
+        "peekOfCode": "def erode_mask(mask, dilate_factor=15):\n    mask = mask.astype(np.uint8)\n    mask = cv2.erode(\n        mask, np.ones((dilate_factor, dilate_factor), np.uint8), iterations=1\n    )\n    return mask\ndef show_mask(ax, mask: np.ndarray, random_color=False):\n    mask = mask.astype(np.uint8)\n    if np.max(mask) == 255:\n        mask = mask / 255",
         "detail": "ai_eraser.inpaint_anything.utils.utils",
         "documentation": {}
     },
@@ -19767,7 +19935,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.utils.utils",
         "description": "ai_eraser.inpaint_anything.utils.utils",
-        "peekOfCode": "def show_points(ax, coords: List[List[float]], labels: List[int], size=375):\n    coords = np.array(coords)\n    labels = np.array(labels)\n    color_table = {0: 'red', 1: 'green'}\n    for label_value, color in color_table.items():\n        points = coords[labels == label_value]\n        ax.scatter(points[:, 0], points[:, 1], color=color, marker='*',\n                   s=size, edgecolor='white', linewidth=1.25)\ndef get_clicked_point(img_path):\n    img = cv2.imread(img_path)",
+        "peekOfCode": "def show_points(ax, coords: List[List[float]], labels: List[int], size=375):\n    coords = np.array(coords)\n    labels = np.array(labels)\n    color_table = {0: \"red\", 1: \"green\"}\n    for label_value, color in color_table.items():\n        points = coords[labels == label_value]\n        ax.scatter(\n            points[:, 0],\n            points[:, 1],\n            color=color,",
         "detail": "ai_eraser.inpaint_anything.utils.utils",
         "documentation": {}
     },
@@ -19794,7 +19962,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.apply_removal",
         "description": "ai_eraser.inpaint_anything.apply_removal",
-        "peekOfCode": "def apply_removal(\n    input_img,\n    mask_mode,\n    masks_dir,\n    lama_config,\n    lama_ckpt\n):\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    img = load_img_to_array(input_img)\n    masks_dir = Path(masks_dir)",
+        "peekOfCode": "def apply_removal(input_img, mask_mode, masks_dir, lama_config, lama_ckpt):\n    device = \"cuda\" if torch.cuda.is_available() else \"cpu\"\n    img = load_img_to_array(input_img)\n    masks_dir = Path(masks_dir)\n    if not masks_dir.exists():\n        raise ValueError(f\"Masks directory not found: {masks_dir}\")\n    if mask_mode == \"sam\":\n        mask_files = list(masks_dir.glob(\"mask_*.png\"))\n    else:\n        mask_files = list(masks_dir.glob(\"mask_0.png\"))",
         "detail": "ai_eraser.inpaint_anything.apply_removal",
         "documentation": {}
     },
@@ -19839,7 +20007,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.coordinate",
         "description": "ai_eraser.inpaint_anything.coordinate",
-        "peekOfCode": "def on_click(event):\n    x, y = event.xdata, event.ydata\n    if x is not None and y is not None:\n        print(f\"Clicked at coordinates: x={x}, y={y}\")\n    else:\n        print(\"Click was outside the image bounds.\")\nimage_path = 'input_path' \nimg = mpimg.imread(image_path)\nfig, ax = plt.subplots()\nax.imshow(img)",
+        "peekOfCode": "def on_click(event):\n    x, y = event.xdata, event.ydata\n    if x is not None and y is not None:\n        print(f\"Clicked at coordinates: x={x}, y={y}\")\n    else:\n        print(\"Click was outside the image bounds.\")\nimage_path = \"input_path\"\nimg = mpimg.imread(image_path)\nfig, ax = plt.subplots()\nax.imshow(img)",
         "detail": "ai_eraser.inpaint_anything.coordinate",
         "documentation": {}
     },
@@ -19848,7 +20016,7 @@
         "kind": 5,
         "importPath": "ai_eraser.inpaint_anything.coordinate",
         "description": "ai_eraser.inpaint_anything.coordinate",
-        "peekOfCode": "image_path = 'input_path' \nimg = mpimg.imread(image_path)\nfig, ax = plt.subplots()\nax.imshow(img)\nax.set_title('Click on the image to get coordinates')\nfig.canvas.mpl_connect('button_press_event', on_click)\nplt.show()",
+        "peekOfCode": "image_path = \"input_path\"\nimg = mpimg.imread(image_path)\nfig, ax = plt.subplots()\nax.imshow(img)\nax.set_title(\"Click on the image to get coordinates\")\nfig.canvas.mpl_connect(\"button_press_event\", on_click)\nplt.show()",
         "detail": "ai_eraser.inpaint_anything.coordinate",
         "documentation": {}
     },
@@ -19857,7 +20025,7 @@
         "kind": 5,
         "importPath": "ai_eraser.inpaint_anything.coordinate",
         "description": "ai_eraser.inpaint_anything.coordinate",
-        "peekOfCode": "img = mpimg.imread(image_path)\nfig, ax = plt.subplots()\nax.imshow(img)\nax.set_title('Click on the image to get coordinates')\nfig.canvas.mpl_connect('button_press_event', on_click)\nplt.show()",
+        "peekOfCode": "img = mpimg.imread(image_path)\nfig, ax = plt.subplots()\nax.imshow(img)\nax.set_title(\"Click on the image to get coordinates\")\nfig.canvas.mpl_connect(\"button_press_event\", on_click)\nplt.show()",
         "detail": "ai_eraser.inpaint_anything.coordinate",
         "documentation": {}
     },
@@ -19866,7 +20034,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.create_manual_mask",
         "description": "ai_eraser.inpaint_anything.create_manual_mask",
-        "peekOfCode": "def create_manual_mask(input_img, output_dir):\n    img = cv2.imread(input_img)\n    mask = np.zeros(img.shape[:2], dtype=np.uint8)\n    def draw_mask(event, x, y, flags, param):\n        if event == cv2.EVENT_LBUTTONDOWN:\n            cv2.circle(mask, (x,y), 3, 255, -1)\n        elif event == cv2.EVENT_MOUSEMOVE and flags & cv2.EVENT_FLAG_LBUTTON:\n            cv2.circle(mask, (x,y), 3, 255, -1)\n    window_name = \"Draw Mask (Draw with left mouse button, 's' to save, 'q' to quit)\"\n    cv2.namedWindow(window_name)",
+        "peekOfCode": "def create_manual_mask(input_img, output_dir):\n    img = cv2.imread(input_img)\n    mask = np.zeros(img.shape[:2], dtype=np.uint8)\n    def draw_mask(event, x, y, flags, param):\n        if event == cv2.EVENT_LBUTTONDOWN:\n            cv2.circle(mask, (x, y), 3, 255, -1)\n        elif event == cv2.EVENT_MOUSEMOVE and flags & cv2.EVENT_FLAG_LBUTTON:\n            cv2.circle(mask, (x, y), 3, 255, -1)\n    window_name = \"Draw Mask (Draw with left mouse button, 's' to save, 'q' to quit)\"\n    cv2.namedWindow(window_name)",
         "detail": "ai_eraser.inpaint_anything.create_manual_mask",
         "documentation": {}
     },
@@ -19875,7 +20043,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.generate_masks",
         "description": "ai_eraser.inpaint_anything.generate_masks",
-        "peekOfCode": "def generate_masks(\n    input_img,\n    coords_type,\n    point_coords,\n    point_labels,\n    dilate_kernel_size,\n    output_dir,\n    sam_model_type,\n    sam_ckpt,\n    operation_type=\"fill\"  ",
+        "peekOfCode": "def generate_masks(\n    input_img,\n    coords_type,\n    point_coords,\n    point_labels,\n    dilate_kernel_size,\n    output_dir,\n    sam_model_type,\n    sam_ckpt,\n    operation_type=\"fill\",",
         "detail": "ai_eraser.inpaint_anything.generate_masks",
         "documentation": {}
     },
@@ -19884,7 +20052,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.lama_inpaint",
         "description": "ai_eraser.inpaint_anything.lama_inpaint",
-        "peekOfCode": "def inpaint_img_with_lama(\n        img: np.ndarray,\n        mask: np.ndarray,\n        config_p: str,\n        ckpt_p: str,\n        mod=8,\n        device=\"cuda\"\n):\n    assert len(mask.shape) == 2\n    if np.max(mask) == 1:",
+        "peekOfCode": "def inpaint_img_with_lama(\n    img: np.ndarray, mask: np.ndarray, config_p: str, ckpt_p: str, mod=8, device=\"cuda\"\n):\n    assert len(mask.shape) == 2\n    if np.max(mask) == 1:\n        mask = mask * 255\n    img = torch.from_numpy(img).float().div(255.0)\n    mask = torch.from_numpy(mask).float()\n    predict_config = OmegaConf.load(config_p)\n    predict_config.model.path = ckpt_p",
         "detail": "ai_eraser.inpaint_anything.lama_inpaint",
         "documentation": {}
     },
@@ -19893,7 +20061,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.lama_inpaint",
         "description": "ai_eraser.inpaint_anything.lama_inpaint",
-        "peekOfCode": "def build_lama_model(        \n        config_p: str,\n        ckpt_p: str,\n        device=\"cuda\"\n):\n    predict_config = OmegaConf.load(config_p)\n    predict_config.model.path = ckpt_p\n    device = torch.device(device)\n    train_config_path = os.path.join(\n        predict_config.model.path, 'config.yaml')",
+        "peekOfCode": "def build_lama_model(config_p: str, ckpt_p: str, device=\"cuda\"):\n    predict_config = OmegaConf.load(config_p)\n    predict_config.model.path = ckpt_p\n    device = torch.device(device)\n    train_config_path = os.path.join(predict_config.model.path, \"config.yaml\")\n    with open(train_config_path, \"r\") as f:\n        train_config = OmegaConf.create(yaml.safe_load(f))\n    train_config.training_model.predict_only = True\n    train_config.visualizer.kind = \"noop\"\n    checkpoint_path = os.path.join(",
         "detail": "ai_eraser.inpaint_anything.lama_inpaint",
         "documentation": {}
     },
@@ -19902,7 +20070,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.lama_inpaint",
         "description": "ai_eraser.inpaint_anything.lama_inpaint",
-        "peekOfCode": "def inpaint_img_with_builded_lama(\n        model,\n        img: np.ndarray,\n        mask: np.ndarray,\n        config_p=None,\n        mod=8,\n        device=\"cuda\"\n):\n    assert len(mask.shape) == 2\n    if np.max(mask) == 1:",
+        "peekOfCode": "def inpaint_img_with_builded_lama(\n    model, img: np.ndarray, mask: np.ndarray, config_p=None, mod=8, device=\"cuda\"\n):\n    assert len(mask.shape) == 2\n    if np.max(mask) == 1:\n        mask = mask * 255\n    img = torch.from_numpy(img).float().div(255.0)\n    mask = torch.from_numpy(mask).float()\n    batch = {}\n    batch[\"image\"] = img.permute(2, 0, 1).unsqueeze(0)",
         "detail": "ai_eraser.inpaint_anything.lama_inpaint",
         "documentation": {}
     },
@@ -19911,52 +20079,52 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.lama_inpaint",
         "description": "ai_eraser.inpaint_anything.lama_inpaint",
-        "peekOfCode": "def setup_args(parser):\n    parser.add_argument(\n        \"--input_img\", type=str, required=True,\n        help=\"Path to a single input img\",\n    )\n    parser.add_argument(\n        \"--input_mask_glob\", type=str, required=True,\n        help=\"Glob to input masks\",\n    )\n    parser.add_argument(",
+        "peekOfCode": "def setup_args(parser):\n    parser.add_argument(\n        \"--input_img\",\n        type=str,\n        required=True,\n        help=\"Path to a single input img\",\n    )\n    parser.add_argument(\n        \"--input_mask_glob\",\n        type=str,",
         "detail": "ai_eraser.inpaint_anything.lama_inpaint",
         "documentation": {}
     },
     {
-        "label": "os.environ['OMP_NUM_THREADS']",
+        "label": "os.environ[\"OMP_NUM_THREADS\"]",
         "kind": 5,
         "importPath": "ai_eraser.inpaint_anything.lama_inpaint",
         "description": "ai_eraser.inpaint_anything.lama_inpaint",
-        "peekOfCode": "os.environ['OMP_NUM_THREADS'] = '1'\nos.environ['OPENBLAS_NUM_THREADS'] = '1'\nos.environ['MKL_NUM_THREADS'] = '1'\nos.environ['VECLIB_MAXIMUM_THREADS'] = '1'\nos.environ['NUMEXPR_NUM_THREADS'] = '1'\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom utils import load_img_to_array, save_array_to_img",
+        "peekOfCode": "os.environ[\"OMP_NUM_THREADS\"] = \"1\"\nos.environ[\"OPENBLAS_NUM_THREADS\"] = \"1\"\nos.environ[\"MKL_NUM_THREADS\"] = \"1\"\nos.environ[\"VECLIB_MAXIMUM_THREADS\"] = \"1\"\nos.environ[\"NUMEXPR_NUM_THREADS\"] = \"1\"\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom utils import load_img_to_array, save_array_to_img",
         "detail": "ai_eraser.inpaint_anything.lama_inpaint",
         "documentation": {}
     },
     {
-        "label": "os.environ['OPENBLAS_NUM_THREADS']",
+        "label": "os.environ[\"OPENBLAS_NUM_THREADS\"]",
         "kind": 5,
         "importPath": "ai_eraser.inpaint_anything.lama_inpaint",
         "description": "ai_eraser.inpaint_anything.lama_inpaint",
-        "peekOfCode": "os.environ['OPENBLAS_NUM_THREADS'] = '1'\nos.environ['MKL_NUM_THREADS'] = '1'\nos.environ['VECLIB_MAXIMUM_THREADS'] = '1'\nos.environ['NUMEXPR_NUM_THREADS'] = '1'\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom utils import load_img_to_array, save_array_to_img\n@torch.no_grad()",
+        "peekOfCode": "os.environ[\"OPENBLAS_NUM_THREADS\"] = \"1\"\nos.environ[\"MKL_NUM_THREADS\"] = \"1\"\nos.environ[\"VECLIB_MAXIMUM_THREADS\"] = \"1\"\nos.environ[\"NUMEXPR_NUM_THREADS\"] = \"1\"\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom utils import load_img_to_array, save_array_to_img\n@torch.no_grad()",
         "detail": "ai_eraser.inpaint_anything.lama_inpaint",
         "documentation": {}
     },
     {
-        "label": "os.environ['MKL_NUM_THREADS']",
+        "label": "os.environ[\"MKL_NUM_THREADS\"]",
         "kind": 5,
         "importPath": "ai_eraser.inpaint_anything.lama_inpaint",
         "description": "ai_eraser.inpaint_anything.lama_inpaint",
-        "peekOfCode": "os.environ['MKL_NUM_THREADS'] = '1'\nos.environ['VECLIB_MAXIMUM_THREADS'] = '1'\nos.environ['NUMEXPR_NUM_THREADS'] = '1'\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom utils import load_img_to_array, save_array_to_img\n@torch.no_grad()\ndef inpaint_img_with_lama(",
+        "peekOfCode": "os.environ[\"MKL_NUM_THREADS\"] = \"1\"\nos.environ[\"VECLIB_MAXIMUM_THREADS\"] = \"1\"\nos.environ[\"NUMEXPR_NUM_THREADS\"] = \"1\"\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom utils import load_img_to_array, save_array_to_img\n@torch.no_grad()\ndef inpaint_img_with_lama(",
         "detail": "ai_eraser.inpaint_anything.lama_inpaint",
         "documentation": {}
     },
     {
-        "label": "os.environ['VECLIB_MAXIMUM_THREADS']",
+        "label": "os.environ[\"VECLIB_MAXIMUM_THREADS\"]",
         "kind": 5,
         "importPath": "ai_eraser.inpaint_anything.lama_inpaint",
         "description": "ai_eraser.inpaint_anything.lama_inpaint",
-        "peekOfCode": "os.environ['VECLIB_MAXIMUM_THREADS'] = '1'\nos.environ['NUMEXPR_NUM_THREADS'] = '1'\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom utils import load_img_to_array, save_array_to_img\n@torch.no_grad()\ndef inpaint_img_with_lama(\n        img: np.ndarray,",
+        "peekOfCode": "os.environ[\"VECLIB_MAXIMUM_THREADS\"] = \"1\"\nos.environ[\"NUMEXPR_NUM_THREADS\"] = \"1\"\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom utils import load_img_to_array, save_array_to_img\n@torch.no_grad()\ndef inpaint_img_with_lama(\n    img: np.ndarray, mask: np.ndarray, config_p: str, ckpt_p: str, mod=8, device=\"cuda\"",
         "detail": "ai_eraser.inpaint_anything.lama_inpaint",
         "documentation": {}
     },
     {
-        "label": "os.environ['NUMEXPR_NUM_THREADS']",
+        "label": "os.environ[\"NUMEXPR_NUM_THREADS\"]",
         "kind": 5,
         "importPath": "ai_eraser.inpaint_anything.lama_inpaint",
         "description": "ai_eraser.inpaint_anything.lama_inpaint",
-        "peekOfCode": "os.environ['NUMEXPR_NUM_THREADS'] = '1'\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom utils import load_img_to_array, save_array_to_img\n@torch.no_grad()\ndef inpaint_img_with_lama(\n        img: np.ndarray,\n        mask: np.ndarray,",
+        "peekOfCode": "os.environ[\"NUMEXPR_NUM_THREADS\"] = \"1\"\nsys.path.insert(0, str(Path(__file__).resolve().parent / \"lama\"))\nfrom saicinpainting.evaluation.data import pad_tensor_to_modulo\nfrom saicinpainting.evaluation.utils import move_to_device\nfrom saicinpainting.training.trainers import load_checkpoint\nfrom utils import load_img_to_array, save_array_to_img\n@torch.no_grad()\ndef inpaint_img_with_lama(\n    img: np.ndarray, mask: np.ndarray, config_p: str, ckpt_p: str, mod=8, device=\"cuda\"\n):",
         "detail": "ai_eraser.inpaint_anything.lama_inpaint",
         "documentation": {}
     },
@@ -20010,7 +20178,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.sam_segment",
         "description": "ai_eraser.inpaint_anything.sam_segment",
-        "peekOfCode": "def predict_masks_with_sam(\n        img: np.ndarray,\n        point_coords: List[List[float]],\n        point_labels: List[int],\n        model_type: str,\n        ckpt_p: str,\n        device=\"cuda\"\n):\n    point_coords = np.array(point_coords)\n    point_labels = np.array(point_labels)",
+        "peekOfCode": "def predict_masks_with_sam(\n    img: np.ndarray,\n    point_coords: List[List[float]],\n    point_labels: List[int],\n    model_type: str,\n    ckpt_p: str,\n    device=\"cuda\",\n):\n    point_coords = np.array(point_coords)\n    point_labels = np.array(point_labels)",
         "detail": "ai_eraser.inpaint_anything.sam_segment",
         "documentation": {}
     },
@@ -20019,7 +20187,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.sam_segment",
         "description": "ai_eraser.inpaint_anything.sam_segment",
-        "peekOfCode": "def build_sam_model(model_type: str, ckpt_p: str, device=\"cuda\"):\n    sam = sam_model_registry[model_type](checkpoint=ckpt_p)\n    sam.to(device=device)\n    predictor = SamPredictor(sam)\n    return predictor\ndef setup_args(parser):\n    parser.add_argument(\n        \"--input_img\", type=str, required=True,\n        help=\"Path to a single input img\",\n    )",
+        "peekOfCode": "def build_sam_model(model_type: str, ckpt_p: str, device=\"cuda\"):\n    sam = sam_model_registry[model_type](checkpoint=ckpt_p)\n    sam.to(device=device)\n    predictor = SamPredictor(sam)\n    return predictor\ndef setup_args(parser):\n    parser.add_argument(\n        \"--input_img\",\n        type=str,\n        required=True,",
         "detail": "ai_eraser.inpaint_anything.sam_segment",
         "documentation": {}
     },
@@ -20028,7 +20196,7 @@
         "kind": 2,
         "importPath": "ai_eraser.inpaint_anything.sam_segment",
         "description": "ai_eraser.inpaint_anything.sam_segment",
-        "peekOfCode": "def setup_args(parser):\n    parser.add_argument(\n        \"--input_img\", type=str, required=True,\n        help=\"Path to a single input img\",\n    )\n    parser.add_argument(\n        \"--point_coords\", type=float, nargs='+', required=True,\n        help=\"The coordinate of the point prompt, [coord_W coord_H].\",\n    )\n    parser.add_argument(",
+        "peekOfCode": "def setup_args(parser):\n    parser.add_argument(\n        \"--input_img\",\n        type=str,\n        required=True,\n        help=\"Path to a single input img\",\n    )\n    parser.add_argument(\n        \"--point_coords\",\n        type=float,",
         "detail": "ai_eraser.inpaint_anything.sam_segment",
         "documentation": {}
     },
@@ -20091,7 +20259,7 @@
         "kind": 6,
         "importPath": "ai_eraser.apps",
         "description": "ai_eraser.apps",
-        "peekOfCode": "class AiEraserConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'ai_eraser'",
+        "peekOfCode": "class AiEraserConfig(AppConfig):\n    default_auto_field = \"django.db.models.BigAutoField\"\n    name = \"ai_eraser\"",
         "detail": "ai_eraser.apps",
         "documentation": {}
     },
@@ -20298,7 +20466,7 @@
         "kind": 6,
         "importPath": "ai_filter.apps",
         "description": "ai_filter.apps",
-        "peekOfCode": "class AiFilterConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'ai_filter'",
+        "peekOfCode": "class AiFilterConfig(AppConfig):\n    default_auto_field = \"django.db.models.BigAutoField\"\n    name = \"ai_filter\"",
         "detail": "ai_filter.apps",
         "documentation": {}
     },
@@ -20334,7 +20502,7 @@
         "kind": 6,
         "importPath": "ai_image_upscale.apps",
         "description": "ai_image_upscale.apps",
-        "peekOfCode": "class AiImageUpscaleConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'ai_image_upscale'",
+        "peekOfCode": "class AiImageUpscaleConfig(AppConfig):\n    default_auto_field = \"django.db.models.BigAutoField\"\n    name = \"ai_image_upscale\"",
         "detail": "ai_image_upscale.apps",
         "documentation": {}
     },
@@ -20343,8 +20511,17 @@
         "kind": 6,
         "importPath": "ai_text_to_image_generator.apps",
         "description": "ai_text_to_image_generator.apps",
-        "peekOfCode": "class TextToImageGeneratorConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'ai_text_to_image_generator'",
+        "peekOfCode": "class TextToImageGeneratorConfig(AppConfig):\n    default_auto_field = \"django.db.models.BigAutoField\"\n    name = \"ai_text_to_image_generator\"",
         "detail": "ai_text_to_image_generator.apps",
+        "documentation": {}
+    },
+    {
+        "label": "NeuralStyleTransfer",
+        "kind": 6,
+        "importPath": "artistic_image_creator.nst.nst",
+        "description": "artistic_image_creator.nst.nst",
+        "peekOfCode": "class NeuralStyleTransfer:\n    def __init__(self, model_path=None):\n        self.img_size = 400\n        self.pp = pprint.PrettyPrinter(indent=4)\n        self.model_path = model_path\n        self.vgg = self._load_vgg_model()\n        self.content_image = None\n        self.style_image = None\n        self.generated_image = None\n        self.optimizer = tf.keras.optimizers.Adam(",
+        "detail": "artistic_image_creator.nst.nst",
         "documentation": {}
     },
     {
@@ -20352,7 +20529,7 @@
         "kind": 6,
         "importPath": "artistic_image_creator.apps",
         "description": "artistic_image_creator.apps",
-        "peekOfCode": "class ArtisticImageCreatorConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'artistic_image_creator'",
+        "peekOfCode": "class ArtisticImageCreatorConfig(AppConfig):\n    default_auto_field = \"django.db.models.BigAutoField\"\n    name = \"artistic_image_creator\"",
         "detail": "artistic_image_creator.apps",
         "documentation": {}
     },
@@ -20361,7 +20538,7 @@
         "kind": 5,
         "importPath": "artistic_image_creator.urls",
         "description": "artistic_image_creator.urls",
-        "peekOfCode": "app_name = \"artistic-image-creator\"\nurlpatterns = [\n    path(\"\", views.artistic_image_creator, name=\"artistic_image_creator\"),\n]",
+        "peekOfCode": "app_name = \"artistic-image-creator\"\nurlpatterns = [\n    path(\"\", views.artistic_image_creator, name=\"artistic_image_creator\"),\n    path(\"generate/\", views.api_artistic_image_creator, name=\"artistic_image_creator_api\"),\n]",
         "detail": "artistic_image_creator.urls",
         "documentation": {}
     },
@@ -20370,7 +20547,7 @@
         "kind": 5,
         "importPath": "artistic_image_creator.urls",
         "description": "artistic_image_creator.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"\", views.artistic_image_creator, name=\"artistic_image_creator\"),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"\", views.artistic_image_creator, name=\"artistic_image_creator\"),\n    path(\"generate/\", views.api_artistic_image_creator, name=\"artistic_image_creator_api\"),\n]",
         "detail": "artistic_image_creator.urls",
         "documentation": {}
     },
@@ -20379,7 +20556,25 @@
         "kind": 2,
         "importPath": "artistic_image_creator.views",
         "description": "artistic_image_creator.views",
-        "peekOfCode": "def artistic_image_creator(request):\n    return render(request, \"pages/artistic_image_creator.html\")",
+        "peekOfCode": "def artistic_image_creator(request):\n    return render(request, \"pages/artistic_image_creator.html\")\ndef api_artistic_image_creator(request):\n    request.session.flush()\n    if request.method == \"POST\":\n        try:\n            # Ensure 'file' is in the request\n            if \"file\" not in request.FILES:\n                return JsonResponse(\n                    {\"status\": \"error\", \"message\": \"No file uploaded.\"}, status=400",
+        "detail": "artistic_image_creator.views",
+        "documentation": {}
+    },
+    {
+        "label": "api_artistic_image_creator",
+        "kind": 2,
+        "importPath": "artistic_image_creator.views",
+        "description": "artistic_image_creator.views",
+        "peekOfCode": "def api_artistic_image_creator(request):\n    request.session.flush()\n    if request.method == \"POST\":\n        try:\n            # Ensure 'file' is in the request\n            if \"file\" not in request.FILES:\n                return JsonResponse(\n                    {\"status\": \"error\", \"message\": \"No file uploaded.\"}, status=400\n                )\n            if \"art_file\" not in request.FILES:",
+        "detail": "artistic_image_creator.views",
+        "documentation": {}
+    },
+    {
+        "label": "logger",
+        "kind": 5,
+        "importPath": "artistic_image_creator.views",
+        "description": "artistic_image_creator.views",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef artistic_image_creator(request):\n    return render(request, \"pages/artistic_image_creator.html\")\ndef api_artistic_image_creator(request):\n    request.session.flush()\n    if request.method == \"POST\":\n        try:\n            # Ensure 'file' is in the request\n            if \"file\" not in request.FILES:\n                return JsonResponse(",
         "detail": "artistic_image_creator.views",
         "documentation": {}
     },
@@ -20388,7 +20583,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class REBNCONV(nn.Module):\n    def __init__(self, in_ch=3, out_ch=3, dirate=1, stride=1):\n        super(REBNCONV, self).__init__()\n        self.conv_s1 = nn.Conv2d(\n            in_ch, out_ch, 3, padding=1 * dirate, dilation=1 * dirate, stride=stride\n        )\n        self.bn_s1 = nn.BatchNorm2d(out_ch)\n        self.relu_s1 = nn.ReLU(inplace=True)\n    def forward(self, x):\n        hx = x",
+        "peekOfCode": "class REBNCONV(nn.Module):\n    def __init__(self,in_ch=3,out_ch=3,dirate=1,stride=1):\n        super(REBNCONV,self).__init__()\n        self.conv_s1 = nn.Conv2d(in_ch,out_ch,3,padding=1*dirate,dilation=1*dirate,stride=stride)\n        self.bn_s1 = nn.BatchNorm2d(out_ch)\n        self.relu_s1 = nn.ReLU(inplace=True)\n    def forward(self,x):\n        hx = x\n        return self.relu_s1(self.bn_s1(self.conv_s1(hx)))\n## upsample tensor 'src' to have the same spatial size with tensor 'tar'",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20397,7 +20592,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class RSU7(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3, img_size=512):\n        super(RSU7, self).__init__()\n        self.in_ch = in_ch\n        self.mid_ch = mid_ch\n        self.out_ch = out_ch\n        self.rebnconvin = REBNCONV(in_ch, out_ch, dirate=1)  ## 1 -> 1/2\n        self.rebnconv1 = REBNCONV(out_ch, mid_ch, dirate=1)\n        self.pool1 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.rebnconv2 = REBNCONV(mid_ch, mid_ch, dirate=1)",
+        "peekOfCode": "class RSU7(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3, img_size=512):\n        super(RSU7,self).__init__()\n        self.in_ch = in_ch\n        self.mid_ch = mid_ch\n        self.out_ch = out_ch\n        self.rebnconvin = REBNCONV(in_ch,out_ch,dirate=1) ## 1 -> 1/2\n        self.rebnconv1 = REBNCONV(out_ch,mid_ch,dirate=1)\n        self.pool1 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.rebnconv2 = REBNCONV(mid_ch,mid_ch,dirate=1)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20406,7 +20601,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class RSU6(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3):\n        super(RSU6, self).__init__()\n        self.rebnconvin = REBNCONV(in_ch, out_ch, dirate=1)\n        self.rebnconv1 = REBNCONV(out_ch, mid_ch, dirate=1)\n        self.pool1 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.rebnconv2 = REBNCONV(mid_ch, mid_ch, dirate=1)\n        self.pool2 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.rebnconv3 = REBNCONV(mid_ch, mid_ch, dirate=1)\n        self.pool3 = nn.MaxPool2d(2, stride=2, ceil_mode=True)",
+        "peekOfCode": "class RSU6(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3):\n        super(RSU6,self).__init__()\n        self.rebnconvin = REBNCONV(in_ch,out_ch,dirate=1)\n        self.rebnconv1 = REBNCONV(out_ch,mid_ch,dirate=1)\n        self.pool1 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.rebnconv2 = REBNCONV(mid_ch,mid_ch,dirate=1)\n        self.pool2 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.rebnconv3 = REBNCONV(mid_ch,mid_ch,dirate=1)\n        self.pool3 = nn.MaxPool2d(2,stride=2,ceil_mode=True)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20415,7 +20610,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class RSU5(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3):\n        super(RSU5, self).__init__()\n        self.rebnconvin = REBNCONV(in_ch, out_ch, dirate=1)\n        self.rebnconv1 = REBNCONV(out_ch, mid_ch, dirate=1)\n        self.pool1 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.rebnconv2 = REBNCONV(mid_ch, mid_ch, dirate=1)\n        self.pool2 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.rebnconv3 = REBNCONV(mid_ch, mid_ch, dirate=1)\n        self.pool3 = nn.MaxPool2d(2, stride=2, ceil_mode=True)",
+        "peekOfCode": "class RSU5(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3):\n        super(RSU5,self).__init__()\n        self.rebnconvin = REBNCONV(in_ch,out_ch,dirate=1)\n        self.rebnconv1 = REBNCONV(out_ch,mid_ch,dirate=1)\n        self.pool1 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.rebnconv2 = REBNCONV(mid_ch,mid_ch,dirate=1)\n        self.pool2 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.rebnconv3 = REBNCONV(mid_ch,mid_ch,dirate=1)\n        self.pool3 = nn.MaxPool2d(2,stride=2,ceil_mode=True)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20424,7 +20619,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class RSU4(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3):\n        super(RSU4, self).__init__()\n        self.rebnconvin = REBNCONV(in_ch, out_ch, dirate=1)\n        self.rebnconv1 = REBNCONV(out_ch, mid_ch, dirate=1)\n        self.pool1 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.rebnconv2 = REBNCONV(mid_ch, mid_ch, dirate=1)\n        self.pool2 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.rebnconv3 = REBNCONV(mid_ch, mid_ch, dirate=1)\n        self.rebnconv4 = REBNCONV(mid_ch, mid_ch, dirate=2)",
+        "peekOfCode": "class RSU4(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3):\n        super(RSU4,self).__init__()\n        self.rebnconvin = REBNCONV(in_ch,out_ch,dirate=1)\n        self.rebnconv1 = REBNCONV(out_ch,mid_ch,dirate=1)\n        self.pool1 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.rebnconv2 = REBNCONV(mid_ch,mid_ch,dirate=1)\n        self.pool2 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.rebnconv3 = REBNCONV(mid_ch,mid_ch,dirate=1)\n        self.rebnconv4 = REBNCONV(mid_ch,mid_ch,dirate=2)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20433,7 +20628,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class RSU4F(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3):\n        super(RSU4F, self).__init__()\n        self.rebnconvin = REBNCONV(in_ch, out_ch, dirate=1)\n        self.rebnconv1 = REBNCONV(out_ch, mid_ch, dirate=1)\n        self.rebnconv2 = REBNCONV(mid_ch, mid_ch, dirate=2)\n        self.rebnconv3 = REBNCONV(mid_ch, mid_ch, dirate=4)\n        self.rebnconv4 = REBNCONV(mid_ch, mid_ch, dirate=8)\n        self.rebnconv3d = REBNCONV(mid_ch * 2, mid_ch, dirate=4)\n        self.rebnconv2d = REBNCONV(mid_ch * 2, mid_ch, dirate=2)",
+        "peekOfCode": "class RSU4F(nn.Module):\n    def __init__(self, in_ch=3, mid_ch=12, out_ch=3):\n        super(RSU4F,self).__init__()\n        self.rebnconvin = REBNCONV(in_ch,out_ch,dirate=1)\n        self.rebnconv1 = REBNCONV(out_ch,mid_ch,dirate=1)\n        self.rebnconv2 = REBNCONV(mid_ch,mid_ch,dirate=2)\n        self.rebnconv3 = REBNCONV(mid_ch,mid_ch,dirate=4)\n        self.rebnconv4 = REBNCONV(mid_ch,mid_ch,dirate=8)\n        self.rebnconv3d = REBNCONV(mid_ch*2,mid_ch,dirate=4)\n        self.rebnconv2d = REBNCONV(mid_ch*2,mid_ch,dirate=2)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20442,7 +20637,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class myrebnconv(nn.Module):\n    def __init__(\n        self,\n        in_ch=3,\n        out_ch=1,\n        kernel_size=3,\n        stride=1,\n        padding=1,\n        dilation=1,\n        groups=1,",
+        "peekOfCode": "class myrebnconv(nn.Module):\n    def __init__(self, in_ch=3,\n                       out_ch=1,\n                       kernel_size=3,\n                       stride=1,\n                       padding=1,\n                       dilation=1,\n                       groups=1):\n        super(myrebnconv,self).__init__()\n        self.conv = nn.Conv2d(in_ch,",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20451,7 +20646,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class ISNetGTEncoder(nn.Module):\n    def __init__(self, in_ch=1, out_ch=1):\n        super(ISNetGTEncoder, self).__init__()\n        self.conv_in = myrebnconv(\n            in_ch, 16, 3, stride=2, padding=1\n        )  # nn.Conv2d(in_ch,64,3,stride=2,padding=1)\n        self.stage1 = RSU7(16, 16, 64)\n        self.pool12 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.stage2 = RSU6(64, 16, 64)\n        self.pool23 = nn.MaxPool2d(2, stride=2, ceil_mode=True)",
+        "peekOfCode": "class ISNetGTEncoder(nn.Module):\n    def __init__(self,in_ch=1,out_ch=1):\n        super(ISNetGTEncoder,self).__init__()\n        self.conv_in = myrebnconv(in_ch,16,3,stride=2,padding=1) # nn.Conv2d(in_ch,64,3,stride=2,padding=1)\n        self.stage1 = RSU7(16,16,64)\n        self.pool12 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.stage2 = RSU6(64,16,64)\n        self.pool23 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.stage3 = RSU5(64,32,128)\n        self.pool34 = nn.MaxPool2d(2,stride=2,ceil_mode=True)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20460,7 +20655,7 @@
         "kind": 6,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "class ISNetDIS(nn.Module):\n    def __init__(self, in_ch=3, out_ch=1):\n        super(ISNetDIS, self).__init__()\n        self.conv_in = nn.Conv2d(in_ch, 64, 3, stride=2, padding=1)\n        self.pool_in = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.stage1 = RSU7(64, 32, 64)\n        self.pool12 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.stage2 = RSU6(64, 32, 128)\n        self.pool23 = nn.MaxPool2d(2, stride=2, ceil_mode=True)\n        self.stage3 = RSU5(128, 64, 256)",
+        "peekOfCode": "class ISNetDIS(nn.Module):\n    def __init__(self,in_ch=3,out_ch=1):\n        super(ISNetDIS,self).__init__()\n        self.conv_in = nn.Conv2d(in_ch,64,3,stride=2,padding=1)\n        self.pool_in = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.stage1 = RSU7(64,32,64)\n        self.pool12 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.stage2 = RSU6(64,32,128)\n        self.pool23 = nn.MaxPool2d(2,stride=2,ceil_mode=True)\n        self.stage3 = RSU5(128,64,256)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20469,7 +20664,7 @@
         "kind": 2,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "def muti_loss_fusion(preds, target):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if preds[i].shape[2] != target.shape[2] or preds[i].shape[3] != target.shape[3]:\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(\n                target, size=preds[i].size()[2:], mode=\"bilinear\", align_corners=True\n            )\n            loss = loss + bce_loss(preds[i], tmp_target)",
+        "peekOfCode": "def muti_loss_fusion(preds, target):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if(preds[i].shape[2]!=target.shape[2] or preds[i].shape[3]!=target.shape[3]):\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(target, size=preds[i].size()[2:], mode='bilinear', align_corners=True)\n            loss = loss + bce_loss(preds[i],tmp_target)\n        else:\n            loss = loss + bce_loss(preds[i],target)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20478,7 +20673,7 @@
         "kind": 2,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "def muti_loss_fusion_kl(preds, target, dfs, fs, mode=\"MSE\"):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if preds[i].shape[2] != target.shape[2] or preds[i].shape[3] != target.shape[3]:\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(\n                target, size=preds[i].size()[2:], mode=\"bilinear\", align_corners=True\n            )\n            loss = loss + bce_loss(preds[i], tmp_target)",
+        "peekOfCode": "def muti_loss_fusion_kl(preds, target, dfs, fs, mode='MSE'):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if(preds[i].shape[2]!=target.shape[2] or preds[i].shape[3]!=target.shape[3]):\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(target, size=preds[i].size()[2:], mode='bilinear', align_corners=True)\n            loss = loss + bce_loss(preds[i],tmp_target)\n        else:\n            loss = loss + bce_loss(preds[i],target)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20487,7 +20682,7 @@
         "kind": 5,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "bce_loss = nn.BCELoss(size_average=True)\ndef muti_loss_fusion(preds, target):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if preds[i].shape[2] != target.shape[2] or preds[i].shape[3] != target.shape[3]:\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(\n                target, size=preds[i].size()[2:], mode=\"bilinear\", align_corners=True\n            )",
+        "peekOfCode": "bce_loss = nn.BCELoss(size_average=True)\ndef muti_loss_fusion(preds, target):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if(preds[i].shape[2]!=target.shape[2] or preds[i].shape[3]!=target.shape[3]):\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(target, size=preds[i].size()[2:], mode='bilinear', align_corners=True)\n            loss = loss + bce_loss(preds[i],tmp_target)\n        else:",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20496,7 +20691,7 @@
         "kind": 5,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "fea_loss = nn.MSELoss(size_average=True)\nkl_loss = nn.KLDivLoss(size_average=True)\nl1_loss = nn.L1Loss(size_average=True)\nsmooth_l1_loss = nn.SmoothL1Loss(size_average=True)\ndef muti_loss_fusion_kl(preds, target, dfs, fs, mode=\"MSE\"):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if preds[i].shape[2] != target.shape[2] or preds[i].shape[3] != target.shape[3]:\n            # tmp_target = _upsample_like(target,preds[i])",
+        "peekOfCode": "fea_loss = nn.MSELoss(size_average=True)\nkl_loss = nn.KLDivLoss(size_average=True)\nl1_loss = nn.L1Loss(size_average=True)\nsmooth_l1_loss = nn.SmoothL1Loss(size_average=True)\ndef muti_loss_fusion_kl(preds, target, dfs, fs, mode='MSE'):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if(preds[i].shape[2]!=target.shape[2] or preds[i].shape[3]!=target.shape[3]):\n            # tmp_target = _upsample_like(target,preds[i])",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20505,7 +20700,7 @@
         "kind": 5,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "kl_loss = nn.KLDivLoss(size_average=True)\nl1_loss = nn.L1Loss(size_average=True)\nsmooth_l1_loss = nn.SmoothL1Loss(size_average=True)\ndef muti_loss_fusion_kl(preds, target, dfs, fs, mode=\"MSE\"):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if preds[i].shape[2] != target.shape[2] or preds[i].shape[3] != target.shape[3]:\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(",
+        "peekOfCode": "kl_loss = nn.KLDivLoss(size_average=True)\nl1_loss = nn.L1Loss(size_average=True)\nsmooth_l1_loss = nn.SmoothL1Loss(size_average=True)\ndef muti_loss_fusion_kl(preds, target, dfs, fs, mode='MSE'):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if(preds[i].shape[2]!=target.shape[2] or preds[i].shape[3]!=target.shape[3]):\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(target, size=preds[i].size()[2:], mode='bilinear', align_corners=True)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20514,7 +20709,7 @@
         "kind": 5,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "l1_loss = nn.L1Loss(size_average=True)\nsmooth_l1_loss = nn.SmoothL1Loss(size_average=True)\ndef muti_loss_fusion_kl(preds, target, dfs, fs, mode=\"MSE\"):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if preds[i].shape[2] != target.shape[2] or preds[i].shape[3] != target.shape[3]:\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(\n                target, size=preds[i].size()[2:], mode=\"bilinear\", align_corners=True",
+        "peekOfCode": "l1_loss = nn.L1Loss(size_average=True)\nsmooth_l1_loss = nn.SmoothL1Loss(size_average=True)\ndef muti_loss_fusion_kl(preds, target, dfs, fs, mode='MSE'):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if(preds[i].shape[2]!=target.shape[2] or preds[i].shape[3]!=target.shape[3]):\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(target, size=preds[i].size()[2:], mode='bilinear', align_corners=True)\n            loss = loss + bce_loss(preds[i],tmp_target)",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20523,7 +20718,7 @@
         "kind": 5,
         "importPath": "background_remover.is_net.models.isnet",
         "description": "background_remover.is_net.models.isnet",
-        "peekOfCode": "smooth_l1_loss = nn.SmoothL1Loss(size_average=True)\ndef muti_loss_fusion_kl(preds, target, dfs, fs, mode=\"MSE\"):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if preds[i].shape[2] != target.shape[2] or preds[i].shape[3] != target.shape[3]:\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(\n                target, size=preds[i].size()[2:], mode=\"bilinear\", align_corners=True\n            )",
+        "peekOfCode": "smooth_l1_loss = nn.SmoothL1Loss(size_average=True)\ndef muti_loss_fusion_kl(preds, target, dfs, fs, mode='MSE'):\n    loss0 = 0.0\n    loss = 0.0\n    for i in range(len(preds)):\n        if(preds[i].shape[2]!=target.shape[2] or preds[i].shape[3]!=target.shape[3]):\n            # tmp_target = _upsample_like(target,preds[i])\n            tmp_target = F.interpolate(target, size=preds[i].size()[2:], mode='bilinear', align_corners=True)\n            loss = loss + bce_loss(preds[i],tmp_target)\n        else:",
         "detail": "background_remover.is_net.models.isnet",
         "documentation": {}
     },
@@ -20586,7 +20781,7 @@
         "kind": 2,
         "importPath": "background_remover.is_net.isnet_inference",
         "description": "background_remover.is_net.isnet_inference",
-        "peekOfCode": "def save_inference(input_image_path, output_dir=os.path.join(BASE_DIR,'static/outputs')):\n    os.makedirs(output_dir, exist_ok=True)\n    base_name = os.path.splitext(os.path.basename(input_image_path))[0]\n    image_tensor, orig_size = load_image(input_image_path, hypar)\n    mask = predict(net, image_tensor, orig_size, hypar, device)\n    pil_mask = Image.fromarray(mask).convert(\"L\")\n    im_rgb = Image.open(input_image_path).convert(\"RGB\")\n    im_rgba = im_rgb.copy()\n    im_rgba.putalpha(pil_mask)\n    mask_path = os.path.join(output_dir, f\"{base_name}_mask.png\")",
+        "peekOfCode": "def save_inference(\n    input_image_path, output_dir=os.path.join(BASE_DIR, \"static/outputs\")\n):\n    os.makedirs(output_dir, exist_ok=True)\n    base_name = os.path.splitext(os.path.basename(input_image_path))[0]\n    image_tensor, orig_size = load_image(input_image_path, hypar)\n    mask = predict(net, image_tensor, orig_size, hypar, device)\n    pil_mask = Image.fromarray(mask).convert(\"L\")\n    im_rgb = Image.open(input_image_path).convert(\"RGB\")\n    im_rgba = im_rgb.copy()",
         "detail": "background_remover.is_net.isnet_inference",
         "documentation": {}
     },
@@ -20622,8 +20817,26 @@
         "kind": 5,
         "importPath": "background_remover.is_net.isnet_inference",
         "description": "background_remover.is_net.isnet_inference",
-        "peekOfCode": "net = build_model(hypar, device)\ndef save_inference(input_image_path, output_dir=os.path.join(BASE_DIR,'static/outputs')):\n    os.makedirs(output_dir, exist_ok=True)\n    base_name = os.path.splitext(os.path.basename(input_image_path))[0]\n    image_tensor, orig_size = load_image(input_image_path, hypar)\n    mask = predict(net, image_tensor, orig_size, hypar, device)\n    pil_mask = Image.fromarray(mask).convert(\"L\")\n    im_rgb = Image.open(input_image_path).convert(\"RGB\")\n    im_rgba = im_rgb.copy()\n    im_rgba.putalpha(pil_mask)",
+        "peekOfCode": "net = build_model(hypar, device)\ndef save_inference(\n    input_image_path, output_dir=os.path.join(BASE_DIR, \"static/outputs\")\n):\n    os.makedirs(output_dir, exist_ok=True)\n    base_name = os.path.splitext(os.path.basename(input_image_path))[0]\n    image_tensor, orig_size = load_image(input_image_path, hypar)\n    mask = predict(net, image_tensor, orig_size, hypar, device)\n    pil_mask = Image.fromarray(mask).convert(\"L\")\n    im_rgb = Image.open(input_image_path).convert(\"RGB\")",
         "detail": "background_remover.is_net.isnet_inference",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "background_remover.migrations.0001_initial",
+        "description": "background_remover.migrations.0001_initial",
+        "peekOfCode": "class Migration(migrations.Migration):\n    initial = True\n    dependencies = [\n    ]\n    operations = [\n        migrations.CreateModel(\n            name='ProcessedImage',\n            fields=[\n                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),\n                ('image_data', models.BinaryField()),",
+        "detail": "background_remover.migrations.0001_initial",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "background_remover.migrations.0002_delete_processedimage",
+        "description": "background_remover.migrations.0002_delete_processedimage",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('background_remover', '0001_initial'),\n    ]\n    operations = [\n        migrations.DeleteModel(\n            name='ProcessedImage',\n        ),\n    ]",
+        "detail": "background_remover.migrations.0002_delete_processedimage",
         "documentation": {}
     },
     {
@@ -20631,7 +20844,7 @@
         "kind": 6,
         "importPath": "background_remover.apps",
         "description": "background_remover.apps",
-        "peekOfCode": "class BackgroundRemoverConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'background_remover'",
+        "peekOfCode": "class BackgroundRemoverConfig(AppConfig):\n    default_auto_field = \"django.db.models.BigAutoField\"\n    name = \"background_remover\"",
         "detail": "background_remover.apps",
         "documentation": {}
     },
@@ -20640,7 +20853,7 @@
         "kind": 5,
         "importPath": "background_remover.urls",
         "description": "background_remover.urls",
-        "peekOfCode": "app_name = \"background-remover\"\nurlpatterns = [\n    path(\"\", views.background_remover, name=\"background_remover\"),\n]",
+        "peekOfCode": "app_name = \"background-remover\"\nurlpatterns = [\n    path(\"\", views.background_remover, name=\"background_remover\"),\n    path(\"generate/\", views.api_background_remover, name=\"background_remover_api\"),\n]",
         "detail": "background_remover.urls",
         "documentation": {}
     },
@@ -20649,7 +20862,7 @@
         "kind": 5,
         "importPath": "background_remover.urls",
         "description": "background_remover.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"\", views.background_remover, name=\"background_remover\"),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"\", views.background_remover, name=\"background_remover\"),\n    path(\"generate/\", views.api_background_remover, name=\"background_remover_api\"),\n]",
         "detail": "background_remover.urls",
         "documentation": {}
     },
@@ -20658,7 +20871,16 @@
         "kind": 2,
         "importPath": "background_remover.views",
         "description": "background_remover.views",
-        "peekOfCode": "def background_remover(request):\n    if request.method == 'POST':\n        try:\n            body = json.loads(request.body.decode('utf-8'))\n            image_data = body.get(\"file\")\n            if not image_data:\n                return JsonResponse({\n                    \"status\": \"error\",\n                    \"message\": \"No image data found in the request\"\n                }, status=400)",
+        "peekOfCode": "def background_remover(request):\n    return render(request, \"pages/background_remover.html\")\ndef api_background_remover(request):\n    request.session.flush()\n    if request.method == \"POST\":\n        try:\n            # Ensure 'file' is in the request\n            if \"file\" not in request.FILES:\n                return JsonResponse(\n                    {\"status\": \"error\", \"message\": \"No file uploaded.\"}, status=400",
+        "detail": "background_remover.views",
+        "documentation": {}
+    },
+    {
+        "label": "api_background_remover",
+        "kind": 2,
+        "importPath": "background_remover.views",
+        "description": "background_remover.views",
+        "peekOfCode": "def api_background_remover(request):\n    request.session.flush()\n    if request.method == \"POST\":\n        try:\n            # Ensure 'file' is in the request\n            if \"file\" not in request.FILES:\n                return JsonResponse(\n                    {\"status\": \"error\", \"message\": \"No file uploaded.\"}, status=400\n                )\n            # Load the file",
         "detail": "background_remover.views",
         "documentation": {}
     },
@@ -30666,7 +30888,7 @@
         "kind": 2,
         "importPath": "dashboard.views",
         "description": "dashboard.views",
-        "peekOfCode": "def dashboard_view(request):\n    return render(request, \"pages/dashboard.html\")\n# this will contain URL to redirect different pages\n\"\"\"\n    - /background-remover/ : Background Remover Page\n    - /style-generator/: Style Generator Page using nst model\n    - /cartoonize/: this page will list all the styles avilable\n    - /cartoonize/arcane-style: Arcane-like images\n    - /cartoonize/shinkai-style: Shinkai-like images\n    - /cartoonize/portrait-sketch: Portrait sketches-like images",
+        "peekOfCode": "def dashboard_view(request):\n    request.session.flush()\n    return render(request, \"pages/dashboard.html\")\n# this will contain URL to redirect different pages\n\"\"\"\n    - /background-remover/ : Background Remover Page\n    - /style-generator/: Style Generator Page using nst model\n    - /cartoonize/: this page will list all the styles avilable\n    - /cartoonize/arcane-style: Arcane-like images\n    - /cartoonize/shinkai-style: Shinkai-like images",
         "detail": "dashboard.views",
         "documentation": {}
     },
@@ -30684,7 +30906,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# setup ENV Variables\ndotenv_file = os.path.join(BASE_DIR, \".env\")\nif os.path.isfile(dotenv_file):\n    dotenv.load_dotenv(dotenv_file)\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = os.environ[\"SECRET_KEY\"]\n# SECURITY WARNING: don't run with debug turned on in production!",
+        "peekOfCode": "BASE_DIR = Path(__file__).resolve().parent.parent\n# setup ENV Variables\ndotenv_file = os.path.join(BASE_DIR, \".env\")\nif os.path.isfile(dotenv_file):\n    dotenv.load_dotenv(dotenv_file)\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = os.environ.get(\"SECRET_KEY\")\nGOOGLE_CLIENT_ID = os.environ.get(\"GOOGLE_CLIENT_ID\")",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30693,7 +30915,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "dotenv_file = os.path.join(BASE_DIR, \".env\")\nif os.path.isfile(dotenv_file):\n    dotenv.load_dotenv(dotenv_file)\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = os.environ[\"SECRET_KEY\"]\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\n# Production",
+        "peekOfCode": "dotenv_file = os.path.join(BASE_DIR, \".env\")\nif os.path.isfile(dotenv_file):\n    dotenv.load_dotenv(dotenv_file)\n# Quick-start development settings - unsuitable for production\n# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/\n# SECURITY WARNING: keep the secret key used in production secret!\nSECRET_KEY = os.environ.get(\"SECRET_KEY\")\nGOOGLE_CLIENT_ID = os.environ.get(\"GOOGLE_CLIENT_ID\")\nGOOGLE_CLIENT_SECRET = os.environ.get(\"GOOGLE_CLIENT_SECRET\")\nGITHUB_CLIENT_ID = os.environ.get(\"GITHUB_CLIENT_ID\")",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30702,7 +30924,43 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "SECRET_KEY = os.environ[\"SECRET_KEY\"]\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\n# Production\n# DEBUG = False\n# ALLOWED_HOSTS = [\"*\"]\n# Application definition\nEXTERNAL_INSTALLED_APP = [\n    \"website\",\n    \"background_remover\",",
+        "peekOfCode": "SECRET_KEY = os.environ.get(\"SECRET_KEY\")\nGOOGLE_CLIENT_ID = os.environ.get(\"GOOGLE_CLIENT_ID\")\nGOOGLE_CLIENT_SECRET = os.environ.get(\"GOOGLE_CLIENT_SECRET\")\nGITHUB_CLIENT_ID = os.environ.get(\"GITHUB_CLIENT_ID\")\nGITHUB_CLIENT_SECRET = os.environ.get(\"GITHUB_CLIENT_SECRET\")\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\n# Production\n# DEBUG = False\n# ALLOWED_HOSTS = [\"*\"]",
+        "detail": "deepfx_studio.settings",
+        "documentation": {}
+    },
+    {
+        "label": "GOOGLE_CLIENT_ID",
+        "kind": 5,
+        "importPath": "deepfx_studio.settings",
+        "description": "deepfx_studio.settings",
+        "peekOfCode": "GOOGLE_CLIENT_ID = os.environ.get(\"GOOGLE_CLIENT_ID\")\nGOOGLE_CLIENT_SECRET = os.environ.get(\"GOOGLE_CLIENT_SECRET\")\nGITHUB_CLIENT_ID = os.environ.get(\"GITHUB_CLIENT_ID\")\nGITHUB_CLIENT_SECRET = os.environ.get(\"GITHUB_CLIENT_SECRET\")\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\n# Production\n# DEBUG = False\n# ALLOWED_HOSTS = [\"*\"]\n# Application definition",
+        "detail": "deepfx_studio.settings",
+        "documentation": {}
+    },
+    {
+        "label": "GOOGLE_CLIENT_SECRET",
+        "kind": 5,
+        "importPath": "deepfx_studio.settings",
+        "description": "deepfx_studio.settings",
+        "peekOfCode": "GOOGLE_CLIENT_SECRET = os.environ.get(\"GOOGLE_CLIENT_SECRET\")\nGITHUB_CLIENT_ID = os.environ.get(\"GITHUB_CLIENT_ID\")\nGITHUB_CLIENT_SECRET = os.environ.get(\"GITHUB_CLIENT_SECRET\")\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\n# Production\n# DEBUG = False\n# ALLOWED_HOSTS = [\"*\"]\n# Application definition\nEXTERNAL_INSTALLED_APP = [",
+        "detail": "deepfx_studio.settings",
+        "documentation": {}
+    },
+    {
+        "label": "GITHUB_CLIENT_ID",
+        "kind": 5,
+        "importPath": "deepfx_studio.settings",
+        "description": "deepfx_studio.settings",
+        "peekOfCode": "GITHUB_CLIENT_ID = os.environ.get(\"GITHUB_CLIENT_ID\")\nGITHUB_CLIENT_SECRET = os.environ.get(\"GITHUB_CLIENT_SECRET\")\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\n# Production\n# DEBUG = False\n# ALLOWED_HOSTS = [\"*\"]\n# Application definition\nEXTERNAL_INSTALLED_APP = [\n    \"website\",",
+        "detail": "deepfx_studio.settings",
+        "documentation": {}
+    },
+    {
+        "label": "GITHUB_CLIENT_SECRET",
+        "kind": 5,
+        "importPath": "deepfx_studio.settings",
+        "description": "deepfx_studio.settings",
+        "peekOfCode": "GITHUB_CLIENT_SECRET = os.environ.get(\"GITHUB_CLIENT_SECRET\")\n# SECURITY WARNING: don't run with debug turned on in production!\nDEBUG = True\n# Production\n# DEBUG = False\n# ALLOWED_HOSTS = [\"*\"]\n# Application definition\nEXTERNAL_INSTALLED_APP = [\n    \"website\",\n    \"background_remover\",",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30720,7 +30978,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "EXTERNAL_INSTALLED_APP = [\n    \"website\",\n    \"background_remover\",\n    \"artistic_image_creator\",\n    \"user_auth\",\n    \"dashboard\",\n    \"tailwind\",\n    \"theme\",\n    \"django_browser_reload\",\n    # django-components",
+        "peekOfCode": "EXTERNAL_INSTALLED_APP = [\n    \"website\",\n    \"background_remover\",\n    \"artistic_image_creator\",\n    \"user_auth\",\n    \"dashboard\",\n    \"tailwind\",\n    \"theme\",\n    \"django_browser_reload\",\n    \"django_components\",",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30792,7 +31050,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "AUTHENTICATION_BACKENDS = [\n    \"django.contrib.auth.backends.ModelBackend\",\n    \"allauth.account.auth_backends.AuthenticationBackend\",\n]\nSOCIALACCOUNT_PROVIDERS = {\n    \"google\": {\n        \"SCOPE\": [\"profile\", \"email\"],\n        \"APP\": {\n            \"client_id\": os.environ[\"GOOGLE_CLIENT_ID\"],\n            \"secret\": os.environ[\"GOOGLE_CLIENT_SECRET\"],",
+        "peekOfCode": "AUTHENTICATION_BACKENDS = [\n    \"django.contrib.auth.backends.ModelBackend\",\n    \"allauth.account.auth_backends.AuthenticationBackend\",\n]\nSOCIALACCOUNT_PROVIDERS = {\n    \"google\": {\n        \"SCOPE\": [\"profile\", \"email\"],\n        \"APP\": {\n            \"client_id\": GOOGLE_CLIENT_ID,\n            \"secret\": GOOGLE_CLIENT_SECRET,",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30801,7 +31059,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "SOCIALACCOUNT_PROVIDERS = {\n    \"google\": {\n        \"SCOPE\": [\"profile\", \"email\"],\n        \"APP\": {\n            \"client_id\": os.environ[\"GOOGLE_CLIENT_ID\"],\n            \"secret\": os.environ[\"GOOGLE_CLIENT_SECRET\"],\n        },\n        \"AUTH_PARAMS\": {\n            \"access_type\": \"online\",\n        },",
+        "peekOfCode": "SOCIALACCOUNT_PROVIDERS = {\n    \"google\": {\n        \"SCOPE\": [\"profile\", \"email\"],\n        \"APP\": {\n            \"client_id\": GOOGLE_CLIENT_ID,\n            \"secret\": GOOGLE_CLIENT_SECRET,\n        },\n        \"AUTH_PARAMS\": {\n            \"access_type\": \"online\",\n        },",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30864,7 +31122,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "TIME_ZONE = \"UTC\"\nUSE_I18N = True\nUSE_TZ = True\nSITE_ID = 2\nACCOUNT_EMAIL_VERIFICATION = \"none\"\nLOGIN_REDIRECT_URL = \"http://localhost:8000/dashboard/\"\nLOGOUT_REDIRECT_URL = \"/\"\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'",
+        "peekOfCode": "TIME_ZONE = \"UTC\"\nUSE_I18N = True\nUSE_TZ = True\nSITE_ID = 2\nACCOUNT_EMAIL_VERIFICATION = \"none\"\nLOGIN_REDIRECT_URL = \"http://localhost:8000/dashboard/\"\nLOGOUT_REDIRECT_URL = \"/\"\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = \"/static/\"",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30873,7 +31131,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\nSITE_ID = 2\nACCOUNT_EMAIL_VERIFICATION = \"none\"\nLOGIN_REDIRECT_URL = \"http://localhost:8000/dashboard/\"\nLOGOUT_REDIRECT_URL = \"/\"\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]",
+        "peekOfCode": "USE_I18N = True\nUSE_TZ = True\nSITE_ID = 2\nACCOUNT_EMAIL_VERIFICATION = \"none\"\nLOGIN_REDIRECT_URL = \"http://localhost:8000/dashboard/\"\nLOGOUT_REDIRECT_URL = \"/\"\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = \"/static/\"\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30882,7 +31140,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "USE_TZ = True\nSITE_ID = 2\nACCOUNT_EMAIL_VERIFICATION = \"none\"\nLOGIN_REDIRECT_URL = \"http://localhost:8000/dashboard/\"\nLOGOUT_REDIRECT_URL = \"/\"\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = '/media/' ",
+        "peekOfCode": "USE_TZ = True\nSITE_ID = 2\nACCOUNT_EMAIL_VERIFICATION = \"none\"\nLOGIN_REDIRECT_URL = \"http://localhost:8000/dashboard/\"\nLOGOUT_REDIRECT_URL = \"/\"\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = \"/static/\"\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = \"/media/\"",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30891,7 +31149,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "SITE_ID = 2\nACCOUNT_EMAIL_VERIFICATION = \"none\"\nLOGIN_REDIRECT_URL = \"http://localhost:8000/dashboard/\"\nLOGOUT_REDIRECT_URL = \"/\"\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = '/media/' \nMEDIA_ROOT = os.path.join(BASE_DIR, 'media')",
+        "peekOfCode": "SITE_ID = 2\nACCOUNT_EMAIL_VERIFICATION = \"none\"\nLOGIN_REDIRECT_URL = \"http://localhost:8000/dashboard/\"\nLOGOUT_REDIRECT_URL = \"/\"\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = \"/static/\"\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30900,7 +31158,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "ACCOUNT_EMAIL_VERIFICATION = \"none\"\nLOGIN_REDIRECT_URL = \"http://localhost:8000/dashboard/\"\nLOGOUT_REDIRECT_URL = \"/\"\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = '/media/' \nMEDIA_ROOT = os.path.join(BASE_DIR, 'media')\nFILE_UPLOAD_MAX_MEMORY_SIZE = 10485760 # 10 MB ",
+        "peekOfCode": "ACCOUNT_EMAIL_VERIFICATION = \"none\"\nLOGIN_REDIRECT_URL = \"http://localhost:8000/dashboard/\"\nLOGOUT_REDIRECT_URL = \"/\"\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = \"/static/\"\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\nFILE_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10 MB",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30909,7 +31167,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "LOGIN_REDIRECT_URL = \"http://localhost:8000/dashboard/\"\nLOGOUT_REDIRECT_URL = \"/\"\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = '/media/' \nMEDIA_ROOT = os.path.join(BASE_DIR, 'media')\nFILE_UPLOAD_MAX_MEMORY_SIZE = 10485760 # 10 MB \n# Directory for global static files",
+        "peekOfCode": "LOGIN_REDIRECT_URL = \"http://localhost:8000/dashboard/\"\nLOGOUT_REDIRECT_URL = \"/\"\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = \"/static/\"\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\nFILE_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10 MB\n# Directory for global static files",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30918,7 +31176,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "LOGOUT_REDIRECT_URL = \"/\"\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = '/media/' \nMEDIA_ROOT = os.path.join(BASE_DIR, 'media')\nFILE_UPLOAD_MAX_MEMORY_SIZE = 10485760 # 10 MB \n# Directory for global static files\nSTATICFILES_DIRS = [",
+        "peekOfCode": "LOGOUT_REDIRECT_URL = \"/\"\n# Static files (CSS, JavaScript, Images)\n# https://docs.djangoproject.com/en/5.1/howto/static-files/\nSTATIC_URL = \"/static/\"\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\nFILE_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10 MB\n# Directory for global static files\nSTATICFILES_DIRS = [",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30927,7 +31185,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "STATIC_URL = '/static/'\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = '/media/' \nMEDIA_ROOT = os.path.join(BASE_DIR, 'media')\nFILE_UPLOAD_MAX_MEMORY_SIZE = 10485760 # 10 MB \n# Directory for global static files\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, \"static\"),\n]\n# Directory where collected static files will be stored during deployment",
+        "peekOfCode": "STATIC_URL = \"/static/\"\nSTATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\nFILE_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10 MB\n# Directory for global static files\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, \"static\"),\n]\n# Directory where collected static files will be stored during deployment",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30936,7 +31194,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "STATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = '/media/' \nMEDIA_ROOT = os.path.join(BASE_DIR, 'media')\nFILE_UPLOAD_MAX_MEMORY_SIZE = 10485760 # 10 MB \n# Directory for global static files\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, \"static\"),\n]\n# Directory where collected static files will be stored during deployment\nSTATIC_ROOT = os.path.join(BASE_DIR, \"staticfiles\")",
+        "peekOfCode": "STATICFILES_DIRS = [BASE_DIR / \"static\"]\nMEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\nFILE_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10 MB\n# Directory for global static files\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, \"static\"),\n]\n# Directory where collected static files will be stored during deployment\nSTATIC_ROOT = os.path.join(BASE_DIR, \"staticfiles\")",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30945,7 +31203,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "MEDIA_URL = '/media/' \nMEDIA_ROOT = os.path.join(BASE_DIR, 'media')\nFILE_UPLOAD_MAX_MEMORY_SIZE = 10485760 # 10 MB \n# Directory for global static files\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, \"static\"),\n]\n# Directory where collected static files will be stored during deployment\nSTATIC_ROOT = os.path.join(BASE_DIR, \"staticfiles\")\n# Default primary key field type",
+        "peekOfCode": "MEDIA_URL = \"/media/\"\nMEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\nFILE_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10 MB\n# Directory for global static files\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, \"static\"),\n]\n# Directory where collected static files will be stored during deployment\nSTATIC_ROOT = os.path.join(BASE_DIR, \"staticfiles\")\n# Default primary key field type",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30954,7 +31212,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "MEDIA_ROOT = os.path.join(BASE_DIR, 'media')\nFILE_UPLOAD_MAX_MEMORY_SIZE = 10485760 # 10 MB \n# Directory for global static files\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, \"static\"),\n]\n# Directory where collected static files will be stored during deployment\nSTATIC_ROOT = os.path.join(BASE_DIR, \"staticfiles\")\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field",
+        "peekOfCode": "MEDIA_ROOT = os.path.join(BASE_DIR, \"media\")\nFILE_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10 MB\n# Directory for global static files\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, \"static\"),\n]\n# Directory where collected static files will be stored during deployment\nSTATIC_ROOT = os.path.join(BASE_DIR, \"staticfiles\")\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30963,7 +31221,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.settings",
         "description": "deepfx_studio.settings",
-        "peekOfCode": "FILE_UPLOAD_MAX_MEMORY_SIZE = 10485760 # 10 MB \n# Directory for global static files\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, \"static\"),\n]\n# Directory where collected static files will be stored during deployment\nSTATIC_ROOT = os.path.join(BASE_DIR, \"staticfiles\")\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"",
+        "peekOfCode": "FILE_UPLOAD_MAX_MEMORY_SIZE = 10485760  # 10 MB\n# Directory for global static files\nSTATICFILES_DIRS = [\n    os.path.join(BASE_DIR, \"static\"),\n]\n# Directory where collected static files will be stored during deployment\nSTATIC_ROOT = os.path.join(BASE_DIR, \"staticfiles\")\n# Default primary key field type\n# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field\nDEFAULT_AUTO_FIELD = \"django.db.models.BigAutoField\"",
         "detail": "deepfx_studio.settings",
         "documentation": {}
     },
@@ -30999,7 +31257,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.urls",
         "description": "deepfx_studio.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"admin/\", admin.site.urls),\n    path(\"\", include(\"website.urls\")),\n    path(\"\", include(\"dashboard.urls\")),\n    path(\"\", include(\"user_auth.urls\")),\n    path(\"\", include(\"django_components.urls\")),\n    path(\"background-remover/\",include(\"background_remover.urls\")), # background-remover\n    path(\"artistic-image-creator/\", include(\"artistic_image_creator.urls\")),\n    path(\"accounts/\", include(\"allauth.urls\")),  # all OAuth operations will be performed under this route\n    path(\"__reload__/\", include(\"django_browser_reload.urls\")),",
+        "peekOfCode": "urlpatterns = [\n    path(\"admin/\", admin.site.urls),\n    path(\"\", include(\"website.urls\")),\n    path(\"\", include(\"dashboard.urls\")),\n    path(\"\", include(\"user_auth.urls\")),\n    path(\"\", include(\"django_components.urls\")),\n    path(\n        \"background-remover/\", include(\"background_remover.urls\")\n    ),  # background-remover\n    path(\"artistic-image-creator/\", include(\"artistic_image_creator.urls\")),",
         "detail": "deepfx_studio.urls",
         "documentation": {}
     },
@@ -31098,7 +31356,7 @@
         "kind": 5,
         "importPath": "website.urls",
         "description": "website.urls",
-        "peekOfCode": "app_name = \"website\"\nurlpatterns = [\n    path(\"\", views.index_view, name=\"index_view\"),\n    path(\"service/\", views.service_view, name=\"service_view\"),\n    path(\"about/\", views.about_view, name=\"about_view\"),\n    path(\"privacy/\", views.privacy_view, name=\"privacy_view\"),\n    path(\"terms/\", views.terms_view, name=\"terms_view\"),\n]",
+        "peekOfCode": "app_name = \"website\"\nurlpatterns = [\n    path(\"\", views.index_view, name=\"index_view\"),\n    path(\"service/\", views.service_view, name=\"service_view\"),\n    path(\"about/\", views.about_view, name=\"about_view\"),\n    path(\"privacy/\", views.privacy_view, name=\"privacy_view\"),\n    path(\"terms/\", views.terms_view, name=\"terms_view\"),\n    path(\"clear-session/\", views.clear_session, name=\"clear_session\"),\n]",
         "detail": "website.urls",
         "documentation": {}
     },
@@ -31107,7 +31365,7 @@
         "kind": 5,
         "importPath": "website.urls",
         "description": "website.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"\", views.index_view, name=\"index_view\"),\n    path(\"service/\", views.service_view, name=\"service_view\"),\n    path(\"about/\", views.about_view, name=\"about_view\"),\n    path(\"privacy/\", views.privacy_view, name=\"privacy_view\"),\n    path(\"terms/\", views.terms_view, name=\"terms_view\"),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"\", views.index_view, name=\"index_view\"),\n    path(\"service/\", views.service_view, name=\"service_view\"),\n    path(\"about/\", views.about_view, name=\"about_view\"),\n    path(\"privacy/\", views.privacy_view, name=\"privacy_view\"),\n    path(\"terms/\", views.terms_view, name=\"terms_view\"),\n    path(\"clear-session/\", views.clear_session, name=\"clear_session\"),\n]",
         "detail": "website.urls",
         "documentation": {}
     },
@@ -31116,7 +31374,7 @@
         "kind": 2,
         "importPath": "website.views",
         "description": "website.views",
-        "peekOfCode": "def index_view(request):\n    return render(request, \"pages/landing.html\")\ndef about_view(request):\n    return render(request, \"pages/about.html\")\ndef service_view(request):\n    return render(request, \"pages/service.html\")\ndef privacy_view(request):\n    return render(request, \"pages/privacy.html\")\ndef terms_view(request):\n    return render(request, \"pages/terms_and_conditions.html\")",
+        "peekOfCode": "def index_view(request):\n    request.session.flush()\n    return render(request, \"pages/landing.html\")\ndef about_view(request):\n    request.session.flush()\n    return render(request, \"pages/about.html\")\ndef service_view(request):\n    request.session.flush()\n    return render(request, \"pages/service.html\")\ndef privacy_view(request):",
         "detail": "website.views",
         "documentation": {}
     },
@@ -31125,7 +31383,7 @@
         "kind": 2,
         "importPath": "website.views",
         "description": "website.views",
-        "peekOfCode": "def about_view(request):\n    return render(request, \"pages/about.html\")\ndef service_view(request):\n    return render(request, \"pages/service.html\")\ndef privacy_view(request):\n    return render(request, \"pages/privacy.html\")\ndef terms_view(request):\n    return render(request, \"pages/terms_and_conditions.html\")",
+        "peekOfCode": "def about_view(request):\n    request.session.flush()\n    return render(request, \"pages/about.html\")\ndef service_view(request):\n    request.session.flush()\n    return render(request, \"pages/service.html\")\ndef privacy_view(request):\n    request.session.flush()\n    return render(request, \"pages/privacy.html\")\ndef terms_view(request):",
         "detail": "website.views",
         "documentation": {}
     },
@@ -31134,7 +31392,7 @@
         "kind": 2,
         "importPath": "website.views",
         "description": "website.views",
-        "peekOfCode": "def service_view(request):\n    return render(request, \"pages/service.html\")\ndef privacy_view(request):\n    return render(request, \"pages/privacy.html\")\ndef terms_view(request):\n    return render(request, \"pages/terms_and_conditions.html\")",
+        "peekOfCode": "def service_view(request):\n    request.session.flush()\n    return render(request, \"pages/service.html\")\ndef privacy_view(request):\n    request.session.flush()\n    return render(request, \"pages/privacy.html\")\ndef terms_view(request):\n    request.session.flush()\n    return render(request, \"pages/terms_and_conditions.html\")\ndef clear_session(request):",
         "detail": "website.views",
         "documentation": {}
     },
@@ -31143,7 +31401,7 @@
         "kind": 2,
         "importPath": "website.views",
         "description": "website.views",
-        "peekOfCode": "def privacy_view(request):\n    return render(request, \"pages/privacy.html\")\ndef terms_view(request):\n    return render(request, \"pages/terms_and_conditions.html\")",
+        "peekOfCode": "def privacy_view(request):\n    request.session.flush()\n    return render(request, \"pages/privacy.html\")\ndef terms_view(request):\n    request.session.flush()\n    return render(request, \"pages/terms_and_conditions.html\")\ndef clear_session(request):\n    request.session.flush()\n    referer_url = request.META.get(\"HTTP_REFERER\", \"/\")\n    return redirect(referer_url)",
         "detail": "website.views",
         "documentation": {}
     },
@@ -31152,7 +31410,16 @@
         "kind": 2,
         "importPath": "website.views",
         "description": "website.views",
-        "peekOfCode": "def terms_view(request):\n    return render(request, \"pages/terms_and_conditions.html\")",
+        "peekOfCode": "def terms_view(request):\n    request.session.flush()\n    return render(request, \"pages/terms_and_conditions.html\")\ndef clear_session(request):\n    request.session.flush()\n    referer_url = request.META.get(\"HTTP_REFERER\", \"/\")\n    return redirect(referer_url)",
+        "detail": "website.views",
+        "documentation": {}
+    },
+    {
+        "label": "clear_session",
+        "kind": 2,
+        "importPath": "website.views",
+        "description": "website.views",
+        "peekOfCode": "def clear_session(request):\n    request.session.flush()\n    referer_url = request.META.get(\"HTTP_REFERER\", \"/\")\n    return redirect(referer_url)",
         "detail": "website.views",
         "documentation": {}
     },
