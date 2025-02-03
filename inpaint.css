@@ -1,0 +1,358 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: aliceblue;
+    font-family: 'poppins';
+}
+
+body {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.logo img {
+    position: fixed;
+    height: 80px;
+    width: 80px;
+    margin-top: 20px;
+    margin-left: 80px;
+}
+
+.back {
+    position: fixed;
+    height: 40px;
+    width: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 40px;
+    left: 30px;
+}
+
+.back i {
+    font-size: 25px;
+    color: aliceblue;
+    background: transparent;
+}
+
+.back:hover {
+    /* border: 2px solid black; */
+    border-radius: 50%;
+    background-color: rgb(81, 80, 80);
+}
+
+.heading i {
+    margin-top: 20px;
+    margin-left: 48%;
+    height: 60px;
+    font-size: 50px;
+}
+
+.tool-name {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tool-name p {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+    margin-top: -19px;
+}
+
+.tool-desc {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+}
+
+.tool-desc p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    margin-top: -9px;
+}
+
+.main-area {
+    margin-top: 40px;
+    margin-left: 20%;
+    width: 60%;
+    /* border: 2px solid white; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 90vh;
+}
+
+.upload {
+    height: 100%;
+    width: 100%;
+}
+
+.close-icon {
+    /* display: none; */
+    position: absolute;
+    top: 180px;
+    left: 740px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1;
+    background: transparent;
+    pointer-events: auto;
+}
+
+.drag-and-drop {
+    border: 2px solid white;
+    position: relative;
+    border-radius: 20px;
+    height: 70%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+    /* pointer-events: none; */
+
+}
+
+.content {
+    pointer-events: auto;
+}
+
+.drag-and-drop:hover {
+    cursor: pointer;
+}
+
+.hide {
+    display: none;
+}
+
+.drag-and-drop i {
+    display: block;
+    font-size: 30px;
+    margin-left: 120px;
+}
+
+.preview {
+    /* position: absolute; */
+    height: 70%;
+    width: 100%;
+    z-index: 2;
+    top: 280px;
+    left: 795px;
+}
+
+.popup {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+.popup-box {
+    display: none;
+    border: 2px solid white;
+    border-radius: 24px;
+    position: absolute;
+    height: 650px;
+    width: 600px;
+    top: 25px;
+    left: 450px;
+    z-index: 1000;
+}
+
+.popup-submit {
+    position: absolute;
+    bottom: 10px;
+    margin-left: 230px;
+}
+
+.prompt {
+    height: 30px;
+    width: 100%;
+    border-radius: 1rem;
+    /* padding: 10px; */
+
+    background-color: aliceblue;
+    /* margin-left: 120px; */
+    margin-top: 30px;
+    font-size: 20px;
+
+    align-items: center;
+    transition: box-shadow 0.3s;
+}
+
+.prompt form {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.prompt form input {
+    width: 65%;
+    height: 100%;
+    padding: 10px;
+    background-color: aliceblue;
+    color: black;
+    border-radius: 1rem;
+}
+
+.submit {
+    border: 1px solid white;
+    height: 50px;
+    width: 25%;
+    border-radius: 1rem;
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+    color: black;
+    background-color: aliceblue;
+    /* margin-left: 120px; */
+    /* margin-top: 60px; */
+    font-size: 15px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: box-shadow 0.3s;
+}
+
+.submit i {
+    font-size: 15px;
+    /* margin-right: 10px; */
+    background-color: aliceblue;
+    color: #1C1C1C;
+}
+
+.submit:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 30px rgba(135, 206, 250, 0.7);
+}
+
+.output {
+    margin-left: 50px;
+    height: 100%;
+    width: 100%;
+    /* border: 2px solid white; */
+    border-radius: 20px;
+}
+
+.mask {
+    width: 100%;
+    height: 70%;
+    border: 2px solid white;
+    border-radius: 24px;
+    background-color: black;
+}
+
+.mask-preview {
+    position: absolute;
+    top: 202px;
+    left: 790px;
+    background-color: black;
+    /* border: 2px solid white; */
+
+}
+
+.final {
+    width: 100%;
+    height: 70%;
+    border: 2px solid white;
+    margin-top: 10%;
+    border-radius: 24px;
+}
+
+canvas {
+    position: absolute;
+    display: none;
+
+    top: 80px;
+    left: 85px;
+    height: 420px;
+    width: 420px;
+    background-color: transparent;
+    /* border: 2px solid yellow; */
+    border-radius: 1rem;
+    /* background-color: white; */
+    pointer-events: auto;
+}
+
+
+.paint-options {
+    margin-top: 480px;
+    display: block;
+}
+
+.brush {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+}
+
+.selected {
+    color: rgb(87, 87, 245);
+}
+
+
+.selector input {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.duplicate-image {
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    border-radius: 1rem;
+}
+
+.type {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.type .option-tools {
+    margin-top: 40px;
+
+}
+
+.option-tools p {
+    border: 2px solid white;
+    height: 60px;
+    align-content: center;
+    padding-left: 15px;
+}
+
+.line {
+    cursor: pointer;
+    position: relative;
+}
+
+.line::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: linear-gradient(to right, #003366, #006699);
+    position: absolute;
+    left: 0px;
+    top: 35px;
+    transition: 0.3s;
+}
+
+.line:hover::after {
+    width: 100%;
+}
+
+.type-select::after {
+    width: 60%;
+}
