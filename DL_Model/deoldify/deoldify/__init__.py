@@ -4,6 +4,6 @@ import sys
 logging.getLogger().addHandler(logging.StreamHandler(sys.stdout))
 logging.getLogger().setLevel(logging.INFO)
 
-from deoldify._device import _Device
+from deoldify._device import ComputeManager
 
-device = _Device()
+device = ComputeManager()

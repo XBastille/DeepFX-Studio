@@ -1,34 +1,26 @@
 import os
-from enum import Enum
-
 from .device_id import DeviceId
 
-# NOTE:  This must be called first before any torch imports in order to work properly!
-
-
-class DeviceException(Exception):
+class HardwareException(Exception):
     pass
 
-
-class _Device:
+class ComputeManager:
     def __init__(self):
-        self.set(DeviceId.CPU)
+        self.configure(DeviceId.CPU)
 
-    def is_gpu(self):
-        """Returns `True` if the current device is GPU, `False` otherwise."""
-        return self.current() is not DeviceId.CPU
+    def is_accelerated(self):
+        return self.active_device() is not DeviceId.CPU
+  
+    def active_device(self):
+        return self._active_compute_unit
 
-    def current(self):
-        return self._current_device
-
-    def set(self, device: DeviceId):
-        if device == DeviceId.CPU:
-            os.environ["CUDA_VISIBLE_DEVICES"] = ""
+    def configure(self, hardware_unit:DeviceId):     
+        if hardware_unit == DeviceId.CPU:
+            os.environ['CUDA_VISIBLE_DEVICES'] = ''
         else:
-            os.environ["CUDA_VISIBLE_DEVICES"] = str(device.value)
+            os.environ['CUDA_VISIBLE_DEVICES'] = str(hardware_unit.value)
             import torch
-
             torch.backends.cudnn.benchmark = False
-
-        self._current_device = device
-        return device
+        
+        self._active_compute_unit = hardware_unit    
+        return hardware_unit

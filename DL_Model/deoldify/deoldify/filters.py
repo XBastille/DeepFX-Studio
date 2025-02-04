@@ -1,136 +1,110 @@
-import logging
-from abc import ABC, abstractmethod
-
-import cv2
-from deoldify import device as device_settings
-from fastai import *
 from fastai.basic_data import DatasetType
 from fastai.basic_train import Learner
+from abc import ABC, abstractmethod
 from fastai.core import *
 from fastai.vision import *
-from fastai.vision.data import *
 from fastai.vision.image import *
+from fastai.vision.data import *
+from fastai import *
+import cv2
 from PIL import Image as PilImage
+from deoldify import device as compute_manager
+import logging
 
-
-class IFilter(ABC):
+class ImgFilterInterface(ABC):
     @abstractmethod
-    def filter(
-        self, orig_image: PilImage, filtered_image: PilImage, render_factor: int
+    def process(
+        self, source_img: PilImage, processed_img: PilImage, quality_factor: int
     ) -> PilImage:
         pass
 
-
-class BaseFilter(IFilter):
-    def __init__(self, learn: Learner, stats: tuple = imagenet_stats):
+class BaseImgFilter(ImgFilterInterface):
+    def __init__(self, learner: Learner, stats: tuple = imagenet_stats):
         super().__init__()
-        self.learn = learn
+        self.learner = learner
+        
+        if not compute_manager.is_accelerated():
+            self.learner.model = self.learner.model.cpu()
+        
+        self.device = next(self.learner.model.parameters()).device
+        self.normalize, self.denormalize = normalize_funcs(*stats)
 
-        if not device_settings.is_gpu():
-            self.learn.model = self.learn.model.cpu()
+    def _transform_img(self, img: PilImage) -> PilImage:
+        return img
 
-        self.device = next(self.learn.model.parameters()).device
-        self.norm, self.denorm = normalize_funcs(*stats)
+    def _resize_to_square(self, source: PilImage, target_size: int) -> PilImage:
+        target_dimensions = (target_size, target_size)
+        return source.resize(target_dimensions, resample=PIL.Image.BILINEAR)
 
-    def _transform(self, image: PilImage) -> PilImage:
-        return image
+    def _prepare_for_model(self, source: PilImage, size: int) -> PilImage:
+        resized = self._resize_to_square(source, size)
+        return self._transform_img(resized)
 
-    def _scale_to_square(self, orig: PilImage, targ: int) -> PilImage:
-        # a simple stretch to fit a square really makes a big difference in rendering quality/consistency.
-        # I've tried padding to the square as well (reflect, symetric, constant, etc).  Not as good!
-        targ_sz = (targ, targ)
-        return orig.resize(targ_sz, resample=PIL.Image.BILINEAR)
-
-    def _get_model_ready_image(self, orig: PilImage, sz: int) -> PilImage:
-        result = self._scale_to_square(orig, sz)
-        result = self._transform(result)
-        return result
-
-    def _model_process(self, orig: PilImage, sz: int) -> PilImage:
-        model_image = self._get_model_ready_image(orig, sz)
-        x = pil2tensor(model_image, np.float32)
-        x = x.to(self.device)
-        x.div_(255)
-        x, y = self.norm((x, x), do_x=True)
-
+    def _execute_model(self, source: PilImage, size: int) -> PilImage:
+        prepared_img = self._prepare_for_model(source, size)
+        tensor = pil2tensor(prepared_img, np.float32)
+        tensor = tensor.to(self.device)
+        tensor.div_(255)
+        tensor, y = self.normalize((tensor, tensor), do_x=True)
+        
         try:
-            result = self.learn.pred_batch(
-                ds_type=DatasetType.Valid, batch=(x[None], y[None]), reconstruct=True
+            output = self.learner.pred_batch(
+                ds_type=DatasetType.Valid, 
+                batch=(tensor[None], y[None]), 
+                reconstruct=True
             )
-        except RuntimeError as rerr:
-            if "memory" not in str(rerr):
-                raise rerr
-            logging.warn(
-                "Warning: render_factor was set too high, and out of memory error resulted. Returning original image."
-            )
-            return model_image
+        except RuntimeError as error:
+            if 'memory' not in str(error):
+                raise error
+            logging.warn('Warning: quality_factor was too high, causing memory overflow. Returning original image.')
+            return prepared_img
+            
+        result = output[0]
+        result = self.denormalize(result.px, do_x=False)
+        result = image2np(result * 255).astype(np.uint8)
+        return PilImage.fromarray(result)
 
-        out = result[0]
-        out = self.denorm(out.px, do_x=False)
-        out = image2np(out * 255).astype(np.uint8)
-        return PilImage.fromarray(out)
+    def _restore_dimensions(self, processed: PilImage, source: PilImage) -> PilImage:
+        original_size = source.size
+        return processed.resize(original_size, resample=PIL.Image.BILINEAR)
 
-    def _unsquare(self, image: PilImage, orig: PilImage) -> PilImage:
-        targ_sz = orig.size
-        image = image.resize(targ_sz, resample=PIL.Image.BILINEAR)
-        return image
+class ColorizeFilter(BaseImgFilter):
+    def __init__(self, learner: Learner, stats: tuple = imagenet_stats):
+        super().__init__(learner=learner, stats=stats)
+        self.base_size = 16
 
+    def process(
+        self, source_img: PilImage, processed_img: PilImage, 
+        quality_factor: int, bnw_output: bool = True) -> PilImage:
+        target_size = quality_factor * self.base_size
+        model_output = self._execute_model(processed_img, target_size)
+        restored_img = self._restore_dimensions(model_output, source_img)
 
-class ColorizerFilter(BaseFilter):
-    def __init__(self, learn: Learner, stats: tuple = imagenet_stats):
-        super().__init__(learn=learn, stats=stats)
-        self.render_base = 16
+        return self._bnw_output(restored_img, source_img) if bnw_output else restored_img
 
-    def filter(
-        self,
-        orig_image: PilImage,
-        filtered_image: PilImage,
-        render_factor: int,
-        post_process: bool = True,
-    ) -> PilImage:
-        render_sz = render_factor * self.render_base
-        model_image = self._model_process(orig=filtered_image, sz=render_sz)
-        raw_color = self._unsquare(model_image, orig_image)
+    def _transform_image(self, img: PilImage) -> PilImage:
+        return img.convert('LA').convert('RGB')
 
-        return self._post_process(raw_color, orig_image) if post_process else raw_color
+    def _bnw_output(self, colored: PilImage, source: PilImage) -> PilImage:
+        colored_array = np.asarray(colored)
+        source_array = np.asarray(source)
+        colored_yuv = cv2.cvtColor(colored_array, cv2.COLOR_RGB2YUV)
+        source_yuv = cv2.cvtColor(source_array, cv2.COLOR_RGB2YUV)
+        bnwd = np.copy(source_yuv)
+        bnwd[:, :, 1:3] = colored_yuv[:, :, 1:3]
+        result = cv2.cvtColor(bnwd, cv2.COLOR_YUV2RGB)
+        return PilImage.fromarray(result)
 
-    def _transform(self, image: PilImage) -> PilImage:
-        return image.convert("LA").convert("RGB")
-
-    # This takes advantage of the fact that human eyes are much less sensitive to
-    # imperfections in chrominance compared to luminance.  This means we can
-    # save a lot on memory and processing in the model, yet get a great high
-    # resolution result at the end.  This is primarily intended just for
-    # inference
-    def _post_process(self, raw_color: PilImage, orig: PilImage) -> PilImage:
-        color_np = np.asarray(raw_color)
-        orig_np = np.asarray(orig)
-        color_yuv = cv2.cvtColor(color_np, cv2.COLOR_RGB2YUV)
-        # do a black and white transform first to get better luminance values
-        orig_yuv = cv2.cvtColor(orig_np, cv2.COLOR_RGB2YUV)
-        hires = np.copy(orig_yuv)
-        hires[:, :, 1:3] = color_yuv[:, :, 1:3]
-        final = cv2.cvtColor(hires, cv2.COLOR_YUV2RGB)
-        final = PilImage.fromarray(final)
-        return final
-
-
-class MasterFilter(BaseFilter):
-    def __init__(self, filters: List[IFilter], render_factor: int):
+class MultiStageFilter(BaseImgFilter):
+    def __init__(self, filters: List[ImgFilterInterface], quality_factor: int):
         self.filters = filters
-        self.render_factor = render_factor
+        self.quality_factor = quality_factor
 
-    def filter(
-        self,
-        orig_image: PilImage,
-        filtered_image: PilImage,
-        render_factor: int = None,
-        post_process: bool = True,
-    ) -> PilImage:
-        render_factor = self.render_factor if render_factor is None else render_factor
-        for filter in self.filters:
-            filtered_image = filter.filter(
-                orig_image, filtered_image, render_factor, post_process
-            )
+    def process(
+        self, source_img: PilImage, processed_img: PilImage, 
+        quality_factor: int = None, bnw_output: bool = True) -> PilImage:
+        current_quality = self.quality_factor if quality_factor is None else quality_factor
+        for filter_stage in self.filters:
+            processed_img = filter_stage.process(source_img, processed_img, current_quality, bnw_output)
 
-        return filtered_image
+        return processed_img
