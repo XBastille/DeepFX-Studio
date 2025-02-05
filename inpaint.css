@@ -236,6 +236,45 @@ body {
     box-shadow: 0 4px 30px rgba(135, 206, 250, 0.7);
 }
 
+.buttons {
+    display: flex;
+    margin-top: 40px;
+    width: 100%;
+    justify-content: space-between;
+
+}
+
+.replace {
+    border: 1px solid white;
+    height: 50px;
+    width: 40%;
+    border-radius: 1rem;
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+    color: black;
+    background-color: aliceblue;
+    /* margin-left: 120px; */
+    /* margin-top: 60px; */
+    font-size: 15px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    transition: box-shadow 0.3s;
+}
+
+.replace i {
+    font-size: 15px;
+    /* margin-right: 10px; */
+    background-color: aliceblue;
+    color: #1C1C1C;
+}
+
+.replace:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 30px rgba(135, 206, 250, 0.7);
+}
+
 .output {
     margin-left: 50px;
     height: 100%;
@@ -324,6 +363,10 @@ canvas {
 .type .option-tools {
     margin-top: 40px;
 
+}
+
+.option-tools {
+    margin-top: 170px;
 }
 
 .option-tools p {
