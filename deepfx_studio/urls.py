@@ -33,10 +33,11 @@ urlpatterns = [
     path("ai-filter/",include("ai_filter.urls")),
     path("ai-image-upscale/", include("ai_image_upscale.urls")),
     path("ai-eraser/", include("ai_eraser.urls")),
+    path("ai-colorization/", include("ai_colorization.urls")),
     path(
         "accounts/", include("allauth.urls")
     ),  # all OAuth operations will be performed under this route
-    path("__reload__/", include("django_browser_reload.urls")),
+    # path("__reload__/", include("django_browser_reload.urls")),
 ]
 
 if settings.DEBUG:

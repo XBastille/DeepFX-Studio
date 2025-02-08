@@ -174,7 +174,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                     </section>
                 {% endblock dashboard %}
             </div>
@@ -183,8 +182,7 @@
             <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
             <ul class="menu bg-base-200 text-base-content min-h-full w-80">
                 <!-- Sidebar content -->
-                <a class="flex gap-4 items-center rounded-sm p-3 bg-white hover:opacity-80 transition-opacity"
-                   href="#">
+                <div class="flex gap-4 items-center rounded-sm p-3 bg-white hover:opacity-80 transition-opacity">
                     <!-- Logo -->
                     <img src="{% static 'images/logo.png' %}"
                          alt="logo"
@@ -192,7 +190,7 @@
                          height="50px" />
                     <!-- Title -->
                     <h1 class="text-xl font-semibold text-neutral">DeepFX Studio</h1>
-                </a>
+                </div>
                 <div class="my-10">
                     <li class="my-1">
                         <div class="flex gap-5 items-center">
