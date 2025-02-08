@@ -133,7 +133,7 @@ function previewImage(file, uploadBox) {
     reader.onload = function (event) {
         previewContainer.src = event.target.result;
         previewContainer.alt = "Preview Image";
-        previewContainer.classList.add("h-fit", "md:h-56", "rounded-md", "border", "border-gray-600", "object-cover");
+        previewContainer.classList.add("h-fit", "h-20", "md:h-56", "rounded-md", "border", "border-gray-600", "object-cover");
     };
 
     reader.onerror = function () {

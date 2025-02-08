@@ -36,10 +36,6 @@ def api_background_remover(request):
             # Process the image
             mask_path, rgba_path = save_inference(temp_input.name)
 
-            # # Encode the input image to base64
-            # with open(temp_input, 'rb') as img_file:
-            #     input_image = base64.b64encode(img_file.read()).decode('utf-8')
-
             # Encode the output image to base64
             with open(rgba_path, "rb") as img_file:
                 output_image = base64.b64encode(img_file.read()).decode("utf-8")
@@ -49,32 +45,11 @@ def api_background_remover(request):
             os.unlink(mask_path)
             os.unlink(rgba_path)
 
-            # Return the processed image to the front-end
-            # return JsonResponse({"processed_image": output_image})
-            # query_params = urlencode({"processed_image": output_image})
-
-            # processed_image = ProcessedImage.objects.create(orginal_image_data=input_image,processed_image_data=output_image);
-            request.session["background_remover_processed_image"] = output_image
-            return redirect(reverse("background-remover:background_remover"))
-
-            # return render(request, "pages/result_page.html", {"processed_image": output_image})
+            return render(request, "pages/background_remover.html", {"processed_image": output_image})
 
         except Exception as e:
             request.session["error"] = f"An error occurred: {str(e)}"
-            return redirect(reverse("background-remover:background_remover"))
-
-            # return render(request, "pages/result_page.html", {"error": f"An error occurred: {str(e)}"})
-            # return JsonResponse({
-            #     "status": "error",
-            #     "message": f"An error occurred: {str(e)}"
-            # }, status=500)
+            return render(request, "pages/background_remover.html", {"error": f"An error occurred: {str(e)}"})
     else:
-        request.session["background_remover_error"] = "Invalid request method. Use POST."
-        # error_message = urlencode({"error": "Invalid request method. Use POST."})
-        return redirect(reverse("background-remover:background_remover"))
+        return render(request, "pages/background_remover.html", {"error": "Invalid request method. Use POST."})
 
-        # return render(request, "pages/background_remover.html", {"error": "Invalid request method. Use POST."})
-        # return JsonResponse({
-        #     "status": "error",
-        #     "message": "Invalid request method. Use POST."
-        # }, status=405)
