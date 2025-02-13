@@ -103,8 +103,8 @@ def execute_transformation(input_path, model_path):
     return result_path
 
 if __name__ == "__main__":
-    model_path = "models/Arcane.jit"
-    input_image = "inputs/image"
+    model_path = "pretrained_models/Arcane.jit"
+    input_image = "profile.jpeg"
     
     output_path = execute_transformation(input_image, model_path)
     print(f"Image saved to: {output_path}")

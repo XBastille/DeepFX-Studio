@@ -12,8 +12,6 @@ def background_remover(request):
 
 
 def api_background_remover(request):
-    request.session.flush()
-
     if request.method == "POST":
         try:
             # Ensure 'file' is in the request

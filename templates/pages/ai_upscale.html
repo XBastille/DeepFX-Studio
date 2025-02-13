@@ -31,5 +31,98 @@
             </p>
         </div>
     </div>
+    <div id="form-section"
+             class="flex md:flex-row flex-col md:w-[60vw] md:mx-auto justify-center items-center flex-wrap m-10 gap-10">
+             <!-- Diff Section -->
+            <div class="relative w-full md:w-[50%] h-full flex items-center justify-center">
+                <a href="data:image/png;base64,{{ processed_image }}"
+                    download="processed_image.png"
+                    class="btn absolute top-2 left-2 bg-black cursor-pointer z-20"
+                >
+                    <img 
+                        width=""
+                        height=""
+                        src="{% static 'images/download.svg' %}"
+                        class="w-4 h-4"
+                    />
+                </a>
+                <div class="diff aspect-[4/3] w-full h-full border-2 border-gray-500 rounded-xl shadow-lg">
+                    <div class="diff-item-1">
+                        <img 
+                            height=""
+                            width=""
+                            src="{% static 'images/ai_upscale_input_image.jpeg' %}"
+                            class="object-contain rounded-xl"
+                        />
+                    </div>
+                    <div class="diff-item-2">
+                        <img 
+                            height=""
+                            width=""
+                            src="{% static 'images/ai_upscale_output_image.jpg' %}"
+                            class="object-contain rounded-xl"
+                        />
+                    </div>
+                    <div class="diff-resizer"></div>
+                </div>
+            </div>
+            <!-- Upload Section -->
+            <form id="upload-form"
+                  action="{% url 'background-remover:background_remover_api' %}"
+                  method="post"
+                  enctype="multipart/form-data"
+                  class="w-full md:w-[35%] flex flex-col justify-between gap-6">
+                {% csrf_token %}
+                <!-- Upload Box -->
+                <div id="uploadBox"
+                     class="flex flex-col items-center justify-center rounded-lg p-3 h-[20] md:h-56 border-dashed border-gray-600 border-2">
+                    <img height=""
+                         width=""
+                         id="upload_image"
+                         src="{% static 'images/upload.svg' %}"
+                         class="text-gray-500 m-3 w-8 h-8"
+                         alt="upload" />
+                    <p id="upload_container"
+                       class="text-center text-sm text-gray-300 mb-4 font-light">
+                        Drop Image Here
+                        <br />
+                        Click to Upload
+                    </p>
+                </div>
+                <input hidden
+                       id="file_input"
+                       type="file"
+                       name="file"
+                       accept=".jpg, .jpeg, .png">
+
+                <!-- Select Options -->
+                <div class="flex flex-col md:flex-row gap-2">
+                    <select class="text-xs select select-bordered select-sm w-full max-w-xs">
+                        <option disabled selected>Choose Scale</option>
+                        <option>2x</option>
+                        <option>4x</option>
+                        <option>8x</option>
+                    </select>
+                    <select class="text-xs select select-bordered select-sm w-full max-w-xs">
+                        <option disabled selected>Select Format</option>
+                        <option>JPG</option>
+                        <option>PNG</option>
+                    </select>
+                </div>
+
+                <!-- Submit Button -->
+                <button id="generateBtn" type="submit" class="btn btn-primary w-full mt-1">
+                    <i class="fa-solid fa-magic mr-2"></i> Generate Upscaled Image
+                </button>
+            </form>
+        </div>
+
+        {% if error %}
+            <div id="message-box"
+                 class="absolute top-5 left-5 right-5 md:left-auto md:top-10 md:right-10 animate-appear">
+                {% component "toast" title="Error Occured" content="{{ error }}" %}{% endcomponent %}
+            </div>
+        {% endif %}
+    </div>
 </div>
 {% endblock body %}

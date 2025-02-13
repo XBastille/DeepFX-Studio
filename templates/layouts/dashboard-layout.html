@@ -173,6 +173,22 @@
                                     <a href="{% url 'ai-filter:ai_filter' %}" class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
                                 </div>
                             </div>
+
+                            <!-- AI Colorization -->
+                            <div class="group relative bg-gray-900 rounded-xl p-6 transition-all hover:bg-gray-800 hover:scale-105 shadow-lg">
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                            <img src="{% static 'images/ai_colorization.svg' %}" alt="AI Filter Icon" class="w-6 h-6" />
+                                        </div>
+                                        <h3 class="text-lg font-semibold text-white">AI Colorization</h3>
+                                    </div>
+                                    <p class="text-gray-400 text-sm">
+                                        Instantly bring black-and-white images to life with AI-powered colorization, adding realistic and vibrant colors effortlessly.
+                                    </p>
+                                    <a href="{% url 'ai-colorization:ai_colorization' %}" class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
+                                </div>
+                            </div>
                         </div>
                     </section>
                 {% endblock dashboard %}

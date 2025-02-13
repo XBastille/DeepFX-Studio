@@ -46,7 +46,7 @@ def process_image(input_path, quality_factor=35, watermarked=True, artistic=True
     return output_path
 
 if __name__ == "__main__":
-    input_image = "inputs/your_image"
+    input_image = "bw_img1.jpeg"
     render_factor = 35
     watermarked = True
     artistic = False

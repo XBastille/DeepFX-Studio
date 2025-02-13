@@ -2,8 +2,8 @@ import torch
 from PIL import Image
 import numpy as np
 
-from rrdbnet_arch import RRDBNet
-from utils import extend_edges, create_overlapping_patches, reconstruct_from_patches, remove_padding
+from ai_image_upscale.real_ersgan.rrdbnet_arch import RRDBNet
+from ai_image_upscale.real_ersgan.utils import extend_edges, create_overlapping_patches, reconstruct_from_patches, remove_padding
 
 class RealESRGAN:
     def __init__(self, device, scale=4):
@@ -72,8 +72,8 @@ def process_image(input_path, output_path, file_extension, scale_size=4):
     return output_filename
 
 if __name__ == "__main__":
-    input_img="input_image"
-    output_img="output_image"
+    input_img="blur_test_image.jpeg"
+    output_img="ai_upscale_output_image"
     saved_ex="jpg"
     scale_size=4
     upscale_img_path = process_image(input_img, output_img, saved_ex, scale_size)
