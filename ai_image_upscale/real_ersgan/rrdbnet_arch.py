@@ -2,7 +2,7 @@ import torch
 from torch import nn as nn
 from torch.nn import functional as F
 
-from arch_utils import initialize_network_weights, construct_sequential_blocks, reorganize_pixels
+from ai_image_upscale.real_ersgan.arch_utils import initialize_network_weights, construct_sequential_blocks, reorganize_pixels
 
 class ResidualDenseBlock(nn.Module):
     """

@@ -19,8 +19,6 @@ def artistic_image_creator(request):
 
 
 def api_artistic_image_creator(request):
-    request.session.flush()
-
     if request.method == "POST":
         try:
             # Ensure 'file' is in the request

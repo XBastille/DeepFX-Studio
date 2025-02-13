@@ -1,4 +1,3 @@
-
 // Variables
 const uploadBox = document.getElementById("uploadBox");
 const fileInput = document.getElementById("file_input");
@@ -67,6 +66,8 @@ uploadBox.addEventListener("drop", (event) => {
 
 // Form submission
 form.addEventListener("submit", async function (event) {
+    event.preventDefault();
+
     const image = document.getElementById("file_input").files[0];
     if (!document.getElementById("file_input").files.length) {
         alert("Please select an image before submitting!");
@@ -76,7 +77,7 @@ form.addEventListener("submit", async function (event) {
         <i class="fas fa-circle-notch fa-spin"></i>
         Processing
     `;
-    window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" })
+    window.scrollTo({ left: 0, top: document.body.scrollHeight, behavior: "smooth" });
 });
 
 
