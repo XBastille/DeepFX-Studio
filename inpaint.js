@@ -2,7 +2,6 @@ const dragAndDrop = document.querySelector('.drag-and-drop');
 const fileInput = document.querySelector('.file-input');
 const msg = document.querySelector('.drag-drop-msg');
 const icon = document.querySelector('.content i');
-const content = document.querySelector('.content');
 const back = document.querySelector('.back');
 const slide = document.querySelector('.slide');
 const container = document.querySelector('.container');
@@ -27,6 +26,77 @@ const brush = document.querySelector("#brush");
 const eraser = document.querySelector("#eraser");
 const sizeInput = document.querySelector(".selector input");
 const submit = document.querySelector(".submit");
+const configHeader = document.getElementById('configHeader');
+const arrow = document.getElementById('arrow');
+const content = document.getElementById('configContent');
+const resetBtn = document.getElementById('resetBtn');
+
+document.getElementById('diceBtn').addEventListener('click', () => {
+    const randomSeed = Math.floor(Math.random() * 1000000);
+    document.getElementById('seed').value = randomSeed;
+});
+
+function updateSliderTrack(slider, value) {
+    const min = slider.min;
+    const max = slider.max;
+    const percentage = ((value - min) / (max - min)) * 100;
+    slider.style.setProperty('--value-percent', `${percentage}%`);
+}
+
+const pairs = [
+    {
+        slider: document.getElementById('inferenceSteps'),
+        input: document.getElementById('inferenceStepsInput'),
+        defaultValue: 25
+    },
+    {
+        slider: document.getElementById('guidanceScale'),
+        input: document.getElementById('guidanceScaleInput'),
+        defaultValue: 7.5
+    },
+    {
+        slider: document.getElementById('controlNetScale'),
+        input: document.getElementById('controlNetScaleInput'),
+        defaultValue: 1.0
+    }
+];
+
+
+configHeader.addEventListener('click', () => {
+    content.classList.toggle('hidden');
+    arrow.classList.toggle('collapsed');
+});
+
+pairs.forEach(pair => {
+    const updateSliderBackground = (value) => {
+        const min = pair.slider.min;
+        const max = pair.slider.max;
+        const percentage = ((value - min) / (max - min)) * 100;
+        pair.slider.style.setProperty('--value-percent', `${percentage}%`);
+    };
+
+    pair.slider.addEventListener('input', () => {
+        pair.input.value = pair.slider.value;
+        updateSliderBackground(pair.slider.value);
+    });
+
+    pair.input.addEventListener('input', () => {
+        pair.slider.value = pair.input.value;
+        updateSliderBackground(pair.input.value);
+    });
+
+    updateSliderBackground(pair.slider.value);
+});
+
+resetBtn.addEventListener('click', () => {
+    pairs.forEach(pair => {
+        pair.slider.value = pair.defaultValue;
+        pair.input.value = pair.defaultValue;
+        updateSliderTrack(pair.slider, pair.defaultValue);
+    });
+    document.getElementById('seed').value = '';
+    document.getElementById('negativePrompt').value = '';
+});
 
 let isDrawing = false;
 let isErasing = false;
