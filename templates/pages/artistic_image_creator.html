@@ -23,6 +23,7 @@
         <div class="flex justify-center items-center pt-10">
             <img height=""
                  width=""
+                 alt="logo"
                  class="mx-auto w-12"
                  src="{% static 'images/aristic-image-logo.svg' %}">
         </div>
@@ -39,7 +40,7 @@
         <div id="form-section"
              class="flex md:flex-row flex-col md:mx-auto justify-center items-center flex-wrap m-10 gap-10">
             <form id="upload-form"
-                  action="{% url 'artistic-image-creator:artistic_image_creator_api' %}"
+                  action="{% url 'artistic-image-creator:artistic_image_creator' %}"
                   method="post"
                   enctype="multipart/form-data"
                   class="w-full md:w-[40%] flex flex-col justify-between gap-6">
@@ -139,5 +140,5 @@
             </div>
         {% endif %}
     </div>
-    <script src="{% static "./scripts/artistic_image_creator.js" %}"></script>
+    <script src="{% static "./scripts/artistic-image-creator.js" %}"></script>
 {% endblock body %}

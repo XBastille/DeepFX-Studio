@@ -25,12 +25,10 @@ urlpatterns = [
     path("", include("dashboard.urls")),
     path("", include("user_auth.urls")),
     path("", include("django_components.urls")),
-    path(
-        "background-remover/", include("background_remover.urls")
-    ),
+    path("background-remover/", include("background_remover.urls")),
     path("artistic-image-creator/", include("artistic_image_creator.urls")),
     path("text-to-image/", include("ai_text_to_image_generator.urls")),
-    path("ai-filter/",include("ai_filter.urls")),
+    path("ai-filter/", include("ai_filter.urls")),
     path("ai-image-upscale/", include("ai_image_upscale.urls")),
     path("ai-eraser/", include("ai_eraser.urls")),
     path("ai-colorization/", include("ai_colorization.urls")),

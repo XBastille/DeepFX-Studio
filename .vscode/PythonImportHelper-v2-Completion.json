@@ -58,15 +58,7 @@
         "documentation": {}
     },
     {
-        "label": "get_transforms",
-        "importPath": "fastai.vision.transform",
-        "description": "fastai.vision.transform",
-        "isExtraImport": true,
-        "detail": "fastai.vision.transform",
-        "documentation": {}
-    },
-    {
-        "label": "ImageImageList",
+        "label": "ImageDataBunch",
         "importPath": "fastai.vision.data",
         "description": "fastai.vision.data",
         "isExtraImport": true,
@@ -74,7 +66,7 @@
         "documentation": {}
     },
     {
-        "label": "ImageDataBunch",
+        "label": "ImageImageList",
         "importPath": "fastai.vision.data",
         "description": "fastai.vision.data",
         "isExtraImport": true,
@@ -95,6 +87,14 @@
         "description": "fastai.vision.data",
         "isExtraImport": true,
         "detail": "fastai.vision.data",
+        "documentation": {}
+    },
+    {
+        "label": "get_transforms",
+        "importPath": "fastai.vision.transform",
+        "description": "fastai.vision.transform",
+        "isExtraImport": true,
+        "detail": "fastai.vision.transform",
         "documentation": {}
     },
     {
@@ -131,43 +131,12 @@
         "documentation": {}
     },
     {
-        "label": "DatasetType",
-        "importPath": "fastai.basic_data",
-        "description": "fastai.basic_data",
+        "label": "logging",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "fastai.basic_data",
-        "documentation": {}
-    },
-    {
-        "label": "DataBunch",
-        "importPath": "fastai.basic_data",
-        "description": "fastai.basic_data",
-        "isExtraImport": true,
-        "detail": "fastai.basic_data",
-        "documentation": {}
-    },
-    {
-        "label": "Learner",
-        "importPath": "fastai.basic_train",
-        "description": "fastai.basic_train",
-        "isExtraImport": true,
-        "detail": "fastai.basic_train",
-        "documentation": {}
-    },
-    {
-        "label": "Learner",
-        "importPath": "fastai.basic_train",
-        "description": "fastai.basic_train",
-        "isExtraImport": true,
-        "detail": "fastai.basic_train",
-        "documentation": {}
-    },
-    {
-        "label": "*",
-        "importPath": "fastai.basic_train",
-        "description": "fastai.basic_train",
-        "isExtraImport": true,
-        "detail": "fastai.basic_train",
+        "importPath": "logging",
+        "description": "logging",
+        "detail": "logging",
         "documentation": {}
     },
     {
@@ -220,6 +189,63 @@
         "documentation": {}
     },
     {
+        "label": "cv2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "cv2",
+        "description": "cv2",
+        "detail": "cv2",
+        "documentation": {}
+    },
+    {
+        "label": "device",
+        "importPath": "deoldify",
+        "description": "deoldify",
+        "isExtraImport": true,
+        "detail": "deoldify",
+        "documentation": {}
+    },
+    {
+        "label": "DatasetType",
+        "importPath": "fastai.basic_data",
+        "description": "fastai.basic_data",
+        "isExtraImport": true,
+        "detail": "fastai.basic_data",
+        "documentation": {}
+    },
+    {
+        "label": "DataBunch",
+        "importPath": "fastai.basic_data",
+        "description": "fastai.basic_data",
+        "isExtraImport": true,
+        "detail": "fastai.basic_data",
+        "documentation": {}
+    },
+    {
+        "label": "Learner",
+        "importPath": "fastai.basic_train",
+        "description": "fastai.basic_train",
+        "isExtraImport": true,
+        "detail": "fastai.basic_train",
+        "documentation": {}
+    },
+    {
+        "label": "Learner",
+        "importPath": "fastai.basic_train",
+        "description": "fastai.basic_train",
+        "isExtraImport": true,
+        "detail": "fastai.basic_train",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "fastai.basic_train",
+        "description": "fastai.basic_train",
+        "isExtraImport": true,
+        "detail": "fastai.basic_train",
+        "documentation": {}
+    },
+    {
         "label": "*",
         "importPath": "fastai.vision",
         "description": "fastai.vision",
@@ -257,15 +283,6 @@
         "description": "fastai.vision.image",
         "isExtraImport": true,
         "detail": "fastai.vision.image",
-        "documentation": {}
-    },
-    {
-        "label": "cv2",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "cv2",
-        "description": "cv2",
-        "detail": "cv2",
         "documentation": {}
     },
     {
@@ -339,23 +356,6 @@
         "description": "PIL",
         "isExtraImport": true,
         "detail": "PIL",
-        "documentation": {}
-    },
-    {
-        "label": "device",
-        "importPath": "deoldify",
-        "description": "deoldify",
-        "isExtraImport": true,
-        "detail": "deoldify",
-        "documentation": {}
-    },
-    {
-        "label": "logging",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "logging",
-        "description": "logging",
-        "detail": "logging",
         "documentation": {}
     },
     {
@@ -3147,6 +3147,14 @@
         "documentation": {}
     },
     {
+        "label": "logger",
+        "importPath": "artistic_image_creator.views",
+        "description": "artistic_image_creator.views",
+        "isExtraImport": true,
+        "detail": "artistic_image_creator.views",
+        "documentation": {}
+    },
+    {
         "label": "MTCNN",
         "importPath": "facenet_pytorch",
         "description": "facenet_pytorch",
@@ -3161,15 +3169,6 @@
         "importPath": "onnxruntime",
         "description": "onnxruntime",
         "detail": "onnxruntime",
-        "documentation": {}
-    },
-    {
-        "label": "os,",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "os.",
-        "description": "os.",
-        "detail": "os.",
         "documentation": {}
     },
     {
@@ -3222,7 +3221,7 @@
         "documentation": {}
     },
     {
-        "label": "extend_edges",
+        "label": "create_overlapping_patches",
         "importPath": "ai_image_upscale.real_ersgan.utils",
         "description": "ai_image_upscale.real_ersgan.utils",
         "isExtraImport": true,
@@ -3230,7 +3229,7 @@
         "documentation": {}
     },
     {
-        "label": "create_overlapping_patches",
+        "label": "extend_edges",
         "importPath": "ai_image_upscale.real_ersgan.utils",
         "description": "ai_image_upscale.real_ersgan.utils",
         "isExtraImport": true,
@@ -3254,7 +3253,7 @@
         "documentation": {}
     },
     {
-        "label": "initialize_network_weights",
+        "label": "construct_sequential_blocks",
         "importPath": "ai_image_upscale.real_ersgan.arch_utils",
         "description": "ai_image_upscale.real_ersgan.arch_utils",
         "isExtraImport": true,
@@ -3262,7 +3261,7 @@
         "documentation": {}
     },
     {
-        "label": "construct_sequential_blocks",
+        "label": "initialize_network_weights",
         "importPath": "ai_image_upscale.real_ersgan.arch_utils",
         "description": "ai_image_upscale.real_ersgan.arch_utils",
         "isExtraImport": true,
@@ -3292,6 +3291,30 @@
         "description": "ai_image_upscale.real_ersgan.inference",
         "isExtraImport": true,
         "detail": "ai_image_upscale.real_ersgan.inference",
+        "documentation": {}
+    },
+    {
+        "label": "image_to_base64",
+        "importPath": "website.views",
+        "description": "website.views",
+        "isExtraImport": true,
+        "detail": "website.views",
+        "documentation": {}
+    },
+    {
+        "label": "image_to_base64",
+        "importPath": "website.views",
+        "description": "website.views",
+        "isExtraImport": true,
+        "detail": "website.views",
+        "documentation": {}
+    },
+    {
+        "label": "flush_image_data",
+        "importPath": "website.views",
+        "description": "website.views",
+        "isExtraImport": true,
+        "detail": "website.views",
         "documentation": {}
     },
     {
@@ -3499,14 +3522,6 @@
         "documentation": {}
     },
     {
-        "label": "flush_image_data",
-        "importPath": "website.views",
-        "description": "website.views",
-        "isExtraImport": true,
-        "detail": "website.views",
-        "documentation": {}
-    },
-    {
         "label": "get_asgi_application",
         "importPath": "django.core.asgi",
         "description": "django.core.asgi",
@@ -3592,7 +3607,7 @@
         "kind": 6,
         "importPath": "ai_colorization.deoldify_models.deoldify._device",
         "description": "ai_colorization.deoldify_models.deoldify._device",
-        "peekOfCode": "class HardwareException(Exception):\n    pass\nclass ComputeManager:\n    def __init__(self):\n        self.configure(DeviceId.CPU)\n    def is_accelerated(self):\n        return self.active_device() is not DeviceId.CPU\n    def active_device(self):\n        return self._active_compute_unit\n    def configure(self, hardware_unit:DeviceId):     ",
+        "peekOfCode": "class HardwareException(Exception):\n    pass\nclass ComputeManager:\n    def __init__(self):\n        self.configure(DeviceId.CPU)\n    def is_accelerated(self):\n        return self.active_device() is not DeviceId.CPU\n    def active_device(self):\n        return self._active_compute_unit\n    def configure(self, hardware_unit: DeviceId):",
         "detail": "ai_colorization.deoldify_models.deoldify._device",
         "documentation": {}
     },
@@ -3601,7 +3616,7 @@
         "kind": 6,
         "importPath": "ai_colorization.deoldify_models.deoldify._device",
         "description": "ai_colorization.deoldify_models.deoldify._device",
-        "peekOfCode": "class ComputeManager:\n    def __init__(self):\n        self.configure(DeviceId.CPU)\n    def is_accelerated(self):\n        return self.active_device() is not DeviceId.CPU\n    def active_device(self):\n        return self._active_compute_unit\n    def configure(self, hardware_unit:DeviceId):     \n        if hardware_unit == DeviceId.CPU:\n            os.environ['CUDA_VISIBLE_DEVICES'] = ''",
+        "peekOfCode": "class ComputeManager:\n    def __init__(self):\n        self.configure(DeviceId.CPU)\n    def is_accelerated(self):\n        return self.active_device() is not DeviceId.CPU\n    def active_device(self):\n        return self._active_compute_unit\n    def configure(self, hardware_unit: DeviceId):\n        if hardware_unit == DeviceId.CPU:\n            os.environ[\"CUDA_VISIBLE_DEVICES\"] = \"\"",
         "detail": "ai_colorization.deoldify_models.deoldify._device",
         "documentation": {}
     },
@@ -3619,7 +3634,7 @@
         "kind": 2,
         "importPath": "ai_colorization.deoldify_models.deoldify.dataset",
         "description": "ai_colorization.deoldify_models.deoldify.dataset",
-        "peekOfCode": "def init_test_databunch() -> ImageDataBunch:\n    test_path = Path('./dummy/')\n    return create_training_data(\n        dimension=1, batch_count=1, source_path=test_path, \n        target_path=test_path, retention_rate=0.001\n    )",
+        "peekOfCode": "def init_test_databunch() -> ImageDataBunch:\n    test_path = Path(\"./dummy/\")\n    return create_training_data(\n        dimension=1,\n        batch_count=1,\n        source_path=test_path,\n        target_path=test_path,\n        retention_rate=0.001,\n    )",
         "detail": "ai_colorization.deoldify_models.deoldify.dataset",
         "documentation": {}
     },
@@ -3655,7 +3670,7 @@
         "kind": 6,
         "importPath": "ai_colorization.deoldify_models.deoldify.filters",
         "description": "ai_colorization.deoldify_models.deoldify.filters",
-        "peekOfCode": "class ColorizeFilter(BaseImgFilter):\n    def __init__(self, learner: Learner, stats: tuple = imagenet_stats):\n        super().__init__(learner=learner, stats=stats)\n        self.base_size = 16\n    def process(\n        self, source_img: PilImage, processed_img: PilImage, \n        quality_factor: int, bnw_output: bool = True) -> PilImage:\n        target_size = quality_factor * self.base_size\n        model_output = self._execute_model(processed_img, target_size)\n        restored_img = self._restore_dimensions(model_output, source_img)",
+        "peekOfCode": "class ColorizeFilter(BaseImgFilter):\n    def __init__(self, learner: Learner, stats: tuple = imagenet_stats):\n        super().__init__(learner=learner, stats=stats)\n        self.base_size = 16\n    def process(\n        self,\n        source_img: PilImage,\n        processed_img: PilImage,\n        quality_factor: int,\n        bnw_output: bool = True,",
         "detail": "ai_colorization.deoldify_models.deoldify.filters",
         "documentation": {}
     },
@@ -3664,7 +3679,7 @@
         "kind": 6,
         "importPath": "ai_colorization.deoldify_models.deoldify.filters",
         "description": "ai_colorization.deoldify_models.deoldify.filters",
-        "peekOfCode": "class MultiStageFilter(BaseImgFilter):\n    def __init__(self, filters: List[ImgFilterInterface], quality_factor: int):\n        self.filters = filters\n        self.quality_factor = quality_factor\n    def process(\n        self, source_img: PilImage, processed_img: PilImage, \n        quality_factor: int = None, bnw_output: bool = True) -> PilImage:\n        current_quality = self.quality_factor if quality_factor is None else quality_factor\n        for filter_stage in self.filters:\n            processed_img = filter_stage.process(source_img, processed_img, current_quality, bnw_output)",
+        "peekOfCode": "class MultiStageFilter(BaseImgFilter):\n    def __init__(self, filters: List[ImgFilterInterface], quality_factor: int):\n        self.filters = filters\n        self.quality_factor = quality_factor\n    def process(\n        self,\n        source_img: PilImage,\n        processed_img: PilImage,\n        quality_factor: int = None,\n        bnw_output: bool = True,",
         "detail": "ai_colorization.deoldify_models.deoldify.filters",
         "documentation": {}
     },
@@ -3673,7 +3688,7 @@
         "kind": 2,
         "importPath": "ai_colorization.deoldify_models.deoldify.generators",
         "description": "ai_colorization.deoldify_models.deoldify.generators",
-        "peekOfCode": "def init_wide_inference(\n    root_folder: Path, weights_name: str, nf_factor: int = 2, arch=models.resnet101) -> Learner:\n    data = init_test_databunch()\n    learn = create_wide_learner(\n        data=data, gen_loss=F.l1_loss, nf_factor=nf_factor, arch=arch\n    )\n    learn.path = root_folder\n    learn.load(weights_name)\n    learn.model.eval()\n    return learn",
+        "peekOfCode": "def init_wide_inference(\n    root_folder: Path, weights_name: str, nf_factor: int = 2, arch=models.resnet101\n) -> Learner:\n    data = init_test_databunch()\n    learn = create_wide_learner(\n        data=data, gen_loss=F.l1_loss, nf_factor=nf_factor, arch=arch\n    )\n    learn.path = root_folder\n    learn.load(weights_name)\n    learn.model.eval()",
         "detail": "ai_colorization.deoldify_models.deoldify.generators",
         "documentation": {}
     },
@@ -3700,7 +3715,7 @@
         "kind": 2,
         "importPath": "ai_colorization.deoldify_models.deoldify.generators",
         "description": "ai_colorization.deoldify_models.deoldify.generators",
-        "peekOfCode": "def init_deep_inference(\n    root_folder: Path, weights_name: str, arch=models.resnet34, nf_factor: float = 1.5) -> Learner:\n    data = init_test_databunch()\n    learn = create_deep_learner(\n        data=data, gen_loss=F.l1_loss, arch=arch, nf_factor=nf_factor\n    )\n    learn.path = root_folder\n    learn.load(weights_name)\n    learn.model.eval()\n    return learn",
+        "peekOfCode": "def init_deep_inference(\n    root_folder: Path, weights_name: str, arch=models.resnet34, nf_factor: float = 1.5\n) -> Learner:\n    data = init_test_databunch()\n    learn = create_deep_learner(\n        data=data, gen_loss=F.l1_loss, arch=arch, nf_factor=nf_factor\n    )\n    learn.path = root_folder\n    learn.load(weights_name)\n    learn.model.eval()",
         "detail": "ai_colorization.deoldify_models.deoldify.generators",
         "documentation": {}
     },
@@ -3736,7 +3751,7 @@
         "kind": 6,
         "importPath": "ai_colorization.deoldify_models.deoldify.unet",
         "description": "ai_colorization.deoldify_models.deoldify.unet",
-        "peekOfCode": "class CustomPixelShuffle_ICNR(nn.Module):\n    def __init__(\n        self,\n        ni: int,\n        nf: int = None,\n        scale: int = 2,\n        blur: bool = False,\n        leaky: float = None,\n        **kwargs\n    ):",
+        "peekOfCode": "class CustomPixelShuffle_ICNR(nn.Module):\n    def __init__(\n        self,\n        ni: int,\n        nf: int = None,\n        scale: int = 2,\n        blur: bool = False,\n        leaky: float = None,\n        **kwargs,\n    ):",
         "detail": "ai_colorization.deoldify_models.deoldify.unet",
         "documentation": {}
     },
@@ -3781,7 +3796,7 @@
         "kind": 5,
         "importPath": "ai_colorization.deoldify_models.deoldify.unet",
         "description": "ai_colorization.deoldify_models.deoldify.unet",
-        "peekOfCode": "__all__ = ['DynamicUnetDeep', 'DynamicUnetWide']\ndef _get_sfs_idxs(sizes: Sizes) -> List[int]:\n    feature_szs = [size[-1] for size in sizes]\n    sfs_idxs = list(\n        np.where(np.array(feature_szs[:-1]) != np.array(feature_szs[1:]))[0]\n    )\n    if feature_szs[0] != feature_szs[1]:\n        sfs_idxs = [0] + sfs_idxs\n    return sfs_idxs\nclass CustomPixelShuffle_ICNR(nn.Module):",
+        "peekOfCode": "__all__ = [\"DynamicUnetDeep\", \"DynamicUnetWide\"]\ndef _get_sfs_idxs(sizes: Sizes) -> List[int]:\n    feature_szs = [size[-1] for size in sizes]\n    sfs_idxs = list(\n        np.where(np.array(feature_szs[:-1]) != np.array(feature_szs[1:]))[0]\n    )\n    if feature_szs[0] != feature_szs[1]:\n        sfs_idxs = [0] + sfs_idxs\n    return sfs_idxs\nclass CustomPixelShuffle_ICNR(nn.Module):",
         "detail": "ai_colorization.deoldify_models.deoldify.unet",
         "documentation": {}
     },
@@ -3790,7 +3805,7 @@
         "kind": 6,
         "importPath": "ai_colorization.deoldify_models.deoldify.visualize",
         "description": "ai_colorization.deoldify_models.deoldify.visualize",
-        "peekOfCode": "class ModelImageEnhancer:\n    def __init__(self, filter: ImgFilterInterface, results_dir: str = None):\n        self.filter = filter\n        self.results_dir = None if results_dir is None else Path(results_dir)\n        self.results_dir.mkdir(parents=True, exist_ok=True)\n    def _optimize_memory(self):\n        torch.cuda.empty_cache()\n    def _load_img(self, path: Path) -> Image:\n        return PIL.Image.open(path).convert('RGB')\n    def bnw_img(",
+        "peekOfCode": "class ModelImageEnhancer:\n    def __init__(self, filter: ImgFilterInterface, results_dir: str = None):\n        self.filter = filter\n        self.results_dir = None if results_dir is None else Path(results_dir)\n        self.results_dir.mkdir(parents=True, exist_ok=True)\n    def _optimize_memory(self):\n        torch.cuda.empty_cache()\n    def _load_img(self, path: Path) -> Image:\n        return PIL.Image.open(path).convert(\"RGB\")\n    def bnw_img(",
         "detail": "ai_colorization.deoldify_models.deoldify.visualize",
         "documentation": {}
     },
@@ -3799,7 +3814,7 @@
         "kind": 2,
         "importPath": "ai_colorization.deoldify_models.deoldify.visualize",
         "description": "ai_colorization.deoldify_models.deoldify.visualize",
-        "peekOfCode": "def create_stable_colorizer(\n    root_folder: Path = Path('./'),\n    weights_name: str = 'ColorizeStable_gen',\n    results_dir='result_images',\n    quality_factor: int = 35\n) -> ModelImageEnhancer:\n    learn = init_wide_inference(root_folder=root_folder, weights_name=weights_name)\n    filter = MultiStageFilter([ColorizeFilter(learner=learn)], quality_factor=quality_factor)\n    return ModelImageEnhancer(filter, results_dir=results_dir)\ndef create_artistic_colorizer(",
+        "peekOfCode": "def create_stable_colorizer(\n    root_folder: Path = Path(\"./\"),\n    weights_name: str = \"ColorizeStable_gen\",\n    results_dir=\"result_images\",\n    quality_factor: int = 35,\n) -> ModelImageEnhancer:\n    learn = init_wide_inference(root_folder=root_folder, weights_name=weights_name)\n    filter = MultiStageFilter(\n        [ColorizeFilter(learner=learn)], quality_factor=quality_factor\n    )",
         "detail": "ai_colorization.deoldify_models.deoldify.visualize",
         "documentation": {}
     },
@@ -3808,7 +3823,7 @@
         "kind": 2,
         "importPath": "ai_colorization.deoldify_models.deoldify.visualize",
         "description": "ai_colorization.deoldify_models.deoldify.visualize",
-        "peekOfCode": "def create_artistic_colorizer(\n    root_folder: Path = Path('./'),\n    weights_name: str = 'ColorizeArtistic_gen',\n    results_dir='result_images',\n    quality_factor: int = 35\n) -> ModelImageEnhancer:\n    learn = init_deep_inference(root_folder=root_folder, weights_name=weights_name)\n    filter = MultiStageFilter([ColorizeFilter(learner=learn)], quality_factor=quality_factor)\n    return ModelImageEnhancer(filter, results_dir=results_dir)",
+        "peekOfCode": "def create_artistic_colorizer(\n    root_folder: Path = Path(\"./\"),\n    weights_name: str = \"ColorizeArtistic_gen\",\n    results_dir=\"result_images\",\n    quality_factor: int = 35,\n) -> ModelImageEnhancer:\n    learn = init_deep_inference(root_folder=root_folder, weights_name=weights_name)\n    filter = MultiStageFilter(\n        [ColorizeFilter(learner=learn)], quality_factor=quality_factor\n    )",
         "detail": "ai_colorization.deoldify_models.deoldify.visualize",
         "documentation": {}
     },
@@ -11890,7 +11905,7 @@
         "kind": 2,
         "importPath": "ai_colorization.deoldify_models.inference",
         "description": "ai_colorization.deoldify_models.inference",
-        "peekOfCode": "def get_unique_output_path(input_path, output_dir, artistic=True):\n    input_filename = os.path.splitext(os.path.basename(input_path))[0]\n    model_type = \"artistic\" if artistic else \"stable\"\n    output_subdir = os.path.join(output_dir, model_type)\n    check_folder(output_subdir)\n    base_path = os.path.join(output_subdir, f\"{input_filename}.jpg\")\n    if not os.path.exists(base_path):\n        return base_path\n    counter = 1\n    while os.path.exists(os.path.join(output_subdir, f\"{input_filename}_{counter}.jpg\")):",
+        "peekOfCode": "def get_unique_output_path(input_path, output_dir, artistic=True):\n    input_filename = os.path.splitext(os.path.basename(input_path))[0]\n    model_type = \"artistic\" if artistic else \"stable\"\n    output_subdir = os.path.join(output_dir, model_type)\n    check_folder(output_subdir)\n    base_path = os.path.join(output_subdir, f\"{input_filename}.jpg\")\n    if not os.path.exists(base_path):\n        return base_path\n    counter = 1\n    while os.path.exists(",
         "detail": "ai_colorization.deoldify_models.inference",
         "documentation": {}
     },
@@ -11899,7 +11914,7 @@
         "kind": 2,
         "importPath": "ai_colorization.deoldify_models.inference",
         "description": "ai_colorization.deoldify_models.inference",
-        "peekOfCode": "def process_image(input_path, quality_factor=35, watermarked=True, artistic=True):\n    enhancer = create_artistic_colorizer(artistic=artistic)\n    output_path = get_unique_output_path(input_path, \"outputs\", artistic)\n    result = enhancer.enhance_image(\n        path=input_path, \n        quality_factor=quality_factor, \n        compare=False, \n        watermarked=watermarked\n    )\n    if os.path.exists(result):",
+        "peekOfCode": "def process_image(input_path, quality_factor=35, watermarked=True, artistic=True):\n    enhancer = create_artistic_colorizer(artistic=artistic)\n    output_path = get_unique_output_path(input_path, \"outputs\", artistic)\n    result = enhancer.enhance_image(\n        path=input_path,\n        quality_factor=quality_factor,\n        compare=False,\n        watermarked=watermarked,\n    )\n    if os.path.exists(result):",
         "detail": "ai_colorization.deoldify_models.inference",
         "documentation": {}
     },
@@ -11908,7 +11923,7 @@
         "kind": 5,
         "importPath": "ai_colorization.deoldify_models.inference",
         "description": "ai_colorization.deoldify_models.inference",
-        "peekOfCode": "compute_device = ComputeManager()\ncompute_device.configure(device=DeviceId.GPU0)\nfrom deoldify.visualize import create_artistic_colorizer, create_stable_colorizer\nimport warnings\nwarnings.filterwarnings(\"ignore\", category=UserWarning, message=\".*?Your .*? set is empty.*?\")\ndef check_folder(path):\n    if not os.path.exists(path):\n        os.makedirs(path)\n    return path\ndef get_unique_output_path(input_path, output_dir, artistic=True):",
+        "peekOfCode": "compute_device = ComputeManager()\ncompute_device.configure(device=DeviceId.GPU0)\nimport warnings\nfrom deoldify.visualize import create_artistic_colorizer, create_stable_colorizer\nwarnings.filterwarnings(\n    \"ignore\", category=UserWarning, message=\".*?Your .*? set is empty.*?\"\n)\ndef check_folder(path):\n    if not os.path.exists(path):\n        os.makedirs(path)",
         "detail": "ai_colorization.deoldify_models.inference",
         "documentation": {}
     },
@@ -11917,7 +11932,7 @@
         "kind": 6,
         "importPath": "ai_colorization.apps",
         "description": "ai_colorization.apps",
-        "peekOfCode": "class AiColorizationConfig(AppConfig):\n    default_auto_field = 'django.db.models.BigAutoField'\n    name = 'ai_colorization'",
+        "peekOfCode": "class AiColorizationConfig(AppConfig):\n    default_auto_field = \"django.db.models.BigAutoField\"\n    name = \"ai_colorization\"",
         "detail": "ai_colorization.apps",
         "documentation": {}
     },
@@ -11926,7 +11941,7 @@
         "kind": 5,
         "importPath": "ai_colorization.urls",
         "description": "ai_colorization.urls",
-        "peekOfCode": "app_name = \"ai-colorization\"\nurlpatterns = [\n    path(\"\", views.ai_colorization, name=\"ai_colorization\"),\n    path(\n        \"generate/\", views.api_ai_colorization, name=\"ai_colorization_api\"\n    ),\n]",
+        "peekOfCode": "app_name = \"ai-colorization\"\nurlpatterns = [\n    path(\"\", views.ai_colorization, name=\"ai_colorization\"),\n]",
         "detail": "ai_colorization.urls",
         "documentation": {}
     },
@@ -11935,7 +11950,7 @@
         "kind": 5,
         "importPath": "ai_colorization.urls",
         "description": "ai_colorization.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"\", views.ai_colorization, name=\"ai_colorization\"),\n    path(\n        \"generate/\", views.api_ai_colorization, name=\"ai_colorization_api\"\n    ),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"\", views.ai_colorization, name=\"ai_colorization\"),\n]",
         "detail": "ai_colorization.urls",
         "documentation": {}
     },
@@ -11944,16 +11959,7 @@
         "kind": 2,
         "importPath": "ai_colorization.views",
         "description": "ai_colorization.views",
-        "peekOfCode": "def ai_colorization(request):\n    return render(request, \"pages/ai_colorization.html\")\ndef api_ai_colorization(request):\n    return JsonResponse({\"status\": \"200\"})",
-        "detail": "ai_colorization.views",
-        "documentation": {}
-    },
-    {
-        "label": "api_ai_colorization",
-        "kind": 2,
-        "importPath": "ai_colorization.views",
-        "description": "ai_colorization.views",
-        "peekOfCode": "def api_ai_colorization(request):\n    return JsonResponse({\"status\": \"200\"})",
+        "peekOfCode": "def ai_colorization(request):\n    if request.method == \"POST\":\n        try:\n            pass\n        except Exception as e:\n            logger.error(f\"An error occured: {str(e)}\")\n            return render(request, \"pages/ai_colorization.html\", {\"error\": str(e)})\n    else:\n        return render(request, \"pages/ai_colorization.html\")",
         "detail": "ai_colorization.views",
         "documentation": {}
     },
@@ -11971,7 +11977,7 @@
         "kind": 5,
         "importPath": "ai_eraser.urls",
         "description": "ai_eraser.urls",
-        "peekOfCode": "app_name = \"ai-eraser\"\nurlpatterns = [\n    path(\"\", views.ai_eraser, name=\"ai_eraser\"),\n    path(\n        \"generate/\", views.api_ai_eraser, name=\"ai_eraser_api\"\n    ),\n]",
+        "peekOfCode": "app_name = \"ai-eraser\"\nurlpatterns = [\n    path(\"\", views.ai_eraser, name=\"ai_eraser\"),\n    path(\"generate/\", views.api_ai_eraser, name=\"ai_eraser_api\"),\n]",
         "detail": "ai_eraser.urls",
         "documentation": {}
     },
@@ -11980,7 +11986,7 @@
         "kind": 5,
         "importPath": "ai_eraser.urls",
         "description": "ai_eraser.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"\", views.ai_eraser, name=\"ai_eraser\"),\n    path(\n        \"generate/\", views.api_ai_eraser, name=\"ai_eraser_api\"\n    ),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"\", views.ai_eraser, name=\"ai_eraser\"),\n    path(\"generate/\", views.api_ai_eraser, name=\"ai_eraser_api\"),\n]",
         "detail": "ai_eraser.urls",
         "documentation": {}
     },
@@ -12025,7 +12031,7 @@
         "kind": 2,
         "importPath": "ai_filter.filters.arcane_inference",
         "description": "ai_filter.filters.arcane_inference",
-        "peekOfCode": "def get_unique_output_path(input_path, output_dir, model_name):\n    input_filename = os.path.splitext(os.path.basename(input_path))[0]\n    output_subdir = os.path.join(output_dir, model_name)\n    check_folder(output_subdir)\n    base_path = os.path.join(output_subdir, f\"{input_filename}.jpg\")\n    if not os.path.exists(base_path):\n        return base_path\n    counter = 1\n    while os.path.exists(os.path.join(output_subdir, f\"{input_filename}_{counter}.jpg\")):\n        counter += 1",
+        "peekOfCode": "def get_unique_output_path(input_path, output_dir, model_name):\n    input_filename = os.path.splitext(os.path.basename(input_path))[0]\n    output_subdir = os.path.join(output_dir, model_name)\n    check_folder(output_subdir)\n    base_path = os.path.join(output_subdir, f\"{input_filename}.jpg\")\n    if not os.path.exists(base_path):\n        return base_path\n    counter = 1\n    while os.path.exists(\n        os.path.join(output_subdir, f\"{input_filename}_{counter}.jpg\")",
         "detail": "ai_filter.filters.arcane_inference",
         "documentation": {}
     },
@@ -12034,7 +12040,7 @@
         "kind": 2,
         "importPath": "ai_filter.filters.arcane_inference",
         "description": "ai_filter.filters.arcane_inference",
-        "peekOfCode": "def analyze_facial_features(image_input):\n    detected_boxes, detected_prob, detected_landmarks = mtcnn.detect(image_input, landmarks=True)\n    if not mtcnn.keep_all:\n        detected_boxes, detected_prob, detected_landmarks = mtcnn.select_boxes(\n            detected_boxes, detected_prob, detected_landmarks, \n            image_input, method=mtcnn.selection_method\n        )\n    return detected_boxes, detected_landmarks\ndef ensure_even_dimension(dimension):\n    return int(dimension) if (dimension % 2 == 0) else int(dimension + 1)",
+        "peekOfCode": "def analyze_facial_features(image_input):\n    detected_boxes, detected_prob, detected_landmarks = mtcnn.detect(\n        image_input, landmarks=True\n    )\n    if not mtcnn.keep_all:\n        detected_boxes, detected_prob, detected_landmarks = mtcnn.select_boxes(\n            detected_boxes,\n            detected_prob,\n            detected_landmarks,\n            image_input,",
         "detail": "ai_filter.filters.arcane_inference",
         "documentation": {}
     },
@@ -12043,7 +12049,7 @@
         "kind": 2,
         "importPath": "ai_filter.filters.arcane_inference",
         "description": "ai_filter.filters.arcane_inference",
-        "peekOfCode": "def ensure_even_dimension(dimension):\n    return int(dimension) if (dimension % 2 == 0) else int(dimension + 1)\ndef calculate_image_dimensions(boxes, image, max_res=1_500_000, \n                             face_target=256, custom_ratio=0, scale_limit=2):\n    width, height = image.size\n    scaling_factor = 2\n    if (boxes is not None) and len(boxes) > 0:\n        scaling_factor = face_target / max(boxes[0][2:] - boxes[0][:2])\n        scaling_factor = min(scaling_factor, scale_limit)\n    if custom_ratio > 0:",
+        "peekOfCode": "def ensure_even_dimension(dimension):\n    return int(dimension) if (dimension % 2 == 0) else int(dimension + 1)\ndef calculate_image_dimensions(\n    boxes, image, max_res=1_500_000, face_target=256, custom_ratio=0, scale_limit=2\n):\n    width, height = image.size\n    scaling_factor = 2\n    if (boxes is not None) and len(boxes) > 0:\n        scaling_factor = face_target / max(boxes[0][2:] - boxes[0][:2])\n        scaling_factor = min(scaling_factor, scale_limit)",
         "detail": "ai_filter.filters.arcane_inference",
         "documentation": {}
     },
@@ -12052,7 +12058,7 @@
         "kind": 2,
         "importPath": "ai_filter.filters.arcane_inference",
         "description": "ai_filter.filters.arcane_inference",
-        "peekOfCode": "def calculate_image_dimensions(boxes, image, max_res=1_500_000, \n                             face_target=256, custom_ratio=0, scale_limit=2):\n    width, height = image.size\n    scaling_factor = 2\n    if (boxes is not None) and len(boxes) > 0:\n        scaling_factor = face_target / max(boxes[0][2:] - boxes[0][:2])\n        scaling_factor = min(scaling_factor, scale_limit)\n    if custom_ratio > 0:\n        scaling_factor = custom_ratio\n    new_width = width * scaling_factor",
+        "peekOfCode": "def calculate_image_dimensions(\n    boxes, image, max_res=1_500_000, face_target=256, custom_ratio=0, scale_limit=2\n):\n    width, height = image.size\n    scaling_factor = 2\n    if (boxes is not None) and len(boxes) > 0:\n        scaling_factor = face_target / max(boxes[0][2:] - boxes[0][:2])\n        scaling_factor = min(scaling_factor, scale_limit)\n    if custom_ratio > 0:\n        scaling_factor = custom_ratio",
         "detail": "ai_filter.filters.arcane_inference",
         "documentation": {}
     },
@@ -12061,7 +12067,7 @@
         "kind": 2,
         "importPath": "ai_filter.filters.arcane_inference",
         "description": "ai_filter.filters.arcane_inference",
-        "peekOfCode": "def optimize_image_size(input_image, max_res=1_500_000, \n                       face_target=256, custom_ratio=0, scale_limit=2):\n    detected_boxes, _ = analyze_facial_features(input_image)\n    return calculate_image_dimensions(detected_boxes, input_image, \n                                    max_res, face_target, \n                                    custom_ratio, scale_limit)\nmeans = [0.485, 0.456, 0.406]\nstds = [0.229, 0.224, 0.225]\nt_stds = torch.tensor(stds).cuda().half()[:,None,None]\nt_means = torch.tensor(means).cuda().half()[:,None,None]",
+        "peekOfCode": "def optimize_image_size(\n    input_image, max_res=1_500_000, face_target=256, custom_ratio=0, scale_limit=2\n):\n    detected_boxes, _ = analyze_facial_features(input_image)\n    return calculate_image_dimensions(\n        detected_boxes, input_image, max_res, face_target, custom_ratio, scale_limit\n    )\nmeans = [0.485, 0.456, 0.406]\nstds = [0.229, 0.224, 0.225]\nt_stds = torch.tensor(stds).cuda().half()[:, None, None]",
         "detail": "ai_filter.filters.arcane_inference",
         "documentation": {}
     },
@@ -12070,7 +12076,7 @@
         "kind": 2,
         "importPath": "ai_filter.filters.arcane_inference",
         "description": "ai_filter.filters.arcane_inference",
-        "peekOfCode": "def transform_tensor_to_img(tensor_data):\n    return tensor_data.mul(t_stds).add(t_means).mul(255.).clamp(0,255).permute(1,2,0)\ndef execute_transformation(input_path, model_path):\n    transformer = torch.jit.load(model_path).eval().cuda().half()\n    source_image = PIL.Image.open(input_path).convert(\"RGB\")\n    optimized_image = optimize_image_size(source_image, face_target=300, \n                                        max_res=1_500_000, scale_limit=2)\n    model_identifier = get_model_name(model_path)\n    result_path = get_unique_output_path(input_path, \"outputs\", model_identifier)\n    processed_tensor = img_transforms(optimized_image)[None,...].cuda().half()",
+        "peekOfCode": "def transform_tensor_to_img(tensor_data):\n    return (\n        tensor_data.mul(t_stds).add(t_means).mul(255.0).clamp(0, 255).permute(1, 2, 0)\n    )\ndef execute_transformation(input_path, model_path):\n    transformer = torch.jit.load(model_path).eval().cuda().half()\n    source_image = PIL.Image.open(input_path).convert(\"RGB\")\n    optimized_image = optimize_image_size(\n        source_image, face_target=300, max_res=1_500_000, scale_limit=2\n    )",
         "detail": "ai_filter.filters.arcane_inference",
         "documentation": {}
     },
@@ -12079,7 +12085,7 @@
         "kind": 2,
         "importPath": "ai_filter.filters.arcane_inference",
         "description": "ai_filter.filters.arcane_inference",
-        "peekOfCode": "def execute_transformation(input_path, model_path):\n    transformer = torch.jit.load(model_path).eval().cuda().half()\n    source_image = PIL.Image.open(input_path).convert(\"RGB\")\n    optimized_image = optimize_image_size(source_image, face_target=300, \n                                        max_res=1_500_000, scale_limit=2)\n    model_identifier = get_model_name(model_path)\n    result_path = get_unique_output_path(input_path, \"outputs\", model_identifier)\n    processed_tensor = img_transforms(optimized_image)[None,...].cuda().half()\n    with torch.no_grad():\n        generated_output = transformer(processed_tensor)[0]",
+        "peekOfCode": "def execute_transformation(input_path, model_path):\n    transformer = torch.jit.load(model_path).eval().cuda().half()\n    source_image = PIL.Image.open(input_path).convert(\"RGB\")\n    optimized_image = optimize_image_size(\n        source_image, face_target=300, max_res=1_500_000, scale_limit=2\n    )\n    model_identifier = get_model_name(model_path)\n    result_path = get_unique_output_path(input_path, \"outputs\", model_identifier)\n    processed_tensor = img_transforms(optimized_image)[None, ...].cuda().half()\n    with torch.no_grad():",
         "detail": "ai_filter.filters.arcane_inference",
         "documentation": {}
     },
@@ -12097,7 +12103,7 @@
         "kind": 5,
         "importPath": "ai_filter.filters.arcane_inference",
         "description": "ai_filter.filters.arcane_inference",
-        "peekOfCode": "means = [0.485, 0.456, 0.406]\nstds = [0.229, 0.224, 0.225]\nt_stds = torch.tensor(stds).cuda().half()[:,None,None]\nt_means = torch.tensor(means).cuda().half()[:,None,None]\nimg_transforms = transforms.Compose([transforms.ToTensor(), transforms.Normalize(means,stds)])\ndef transform_tensor_to_img(tensor_data):\n    return tensor_data.mul(t_stds).add(t_means).mul(255.).clamp(0,255).permute(1,2,0)\ndef execute_transformation(input_path, model_path):\n    transformer = torch.jit.load(model_path).eval().cuda().half()\n    source_image = PIL.Image.open(input_path).convert(\"RGB\")",
+        "peekOfCode": "means = [0.485, 0.456, 0.406]\nstds = [0.229, 0.224, 0.225]\nt_stds = torch.tensor(stds).cuda().half()[:, None, None]\nt_means = torch.tensor(means).cuda().half()[:, None, None]\nimg_transforms = transforms.Compose(\n    [transforms.ToTensor(), transforms.Normalize(means, stds)]\n)\ndef transform_tensor_to_img(tensor_data):\n    return (\n        tensor_data.mul(t_stds).add(t_means).mul(255.0).clamp(0, 255).permute(1, 2, 0)",
         "detail": "ai_filter.filters.arcane_inference",
         "documentation": {}
     },
@@ -12106,7 +12112,7 @@
         "kind": 5,
         "importPath": "ai_filter.filters.arcane_inference",
         "description": "ai_filter.filters.arcane_inference",
-        "peekOfCode": "stds = [0.229, 0.224, 0.225]\nt_stds = torch.tensor(stds).cuda().half()[:,None,None]\nt_means = torch.tensor(means).cuda().half()[:,None,None]\nimg_transforms = transforms.Compose([transforms.ToTensor(), transforms.Normalize(means,stds)])\ndef transform_tensor_to_img(tensor_data):\n    return tensor_data.mul(t_stds).add(t_means).mul(255.).clamp(0,255).permute(1,2,0)\ndef execute_transformation(input_path, model_path):\n    transformer = torch.jit.load(model_path).eval().cuda().half()\n    source_image = PIL.Image.open(input_path).convert(\"RGB\")\n    optimized_image = optimize_image_size(source_image, face_target=300, ",
+        "peekOfCode": "stds = [0.229, 0.224, 0.225]\nt_stds = torch.tensor(stds).cuda().half()[:, None, None]\nt_means = torch.tensor(means).cuda().half()[:, None, None]\nimg_transforms = transforms.Compose(\n    [transforms.ToTensor(), transforms.Normalize(means, stds)]\n)\ndef transform_tensor_to_img(tensor_data):\n    return (\n        tensor_data.mul(t_stds).add(t_means).mul(255.0).clamp(0, 255).permute(1, 2, 0)\n    )",
         "detail": "ai_filter.filters.arcane_inference",
         "documentation": {}
     },
@@ -12115,7 +12121,7 @@
         "kind": 5,
         "importPath": "ai_filter.filters.arcane_inference",
         "description": "ai_filter.filters.arcane_inference",
-        "peekOfCode": "t_stds = torch.tensor(stds).cuda().half()[:,None,None]\nt_means = torch.tensor(means).cuda().half()[:,None,None]\nimg_transforms = transforms.Compose([transforms.ToTensor(), transforms.Normalize(means,stds)])\ndef transform_tensor_to_img(tensor_data):\n    return tensor_data.mul(t_stds).add(t_means).mul(255.).clamp(0,255).permute(1,2,0)\ndef execute_transformation(input_path, model_path):\n    transformer = torch.jit.load(model_path).eval().cuda().half()\n    source_image = PIL.Image.open(input_path).convert(\"RGB\")\n    optimized_image = optimize_image_size(source_image, face_target=300, \n                                        max_res=1_500_000, scale_limit=2)",
+        "peekOfCode": "t_stds = torch.tensor(stds).cuda().half()[:, None, None]\nt_means = torch.tensor(means).cuda().half()[:, None, None]\nimg_transforms = transforms.Compose(\n    [transforms.ToTensor(), transforms.Normalize(means, stds)]\n)\ndef transform_tensor_to_img(tensor_data):\n    return (\n        tensor_data.mul(t_stds).add(t_means).mul(255.0).clamp(0, 255).permute(1, 2, 0)\n    )\ndef execute_transformation(input_path, model_path):",
         "detail": "ai_filter.filters.arcane_inference",
         "documentation": {}
     },
@@ -12124,7 +12130,7 @@
         "kind": 5,
         "importPath": "ai_filter.filters.arcane_inference",
         "description": "ai_filter.filters.arcane_inference",
-        "peekOfCode": "t_means = torch.tensor(means).cuda().half()[:,None,None]\nimg_transforms = transforms.Compose([transforms.ToTensor(), transforms.Normalize(means,stds)])\ndef transform_tensor_to_img(tensor_data):\n    return tensor_data.mul(t_stds).add(t_means).mul(255.).clamp(0,255).permute(1,2,0)\ndef execute_transformation(input_path, model_path):\n    transformer = torch.jit.load(model_path).eval().cuda().half()\n    source_image = PIL.Image.open(input_path).convert(\"RGB\")\n    optimized_image = optimize_image_size(source_image, face_target=300, \n                                        max_res=1_500_000, scale_limit=2)\n    model_identifier = get_model_name(model_path)",
+        "peekOfCode": "t_means = torch.tensor(means).cuda().half()[:, None, None]\nimg_transforms = transforms.Compose(\n    [transforms.ToTensor(), transforms.Normalize(means, stds)]\n)\ndef transform_tensor_to_img(tensor_data):\n    return (\n        tensor_data.mul(t_stds).add(t_means).mul(255.0).clamp(0, 255).permute(1, 2, 0)\n    )\ndef execute_transformation(input_path, model_path):\n    transformer = torch.jit.load(model_path).eval().cuda().half()",
         "detail": "ai_filter.filters.arcane_inference",
         "documentation": {}
     },
@@ -12133,7 +12139,7 @@
         "kind": 5,
         "importPath": "ai_filter.filters.arcane_inference",
         "description": "ai_filter.filters.arcane_inference",
-        "peekOfCode": "img_transforms = transforms.Compose([transforms.ToTensor(), transforms.Normalize(means,stds)])\ndef transform_tensor_to_img(tensor_data):\n    return tensor_data.mul(t_stds).add(t_means).mul(255.).clamp(0,255).permute(1,2,0)\ndef execute_transformation(input_path, model_path):\n    transformer = torch.jit.load(model_path).eval().cuda().half()\n    source_image = PIL.Image.open(input_path).convert(\"RGB\")\n    optimized_image = optimize_image_size(source_image, face_target=300, \n                                        max_res=1_500_000, scale_limit=2)\n    model_identifier = get_model_name(model_path)\n    result_path = get_unique_output_path(input_path, \"outputs\", model_identifier)",
+        "peekOfCode": "img_transforms = transforms.Compose(\n    [transforms.ToTensor(), transforms.Normalize(means, stds)]\n)\ndef transform_tensor_to_img(tensor_data):\n    return (\n        tensor_data.mul(t_stds).add(t_means).mul(255.0).clamp(0, 255).permute(1, 2, 0)\n    )\ndef execute_transformation(input_path, model_path):\n    transformer = torch.jit.load(model_path).eval().cuda().half()\n    source_image = PIL.Image.open(input_path).convert(\"RGB\")",
         "detail": "ai_filter.filters.arcane_inference",
         "documentation": {}
     },
@@ -12160,7 +12166,7 @@
         "kind": 2,
         "importPath": "ai_filter.filters.onnx_inference",
         "description": "ai_filter.filters.onnx_inference",
-        "peekOfCode": "def get_unique_output_path(input_path, output_dir, model_name):\n    input_filename = os.path.splitext(os.path.basename(input_path))[0]\n    output_subdir = os.path.join(output_dir, model_name)\n    check_folder(output_subdir)\n    base_path = os.path.join(output_subdir, f\"{input_filename}.jpg\")\n    if not os.path.exists(base_path):\n        return base_path\n    counter = 1\n    while os.path.exists(os.path.join(output_subdir, f\"{input_filename}_{counter}.jpg\")):\n        counter += 1",
+        "peekOfCode": "def get_unique_output_path(input_path, output_dir, model_name):\n    input_filename = os.path.splitext(os.path.basename(input_path))[0]\n    output_subdir = os.path.join(output_dir, model_name)\n    check_folder(output_subdir)\n    base_path = os.path.join(output_subdir, f\"{input_filename}.jpg\")\n    if not os.path.exists(base_path):\n        return base_path\n    counter = 1\n    while os.path.exists(\n        os.path.join(output_subdir, f\"{input_filename}_{counter}.jpg\")",
         "detail": "ai_filter.filters.onnx_inference",
         "documentation": {}
     },
@@ -12169,7 +12175,7 @@
         "kind": 2,
         "importPath": "ai_filter.filters.onnx_inference",
         "description": "ai_filter.filters.onnx_inference",
-        "peekOfCode": "def transform_input_img(img, model_name):\n    height, width = img.shape[:2]\n    def calculate_dims(dims):\n        if 'tiny' in os.path.basename(model_name):\n            return 256 if dims < 256 else dims - dims % 16\n        return 256 if dims < 256 else dims - dims % 8\n    processed = cv2.resize(img, (calculate_dims(width), calculate_dims(height)))\n    normalized = cv2.cvtColor(processed, cv2.COLOR_BGR2RGB).astype(np.float32)\n    final = (normalized / 127.5) - 1.0\n    return final",
+        "peekOfCode": "def transform_input_img(img, model_name):\n    height, width = img.shape[:2]\n    def calculate_dims(dims):\n        if \"tiny\" in os.path.basename(model_name):\n            return 256 if dims < 256 else dims - dims % 16\n        return 256 if dims < 256 else dims - dims % 8\n    processed = cv2.resize(img, (calculate_dims(width), calculate_dims(height)))\n    normalized = cv2.cvtColor(processed, cv2.COLOR_BGR2RGB).astype(np.float32)\n    final = (normalized / 127.5) - 1.0\n    return final",
         "detail": "ai_filter.filters.onnx_inference",
         "documentation": {}
     },
@@ -12178,7 +12184,7 @@
         "kind": 2,
         "importPath": "ai_filter.filters.onnx_inference",
         "description": "ai_filter.filters.onnx_inference",
-        "peekOfCode": "def prepare_input_data(img_location, model_name):\n    original = cv2.imread(img_location).astype(np.float32)\n    transformed = transform_input_img(original, model_name)\n    batched = np.expand_dims(transformed, axis=0)\n    return batched, original.shape\ndef export_processed_img(generated_data, target_path, dimensions):\n    denormalized = (np.squeeze(generated_data) + 1.) / 2 * 255\n    bounded = np.clip(denormalized, 0, 255).astype(np.uint8)\n    resized = cv2.resize(bounded, dimensions)\n    cv2.imwrite(target_path, cv2.cvtColor(resized, cv2.COLOR_RGB2BGR))",
+        "peekOfCode": "def prepare_input_data(img_location, model_name):\n    original = cv2.imread(img_location).astype(np.float32)\n    transformed = transform_input_img(original, model_name)\n    batched = np.expand_dims(transformed, axis=0)\n    return batched, original.shape\ndef export_processed_img(generated_data, target_path, dimensions):\n    denormalized = (np.squeeze(generated_data) + 1.0) / 2 * 255\n    bounded = np.clip(denormalized, 0, 255).astype(np.uint8)\n    resized = cv2.resize(bounded, dimensions)\n    cv2.imwrite(target_path, cv2.cvtColor(resized, cv2.COLOR_RGB2BGR))",
         "detail": "ai_filter.filters.onnx_inference",
         "documentation": {}
     },
@@ -12187,7 +12193,7 @@
         "kind": 2,
         "importPath": "ai_filter.filters.onnx_inference",
         "description": "ai_filter.filters.onnx_inference",
-        "peekOfCode": "def export_processed_img(generated_data, target_path, dimensions):\n    denormalized = (np.squeeze(generated_data) + 1.) / 2 * 255\n    bounded = np.clip(denormalized, 0, 255).astype(np.uint8)\n    resized = cv2.resize(bounded, dimensions)\n    cv2.imwrite(target_path, cv2.cvtColor(resized, cv2.COLOR_RGB2BGR))\ndef execute_inference(source_path, model_path, compute_device=\"gpu\"):\n    if ort.get_device() == 'GPU' and compute_device == \"gpu\":\n        inference_engine = ort.InferenceSession(model_path, \n                                              providers=['CUDAExecutionProvider', 'CPUExecutionProvider'])\n    else:",
+        "peekOfCode": "def export_processed_img(generated_data, target_path, dimensions):\n    denormalized = (np.squeeze(generated_data) + 1.0) / 2 * 255\n    bounded = np.clip(denormalized, 0, 255).astype(np.uint8)\n    resized = cv2.resize(bounded, dimensions)\n    cv2.imwrite(target_path, cv2.cvtColor(resized, cv2.COLOR_RGB2BGR))\ndef execute_inference(source_path, model_path, compute_device=\"gpu\"):\n    if ort.get_device() == \"GPU\" and compute_device == \"gpu\":\n        inference_engine = ort.InferenceSession(\n            model_path, providers=[\"CUDAExecutionProvider\", \"CPUExecutionProvider\"]\n        )",
         "detail": "ai_filter.filters.onnx_inference",
         "documentation": {}
     },
@@ -12196,7 +12202,7 @@
         "kind": 2,
         "importPath": "ai_filter.filters.onnx_inference",
         "description": "ai_filter.filters.onnx_inference",
-        "peekOfCode": "def execute_inference(source_path, model_path, compute_device=\"gpu\"):\n    if ort.get_device() == 'GPU' and compute_device == \"gpu\":\n        inference_engine = ort.InferenceSession(model_path, \n                                              providers=['CUDAExecutionProvider', 'CPUExecutionProvider'])\n    else:\n        inference_engine = ort.InferenceSession(model_path, \n                                              providers=['CPUExecutionProvider'])\n    input_tensor = inference_engine.get_inputs()[0].name\n    output_tensor = inference_engine.get_outputs()[0].name\n    model_identifier = get_model_name(model_path)",
+        "peekOfCode": "def execute_inference(source_path, model_path, compute_device=\"gpu\"):\n    if ort.get_device() == \"GPU\" and compute_device == \"gpu\":\n        inference_engine = ort.InferenceSession(\n            model_path, providers=[\"CUDAExecutionProvider\", \"CPUExecutionProvider\"]\n        )\n    else:\n        inference_engine = ort.InferenceSession(\n            model_path, providers=[\"CPUExecutionProvider\"]\n        )\n    input_tensor = inference_engine.get_inputs()[0].name",
         "detail": "ai_filter.filters.onnx_inference",
         "documentation": {}
     },
@@ -12214,7 +12220,7 @@
         "kind": 5,
         "importPath": "ai_filter.urls",
         "description": "ai_filter.urls",
-        "peekOfCode": "app_name = \"ai-filter\"\nurlpatterns = [\n    path(\"\", views.ai_filter, name=\"ai_filter\"),\n    path(\n        \"generate/\", views.api_ai_filter, name=\"ai_filter_api\"\n    ),\n]",
+        "peekOfCode": "app_name = \"ai-filter\"\nurlpatterns = [\n    path(\"\", views.ai_filter, name=\"ai_filter\"),\n    path(\"generate/\", views.api_ai_filter, name=\"ai_filter_api\"),\n]",
         "detail": "ai_filter.urls",
         "documentation": {}
     },
@@ -12223,7 +12229,7 @@
         "kind": 5,
         "importPath": "ai_filter.urls",
         "description": "ai_filter.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"\", views.ai_filter, name=\"ai_filter\"),\n    path(\n        \"generate/\", views.api_ai_filter, name=\"ai_filter_api\"\n    ),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"\", views.ai_filter, name=\"ai_filter\"),\n    path(\"generate/\", views.api_ai_filter, name=\"ai_filter_api\"),\n]",
         "detail": "ai_filter.urls",
         "documentation": {}
     },
@@ -12286,7 +12292,7 @@
         "kind": 2,
         "importPath": "ai_image_upscale.real_ersgan.arch_utils",
         "description": "ai_image_upscale.real_ersgan.arch_utils",
-        "peekOfCode": "def apply_flow_warp(tensor, flow_field, interpolation='bilinear', \n                   boundary_mode='zeros', corner_align=True):\n    \"\"\"\n    Applies flow-based warping to input tensor.\n    Arguments:\n    tensor -- input tensor to warp\n    flow_field -- optical flow field for warping\n    interpolation -- interpolation mode\n    boundary_mode -- handling of boundary pixels\n    corner_align -- grid sample corner alignment",
+        "peekOfCode": "def apply_flow_warp(\n    tensor,\n    flow_field,\n    interpolation=\"bilinear\",\n    boundary_mode=\"zeros\",\n    corner_align=True,\n):\n    \"\"\"\n    Applies flow-based warping to input tensor.\n    Arguments:",
         "detail": "ai_image_upscale.real_ersgan.arch_utils",
         "documentation": {}
     },
@@ -12295,7 +12301,7 @@
         "kind": 2,
         "importPath": "ai_image_upscale.real_ersgan.arch_utils",
         "description": "ai_image_upscale.real_ersgan.arch_utils",
-        "peekOfCode": "def adjust_flow(flow_field, size_type, dims, \n               interpolation='bilinear', corner_align=False):\n    \"\"\"\n    Adjusts optical flow field to new dimensions.\n    Arguments:\n    flow_field -- input flow field\n    size_type -- 'ratio' or 'shape' for resizing method\n    dims -- target dimensions or scaling ratios\n    interpolation -- interpolation mode\n    corner_align -- grid sample corner alignment",
+        "peekOfCode": "def adjust_flow(\n    flow_field, size_type, dims, interpolation=\"bilinear\", corner_align=False\n):\n    \"\"\"\n    Adjusts optical flow field to new dimensions.\n    Arguments:\n    flow_field -- input flow field\n    size_type -- 'ratio' or 'shape' for resizing method\n    dims -- target dimensions or scaling ratios\n    interpolation -- interpolation mode",
         "detail": "ai_image_upscale.real_ersgan.arch_utils",
         "documentation": {}
     },
@@ -12313,7 +12319,7 @@
         "kind": 6,
         "importPath": "ai_image_upscale.real_ersgan.inference",
         "description": "ai_image_upscale.real_ersgan.inference",
-        "peekOfCode": "class RealESRGAN:\n    def __init__(self, device, scale=4):\n        self.device = device\n        self.scale = scale\n        self.model = RRDBNet(\n            num_in_ch=3, num_out_ch=3, num_feat=64, \n            num_block=23, num_grow_ch=32, scale=scale\n        )\n    def load_weights(self, model_path, download=True):\n        model_data = torch.load(model_path)",
+        "peekOfCode": "class RealESRGAN:\n    def __init__(self, device, scale=4):\n        self.device = device\n        self.scale = scale\n        self.model = RRDBNet(\n            num_in_ch=3,\n            num_out_ch=3,\n            num_feat=64,\n            num_block=23,\n            num_grow_ch=32,",
         "detail": "ai_image_upscale.real_ersgan.inference",
         "documentation": {}
     },
@@ -12322,7 +12328,7 @@
         "kind": 2,
         "importPath": "ai_image_upscale.real_ersgan.inference",
         "description": "ai_image_upscale.real_ersgan.inference",
-        "peekOfCode": "def process_image(input_path, output_path, file_extension, scale_size=4):\n    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')\n    model = RealESRGAN(device, scale=4)\n    model.load_weights(f'weights/RealESRGAN_x{scale_size}.pth')\n    image = Image.open(input_path).convert('RGB')\n    upscaled_img = model.upscale_img(image)\n    output_filename = f\"{output_path}.{file_extension}\"\n    upscaled_img.save(output_filename)\n    return output_filename\nif __name__ == \"__main__\":",
+        "peekOfCode": "def process_image(input_path, output_path, file_extension, scale_size=4):\n    device = torch.device(\"cuda\" if torch.cuda.is_available() else \"cpu\")\n    model = RealESRGAN(device, scale=4)\n    model.load_weights(f\"weights/RealESRGAN_x{scale_size}.pth\")\n    image = Image.open(input_path).convert(\"RGB\")\n    upscaled_img = model.upscale_img(image)\n    output_filename = f\"{output_path}.{file_extension}\"\n    upscaled_img.save(output_filename)\n    return output_filename\nif __name__ == \"__main__\":",
         "detail": "ai_image_upscale.real_ersgan.inference",
         "documentation": {}
     },
@@ -12358,7 +12364,7 @@
         "kind": 2,
         "importPath": "ai_image_upscale.real_ersgan.utils",
         "description": "ai_image_upscale.real_ersgan.utils",
-        "peekOfCode": "def extend_edges(source_img, extension_size):\n    dims = source_img.shape\n    height, width = dims[:2]\n    extended = np.zeros([height+extension_size*2, width+extension_size*2, dims[2]]).astype(np.uint8)\n    extended[extension_size:-extension_size, extension_size:-extension_size, :] = source_img\n    extended[0:extension_size, extension_size:-extension_size, :] = np.flip(source_img[0:extension_size, :, :], axis=0)\n    extended[-extension_size:, extension_size:-extension_size, :] = np.flip(source_img[-extension_size:, :, :], axis=0)\n    extended[:, 0:extension_size, :] = np.flip(extended[:, extension_size:extension_size*2, :], axis=1)\n    extended[:, -extension_size:, :] = np.flip(extended[:, -extension_size*2:-extension_size, :], axis=1)\n    return extended",
+        "peekOfCode": "def extend_edges(source_img, extension_size):\n    dims = source_img.shape\n    height, width = dims[:2]\n    extended = np.zeros(\n        [height + extension_size * 2, width + extension_size * 2, dims[2]]\n    ).astype(np.uint8)\n    extended[\n        extension_size:-extension_size, extension_size:-extension_size, :\n    ] = source_img\n    extended[0:extension_size, extension_size:-extension_size, :] = np.flip(",
         "detail": "ai_image_upscale.real_ersgan.utils",
         "documentation": {}
     },
@@ -12403,7 +12409,7 @@
         "kind": 2,
         "importPath": "ai_image_upscale.real_ersgan.utils",
         "description": "ai_image_upscale.real_ersgan.utils",
-        "peekOfCode": "def remove_patch_padding(patch_collection, padding_width):\n    return patch_collection[:, padding_width:-padding_width, padding_width:-padding_width, :]\ndef create_overlapping_patches(source_array, patch_dims, overlap_size=2):\n    \"\"\"\n    Divides image into overlapping patches for processing.\n    Arguments:\n    source_array -- input image array\n    patch_dims -- dimensions of each patch\n    overlap_size -- size of overlap between patches\n    Returns:",
+        "peekOfCode": "def remove_patch_padding(patch_collection, padding_width):\n    return patch_collection[\n        :, padding_width:-padding_width, padding_width:-padding_width, :\n    ]\ndef create_overlapping_patches(source_array, patch_dims, overlap_size=2):\n    \"\"\"\n    Divides image into overlapping patches for processing.\n    Arguments:\n    source_array -- input image array\n    patch_dims -- dimensions of each patch",
         "detail": "ai_image_upscale.real_ersgan.utils",
         "documentation": {}
     },
@@ -12439,7 +12445,7 @@
         "kind": 5,
         "importPath": "ai_image_upscale.urls",
         "description": "ai_image_upscale.urls",
-        "peekOfCode": "app_name = \"ai-image-upscale\"\nurlpatterns = [\n    path(\"\", views.ai_image_upscale, name=\"ai_image_upscale\"),\n    path(\n        \"generate/\", views.api_ai_image_upscale, name=\"ai_image_upscale_api\"\n    ),\n]",
+        "peekOfCode": "app_name = \"ai-image-upscale\"\nurlpatterns = [\n    path(\"\", views.ai_image_upscale, name=\"ai_image_upscale\"),\n]",
         "detail": "ai_image_upscale.urls",
         "documentation": {}
     },
@@ -12448,7 +12454,7 @@
         "kind": 5,
         "importPath": "ai_image_upscale.urls",
         "description": "ai_image_upscale.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"\", views.ai_image_upscale, name=\"ai_image_upscale\"),\n    path(\n        \"generate/\", views.api_ai_image_upscale, name=\"ai_image_upscale_api\"\n    ),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"\", views.ai_image_upscale, name=\"ai_image_upscale\"),\n]",
         "detail": "ai_image_upscale.urls",
         "documentation": {}
     },
@@ -12457,16 +12463,7 @@
         "kind": 2,
         "importPath": "ai_image_upscale.views",
         "description": "ai_image_upscale.views",
-        "peekOfCode": "def ai_image_upscale(request):\n    return render(request, \"pages/ai_upscale.html\")\ndef api_ai_image_upscale(request):\n    request.session.flush()\n    if request.method == \"POST\":\n        try:\n            # Ensure 'file' is in the request\n            if \"file\" not in request.FILES:\n                return JsonResponse(\n                    {\"status\": \"error\", \"message\": \"No file uploaded.\"}, status=400",
-        "detail": "ai_image_upscale.views",
-        "documentation": {}
-    },
-    {
-        "label": "api_ai_image_upscale",
-        "kind": 2,
-        "importPath": "ai_image_upscale.views",
-        "description": "ai_image_upscale.views",
-        "peekOfCode": "def api_ai_image_upscale(request):\n    request.session.flush()\n    if request.method == \"POST\":\n        try:\n            # Ensure 'file' is in the request\n            if \"file\" not in request.FILES:\n                return JsonResponse(\n                    {\"status\": \"error\", \"message\": \"No file uploaded.\"}, status=400\n                )\n            # upscale value",
+        "peekOfCode": "def ai_image_upscale(request):\n    request.session.flush()\n    if request.method == \"POST\":\n        try:\n            # Ensure 'file' is in the request\n            if \"file\" not in request.FILES:\n                return JsonResponse(\n                    {\"status\": \"error\", \"message\": \"No file uploaded.\"}, status=400\n                )\n            # Upscale value",
         "detail": "ai_image_upscale.views",
         "documentation": {}
     },
@@ -12484,7 +12481,7 @@
         "kind": 5,
         "importPath": "ai_text_to_image_generator.urls",
         "description": "ai_text_to_image_generator.urls",
-        "peekOfCode": "app_name = \"ai-text-to-image\"\nurlpatterns = [\n    path(\"\", views.text_to_image, name=\"ai_text_to_image\"),\n    path(\n        \"generate/\", views.api_text_to_image, name=\"ai_text_to_image_api\"\n    ),\n]",
+        "peekOfCode": "app_name = \"ai-text-to-image\"\nurlpatterns = [\n    path(\"\", views.text_to_image, name=\"ai_text_to_image\"),\n    path(\"generate/\", views.api_text_to_image, name=\"ai_text_to_image_api\"),\n]",
         "detail": "ai_text_to_image_generator.urls",
         "documentation": {}
     },
@@ -12493,7 +12490,7 @@
         "kind": 5,
         "importPath": "ai_text_to_image_generator.urls",
         "description": "ai_text_to_image_generator.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"\", views.text_to_image, name=\"ai_text_to_image\"),\n    path(\n        \"generate/\", views.api_text_to_image, name=\"ai_text_to_image_api\"\n    ),\n]",
+        "peekOfCode": "urlpatterns = [\n    path(\"\", views.text_to_image, name=\"ai_text_to_image\"),\n    path(\"generate/\", views.api_text_to_image, name=\"ai_text_to_image_api\"),\n]",
         "detail": "ai_text_to_image_generator.urls",
         "documentation": {}
     },
@@ -12538,7 +12535,7 @@
         "kind": 5,
         "importPath": "artistic_image_creator.urls",
         "description": "artistic_image_creator.urls",
-        "peekOfCode": "app_name = \"artistic-image-creator\"\nurlpatterns = [\n    path(\"\", views.artistic_image_creator, name=\"artistic_image_creator\"),\n    path(\n        \"generate/\", views.api_artistic_image_creator, name=\"artistic_image_creator_api\"\n    ),\n]",
+        "peekOfCode": "app_name = \"artistic-image-creator\"\nurlpatterns = [path(\"\", views.artistic_image_creator, name=\"artistic_image_creator\")]",
         "detail": "artistic_image_creator.urls",
         "documentation": {}
     },
@@ -12547,7 +12544,7 @@
         "kind": 5,
         "importPath": "artistic_image_creator.urls",
         "description": "artistic_image_creator.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"\", views.artistic_image_creator, name=\"artistic_image_creator\"),\n    path(\n        \"generate/\", views.api_artistic_image_creator, name=\"artistic_image_creator_api\"\n    ),\n]",
+        "peekOfCode": "urlpatterns = [path(\"\", views.artistic_image_creator, name=\"artistic_image_creator\")]",
         "detail": "artistic_image_creator.urls",
         "documentation": {}
     },
@@ -12556,16 +12553,7 @@
         "kind": 2,
         "importPath": "artistic_image_creator.views",
         "description": "artistic_image_creator.views",
-        "peekOfCode": "def artistic_image_creator(request):\n    return render(request, \"pages/artistic_image_creator.html\")\ndef api_artistic_image_creator(request):\n    if request.method == \"POST\":\n        try:\n            # Ensure 'file' is in the request\n            if \"file\" not in request.FILES:\n                return JsonResponse(\n                    {\"status\": \"error\", \"message\": \"No file uploaded.\"}, status=400\n                )",
-        "detail": "artistic_image_creator.views",
-        "documentation": {}
-    },
-    {
-        "label": "api_artistic_image_creator",
-        "kind": 2,
-        "importPath": "artistic_image_creator.views",
-        "description": "artistic_image_creator.views",
-        "peekOfCode": "def api_artistic_image_creator(request):\n    if request.method == \"POST\":\n        try:\n            # Ensure 'file' is in the request\n            if \"file\" not in request.FILES:\n                return JsonResponse(\n                    {\"status\": \"error\", \"message\": \"No file uploaded.\"}, status=400\n                )\n            if \"art_file\" not in request.FILES:\n                return JsonResponse(",
+        "peekOfCode": "def artistic_image_creator(request):\n    if request.method == \"POST\":\n        try:\n            # Ensure 'file' is in the request\n            if \"file\" not in request.FILES:\n                return JsonResponse(\n                    {\"status\": \"error\", \"message\": \"No file uploaded.\"}, status=400\n                )\n            if \"art_file\" not in request.FILES:\n                return JsonResponse(",
         "detail": "artistic_image_creator.views",
         "documentation": {}
     },
@@ -12574,7 +12562,7 @@
         "kind": 5,
         "importPath": "artistic_image_creator.views",
         "description": "artistic_image_creator.views",
-        "peekOfCode": "logger = logging.getLogger(__name__)\ndef artistic_image_creator(request):\n    return render(request, \"pages/artistic_image_creator.html\")\ndef api_artistic_image_creator(request):\n    if request.method == \"POST\":\n        try:\n            # Ensure 'file' is in the request\n            if \"file\" not in request.FILES:\n                return JsonResponse(\n                    {\"status\": \"error\", \"message\": \"No file uploaded.\"}, status=400",
+        "peekOfCode": "logger = logging.getLogger(__name__)\ndef artistic_image_creator(request):\n    if request.method == \"POST\":\n        try:\n            # Ensure 'file' is in the request\n            if \"file\" not in request.FILES:\n                return JsonResponse(\n                    {\"status\": \"error\", \"message\": \"No file uploaded.\"}, status=400\n                )\n            if \"art_file\" not in request.FILES:",
         "detail": "artistic_image_creator.views",
         "documentation": {}
     },
@@ -13312,7 +13300,7 @@
         "kind": 5,
         "importPath": "deepfx_studio.urls",
         "description": "deepfx_studio.urls",
-        "peekOfCode": "urlpatterns = [\n    path(\"admin/\", admin.site.urls),\n    path(\"\", include(\"website.urls\")),\n    path(\"\", include(\"dashboard.urls\")),\n    path(\"\", include(\"user_auth.urls\")),\n    path(\"\", include(\"django_components.urls\")),\n    path(\n        \"background-remover/\", include(\"background_remover.urls\")\n    ),\n    path(\"artistic-image-creator/\", include(\"artistic_image_creator.urls\")),",
+        "peekOfCode": "urlpatterns = [\n    path(\"admin/\", admin.site.urls),\n    path(\"\", include(\"website.urls\")),\n    path(\"\", include(\"dashboard.urls\")),\n    path(\"\", include(\"user_auth.urls\")),\n    path(\"\", include(\"django_components.urls\")),\n    path(\"background-remover/\", include(\"background_remover.urls\")),\n    path(\"artistic-image-creator/\", include(\"artistic_image_creator.urls\")),\n    path(\"text-to-image/\", include(\"ai_text_to_image_generator.urls\")),\n    path(\"ai-filter/\", include(\"ai_filter.urls\")),",
         "detail": "deepfx_studio.urls",
         "documentation": {}
     },
@@ -13429,7 +13417,16 @@
         "kind": 2,
         "importPath": "website.views",
         "description": "website.views",
-        "peekOfCode": "def flush_image_data(request, session_keys = []):\n    if(session_keys == []):\n        for key in total_session_keys:\n            request.session.pop(key, None)\n    else:\n        for key in session_keys:\n            request.session.pop(key, None)\ndef index_view(request):\n    flush_image_data(request)\n    return render(request, \"pages/landing.html\")",
+        "peekOfCode": "def flush_image_data(request, session_keys=[]):\n    if session_keys == []:\n        for key in total_session_keys:\n            request.session.pop(key, None)\n    else:\n        for key in session_keys:\n            request.session.pop(key, None)\ndef image_to_base64(image_path):\n    try:\n        with open(image_path, \"rb\") as image_file:",
+        "detail": "website.views",
+        "documentation": {}
+    },
+    {
+        "label": "image_to_base64",
+        "kind": 2,
+        "importPath": "website.views",
+        "description": "website.views",
+        "peekOfCode": "def image_to_base64(image_path):\n    try:\n        with open(image_path, \"rb\") as image_file:\n            encoded_string = base64.b64encode(image_file.read()).decode(\"utf-8\")\n            return encoded_string\n    except FileNotFoundError:\n        return f\"Error: File not found at {image_path}\"\n    except Exception as e:\n        return f\"An error occurred: {e}\"\ndef index_view(request):",
         "detail": "website.views",
         "documentation": {}
     },
@@ -13492,7 +13489,7 @@
         "kind": 5,
         "importPath": "website.views",
         "description": "website.views",
-        "peekOfCode": "total_session_keys = [\n    \"background_remover_processed_image\", \"background_remover_error\",\n    \"artistic_processed_image\", \"artistic_image_error\",\n    \"upscale_processed_image\", \"upscale_image_error\",\n    \"filter_processed_image\", \"filter_image_error\",\n    \"ai_eraser_processed_image\", \"ai_eraser_image_error\"\n]\n# this function is responsible for erasing session data\n# of the processed image and response error\ndef flush_image_data(request, session_keys = []):",
+        "peekOfCode": "total_session_keys = [\n    \"background_remover_processed_image\",\n    \"background_remover_error\",\n    \"artistic_processed_image\",\n    \"artistic_image_error\",\n    \"upscale_processed_image\",\n    \"upscale_image_error\",\n    \"filter_processed_image\",\n    \"filter_image_error\",\n    \"ai_eraser_processed_image\",",
         "detail": "website.views",
         "documentation": {}
     },

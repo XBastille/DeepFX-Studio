@@ -250,10 +250,11 @@ class NeuralStyleTransfer:
 
 if __name__ == "__main__":
     model_path = "https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2"
-    content_image_path = r"path_to_content_image"
-    style_image_path = r"path_to_style_image"
+    content_image_path = r"content.jpeg"
+    style_image_path = r"style.jpeg"
     nst = NeuralStyleTransfer(model_path=model_path)
     img = nst.stylize_image(content_image_path, style_image_path)
+    print("Processed Image: ", img)
     plt.imsave("output.jpg", img)
     plt.imshow(img)
     plt.show()

@@ -37,4 +37,5 @@ pandas==2.2.3
 fastprogress==1.0.3
 ffmpeg==1.4
 facenet_pytorch==2.6.0
+fontawesomefree==6.6.0
 # generated using pigar generate

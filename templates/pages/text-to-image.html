@@ -18,17 +18,15 @@
             <div class="flex items-center bg-white rounded-md p-3 mb-8">
                 <!-- Logo -->
                 <img src="{% static 'images/logo.png' %}"
-                alt="logo"
-                width="50px"
-                height="50px" />
+                     alt="logo"
+                     width="50px"
+                     height="50px" />
                 <!-- Title -->
                 <h1 class="text-xl font-semibold text-neutral">DeepFX Studio</h1>
             </div>
-
             <h2 class="text-xl font-bold mb-4">Settings</h2>
-
             <div class="card mb-3"
-                style="background-image: url({% static 'images/hero-image.webp' %});">
+                 style="background-image: url({% static 'images/hero-image.webp' %})">
                 <div class="card-body backdrop-blur-xl rounded-2xl p-4">
                     <h5 class="card-title text-base flex flex-col ">
                         <span class="badge badge-outline text-gray-700">Model</span>
@@ -43,54 +41,50 @@
                     </h5>
                 </div>
             </div>
-
             <div class="card bg-base-100 shadow-xl">
                 <div class="card-body flex gap-5">
                     <section class="flex flex-col gap-2">
                         <h5 class="card-title text-base">
                             Generation Mode
-                            <div class="tooltip" data-tip="The standard mode balances speed and quality,
-                            while the quality mode generates more refined images (SDXL for Img2Img does not
-                            yet support quality mode).">  
-                            <img src="{% static 'images/i-icon.svg' %}" width="15px" height="15px" />                                
+                            <div class="tooltip"
+                                 data-tip="The standard mode balances speed and quality, while the quality mode generates more refined images (SDXL for Img2Img does not yet support quality mode).">
+                                <img src="{% static 'images/i-icon.svg' %}"
+                                     alt="i-icon"
+                                     width="15px"
+                                     height="15px" />
                             </div>
                         </h5>
                         <div class="w-full flex gap-2">
+                            <button type="submit" class="btn btn-md btn-neutral w-[50%]">Standard</button>
                             <button type="submit" class="btn btn-md btn-neutral w-[50%]">
-                                Standard
-                            </button>    
-                            <button type="submit" class="btn btn-md btn-neutral w-[50%]">
-                                <img src="{% static 'images/meteor.svg' %}" alt="" width="20px" height="20px" >
+                                <img src="{% static 'images/meteor.svg' %}"
+                                     alt=""
+                                     width="20px"
+                                     height="20px">
                                 Quality
-                            </button>    
+                            </button>
                         </div>
                     </section>
-
                     <section class="flex flex-col gap-2">
-                        <h5 class="card-title text-base">
-                            Image Settings
-                        </h5>
+                        <h5 class="card-title text-base">Image Settings</h5>
                         <div class="w-fit flex flex-wrap gap-1">
                             <button class="btn btn-sm btn-outline w-fit">2:3</button>
-                            <button class="btn btn-sm btn-outline w-fit">1:1</button>    
+                            <button class="btn btn-sm btn-outline w-fit">1:1</button>
                             <button class="btn btn-sm btn-outline w-fit">9:16</button>
                             <button class="btn btn-sm btn-outline w-fit">4:3</button>
                             <button class="btn btn-sm btn-outline w-fit">more</button>
                         </div>
                     </section>
-
                     <section class="flex flex-col gap-2">
-                        <h5 class="card-title text-base">
-                            Image Quality
-                        </h5>
+                        <h5 class="card-title text-base">Image Quality</h5>
                         <div class="w-full flex flex-wrap gap-1">
                             <button class="btn w-[23%]">1</button>
-                            <button class="btn w-[23%]">2</button>    
+                            <button class="btn w-[23%]">2</button>
                             <button class="btn w-[23%]">3</button>
                             <button class="btn w-[23%]">4</button>
                         </div>
                     </section>
-                </section>
+                </div>
             </div>
             {% comment %} Setting For AI Model {% endcomment %}
         </aside>
@@ -138,14 +132,12 @@
             <!-- Image Manipulation Area -->
             <section class="h-[89%] w-full flex flex-col justify-start items-center bg-[#191e24] rounded-lg shadow-lg p-4">
                 <form class="w-full flex gap-2">
-                    <input
-                        type="text"
-                        placeholder="Enter Your Prompt"
-                        class="input input-bordered input-md w-full" />
-                    <button type="submit" class="btn btn-outline">Generate</button>    
+                    <input type="text"
+                           placeholder="Enter Your Prompt"
+                           class="input input-bordered input-md w-full" />
+                    <button type="submit" class="btn btn-outline">Generate</button>
                 </form>
             </section>
-            
         </section>
     </div>
 {% endblock body %}

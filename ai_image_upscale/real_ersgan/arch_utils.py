@@ -1,9 +1,10 @@
 import math
+
 import torch
 from torch import nn as nn
-from torch.nn import functional as F
-from torch.nn import init as init
+from torch.nn import functional as F, init as init
 from torch.nn.modules.batchnorm import _BatchNorm
+
 
 @torch.no_grad()
 def initialize_network_weights(module_collection, magnitude=1, bias_value=0, **kwargs):
@@ -33,6 +34,7 @@ def initialize_network_weights(module_collection, magnitude=1, bias_value=0, **k
                 if comp.bias is not None:
                     comp.bias.data.fill_(bias_value)
 
+
 def construct_sequential_blocks(base_block, block_count, **block_params):
     """
     Creates a sequential chain of identical blocks.
@@ -48,6 +50,7 @@ def construct_sequential_blocks(base_block, block_count, **block_params):
     block_seq = [base_block(**block_params) for _ in range(block_count)]
     return nn.Sequential(*block_seq)
 
+
 class EnhancedResidualBlock(nn.Module):
     """
     Enhanced residual block with scaling factor.
@@ -62,6 +65,7 @@ class EnhancedResidualBlock(nn.Module):
     - ReLU activation
     - Residual connection with scaling
     """
+
     def __init__(self, channel_count=64, scaling_factor=1, use_pytorch_init=False):
         super(EnhancedResidualBlock, self).__init__()
         self.scaling_factor = scaling_factor
@@ -77,6 +81,7 @@ class EnhancedResidualBlock(nn.Module):
         processed = self.conv_layer2(self.activation(self.conv_layer1(input_tensor)))
         return identity + processed * self.scaling_factor
 
+
 class AdvancedUpsampler(nn.Sequential):
     """
     Advanced upsampling module using pixel shuffle.
@@ -89,6 +94,7 @@ class AdvancedUpsampler(nn.Sequential):
     - Convolution layers for channel expansion
     - PixelShuffle for spatial upscaling
     """
+
     def __init__(self, scale_factor, feature_channels):
         layers = []
         if (scale_factor & (scale_factor - 1)) == 0:
@@ -107,11 +113,17 @@ class AdvancedUpsampler(nn.Sequential):
                 )
             )
         else:
-            raise ValueError(f'Scale {scale_factor} not supported. Use 2^n or 3.')
+            raise ValueError(f"Scale {scale_factor} not supported. Use 2^n or 3.")
         super(AdvancedUpsampler, self).__init__(*layers)
 
-def apply_flow_warp(tensor, flow_field, interpolation='bilinear', 
-                   boundary_mode='zeros', corner_align=True):
+
+def apply_flow_warp(
+    tensor,
+    flow_field,
+    interpolation="bilinear",
+    boundary_mode="zeros",
+    corner_align=True,
+):
     """
     Applies flow-based warping to input tensor.
 
@@ -127,10 +139,9 @@ def apply_flow_warp(tensor, flow_field, interpolation='bilinear',
     """
     assert tensor.size()[-2:] == flow_field.size()[1:3]
     _, _, height, width = tensor.size()
-    
+
     grid_y, grid_x = torch.meshgrid(
-        torch.arange(0, height).type_as(tensor),
-        torch.arange(0, width).type_as(tensor)
+        torch.arange(0, height).type_as(tensor), torch.arange(0, width).type_as(tensor)
     )
     grid = torch.stack((grid_x, grid_y), 2).float()
     grid.requires_grad = False
@@ -139,12 +150,19 @@ def apply_flow_warp(tensor, flow_field, interpolation='bilinear',
     scaled_x = 2.0 * displaced_grid[:, :, :, 0] / max(width - 1, 1) - 1.0
     scaled_y = 2.0 * displaced_grid[:, :, :, 1] / max(height - 1, 1) - 1.0
     normalized_grid = torch.stack((scaled_x, scaled_y), dim=3)
-    
-    return F.grid_sample(tensor, normalized_grid, mode=interpolation, 
-                        padding_mode=boundary_mode, align_corners=corner_align)
 
-def adjust_flow(flow_field, size_type, dims, 
-               interpolation='bilinear', corner_align=False):
+    return F.grid_sample(
+        tensor,
+        normalized_grid,
+        mode=interpolation,
+        padding_mode=boundary_mode,
+        align_corners=corner_align,
+    )
+
+
+def adjust_flow(
+    flow_field, size_type, dims, interpolation="bilinear", corner_align=False
+):
     """
     Adjusts optical flow field to new dimensions.
 
@@ -159,23 +177,26 @@ def adjust_flow(flow_field, size_type, dims,
     modified_flow -- resized and scaled flow field
     """
     _, _, current_h, current_w = flow_field.size()
-    if size_type == 'ratio':
+    if size_type == "ratio":
         new_h, new_w = int(current_h * dims[0]), int(current_w * dims[1])
-    elif size_type == 'shape':
+    elif size_type == "shape":
         new_h, new_w = dims[0], dims[1]
     else:
-        raise ValueError(f'Invalid size type: {size_type}. Use ratio or shape.')
+        raise ValueError(f"Invalid size type: {size_type}. Use ratio or shape.")
 
     modified_flow = flow_field.clone()
     h_ratio = new_h / current_h
     w_ratio = new_w / current_w
     modified_flow[:, 0, :, :] *= w_ratio
     modified_flow[:, 1, :, :] *= h_ratio
-    
+
     return F.interpolate(
-        input=modified_flow, size=(new_h, new_w),
-        mode=interpolation, align_corners=corner_align
+        input=modified_flow,
+        size=(new_h, new_w),
+        mode=interpolation,
+        align_corners=corner_align,
     )
+
 
 def reorganize_pixels(tensor, scale):
     """
@@ -191,11 +212,11 @@ def reorganize_pixels(tensor, scale):
     batch, channels, height, width = tensor.size()
     output_channels = channels * (scale**2)
     assert height % scale == 0 and width % scale == 0
-    
+
     new_height = height // scale
     new_width = width // scale
     reshaped = tensor.view(batch, channels, new_height, scale, new_width, scale)
-    
+
     return reshaped.permute(0, 1, 3, 5, 2, 4).reshape(
         batch, output_channels, new_height, new_width
     )

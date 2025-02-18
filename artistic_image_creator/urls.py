@@ -4,9 +4,4 @@ from . import views
 
 app_name = "artistic-image-creator"
 
-urlpatterns = [
-    path("", views.artistic_image_creator, name="artistic_image_creator"),
-    path(
-        "generate/", views.api_artistic_image_creator, name="artistic_image_creator_api"
-    ),
-]
+urlpatterns = [path("", views.artistic_image_creator, name="artistic_image_creator")]

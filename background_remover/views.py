@@ -1,9 +1,11 @@
 import base64
 import os
 import tempfile
+
 from django.http import JsonResponse
 from django.shortcuts import redirect, render, reverse
 from PIL import Image
+
 from background_remover.is_net.isnet_inference import save_inference
 
 
@@ -43,11 +45,22 @@ def api_background_remover(request):
             os.unlink(mask_path)
             os.unlink(rgba_path)
 
-            return render(request, "pages/background_remover.html", {"processed_image": output_image})
+            return render(
+                request,
+                "pages/background_remover.html",
+                {"processed_image": output_image},
+            )
 
         except Exception as e:
             request.session["error"] = f"An error occurred: {str(e)}"
-            return render(request, "pages/background_remover.html", {"error": f"An error occurred: {str(e)}"})
+            return render(
+                request,
+                "pages/background_remover.html",
+                {"error": f"An error occurred: {str(e)}"},
+            )
     else:
-        return render(request, "pages/background_remover.html", {"error": "Invalid request method. Use POST."})
-
+        return render(
+            request,
+            "pages/background_remover.html",
+            {"error": "Invalid request method. Use POST."},
+        )

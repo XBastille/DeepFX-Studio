@@ -15,6 +15,10 @@
                 DeepFX Studio
             {% endblock title %}
         </title>
+        <!-- One file includes all the Font Awesome Free icons and utilities -->
+        <link href="{% static 'fontawesomefree/css/all.min.css' %}"
+              rel="stylesheet"
+              type="text/css">
         {% comment %} Google Fonts {% endcomment %}
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,19 +40,56 @@
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
         <style>
-          #root {
-            padding: 0;
-            margin: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins';
-          }
+            #root {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+                font-family: 'Poppins';
+            }
+            /* Custom Scrollbar Styles */
+            .scrollbar-slim {
+                scrollbar-width: thin; /* For Firefox */
+                scrollbar-color: #bdbdbd42 transparent; /* For Firefox */
+            }
+
+            .scrollbar-slim::-webkit-scrollbar {
+                width: 6px;
+                height: 6px;
+            }
+
+            .scrollbar-slim::-webkit-scrollbar-track {
+                background: transparent;
+                border-radius: 100vh;
+            }
+
+            .scrollbar-slim::-webkit-scrollbar-thumb {
+                background: #cbd5e1;
+                border-radius: 100vh;
+            }
+
+            .scrollbar-slim::-webkit-scrollbar-thumb:hover {
+                background: #94a3b8;
+            }
+
+            /* Dark mode styles */
+            .dark .scrollbar-slim {
+                scrollbar-color: #475569 transparent; /* For Firefox */
+            }
+
+            .dark .scrollbar-slim::-webkit-scrollbar-thumb {
+                background: #475569;
+            }
+
+            .dark .scrollbar-slim::-webkit-scrollbar-thumb:hover {
+                background: #64748b;
+            }
         </style>
         {% tailwind_css %}
         {% component_css_dependencies %}
     </head>
     <body id="root smooth-wrapper">
         <main id="smooth-content"
-              class="bg-gray-950 text-white min-h-screen min-w-full">
+              class="bg-gray-950 text-white min-h-screen min-w-full dark scrollbar-slim">
             {% block body %}
             {% endblock body %}
         </main>
@@ -56,7 +97,7 @@
         {% block banner %}
             <footer class="footer bg-base-200 text-base-content border-base-300 border-t px-10 py-4">
                 <aside class="grid-flow-col items-center">
-                    <img height="" width="" src="{% static "images/logo.png" %}" class="w-12 h-12">
+                    <img height="" width="" alt="logo" src="{% static "images/logo.png" %}" class="w-12 h-12">
                     <p>
                         <span class="text-lg font-semibold text-white">DeepFX Studio™</span>
                         <br />

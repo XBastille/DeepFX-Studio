@@ -6,7 +6,5 @@ app_name = "ai-eraser"
 
 urlpatterns = [
     path("", views.ai_eraser, name="ai_eraser"),
-    path(
-        "generate/", views.api_ai_eraser, name="ai_eraser_api"
-    ),
+    path("generate/", views.api_ai_eraser, name="ai_eraser_api"),
 ]

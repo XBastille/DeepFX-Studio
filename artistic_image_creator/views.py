@@ -3,22 +3,19 @@ import logging
 import os
 import tempfile
 
+import numpy as np
 from django.http import JsonResponse
 from django.shortcuts import redirect, render, reverse
 from PIL import Image
-import numpy as np
 
 from artistic_image_creator.nst.nst import NeuralStyleTransfer
+from website.views import image_to_base64
 
 # Set up logging
 logger = logging.getLogger(__name__)
 
 
 def artistic_image_creator(request):
-    return render(request, "pages/artistic_image_creator.html")
-
-
-def api_artistic_image_creator(request):
     if request.method == "POST":
         try:
             # Ensure 'file' is in the request
@@ -37,7 +34,7 @@ def api_artistic_image_creator(request):
             uploaded_art_file = request.FILES["art_file"]
 
             print(uploaded_art_file, "\n", uploaded_file)
-            
+
             # Process the uploaded files
             img_file = Image.open(uploaded_file).convert("RGB")
             img_art_file = Image.open(uploaded_art_file).convert("RGB")
@@ -60,34 +57,28 @@ def api_artistic_image_creator(request):
             style_image_path = temp_art_file.name
             processed_img = nst.stylize_image(content_image_path, style_image_path)
 
-            # Ensure the processed image is in the correct format
-            processed_img = np.clip(processed_img * 255, 0, 255).astype(np.uint8)  # Convert float32 to uint8
-
-            # Save the processed image to a temporary file
-            temp_output_file = tempfile.NamedTemporaryFile(delete=False, suffix=".png")
-            Image.fromarray(processed_img).save(temp_output_file.name, "PNG")
-
-            # Encode the processed image to base64
-            with open(temp_output_file.name, "rb") as img_file:
-                output_image = base64.b64encode(img_file.read()).decode("utf-8")
+            print("Processed Image :", processed_img)
+            output_image = image_to_base64(processed_img)
 
             # Clean up temporary files
             os.unlink(temp_file_input.name)
             os.unlink(temp_art_file.name)
-            os.unlink(temp_output_file.name)
 
             # Store the processed image in the session
             # request.session["artistic_processed_image"] = output_image
             # return redirect(reverse("artistic-image-creator:artistic_image_creator"))
-            return render(request, "pages/artistic_image_creator.html", {"processed_image": output_image})
+            return render(
+                request,
+                "pages/artistic_image_creator.html",
+                {"processed_image": output_image},
+            )
         except Exception as e:
             logger.error(f"An error occurred: {str(e)}")
             # request.session["artistic_image_error"] = f"An error occurred: {str(e)}"
             # return redirect(reverse("artistic-image-creator:artistic_image_creator"))
 
-            return render(request, "pages/artistic_image_creator.html", {"error": str(e)})
+            return render(
+                request, "pages/artistic_image_creator.html", {"error": str(e)}
+            )
     else:
-        # request.session["artistic_image_error"] = "Invalid request method. Use POST."
-        # return redirect(reverse("artistic-image-creator:artistic_image_creator"))
-        return render(request, "pages/artistic_image_creator.html", {"error": "Invalid request method. Use POST."})
-
+        return render(request, "pages/artistic_image_creator.html")
