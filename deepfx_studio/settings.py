@@ -56,6 +56,8 @@ EXTERNAL_INSTALLED_APP = [
     "dashboard",
     "tailwind",
     "theme",
+    # Font Awesome
+    "fontawesomefree",
     # "django_browser_reload",
     "django_components",
     "allauth_ui",

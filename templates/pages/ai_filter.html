@@ -12,55 +12,51 @@
     AI Filter - DeepFX Studio
 {% endblock title %}
 {% block body %}
-<div class="bg-gradient-to-b from-gray-900 to-black text-aliceblue font-poppins min-h-screen pb-20">
-    <div class="flex justify-center items-center  pt-10">
-        <img class="mx-auto w-12"
-            src="{% static 'images/ai_filter.svg' %}"
-            alt="AI Filter Logo">
-    </div>
-    <div class="heading text-center">
-        <div class="tool-name pt-10">
-            <p class="text-2xl md:text-5xl font-bold text-white" id="tool-name">
-                AI Filter
-            </p>
+    <div class="bg-gradient-to-b from-gray-900 to-black text-aliceblue font-poppins min-h-screen pb-20">
+        <div class="flex justify-center items-center  pt-10">
+            <img height=""
+                 width=""
+                 class="mx-auto w-12"
+                 src="{% static 'images/ai_filter.svg' %}"
+                 alt="AI Filter Logo">
         </div>
-        <div class="tool-desc my-4">
-            <p class="text-sm md:text-lg text-gray-300" id="tool-desc">
-                Apply AI-powered artistic filters to transform your images into stunning artwork.
-            </p>
+        <div class="heading text-center">
+            <div class="tool-name pt-10">
+                <p class="text-2xl md:text-5xl font-bold text-white" id="tool-name">AI Filter</p>
+            </div>
+            <div class="tool-desc my-4">
+                <p class="text-sm md:text-lg text-gray-300" id="tool-desc">
+                    Apply AI-powered artistic filters to transform your images into stunning artwork.
+                </p>
+            </div>
         </div>
-    </div>
-    <div id="form-section"
+        <div id="form-section"
              class="flex md:flex-row flex-col md:w-[90vw] md:mx-auto justify-center items-center flex-wrap m-10 gap-10">
-             <!-- Diff Section -->
+            <!-- Diff Section -->
             <div class="relative w-full md:w-[30%] h-full flex items-center justify-center">
                 <a href="data:image/png;base64,{{ processed_image }}"
-                    download="processed_image.png"
-                    class="btn absolute top-2 left-2 bg-black cursor-pointer z-20"
-                >
-                    <img 
-                        width=""
-                        height=""
-                        src="{% static 'images/download.svg' %}"
-                        class="w-4 h-4"
-                    />
+                   download="processed_image.png"
+                   class="btn absolute top-2 left-2 bg-black cursor-pointer z-20">
+                    <img width=""
+                         height=""
+                         alt="download-icon"
+                         src="{% static 'images/download.svg' %}"
+                         class="w-4 h-4" />
                 </a>
                 <div class="diff aspect-[4/3] w-full h-full border-2 border-gray-500 rounded-xl shadow-lg">
                     <div class="diff-item-1">
-                        <img 
-                            height=""
-                            width=""
-                            src="{% static 'images/color_img_bw.jpg' %}"
-                            class="object-contain rounded-xl"
-                        />
+                        <img height=""
+                             width=""
+                             alt="color_img_bw"
+                             src="{% static 'images/color_img_bw.jpg' %}"
+                             class="object-contain rounded-xl" />
                     </div>
                     <div class="diff-item-2">
-                        <img 
-                            height=""
-                            width=""
-                            src="{% static 'images/color_img.jpg' %}"
-                            class="object-contain rounded-xl"
-                        />
+                        <img height=""
+                             width=""
+                             alt="color_img"
+                             src="{% static 'images/color_img.jpg' %}"
+                             class="object-contain rounded-xl" />
                     </div>
                     <div class="diff-resizer"></div>
                 </div>
@@ -72,24 +68,27 @@
                   enctype="multipart/form-data"
                   class="w-full md:w-[35%] flex flex-col justify-between gap-6">
                 {% csrf_token %}
-                <input type="file" accept=".jpg, .jpeg, .png" class="file-input file-input-bordered file-input-md w-full max-w-xs" />
+                <input type="file"
+                       accept=".jpg, .jpeg, .png"
+                       class="file-input file-input-bordered file-input-md w-full max-w-xs" />
                 <div class="max-h-[30vh] bg-slate-700 rounded-lg overflow-y-auto p-4">
                     <div class="flex flex-col gap-3">
-                        {% for i in "123456"%}
-                        <div class="card bg-base-100 image-full shadow-xl">
-                            <figure>
-                                <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp" 
-                                     alt="Shoes" 
-                                     class="h-fit w-full object-cover"/>
-                            </figure>
-                            <div class="card-body">
-                                <h2 class="card-title">Stylish Shoes</h2>
+                        {% for i in "123456" %}
+                            <div class="card bg-base-100 image-full shadow-xl">
+                                <figure>
+                                    <img height=""
+                                         width=""
+                                         src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                                         alt="Shoes"
+                                         class="h-fit w-full object-cover" />
+                                </figure>
+                                <div class="card-body">
+                                    <h2 class="card-title">Stylish Shoes</h2>
+                                </div>
                             </div>
-                        </div>
                         {% endfor %}
                     </div>
                 </div>
-                
                 <!-- Submit Button -->
                 <button id="generateBtn" type="submit" class="btn btn-primary w-full mt-1">
                     <i class="fa-solid fa-magic mr-2"></i> Generate Colorized Image
@@ -103,5 +102,4 @@
             </div>
         {% endif %}
     </div>
-</div>
 {% endblock body %}

@@ -1,21 +1,37 @@
 import itertools
+
 import numpy as np
+
 
 def extend_edges(source_img, extension_size):
     dims = source_img.shape
     height, width = dims[:2]
-    extended = np.zeros([height+extension_size*2, width+extension_size*2, dims[2]]).astype(np.uint8)
-    extended[extension_size:-extension_size, extension_size:-extension_size, :] = source_img
-    
-    extended[0:extension_size, extension_size:-extension_size, :] = np.flip(source_img[0:extension_size, :, :], axis=0)
-    extended[-extension_size:, extension_size:-extension_size, :] = np.flip(source_img[-extension_size:, :, :], axis=0)
-    extended[:, 0:extension_size, :] = np.flip(extended[:, extension_size:extension_size*2, :], axis=1)
-    extended[:, -extension_size:, :] = np.flip(extended[:, -extension_size*2:-extension_size, :], axis=1)
-    
+    extended = np.zeros(
+        [height + extension_size * 2, width + extension_size * 2, dims[2]]
+    ).astype(np.uint8)
+    extended[
+        extension_size:-extension_size, extension_size:-extension_size, :
+    ] = source_img
+
+    extended[0:extension_size, extension_size:-extension_size, :] = np.flip(
+        source_img[0:extension_size, :, :], axis=0
+    )
+    extended[-extension_size:, extension_size:-extension_size, :] = np.flip(
+        source_img[-extension_size:, :, :], axis=0
+    )
+    extended[:, 0:extension_size, :] = np.flip(
+        extended[:, extension_size : extension_size * 2, :], axis=1
+    )
+    extended[:, -extension_size:, :] = np.flip(
+        extended[:, -extension_size * 2 : -extension_size, :], axis=1
+    )
+
     return extended
+
 
 def remove_padding(source_img, padding_amount):
     return source_img[padding_amount:-padding_amount, padding_amount:-padding_amount, :]
+
 
 def normalize_array(img_data, expand=True):
     """
@@ -33,6 +49,7 @@ def normalize_array(img_data, expand=True):
         normalized = np.expand_dims(normalized, axis=0)
     return normalized
 
+
 def denormalize_tensor(tensor_output):
     """
     Converts normalized tensor output back to uint8 image format.
@@ -45,6 +62,7 @@ def denormalize_tensor(tensor_output):
     """
     processed = tensor_output.clip(0, 1) * 255
     return np.uint8(processed)
+
 
 def add_padding(patch_data, padding_width, channels_last=True):
     """
@@ -62,16 +80,20 @@ def add_padding(patch_data, padding_width, channels_last=True):
         return np.pad(
             patch_data,
             ((padding_width, padding_width), (padding_width, padding_width), (0, 0)),
-            'edge',
+            "edge",
         )
     return np.pad(
         patch_data,
         ((0, 0), (padding_width, padding_width), (padding_width, padding_width)),
-        'edge',
+        "edge",
     )
 
+
 def remove_patch_padding(patch_collection, padding_width):
-    return patch_collection[:, padding_width:-padding_width, padding_width:-padding_width, :]
+    return patch_collection[
+        :, padding_width:-padding_width, padding_width:-padding_width, :
+    ]
+
 
 def create_overlapping_patches(source_array, patch_dims, overlap_size=2):
     """
@@ -93,7 +115,9 @@ def create_overlapping_patches(source_array, patch_dims, overlap_size=2):
     x_extension = (patch_dims - x_remainder) % patch_dims
     y_extension = (patch_dims - y_remainder) % patch_dims
 
-    extended = np.pad(source_array, ((0, x_extension), (0, y_extension), (0, 0)), 'edge')
+    extended = np.pad(
+        source_array, ((0, x_extension), (0, y_extension), (0, 0)), "edge"
+    )
     padded = add_padding(extended, overlap_size, channels_last=True)
 
     max_x, max_y, _ = padded.shape
@@ -112,6 +136,7 @@ def create_overlapping_patches(source_array, patch_dims, overlap_size=2):
 
     return np.array(patches), padded.shape
 
+
 def reconstruct_from_patches(patches, padded_shape, target_dims, overlap_size=4):
     """
     Reconstructs full image from processed overlapping patches.
@@ -129,21 +154,21 @@ def reconstruct_from_patches(patches, padded_shape, target_dims, overlap_size=4)
     unpadded_patches = remove_patch_padding(patches, overlap_size)
     patch_dims = unpadded_patches.shape[1]
     patches_per_row = max_y // patch_dims
-    
+
     reconstructed = np.zeros((max_x, max_y, 3))
-    
+
     current_row = -1
     current_col = 0
-    
+
     for idx in range(len(patches)):
         if idx % patches_per_row == 0:
             current_row += 1
             current_col = 0
         reconstructed[
-            current_row * patch_dims: (current_row + 1) * patch_dims,
-            current_col * patch_dims: (current_col + 1) * patch_dims,
-            :
+            current_row * patch_dims : (current_row + 1) * patch_dims,
+            current_col * patch_dims : (current_col + 1) * patch_dims,
+            :,
         ] = unpadded_patches[idx]
         current_col += 1
-        
-    return reconstructed[0:target_dims[0], 0:target_dims[1], :]
+
+    return reconstructed[0 : target_dims[0], 0 : target_dims[1], :]

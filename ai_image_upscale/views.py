@@ -1,17 +1,18 @@
-from PIL import Image 
 import base64
-from django.http import JsonResponse
-from django.shortcuts import render
 import os
 import tempfile
+
+from django.http import JsonResponse
+from django.shortcuts import render
+from PIL import Image
+
 from ai_image_upscale.real_ersgan.inference import process_image
+from website.views import image_to_base64
 
 # Create your views here.
 
-def ai_image_upscale(request):
-    return render(request, "pages/ai_upscale.html")
 
-def api_ai_image_upscale(request):
+def ai_image_upscale(request):
     request.session.flush()
 
     if request.method == "POST":
@@ -21,14 +22,20 @@ def api_ai_image_upscale(request):
                 return JsonResponse(
                     {"status": "error", "message": "No file uploaded."}, status=400
                 )
-            # upscale value
-            scale_size = request.scale_size
-
-            # output image extension
-            saved_ex = request.saved_ex
-
+            # Upscale value
+            scale_size = request.POST["scale_size"]
+            # Output image extension
+            saved_ex = request.POST["saved_ex"]
             # Load the file
             uploaded_file = request.FILES["file"]
+
+            print(
+                f"""
+                'scale_size': {scale_size},
+                'saved_ex': {saved_ex},
+                'uploaded_file': {uploaded_file}
+            """
+            )
 
             # Process the uploaded file as needed
             img = Image.open(uploaded_file).convert("RGB")
@@ -39,20 +46,24 @@ def api_ai_image_upscale(request):
             temp_input.close()
 
             # Process the image
-            upscale_img_path = process_image(temp_input.name, "output_img", saved_ex, scale_size)
-
-            # Encode the output image to base64
-            with open(upscale_img_path, "rb") as img_file:
-                output_image = base64.b64encode(img_file.read()).decode("utf-8")
+            upscale_img_path = process_image(
+                temp_input.name, "output_img", saved_ex, scale_size
+            )
+            output_image = image_to_base64(upscale_img_path)
 
             # Clean up temporary files
             os.unlink(temp_input.name)
 
-            return render(request, "pages/ai_upscale.html", {"processed_image": output_image})
+            return render(
+                request, "pages/ai_upscale.html", {"processed_image": output_image}
+            )
 
         except Exception as e:
             request.session["error"] = f"An error occurred: {str(e)}"
-            return render(request, "pages/ai_upscale.html", {"error": f"An error occurred: {str(e)}"})
+            return render(
+                request,
+                "pages/ai_upscale.html",
+                {"error": f"An error occurred: {str(e)}"},
+            )
     else:
-        return render(request, "pages/ai_upscale.html", {"error": "Invalid request method. Use POST."})
-
+        return render(request, "pages/ai_upscale.html")

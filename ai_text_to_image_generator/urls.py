@@ -6,7 +6,5 @@ app_name = "ai-text-to-image"
 
 urlpatterns = [
     path("", views.text_to_image, name="ai_text_to_image"),
-    path(
-        "generate/", views.api_text_to_image, name="ai_text_to_image_api"
-    ),
+    path("generate/", views.api_text_to_image, name="ai_text_to_image_api"),
 ]
