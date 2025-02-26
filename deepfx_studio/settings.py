@@ -52,6 +52,7 @@ EXTERNAL_INSTALLED_APP = [
     "ai_filter",
     "ai_eraser",
     "ai_colorization",
+    "inpainting",
     "user_auth",
     "dashboard",
     "tailwind",

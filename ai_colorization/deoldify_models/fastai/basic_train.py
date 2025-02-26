@@ -2,7 +2,7 @@
 import inspect
 from time import time
 
-from fastai.sixel import plot_sixel
+from .sixel import plot_sixel
 from fastprogress.fastprogress import IN_NOTEBOOK, format_time
 
 from .basic_data import *
