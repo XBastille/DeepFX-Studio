@@ -18,6 +18,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
+from ai_colorization.deoldify_models.fastai.vision.transform import pad
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -32,6 +33,7 @@ urlpatterns = [
     path("ai-image-upscale/", include("ai_image_upscale.urls")),
     path("ai-eraser/", include("ai_eraser.urls")),
     path("ai-colorization/", include("ai_colorization.urls")),
+    path("inpainting/", include("inpainting.urls")),
     path(
         "accounts/", include("allauth.urls")
     ),  # all OAuth operations will be performed under this route
