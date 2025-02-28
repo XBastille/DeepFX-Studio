@@ -17,278 +17,273 @@
             <!-- Page content here -->
             <label for="my-drawer-2"
                    class="btn btn-ghost drawer-button lg:hidden absolute top-6 right-6 z-50">
-            </div>
-            <img height=""
-                 width=""
-                 src="{% static 'images/menu.svg' %}"
-                 alt="menu"
-                 class="w-5 h-5" />
-        </label>
-        <div class="relative h-fit flex flex-col">
-            {% block dashboard %}
-                <!-- Main Dashboard Content -->
-                <section class="w-full flex-grow p-6 rounded-lg shadow-md">
-                    <!-- Greeting Section -->
-                    <div class="mb-6">
-                        <p class="text-xl font-light">
-                            {% now "H" as hour %}
-                            {% if hour|add:0 < 12 %}
-                                Good Morning,
-                            {% elif hour|add:0 < 18 %}
-                                Good Afternoon,
-                            {% else %}
-                                Good Evening,
-                            {% endif %}
-                        </p>
-                        <h2 class="text-2xl font-bold">{{ user }}</h2>
-                    </div>
-                    <!-- View Toggle -->
-                    <div class="flex justify-between items-center mb-6">
-                        <h3 class="text-lg font-semibold">AI Tools</h3>
-                        <div class="flex space-x-2 items-center">
-                            <div class="tooltip tooltip-bottom" data-tip="Create a new Project">
-                                <button class="mx-auto gap-5 bg-white rounded-lg border-white p-3"
-                                        onclick="my_modal_5.showModal()">
-                                    <img src="{% static 'images/plus.svg' %}"
-                                         alt="plus"
-                                         height="20px"
-                                         width="20px" />
-                                </button>
-                                <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
-                                    <div class="modal-box flex flex-col justify-center align-middle items-center">
-                                        <h3 class="text-lg font-bold">Create a new Project</h3>
-                                        <p class="text-xs">Press ESC key or click the button below to close</p>
-                                        <div class="modal-action -my-4 md:my-0">
-                                            {% comment %} Create Project From convert this into a component {% endcomment %}
-                                            <form class="flex flex-col justify-start align-top items-start gap-5"
-                                                  method="dialog">
-                                                <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                                                <label for="project_name" class="text-sm mt-5">Project Name:</label>
-                                                <input id="project_name"
-                                                       type="text"
-                                                       placeholder="Type here"
-                                                       class="input input-bordered input-md w-full max-w-xs" />
-                                                <label for="project_description" class="text-sm">Project Description:</label>
-                                                <textarea id="project_description"
-                                                          placeholder="description"
-                                                          class="resize-none textarea textarea-bordered textarea-md w-full max-w-xs h-[180px]"></textarea>
-                                                <button type="submit" class="btn w-full">Create</button>
-                                            </form>
+                <img src="{% static 'images/menu.svg' %}" alt="menu" class="w-5 h-5" />
+            </label>
+            <div class="relative h-fit flex flex-col">
+                {% block dashboard %}
+                    <!-- Main Dashboard Content -->
+                    <section class="w-full flex-grow p-6 rounded-lg shadow-md">
+                        <!-- Greeting Section -->
+                        <div class="mb-6">
+                            <p class="text-xl font-light">
+                                {% now "H" as hour %}
+                                {% if hour|add:0 < 12 %}
+                                    Good Morning,
+                                {% elif hour|add:0 < 18 %}
+                                    Good Afternoon,
+                                {% else %}
+                                    Good Evening,
+                                {% endif %}
+                            </p>
+                            <h2 class="text-2xl font-bold">{{ user }}</h2>
+                        </div>
+                        <!-- View Toggle -->
+                        <div class="flex justify-between items-center mb-6">
+                            <h3 class="text-lg font-semibold">AI Tools</h3>
+                            <div class="flex space-x-2 items-center">
+                                <div class="tooltip tooltip-bottom" data-tip="Create a new Project">
+                                    <button class="mx-auto gap-5 bg-white rounded-lg border-white p-3"
+                                            onclick="my_modal_5.showModal()">
+                                        <img src="{% static 'images/plus.svg' %}"
+                                             alt="plus"
+                                             height="20px"
+                                             width="20px" />
+                                    </button>
+                                    <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+                                        <div class="modal-box flex flex-col justify-center align-middle items-center">
+                                            <h3 class="text-lg font-bold">Create a new Project</h3>
+                                            <p class="text-xs">Press ESC key or click the button below to close</p>
+                                            <div class="modal-action -my-4 md:my-0">
+                                                {% comment %} Create Project From convert this into a component {% endcomment %}
+                                                <form class="flex flex-col justify-start align-top items-start gap-5"
+                                                      method="dialog">
+                                                    <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                                                    <label for="project_name" class="text-sm mt-5">Project Name:</label>
+                                                    <input id="project_name"
+                                                           type="text"
+                                                           placeholder="Type here"
+                                                           class="input input-bordered input-md w-full max-w-xs" />
+                                                    <label for="project_description" class="text-sm">Project Description:</label>
+                                                    <textarea id="project_description"
+                                                              placeholder="description"
+                                                              class="resize-none textarea textarea-bordered textarea-md w-full max-w-xs h-[180px]"></textarea>
+                                                    <button type="submit" class="btn w-full">Create</button>
+                                                </form>
+                                            </div>
                                         </div>
-                                    </div>
-                                </dialog>
-                            </div>
-                            <button class="btn">Favorites</button>
-                            <button class="btn">All</button>
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <!-- Background Remover -->
-                        <div class="group relative bg-gray-900 rounded-xl p-6 transition-all hover:bg-gray-800 hover:scale-105 shadow-lg">
-                            <div class="flex flex-col gap-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                        <img height="24px"
-                                             width="24px"
-                                             src="{% static 'images/bg-remove.jpg' %}"
-                                             alt="Background-Remover-icon" />
-                                    </div>
-                                    <h3 class="text-lg font-semibold text-white">Background Remover</h3>
+                                    </dialog>
                                 </div>
-                                <p class="text-gray-400 text-sm">
-                                    AI-powered tool to remove backgrounds instantly, ideal for product photos and transparent PNGs.
-                                </p>
-                                <a href="{% url 'background-remover:background_remover' %}"
-                                   class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
+                                <button class="btn">Favorites</button>
+                                <button class="btn">All</button>
                             </div>
                         </div>
-                        <!-- AI Artistic Image Creator -->
-                        <div class="group relative bg-gray-900 rounded-xl p-6 transition-all hover:bg-gray-800 hover:scale-105 shadow-lg">
-                            <div class="flex flex-col gap-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                        <img height="24px"
-                                             width="24px"
-                                             src="{% static 'images/aristic-image-logo.svg' %}"
-                                             alt="Artistic-Image-Creator-icon" />
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                            <!-- Background Remover -->
+                            <div class="group relative bg-gray-900 rounded-xl p-6 transition-all hover:bg-gray-800 hover:scale-105 shadow-lg">
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                            <img src="{% static 'images/bg-remove.jpg' %}" alt="Background-Remover-icon" class="w-6 h-6" />
+                                        </div>
+                                        <h3 class="text-lg font-semibold text-white">Background Remover</h3>
                                     </div>
-                                    <h3 class="text-lg font-semibold text-white">Artistic Image Creator</h3>
+                                    <p class="text-gray-400 text-sm">
+                                        AI-powered tool to remove backgrounds instantly, ideal for product photos and transparent PNGs.
+                                    </p>
+                                    <a href="{% url 'background-remover:background_remover' %}" class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
                                 </div>
-                                <p class="text-gray-400 text-sm">Transform images into unique artworks using AI-powered style blending.</p>
-                                <a href="{% url 'artistic-image-creator:artistic_image_creator' %}"
-                                   class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
                             </div>
-                        </div>
-                        <!-- AI Eraser -->
-                        <div class="group relative bg-gray-900 rounded-xl p-6 transition-all hover:bg-gray-800 hover:scale-105 shadow-lg">
-                            <div class="flex flex-col gap-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                        <img height=""
-                                             width=""
-                                             src="{% static 'images/ai_eraser.svg' %}"
-                                             alt="AI Eraser Icon"
-                                             class="w-6 h-6" />
+                        
+                            <!-- AI Artistic Image Creator -->
+                            <div class="group relative bg-gray-900 rounded-xl p-6 transition-all hover:bg-gray-800 hover:scale-105 shadow-lg">
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                            <img src="{% static 'images/aristic-image-logo.svg' %}" alt="Artistic-Image-Creator-icon" class="w-6 h-6" />
+                                        </div>
+                                        <h3 class="text-lg font-semibold text-white">Artistic Image Creator</h3>
                                     </div>
-                                    <h3 class="text-lg font-semibold text-white">AI Eraser</h3>
+                                    <p class="text-gray-400 text-sm">
+                                        Transform images into unique artworks using AI-powered style blending.
+                                    </p>
+                                    <a href="{% url 'artistic-image-creator:artistic_image_creator' %}" class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
                                 </div>
-                                <p class="text-gray-400 text-sm">Easily remove objects from images with AI precision.</p>
-                                <a href="{% url 'ai-eraser:ai_eraser' %}"
-                                   class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
                             </div>
-                        </div>
-                        <!-- AI Image Enhancer -->
-                        <div class="group relative bg-gray-900 rounded-xl p-6 transition-all hover:bg-gray-800 hover:scale-105 shadow-lg">
-                            <div class="flex flex-col gap-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                        <img height=""
-                                             width=""
-                                             src="{% static 'images/ai_upscale.svg' %}"
-                                             alt="Image Upscaler Icon"
-                                             class="w-6 h-6" />
+
+                            <!-- AI Image Editor -->
+                            <div class="group relative bg-gray-900 rounded-xl p-6 transition-all hover:bg-gray-800 hover:scale-105 shadow-lg">
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                            <img src="{% static 'images/ai_image_editor.svg' %}" alt="Artistic-Image-Creator-icon" class="w-6 h-6" />
+                                        </div>
+                                        <h3 class="text-lg font-semibold text-white">AI Image Editor</h3>
                                     </div>
-                                    <h3 class="text-lg font-semibold text-white">AI Image Upscale</h3>
+                                    <p class="text-gray-400 text-sm">
+                                        Erase, Enhance, Transform – AI-Powered Inpainting.
+                                    </p>
+                                    <a href="{% url 'ai_image_editor:inpaint' %}" class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
                                 </div>
-                                <p class="text-gray-400 text-sm">Upscale images, restore details, and enhance clarity effortlessly.</p>
-                                <a href="{% url 'ai-image-upscale:ai_image_upscale' %}"
-                                   class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
                             </div>
-                        </div>
-                        <!-- AI Image Generator -->
-                        <div class="group relative bg-gray-900 rounded-xl p-6 transition-all hover:bg-gray-800 hover:scale-105 shadow-lg">
-                            <div class="flex flex-col gap-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                        <img height=""
-                                             width=""
-                                             src="{% static 'images/ai_image_creator.svg' %}"
-                                             alt="Image Generator Icon"
-                                             class="w-6 h-6" />
+                        
+                            <!-- AI Eraser -->
+                            <div class="group relative bg-gray-900 rounded-xl p-6 transition-all hover:bg-gray-800 hover:scale-105 shadow-lg">
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                            <img src="{% static 'images/ai_eraser.svg' %}" alt="AI Eraser Icon" class="w-6 h-6" />
+                                        </div>
+                                        <h3 class="text-lg font-semibold text-white">AI Eraser</h3>
                                     </div>
-                                    <h3 class="text-lg font-semibold text-white">AI Image Creator</h3>
+                                    <p class="text-gray-400 text-sm">
+                                        Easily remove objects from images with AI precision.
+                                    </p>
+                                    <a href="{% url 'ai-eraser:ai_eraser' %}" class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
                                 </div>
-                                <p class="text-gray-400 text-sm">Generate stunning images from text prompts with AI.</p>
-                                <a href="{% url 'ai-text-to-image:ai_text_to_image' %}"
-                                   class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
                             </div>
-                        </div>
-                        <!-- AI Filter -->
-                        <div class="group relative bg-gray-900 rounded-xl p-6 transition-all hover:bg-gray-800 hover:scale-105 shadow-lg">
-                            <div class="flex flex-col gap-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                        <img height=""
-                                             width=""
-                                             src="{% static 'images/ai_filter.svg' %}"
-                                             alt="AI Filter Icon"
-                                             class="w-6 h-6" />
+                        
+                            <!-- AI Image Enhancer -->
+                            <div class="group relative bg-gray-900 rounded-xl p-6 transition-all hover:bg-gray-800 hover:scale-105 shadow-lg">
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                            <img src="{% static 'images/ai_upscale.svg' %}" alt="Image Upscaler Icon" class="w-6 h-6" />
+                                        </div>
+                                        <h3 class="text-lg font-semibold text-white">AI Image Upscale</h3>
                                     </div>
-                                    <h3 class="text-lg font-semibold text-white">AI Filter</h3>
+                                    <p class="text-gray-400 text-sm">
+                                        Upscale images, restore details, and enhance clarity effortlessly.
+                                    </p>
+                                    <a href="{% url 'ai-image-upscale:ai_image_upscale' %}" class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
                                 </div>
-                                <p class="text-gray-400 text-sm">Apply AI-powered artistic filters to transform your images instantly.</p>
-                                <a href="{% url 'ai-filter:ai_filter' %}"
-                                   class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
                             </div>
-                        </div>
-                        <!-- AI Colorization -->
-                        <div class="group relative bg-gray-900 rounded-xl p-6 transition-all hover:bg-gray-800 hover:scale-105 shadow-lg">
-                            <div class="flex flex-col gap-4">
-                                <div class="flex items-center gap-3">
-                                    <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
-                                        <img height=""
-                                             width=""
-                                             src="{% static 'images/ai_colorization.svg' %}"
-                                             alt="AI Filter Icon"
-                                             class="w-6 h-6" />
+                        
+                            <!-- AI Image Generator -->
+                            <div class="group relative bg-gray-900 rounded-xl p-6 transition-all hover:bg-gray-800 hover:scale-105 shadow-lg">
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                            <img src="{% static 'images/ai_image_creator.svg' %}" alt="Image Generator Icon" class="w-6 h-6" />
+                                        </div>
+                                        <h3 class="text-lg font-semibold text-white">AI Image Creator</h3>
                                     </div>
-                                    <h3 class="text-lg font-semibold text-white">AI Colorization</h3>
+                                    <p class="text-gray-400 text-sm">
+                                        Generate stunning images from text prompts with AI.
+                                    </p>
+                                    <a href="{% url 'ai-text-to-image:ai_text_to_image' %}" class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
                                 </div>
-                                <p class="text-gray-400 text-sm">
-                                    Instantly bring black-and-white images to life with AI-powered colorization, adding realistic and vibrant colors effortlessly.
-                                </p>
-                                <a href="{% url 'ai-colorization:ai_colorization' %}"
-                                   class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
+                            </div>
+
+                            <!-- AI Filter -->
+                            <div class="group relative bg-gray-900 rounded-xl p-6 transition-all hover:bg-gray-800 hover:scale-105 shadow-lg">
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                            <img src="{% static 'images/ai_filter.svg' %}" alt="AI Filter Icon" class="w-6 h-6" />
+                                        </div>
+                                        <h3 class="text-lg font-semibold text-white">AI Filter</h3>
+                                    </div>
+                                    <p class="text-gray-400 text-sm">
+                                        Apply AI-powered artistic filters to transform your images instantly.
+                                    </p>
+                                    <a href="{% url 'ai-filter:ai_filter' %}" class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
+                                </div>
+                            </div>
+
+                            <!-- AI Colorization -->
+                            <div class="group relative bg-gray-900 rounded-xl p-6 transition-all hover:bg-gray-800 hover:scale-105 shadow-lg">
+                                <div class="flex flex-col gap-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                                            <img src="{% static 'images/ai_colorization.svg' %}" alt="AI Filter Icon" class="w-6 h-6" />
+                                        </div>
+                                        <h3 class="text-lg font-semibold text-white">AI Colorization</h3>
+                                    </div>
+                                    <p class="text-gray-400 text-sm">
+                                        Instantly bring black-and-white images to life with AI-powered colorization, adding realistic and vibrant colors effortlessly.
+                                    </p>
+                                    <a href="{% url 'ai-colorization:ai_colorization' %}" class="btn btn-outline hover:bg-white hover:text-black w-fit">Open Tool</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </section>
-            {% endblock dashboard %}
+                    </section>
+                {% endblock dashboard %}
+            </div>
         </div>
-    </div>
-    <div class="drawer-side">
-        <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-        <ul class="menu bg-base-200 text-base-content min-h-full w-80">
-            <!-- Sidebar content -->
-            <div class="flex gap-4 items-center rounded-sm p-3 bg-white hover:opacity-80 transition-opacity">
-                <!-- Logo -->
-                <img src="{% static 'images/logo.png' %}"
-                     alt="logo"
-                     width="50px"
-                     height="50px" />
-                <!-- Title -->
-                <h1 class="text-xl font-semibold text-neutral">DeepFX Studio</h1>
-            </div>
-            <div class="my-10">
-                <li class="my-1">
-                    <div class="flex gap-5 items-center">
-                        <img src="{% static 'images/home.svg' %}"
-                             alt="home-icon"
-                             width="20px"
-                             height="20px" />
-                        <a href="{% url 'dashboard:dashboard_view' %}">Dashboard</a>
-                    </div>
-                </li>
-                <li class="my-1">
-                    <div class="flex gap-5 items-center">
-                        <img src="{% static 'images/border-all.svg' %}"
-                             alt="all-projects icon"
-                             width="20px"
-                             height="20px" />
-                        <a href="">All Projects</a>
-                    </div>
-                </li>
-                <li class="my-1">
-                    <div class="flex gap-5 items-center">
-                        <img src="{% static 'images/pen-to-square.svg' %}"
-                             alt="edit icon"
-                             width="20px"
-                             height="20px" />
-                        <a href="">Profile</a>
-                    </div>
-                </li>
-                <li class="my-1">
-                    <div class="flex gap-5 items-center">
-                        <img src="{% static 'images/hand-holding-dollar.svg' %}"
-                             alt="donate icon"
-                             width="20px"
-                             height="20px" />
-                        <a href="">Donate</a>
-                    </div>
-                </li>
-            </div>
-            <div class="mt-auto">
-                <li>
-                    <div class="avatar placeholder">
-                        <div class="bg-neutral text-neutral-content w-12 rounded-full">
-                            <span>AC</span>
+        <div class="drawer-side">
+            <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+            <ul class="menu bg-base-200 text-base-content min-h-full w-80">
+                <!-- Sidebar content -->
+                <div class="flex gap-4 items-center rounded-sm p-3 bg-white hover:opacity-80 transition-opacity">
+                    <!-- Logo -->
+                    <img src="{% static 'images/logo.png' %}"
+                         alt="logo"
+                         width="50px"
+                         height="50px" />
+                    <!-- Title -->
+                    <h1 class="text-xl font-semibold text-neutral">DeepFX Studio</h1>
+                </div>
+                <div class="my-10">
+                    <li class="my-1">
+                        <div class="flex gap-5 items-center">
+                            <img src="{% static 'images/home.svg' %}"
+                                 alt="home-icon"
+                                 width="20px"
+                                 height="20px" />
+                            <a href="{% url 'dashboard:dashboard_view' %}">Dashboard</a>
                         </div>
-                        <a class="font-bold text-base">
-                            {% block username %}
-                                Username
-                            {% endblock username %}
+                    </li>
+                    <li class="my-1">
+                        <div class="flex gap-5 items-center">
+                            <img src="{% static 'images/border-all.svg' %}"
+                                 alt="all-projects icon"
+                                 width="20px"
+                                 height="20px" />
+                            <a href="">All Projects</a>
+                        </div>
+                    </li>
+                    <li class="my-1">
+                        <div class="flex gap-5 items-center">
+                            <img src="{% static 'images/pen-to-square.svg' %}"
+                                 alt="edit icon"
+                                 width="20px"
+                                 height="20px" />
+                            <a href="">Profile</a>
+                        </div>
+                    </li>
+                    <li class="my-1">
+                        <div class="flex gap-5 items-center">
+                            <img src="{% static 'images/hand-holding-dollar.svg' %}"
+                                 alt="donate icon"
+                                 width="20px"
+                                 height="20px" />
+                            <a href="">Donate</a>
+                        </div>
+                    </li>
+                </div>
+                <div class="mt-auto">
+                    <li>
+                        <div class="avatar placeholder">
+                            <div class="bg-neutral text-neutral-content w-12 rounded-full">
+                                <span>AC</span>
+                            </div>
+                            <a class="font-bold text-base">
+                                {% block username %}
+                                    Username
+                                {% endblock username %}
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <a class="font-extralight text-base max-w-fit overflow-x-auto">
+                            {% block email %}
+                                email@mail.com
+                            {% endblock email %}
                         </a>
-                    </div>
-                </li>
-                <li>
-                    <a class="font-extralight text-base max-w-fit overflow-x-auto">
-                        {% block email %}
-                            email@mail.com
-                        {% endblock email %}
-                    </a>
-                </li>
-            </div>
-        </ul>
+                    </li>
+                </div>
+            </ul>
+        </div>
     </div>
 {% endblock body %}
 {% block banner %}

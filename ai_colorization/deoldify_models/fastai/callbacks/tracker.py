@@ -1,15 +1,17 @@
 # Contribution from @fredguth, https://github.com/fredguth/fastai_playground.
 
+# from fastai.basic_train import *
+from logging import warning
 import os
 from typing import Any
-from warnings import warn
+
 import numpy as np
 from ai_colorization.deoldify_models.fastai.basic_train import Learner, LearnerCallback
 from ai_colorization.deoldify_models.fastai.callback import Callback
 from ai_colorization.deoldify_models.fastai.imports import torch
-# from fastai.basic_train import *
-# from fastai.callback import *
-# from fastai.torch_core import *
+from fastai.callback import *
+from fastai.torch_core import *
+
 
 __all__ = [
     "TerminateOnNaNCallback",
@@ -45,7 +47,7 @@ class TrackerCallback(LearnerCallback):
         super().__init__(learn)
         self.monitor, self.mode = monitor, mode
         if self.mode not in ["auto", "min", "max"]:
-            warn(
+            warning(
                 f'{self.__class__} mode {self.mode} is invalid, falling back to "auto" mode.'
             )
             self.mode = "auto"
@@ -75,7 +77,7 @@ class TrackerCallback(LearnerCallback):
             ):
                 values[n] = m
         if values.get(self.monitor) is None:
-            warn(
+            warning(
                 f'{self.__class__} conditioned on metric `{self.monitor}` which is not available. Available metrics are: {", ".join(map(str, self.learn.recorder.names[1:-1]))}'
             )
         return values.get(self.monitor)
@@ -130,7 +132,7 @@ class SaveModelCallback(TrackerCallback):
         super().__init__(learn, monitor=monitor, mode=mode)
         self.every, self.name = every, name
         if self.every not in ["improvement", "epoch"]:
-            warn(
+            warning(
                 f'SaveModel every {self.every} is invalid, falling back to "improvement".'
             )
             self.every = "improvement"

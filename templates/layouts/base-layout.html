@@ -1,4 +1,4 @@
-{% load static tailwind_tags %}
+{% comment %} {% load static tailwind_tags %} {% endcomment %}
 {% load component_tags %}
 {% load static %}
 <!DOCTYPE html>
@@ -84,8 +84,9 @@
                 background: #64748b;
             }
         </style>
-        {% tailwind_css %}
-        {% component_css_dependencies %}
+        <link rel="stylesheet" href="{% static 'css/output.css' %}" />
+        {% comment %} {% tailwind_css %}
+        {% component_css_dependencies %} {% endcomment %}
     </head>
     <body id="root smooth-wrapper">
         <main id="smooth-content"

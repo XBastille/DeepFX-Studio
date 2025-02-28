@@ -50,13 +50,11 @@ EXTERNAL_INSTALLED_APP = [
     "ai_text_to_image_generator",
     "ai_image_upscale",
     "ai_filter",
-    "ai_eraser",
     "ai_colorization",
-    "inpainting",
+    "ai_image_editor",
     "user_auth",
     "dashboard",
     "tailwind",
-    "theme",
     # Font Awesome
     "fontawesomefree",
     # "django_browser_reload",
@@ -97,7 +95,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    # "django_browser_reload.middleware.BrowserReloadMiddleware",
     # django-component middleware
     "django_components.middleware.ComponentDependencyMiddleware",
     # all-auth middleware

@@ -5,7 +5,7 @@ ENV PYTHONUNBUFFERED 1
 
 WORKDIR /app
 
-ARG NODE_MAJOR=18
+ARG NODE_MAJOR=22
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends ca-certificates curl gnupg build-essential \
@@ -35,10 +35,9 @@ COPY --chown=python:python . .
 RUN mkdir -p background_remover/is_net/saved_models
 RUN curl -L -o background_remover/is_net/saved_models/isnet.pth https://github.com/XBastille/DeepFX-Studio/releases/download/models/isnet.pth
 
-RUN SECRET_KEY=dummy python manage.py tailwind install --no-input \
-    && SECRET_KEY=dummy python manage.py tailwind build --no-input
+RUN npm install && npm run build
 
-RUN SECRET_KEY=dummy python manage.py collectstatic --no-input
+RUN python manage.py collectstatic --no-input
 
 RUN export UID=$(id -u) && export GID=$(id -g)
 

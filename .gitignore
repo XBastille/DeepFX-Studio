@@ -165,10 +165,7 @@ cython_debug/
 **/*.pth
 **/*.jit
 **/*.onnx
+**/*.ckpt
 
-# Optionally, ignore folders named 'models' everywhere
-**/models/
-
-
-todo.md
+node_modules/
 .vscode
