@@ -1,11 +1,11 @@
-from fastai.callbacks.hooks import *
 from fastai.layers import *
+from .layers import *
 from fastai.torch_core import *
+from fastai.callbacks.hooks import *
 from fastai.vision import *
 
-from .layers import *
 
-__all__ = ["DynamicUnetDeep", "DynamicUnetWide"]
+__all__ = ['DynamicUnetDeep', 'DynamicUnetWide']
 
 
 def _get_sfs_idxs(sizes: Sizes) -> List[int]:
@@ -26,12 +26,12 @@ class CustomPixelShuffle_ICNR(nn.Module):
         scale: int = 2,
         blur: bool = False,
         leaky: float = None,
-        **kwargs,
+        **kwargs
     ):
         super().__init__()
         nf = ifnone(nf, ni)
         self.conv = custom_conv_layer(
-            ni, nf * (scale**2), ks=1, use_activ=False, **kwargs
+            ni, nf * (scale ** 2), ks=1, use_activ=False, **kwargs
         )
         icnr(self.conv[0].weight)
         self.shuf = nn.PixelShuffle(scale)
@@ -45,6 +45,7 @@ class CustomPixelShuffle_ICNR(nn.Module):
 
 
 class UnetBlockDeep(nn.Module):
+
     def __init__(
         self,
         up_in_c: int,
@@ -55,7 +56,7 @@ class UnetBlockDeep(nn.Module):
         leaky: float = None,
         self_attention: bool = False,
         nf_factor: float = 1.0,
-        **kwargs,
+        **kwargs
     ):
         super().__init__()
         self.hook = hook
@@ -76,12 +77,13 @@ class UnetBlockDeep(nn.Module):
         up_out = self.shuf(up_in)
         ssh = s.shape[-2:]
         if ssh != up_out.shape[-2:]:
-            up_out = F.interpolate(up_out, s.shape[-2:], mode="nearest")
+            up_out = F.interpolate(up_out, s.shape[-2:], mode='nearest')
         cat_x = self.relu(torch.cat([up_out, self.bn(s)], dim=1))
         return self.conv2(self.conv1(cat_x))
 
 
 class DynamicUnetDeep(SequentialEx):
+
     def __init__(
         self,
         encoder: nn.Module,
@@ -94,7 +96,7 @@ class DynamicUnetDeep(SequentialEx):
         bottle: bool = False,
         norm_type: Optional[NormType] = NormType.Batch,
         nf_factor: float = 1.0,
-        **kwargs,
+        **kwargs
     ):
         extra_bn = norm_type == NormType.Spectral
         imsize = (256, 256)
@@ -130,7 +132,7 @@ class DynamicUnetDeep(SequentialEx):
                 norm_type=norm_type,
                 extra_bn=extra_bn,
                 nf_factor=nf_factor,
-                **kwargs,
+                **kwargs
             ).eval()
             layers.append(unet_block)
             x = unet_block(x)
@@ -155,6 +157,7 @@ class DynamicUnetDeep(SequentialEx):
 
 
 class UnetBlockWide(nn.Module):
+
     def __init__(
         self,
         up_in_c: int,
@@ -165,7 +168,7 @@ class UnetBlockWide(nn.Module):
         blur: bool = False,
         leaky: float = None,
         self_attention: bool = False,
-        **kwargs,
+        **kwargs
     ):
         super().__init__()
         self.hook = hook
@@ -185,7 +188,7 @@ class UnetBlockWide(nn.Module):
         up_out = self.shuf(up_in)
         ssh = s.shape[-2:]
         if ssh != up_out.shape[-2:]:
-            up_out = F.interpolate(up_out, s.shape[-2:], mode="nearest")
+            up_out = F.interpolate(up_out, s.shape[-2:], mode='nearest')
         cat_x = self.relu(torch.cat([up_out, self.bn(s)], dim=1))
         return self.conv(cat_x)
 
@@ -203,7 +206,7 @@ class DynamicUnetWide(SequentialEx):
         bottle: bool = False,
         norm_type: Optional[NormType] = NormType.Batch,
         nf_factor: int = 1,
-        **kwargs,
+        **kwargs
     ):
         nf = 512 * nf_factor
         extra_bn = norm_type == NormType.Spectral
@@ -241,7 +244,7 @@ class DynamicUnetWide(SequentialEx):
                 self_attention=sa,
                 norm_type=norm_type,
                 extra_bn=extra_bn,
-                **kwargs,
+                **kwargs
             ).eval()
             layers.append(unet_block)
             x = unet_block(x)
