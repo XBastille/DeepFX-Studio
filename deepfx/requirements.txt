@@ -1,6 +1,8 @@
 albumentations==0.5.2
 braceexpand==0.1.7
-detectron2==0.6
+git+https://github.com/facebookresearch/detectron2.git
+sentencepiece==0.2.0
+accelerate==1.4.0
 diffusers==0.30.2
 Django==5.1.6
 easydict==1.13
