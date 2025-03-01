@@ -1,5 +1,4 @@
 asgiref==3.8.1
-basicsr==1.4.2
 certifi==2024.8.30
 cffi==1.17.1
 charset-normalizer==3.4.0
@@ -25,7 +24,7 @@ numpy==1.26.4
 omegaconf==2.3.0
 opencv-python==4.11.0.86
 pandas==2.2.3
-pillow==11.1.0
+pillow==10.2.0
 pycocotools==2.0.8
 pycparser==2.22
 PyJWT==2.10.1
@@ -42,13 +41,13 @@ sqlparse==0.5.2
 tensorflow==2.14.0
 tensorflow-hub==0.14.0
 timm==1.0.14
-torch==2.6.0
-torchvision==0.21.0
+torch==2.2.2
+torchvision==0.17.2
 tqdm==4.67.1
-transformers==4.48.2
-webdataset==0.2.100
 diffusers==0.30.2
-detectron2==0.6
+sentencepiece==0.2.0
+accelerate==1.4.0
+git+https://github.com/facebookresearch/detectron2.git
 pytorch_lightning==2.5.0.post0
 braceexpand==0.1.7
 easydict==1.13
@@ -56,6 +55,6 @@ webdataset==0.2.111
 albumentations==2.0.4
 imgaug==0.4.0
 kornia==0.8.0
-diffusers==0.32.2
+diffusers==0.30.2
 transformers==4.49.0
 # generated using pigar generate
