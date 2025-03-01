@@ -40,7 +40,7 @@ DEBUG = True
 
 # Production
 # DEBUG = False
-# ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["98.83.147.35"]
 
 # Application definition
 EXTERNAL_INSTALLED_APP = [
