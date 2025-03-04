@@ -244,6 +244,7 @@ class NeuralStyleTransfer:
         stylized_image = stylized_image.reshape(
             stylized_image.shape[1], stylized_image.shape[2], stylized_image.shape[3]
         )
+        plt.imsave("output.jpg", stylized_image)
 
         return stylized_image
 
@@ -254,7 +255,5 @@ if __name__ == "__main__":
     style_image_path = r"style.jpeg"
     nst = NeuralStyleTransfer(model_path=model_path)
     img = nst.stylize_image(content_image_path, style_image_path)
-    print("Processed Image: ", img)
-    plt.imsave("output.jpg", img)
     plt.imshow(img)
     plt.show()

@@ -529,7 +529,7 @@ submit.addEventListener('click', async (e) => {
             ctx.drawImage(tempCanvas, 0, 0);
         }
         const maskData = drawingCanvas.toDataURL();
-        const response = await fetch('/api/save-mask/', {
+        const response = await fetch('/ai_image_editor/api/save-mask/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

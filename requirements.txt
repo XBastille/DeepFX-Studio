@@ -52,7 +52,7 @@ pytorch_lightning==2.5.0.post0
 braceexpand==0.1.7
 easydict==1.13
 webdataset==0.2.111
-albumentations==2.0.4
+albumentations==0.5.2
 imgaug==0.4.0
 kornia==0.8.0
 diffusers==0.30.2
