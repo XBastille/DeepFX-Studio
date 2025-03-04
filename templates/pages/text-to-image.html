@@ -1,145 +1,721 @@
 {% extends "layouts/base-layout.html" %}
 {% load static %}
 {% block metadata %}
-    <!-- SEO Meta Tags -->
-    <meta name="description"
-          content="DeepFX Studio - Advanced AI tools for image manipulation including background removal, colorization, and deepfake effects." />
-    <meta name="keywords"
-          content="DeepFX Studio, AI Image Tools, Background Removal, AI-powered Editing, Deepfake, Colorization" />
-    <meta name="author" content="DeepFX Studio Team" />
+<!-- SEO Meta Tags -->
+<meta name="description"
+    content="DeepFX Studio - Advanced AI tools for image manipulation including background removal, colorization, and deepfake effects." />
+<meta name="keywords"
+    content="DeepFX Studio, AI Image Tools, Background Removal, AI-powered Editing, Deepfake, Colorization" />
+<meta name="author" content="DeepFX Studio Team" />
 {% endblock metadata %}
 {% block title %}
-    Text To Image - DeepFX Studio
+Text To Image - DeepFX Studio
 {% endblock title %}
 {% block body %}
-    <div class="flex h-screen bg-gray-950 text-gray-200">
-        <!-- Sidebar -->
-        <aside class="hidden md:block w-1/4 bg-[#191e24] p-4 border-r border-gray-700">
-            <div class="flex items-center bg-white rounded-md p-3 mb-8">
-                <!-- Logo -->
-                <img src="{% static 'images/logo.png' %}"
-                     alt="logo"
-                     width="50px"
-                     height="50px" />
-                <!-- Title -->
-                <h1 class="text-xl font-semibold text-neutral">DeepFX Studio</h1>
-            </div>
-            <h2 class="text-xl font-bold mb-4">Settings</h2>
-            <div class="card mb-3"
-                 style="background-image: url({% static 'images/hero-image.webp' %})">
-                <div class="card-body backdrop-blur-xl rounded-2xl p-4">
-                    <h5 class="card-title text-base flex flex-col ">
-                        <span class="badge badge-outline text-gray-700">Model</span>
-                        <select class="select w-full max-w-xs backdrop-blur-xl bg-gray-900">
-                            <option disabled selected>SD 3.5</option>
-                            {% comment %} <option>Homer</option>
-                            <option>Marge</option>
-                            <option>Bart</option>
-                            <option>Lisa</option>
-                            <option>Maggie</option> {% endcomment %}
-                        </select>
-                    </h5>
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-to-Image Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'app-dark': '#000000',
+                        'app-darker': '#000000',
+                        'app-sidebar': '#0a0a0a',
+                        'app-box': '#1a1a1a',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0a0a0a;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #444;
+        }
+
+        textarea {
+            overflow: hidden;
+        }
+
+        .btn {
+            transition: all 0.2s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .sidebar {
+            width: 18rem;
+            min-width: 18rem;
+            max-width: 18rem;
+            flex-shrink: 0;
+        }
+
+        .aspect-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            height: 100%;
+            width: 100%;
+        }
+
+        .ratio-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 24px;
+            flex-shrink: 0;
+        }
+
+        #customDimensionsContainer {
+            transition: all 0.3s ease;
+        }
+
+        #customDimensionsContainer .input-group:first-child {
+            margin-top: 0;
+        }
+
+        .btn.interactive-element.active .text-gray-400 {
+            color: #3b82f6;
+        }
+
+        .range-slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 8px;
+            border-radius: 4px;
+            background: #27272a;
+            outline: none;
+            position: relative;
+        }
+
+
+
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #fff;
+            cursor: pointer;
+            border: 2px solid #000000;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+            z-index: 2;
+        }
+
+        .generate-btn {
+            transition: all 0.3s ease;
+        }
+
+        .generate-inactive {
+            color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .generate-active {
+            background: linear-gradient(to right, rgb(255, 255, 255) 0%, #3b82f6 100%);
+            color: #000000;
+            cursor: pointer;
+        }
+
+        .settings-box {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .settings-box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.4rem;
+        }
+
+        .main-content {
+            margin-left: 18rem;
+            width: calc(100% - 18rem);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .generated-container {
+            margin-top: 120px;
+            overflow-y: auto;
+            height: calc(100vh - 178px);
+            padding: 1rem;
+        }
+
+        .prompt-container {
+            position: fixed;
+            top: 58px;
+            left: 18rem;
+            right: 0;
+            background-color: #000000;
+            padding: 1rem;
+            z-index: 80;
+        }
+
+        .interactive-element {
+            position: relative;
+            transition: border 0.3s ease;
+            border: 2px solid transparent;
+            border-radius: 0.5rem;
+        }
+
+        .interactive-element::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 2px;
+            background: linear-gradient(to right, rgb(255, 255, 255) 0%, #3b82f6 100%);
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .interactive-element.active::before {
+            opacity: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                max-width: 100%;
+                min-width: auto;
+            }
+        }
+
+        .grid-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 16px;
+            width: 100%;
+        }
+
+        .image-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-top-arrow:hover,
+        .btn-retry:hover,
+        .btn-dropdown:hover {
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .dropdown-menu {
+            display: none;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.2s, transform 0.2s;
+        }
+
+        .dropdown-menu.active {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        .dropdown-menu button:hover {
+            background-color: rgba(107, 114, 128, 0.5);
+        }
+
+        .grid-images>div {
+            width: 100%;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        @media (max-width: 640px) {
+            .grid-images {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        .generated-container {
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .input-group {
+            position: relative;
+        }
+
+        .info-tooltip {
+            visibility: hidden;
+            position: absolute;
+            background: #27272a;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            width: 200px;
+            top: -5px;
+            left: 100%;
+            margin-left: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        .info-icon:hover+.info-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .arrow.collapsed {
+            transform: rotate(180deg);
+        }
+
+        .content.hidden {
+            display: none;
+        }
+
+        .btn.interactive-element {
+            position: relative;
+            overflow: visible;
+            z-index: 1;
+        }
+
+        .grid-cols-5 .btn.interactive-element::before {
+            top: -15px;
+            right: -3px;
+            bottom: -10px;
+            left: -3px;
+        }
+
+        #diceBtn {
+            transition: transform 0.3s ease;
+        }
+
+        #diceBtn:hover {
+            transform: rotate(180deg);
+            color: #60a5fa;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 100%;
+                max-height: 300px;
+                overflow-y: auto;
+            }
+
+            .sidebar.mobile-mode {
+                max-height: none;
+            }
+
+            .sidebar.mobile-mode .content {
+                max-height: 250px;
+                overflow-y: auto;
+            }
+        }
+
+        input[type="number"] {
+            appearance: textfield;
+        }
+
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .app-container {
+            height: 100vh;
+            padding-top: 58px;
+            box-sizing: border-box;
+        }
+
+        .fixed-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 58px;
+            z-index: 100;
+        }
+
+        .sidebar-container {
+            position: fixed;
+            top: 58px;
+            left: 0;
+            bottom: 0;
+            width: 18rem;
+            overflow-y: auto;
+            z-index: 90;
+        }
+    </style>
+</head>
+
+<body class="bg-app-dark text-white min-h-screen flex flex-col">
+    <nav class="fixed-nav bg-app-darker p-2 flex items-center justify-between border-b border-gray-800 w-full z-10">
+        <div class="flex items-center">
+            <button class="p-2 hover:bg-gray-800 rounded-lg transition-colors interactive-element">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18" />
+                </svg>
+            </button>
+            <div class="ml-4 flex items-center">
+                <div class="w-12 h-12 flex items-center justify-center">
+                    <img src="{% static 'images/logo.png' %}" alt="Logo" class="rounded-full w-full h-full object-cover">
                 </div>
-            </div>
-            <div class="card bg-base-100 shadow-xl">
-                <div class="card-body flex gap-5">
-                    <section class="flex flex-col gap-2">
-                        <h5 class="card-title text-base">
-                            Generation Mode
-                            <div class="tooltip"
-                                 data-tip="The standard mode balances speed and quality, while the quality mode generates more refined images (SDXL for Img2Img does not yet support quality mode).">
-                                <img src="{% static 'images/i-icon.svg' %}"
-                                     alt="i-icon"
-                                     width="15px"
-                                     height="15px" />
-                            </div>
-                        </h5>
-                        <div class="w-full flex gap-2">
-                            <button type="submit" class="btn btn-md btn-neutral w-[50%]">Standard</button>
-                            <button type="submit" class="btn btn-md btn-neutral w-[50%]">
-                                <img src="{% static 'images/meteor.svg' %}"
-                                     alt=""
-                                     width="20px"
-                                     height="20px">
-                                Quality
-                            </button>
-                        </div>
-                    </section>
-                    <section class="flex flex-col gap-2">
-                        <h5 class="card-title text-base">Image Settings</h5>
-                        <div class="w-fit flex flex-wrap gap-1">
-                            <button class="btn btn-sm btn-outline w-fit">2:3</button>
-                            <button class="btn btn-sm btn-outline w-fit">1:1</button>
-                            <button class="btn btn-sm btn-outline w-fit">9:16</button>
-                            <button class="btn btn-sm btn-outline w-fit">4:3</button>
-                            <button class="btn btn-sm btn-outline w-fit">more</button>
-                        </div>
-                    </section>
-                    <section class="flex flex-col gap-2">
-                        <h5 class="card-title text-base">Image Quality</h5>
-                        <div class="w-full flex flex-wrap gap-1">
-                            <button class="btn w-[23%]">1</button>
-                            <button class="btn w-[23%]">2</button>
-                            <button class="btn w-[23%]">3</button>
-                            <button class="btn w-[23%]">4</button>
-                        </div>
-                    </section>
+                <div class="ml-2">
+                    <img src="{% static 'images/website_logo.png' %}" alt="DeepFX Studio" class="h-10">
                 </div>
-            </div>
-            {% comment %} Setting For AI Model {% endcomment %}
-        </aside>
-        <!-- Collapsible Sidebar for Smaller Screens -->
-        <div id="mobileSidebar"
-             class="hidden fixed inset-0 bg-black bg-opacity-50 z-30">
-            <div class="bg-[#1a1a1a] w-3/4 h-full p-4">
-                <div class="flex flex-row justify-between">
-                    <h2 class="text-xl font-bold mb-4">Settings</h2>
-                    <button class="btn btn-circle text-white bg-gray-800 rounded"
-                            onclick="toggleSidebar()">
-                        <img class="w-[15px] h-[15px]"
-                             src="{% static 'images/close.svg' %}"
-                             alt="close-btn"
-                             height=""
-                             width="" />
-                    </button>
-                </div>
-                {% comment %} Setting For AI Model in Small Screen i.e Mobile Mode {% endcomment %}
             </div>
         </div>
-        <!-- Main Content -->
-        <section class="flex-1 p-4 md:p-6">
-            <!-- Header -->
-            <header class="flex h-[12%] items-center justify-between p-4 bg-[#191e24] rounded mb-4">
-                <div class="md:hidden bg-[#191e24]">
-                    <button class="text-white bg-orange-500 rounded p-2"
-                            onclick="toggleSidebar()">
-                        <img src="{% static 'images/menu.svg' %}"
-                             alt="menu-btn"
-                             width="18px"
-                             height="18px" />
-                    </button>
-                </div>
-                <div class="flex flex-col justify-start">
-                    <span class="text-xs">Project Name - f308cd44</span>
-                    <h1 class="text-xl md:text-2xl font-bold">Untitled</h1>
-                </div>
-                <div class="flex items-center gap-4">
-                    <div class="avatar w-8 md:w-10 h-8 md:h-10 rounded-full bg-gray-700 flex items-center justify-center">
-                        <span>{{ user.first_name|slice:":1" }}{{ user.last_name|slice:":1" }}</</span>
+    </nav>
+
+    <div class="app-container flex">
+        <div class="sidebar-container">
+            <div class="sidebar bg-app-sidebar border-r border-gray-800 p-4 space-y-6">
+                <div class="settings-box interactive-element">
+                    <div class="text-xs text-purple-400 mb-1">Model</div>
+                    <div class="bg-gray-800/50 rounded-lg p-3">
+                        <div class="flex justify-between items-center">
+                            <div class="font-medium">SD 3.5 Large</div>
+                            <div class="flex gap-2">
+                                <button class="text-gray-400 hover:text-white transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                                    </svg>
+                                </button>
+                                <button class="text-gray-400 hover:text-white transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex items-center">
+                            <div class="text-xs text-gray-400 bg-gray-900/50 rounded px-2 py-0.5">v1.0</div>
+                            <div class="ml-auto">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-400">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                                </svg>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </header>
-            <!-- Image Manipulation Area -->
-            <section class="h-[89%] w-full flex flex-col justify-start items-center bg-[#191e24] rounded-lg shadow-lg p-4">
-                <form class="w-full flex gap-2">
-                    <input type="text"
-                           placeholder="Enter Your Prompt"
-                           class="input input-bordered input-md w-full" />
-                    <button type="submit" class="btn btn-outline">Generate</button>
-                </form>
-            </section>
-        </section>
+
+                <div class="settings-box interactive-element">
+                    <div class="settings-box-header">
+                        <div class="text-sm font-medium">Image Settings</div>
+                        <div class="text-xs text-gray-400">688 × 1024</div>
+                    </div>
+                    <div class="grid grid-cols-5 gap-2">
+                        <button
+                            class="btn btn-sm bg-transparent hover:bg-gray-800 border border-gray-700 text-white p-0 min-h-0 h-12 interactive-element">
+                            <div class="aspect-box">
+                                <div class="ratio-container">
+                                    <div class="w-4 h-6 border border-gray-500 rounded-sm"></div>
+                                </div>
+                                <div class="text-xs">2:3</div>
+                            </div>
+                        </button>
+                        <button
+                            class="btn btn-sm bg-transparent hover:bg-gray-800 border border-gray-700 text-white p-0 min-h-0 h-12 interactive-element">
+                            <div class="aspect-box">
+                                <div class="ratio-container">
+                                    <div class="w-5 h-5 border border-gray-500 rounded-sm"></div>
+                                </div>
+                                <div class="text-xs">1:1</div>
+                            </div>
+                        </button>
+                        <button
+                            class="btn btn-sm bg-transparent hover:bg-gray-800 border border-gray-700 text-white p-0 min-h-0 h-12 interactive-element">
+                            <div class="aspect-box">
+                                <div class="ratio-container">
+                                    <div class="w-3 h-6 border border-gray-500 rounded-sm"></div>
+                                </div>
+                                <div class="text-xs">9:16</div>
+                            </div>
+                        </button>
+                        <button
+                            class="btn btn-sm bg-transparent hover:bg-gray-800 border border-gray-700 text-white p-0 min-h-0 h-12 interactive-element">
+                            <div class="aspect-box">
+                                <div class="ratio-container">
+                                    <div
+                                        class="w-6 h-4.5 border border-gray-500 rounded-sm flex items-center justify-center">
+                                        <div class="w-5 h-3.5  rounded-sm opacity-30"></div>
+                                    </div>
+                                </div>
+                                <div class="text-xs">4:3</div>
+                            </div>
+                        </button>
+                        <button
+                            class="btn btn-sm bg-transparent hover:bg-gray-800 border border-gray-700 text-white p-0 min-h-0 h-12 interactive-element">
+                            <div class="aspect-box">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-400">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                                </svg>
+                                <div class="text-xs">More</div>
+                            </div>
+                        </button>
+                    </div>
+
+                    <div id="customDimensionsContainer" class="mt-4 hidden">
+                        <div class="border-t border-gray-700 pt-4">
+                            <div class="input-group mb-4">
+                                <div class="flex items-center justify-between mb-1">
+                                    <div class="text-sm">Width</div>
+                                    <div class="text-xs text-gray-400">pixels</div>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <input type="range" class="range-slider flex-1" id="widthSlider" min="256"
+                                        max="2048" step="8" value="1024">
+                                    <input type="number"
+                                        class="w-16 bg-gray-800/50 rounded p-1 text-center text-sm interactive-element"
+                                        id="widthInput" value="1024" step="8">
+                                </div>
+                            </div>
+
+                            <div class="input-group mb-4">
+                                <div class="flex items-center justify-between mb-1">
+                                    <div class="text-sm">Height</div>
+                                    <div class="text-xs text-gray-400">pixels</div>
+                                </div>
+                                <div class="flex items-center gap-4">
+                                    <input type="range" class="range-slider flex-1" id="heightSlider" min="256"
+                                        max="2048" step="8" value="1024">
+                                    <input type="number"
+                                        class="w-16 bg-gray-800/50 rounded p-1 text-center text-sm interactive-element"
+                                        id="heightInput" value="1024" step="8">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <div class="flex justify-between items-center mb-1">
+                            <div class="text-sm font-medium">Image Quantity</div>
+                        </div>
+                        <div class="grid grid-cols-4 gap-2">
+                            <button
+                                class="btn btn-sm bg-transparent hover:bg-gray-800 border border-gray-700 text-white interactive-element">1</button>
+                            <button
+                                class="btn btn-sm bg-transparent hover:bg-gray-800 border border-gray-700 text-white interactive-element">2</button>
+                            <button
+                                class="btn btn-sm bg-transparent hover:bg-gray-800 border border-gray-700 text-white interactive-element">3</button>
+                            <button
+                                class="btn btn-sm bg-transparent hover:bg-gray-800 border border-gray-700 text-white interactive-element">4</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-box interactive-element">
+                    <div class="settings-box-header" id="configHeader">
+                        <div class="text-sm font-medium">Advanced Config</div>
+                        <button class="text-gray-400 hover:text-white transition-colors" id="arrow">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 15.75 7.5-7.5 7.5 7.5" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="content" id="configContent">
+                        <div class="input-group mb-4">
+                            <div class="flex items-center justify-between mb-1">
+                                <div class="text-sm flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+                                    </svg>
+                                    Inference Steps
+                                </div>
+                                <button class="text-gray-400 hover:text-white transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <input type="range" class="range-slider flex-1" id="inferenceStepsSlider" min="10"
+                                    max="100" value="40">
+                                <input type="number"
+                                    class="w-16 bg-gray-800/50 rounded p-1 text-center text-sm interactive-element"
+                                    id="inferenceStepsInput" value="40">
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-4">
+                            <div class="flex items-center justify-between mb-1">
+                                <div class="text-sm flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 0 1-.659 1.591l-5.432 5.432a2.25 2.25 0 0 0-.659 1.591v2.927a2.25 2.25 0 0 1-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 0 0-.659-1.591L3.659 7.409A2.25 2.25 0 0 1 3 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0 1 12 3Z" />
+                                    </svg>
+                                    Guidance Scale
+                                </div>
+                                <button class="text-gray-400 hover:text-white transition-colors">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <input type="range" class="range-slider flex-1" id="guidanceScaleSlider" min="1"
+                                    max="20" step="0.1" value="4.5">
+                                <input type="number"
+                                    class="w-16 bg-gray-800/50 rounded p-1 text-center text-sm interactive-element"
+                                    id="guidanceScaleInput" value="4.5" step="0.1">
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-4">
+                            <div class="flex items-center justify-between mb-1">
+                                <div class="text-sm flex items-center">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-1">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+                                    </svg>
+                                    Seed
+                                </div>
+                                <button class="text-gray-400 hover:text-white transition-colors" id="diceBtn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512" stroke-width="1.5"
+                                        stroke="currentColor" fill="currentColor" class="w-4 h-4">
+                                        <path
+                                            d="M274.9 34.3c-28.1-28.1-73.7-28.1-101.8 0L34.3 173.1c-28.1 28.1-28.1 73.7 0 101.8L173.1 413.7c28.1 28.1 73.7 28.1 101.8 0L413.7 274.9c28.1-28.1 28.1-73.7 0-101.8L274.9 34.3zM200 224a24 24 0 1 1 48 0 24 24 0 1 1 -48 0zM96 200a24 24 0 1 1 0 48 24 24 0 1 1 0-48zM224 376a24 24 0 1 1 0-48 24 24 0 1 1 0 48zM352 200a24 24 0 1 1 0 48 24 24 0 1 1 0-48zM224 120a24 24 0 1 1 0-48 24 24 0 1 1 0 48zm96 328c0 35.3 28.7 64 64 64H576c35.3 0 64-28.7 64-64V256c0-35.3-28.7-64-64-64H384c-35.3 0-64 28.7-64 64V448zm128-96a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm32 64a32 32 0 1 1 -64 0 32 32 0 1 1 64 0zm64-64a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm32 64a32 32 0 1 1 -64 0 32 32 0 1 1 64 0z" />
+                                    </svg>
+                                </button>
+                            </div>
+                            <div class="flex items-center gap-4 mb-2">
+                                <input type="number"
+                                    class="w-full bg-gray-800/50 rounded p-2 text-sm interactive-element" id="seedInput"
+                                    value="42" placeholder="Enter seed value">
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <input type="checkbox" id="randomSeedCheckbox"
+                                    class="checkbox checkbox-xs checkbox-primary interactive-element">
+                                <label for="randomSeedCheckbox" class="text-sm">Use random seed</label>
+                            </div>
+                        </div>
+
+                        <button id="resetBtn"
+                            class="btn btn-sm w-full bg-gray-800/50 hover:bg-gray-700 border-none text-white gap-2 interactive-element">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-4 h-4">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+                            </svg>
+                            Reset Parameters
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="prompt-container">
+                <div class="bg-gray-900/50 rounded-lg p-4 min-h-24 flex interactive-element">
+                    <textarea id="prompt-input"
+                        class="flex-1 bg-transparent border-none focus:outline-none resize-none text-gray-300 interactive-element"
+                        placeholder="A mesmerizing close-up portrait of a gorgeous little bird illuminated by the soft, golden light of a tranquil morning, with vibrant bokeh balls gently framing its delicate form."></textarea>
+                    <div class="flex items-start gap-3 ml-2">
+                        <button class="text-gray-400 hover:text-white transition-colors interactive-element">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M16.5 8.25V6a2.25 2.25 0 00-2.25-2.25H6A2.25 2.25 0 003.75 6v8.25A2.25 2.25 0 006 16.5h2.25m8.25-8.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-7.5A2.25 2.25 0 018.25 18v-1.5m8.25-8.25h-6a2.25 2.25 0 00-2.25 2.25v6" />
+                            </svg>
+                        </button>
+
+                        <button id="generate-btn"
+                            class="generate-btn generate-inactive flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all transform hover:scale-105 active:scale-95">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09Z" />
+                            </svg>
+                            Generate
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="generated-images" class="generated-container p-4 space-y-8">
+                <div class="text-right text-gray-400 text-sm">
+                    Saturday, December 28, 2024
+                </div>
+            </div>
+        </div>
     </div>
+
+    {% block scripts %}
+    <script src="{% static 'scripts/text-to-image.js' %}"></script>
+    {% endblock scripts %}
+</body>
+</html>
 {% endblock body %}
 {% block banner %}
 {% endblock banner %}
