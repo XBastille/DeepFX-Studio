@@ -63,7 +63,7 @@ document.addEventListener('click', () => {
 
 async function generateMaskWithSAM(imageData, coords) {
     try {
-        const response = await fetch('/api/generate-mask/', {
+        const response = await fetch('/ai_image_editor/api/generate-mask/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -97,7 +97,7 @@ async function processImage(operation, imageData, maskData, prompt, config = nul
             requestBody.negative_prompt = config.negative_prompt;
         }
 
-        const response = await fetch('/api/process-image/', {
+        const response = await fetch('/ai_image_editor/api/process-image/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -462,7 +462,7 @@ submit.addEventListener('click', async (e) => {
         console.log("Clicked coordinates:", clickedCoords);
         const imageData = imageCanvas.toDataURL();
         try {
-            const response = await fetch('/api/generate-mask/', {
+            const response = await fetch('/ai_image_editor/api/generate-mask/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -476,7 +476,7 @@ submit.addEventListener('click', async (e) => {
 
             const result = await response.json();
             if (result.status === 'success') {
-                const saveResponse = await fetch('/api/save-mask/', {
+                const saveResponse = await fetch('/ai_image_editor/api/save-mask/', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
