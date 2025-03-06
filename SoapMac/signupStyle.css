@@ -1,0 +1,184 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: poppins;
+    overflow: hidden;
+}
+.video{
+    margin-left: 550px;
+    overflow: hidden;
+    height: 100vh;
+}
+.video video{
+    height: 100vh;
+    margin-right: 100px;
+}
+.container{
+    border: 20px solid black;
+    width: 100%;
+    height: 100vh;
+    margin-left: 15%;
+    margin-top: 95px;
+    border-radius: 1rem;
+    position: absolute;
+    bottom: 0px;
+    right: 0;
+
+}
+.logo{
+    margin-top: 40px;
+    margin-left: 50px;
+}
+.signup{
+    margin-top:1rem;
+    margin-left: 70px;
+    font-size: 22px;
+}
+.signup h1{
+    font-size: 55px; 
+    color: #fff; 
+    font-weight: bold; 
+    text-align: center;
+    margin-top: -10px;
+    margin-right: 240px;
+    background: -webkit-linear-gradient(rgb(19, 0, 81), rgb(255, 255, 255));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.container .row{
+    display: flex;
+    width: 40rem;
+    height: 100vh;
+    background-color: #000000;
+}
+
+.row .leftpart{
+    background-color: #000000;
+    
+}
+form{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 3.7rem;
+    margin-left: -7px;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+}
+form input{
+    padding: 15px;
+    border-radius: 1rem;
+    margin: 10px 0;
+    width: 450px;
+    color: black;
+    
+}
+.show .password-eye{
+    position: absolute;
+    top: 13rem;
+    left: 27rem;
+    height: 25px;
+    width: 30px;
+    background-position: center;
+    background-size: cover;
+
+}
+.show .confirm-eye{
+    position: absolute;
+    top: 18.7rem;
+    left: 27rem;
+    height: 25px;
+    width: 30px;
+    background-position: center;
+    background-size: cover;
+}
+form button{
+    padding: 18px;
+    width: 460px;
+    border-radius: 1rem;
+    margin-top: 20px;
+    margin-left: 10px ;
+    margin-bottom: 10px;
+    background-color: #fff;
+    border: none;
+    transition: 0.5s;
+    cursor: pointer;
+    color: #000000;
+}
+form button:hover{
+    transform: translateY(-5px);
+}
+form a{
+    color: white;
+    text-decoration: none;
+}
+.or{
+    display: flex;
+    margin-top: 465px;
+    margin-left: 145px;
+}
+.or h4{
+    margin: 0 10px;
+}
+.line{
+    width: 170px;
+    height: 1px;
+    background-color: white;
+    margin-top: 11px;
+}
+.icons{
+    display: flex;
+    align-items: center;
+    margin-left: 275px;
+    position: relative;
+    height: 60px;
+}
+.icons i{
+    margin-left: 20px;
+    margin-top: -5PX;
+    font-size: 30px;
+    transition: 0.7s;
+}
+.rightPart h1{
+    position: absolute;
+    margin-left: 200px;
+    margin-top: 200px;
+    margin-bottom: 100px;
+    font-size: 60px;
+    animation-name: appear;
+    animation-duration: 2s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+}
+.icons i:hover{
+    cursor: pointer;
+    font-size: 37px;
+}
+
+form p{
+    font-size: 12px;
+    visibility: hidden;
+    color: red;
+}
+.errorOccured{
+    visibility: visible;
+}
+.errorBorder{
+    border: 3px solid red;
+}
+
+@keyframes appear{
+    0%{
+        opacity: 0;
+        bottom: -100px;
+    }
+    100%{
+        opacity: 1;
+        bottom: 150px;
+    }
+}
