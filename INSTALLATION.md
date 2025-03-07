@@ -38,12 +38,12 @@ Refer [CONTRIBUTING.md](CONTRIBUTING.md) to get an idea how to place the models
     ```
 
 - Activate that enviroment
-  
+
     *macOS/Linux*
 
     ```bash
     source venv/bin/activate
-    ```  
+    ```
 
     *Windows (CMD)*
 

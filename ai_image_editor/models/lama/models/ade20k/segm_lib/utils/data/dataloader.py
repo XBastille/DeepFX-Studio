@@ -1,20 +1,27 @@
 import torch
 import torch.multiprocessing as multiprocessing
-from torch._C import _set_worker_signal_handlers, \
-    _remove_worker_pids, _error_if_any_worker_fails
+from torch._C import (
+    _error_if_any_worker_fails,
+    _remove_worker_pids,
+    _set_worker_signal_handlers,
+)
+
 try:
     from torch._C import _set_worker_pids
 except:
     from torch._C import _update_worker_pids as _set_worker_pids
-from .sampler import SequentialSampler, RandomSampler, BatchSampler
-import signal
+
 import collections
 import re
+import signal
 import sys
 import threading
 import traceback
-from torch._six import string_classes, int_classes
+
 import numpy as np
+from torch._six import int_classes, string_classes
+
+from .sampler import BatchSampler, RandomSampler, SequentialSampler
 
 if sys.version_info[0] == 2:
     import Queue as queue
@@ -34,7 +41,9 @@ _use_shared_memory = False
 """Whether to use shared memory in default_collate"""
 
 
-def _worker_loop(dataset, index_queue, data_queue, collate_fn, seed, init_fn, worker_id):
+def _worker_loop(
+    dataset, index_queue, data_queue, collate_fn, seed, init_fn, worker_id
+):
     global _use_shared_memory
     _use_shared_memory = True
 
@@ -89,15 +98,16 @@ def _worker_manager_loop(in_queue, out_queue, done_event, pin_memory, device_id)
         else:
             out_queue.put((idx, batch))
 
+
 numpy_type_map = {
-    'float64': torch.DoubleTensor,
-    'float32': torch.FloatTensor,
-    'float16': torch.HalfTensor,
-    'int64': torch.LongTensor,
-    'int32': torch.IntTensor,
-    'int16': torch.ShortTensor,
-    'int8': torch.CharTensor,
-    'uint8': torch.ByteTensor,
+    "float64": torch.DoubleTensor,
+    "float32": torch.FloatTensor,
+    "float16": torch.HalfTensor,
+    "int64": torch.LongTensor,
+    "int32": torch.IntTensor,
+    "int16": torch.ShortTensor,
+    "int8": torch.CharTensor,
+    "uint8": torch.ByteTensor,
 }
 
 
@@ -115,17 +125,20 @@ def default_collate(batch):
             storage = batch[0].storage()._new_shared(numel)
             out = batch[0].new(storage)
         return torch.stack(batch, 0, out=out)
-    elif elem_type.__module__ == 'numpy' and elem_type.__name__ != 'str_' \
-            and elem_type.__name__ != 'string_':
+    elif (
+        elem_type.__module__ == "numpy"
+        and elem_type.__name__ != "str_"
+        and elem_type.__name__ != "string_"
+    ):
         elem = batch[0]
-        if elem_type.__name__ == 'ndarray':
+        if elem_type.__name__ == "ndarray":
             # array of string classes and object
-            if re.search('[SaUO]', elem.dtype.str) is not None:
+            if re.search("[SaUO]", elem.dtype.str) is not None:
                 raise TypeError(error_msg.format(elem.dtype))
 
             return torch.stack([torch.from_numpy(b) for b in batch], 0)
         if elem.shape == ():  # scalars
-            py_type = float if elem.dtype.name.startswith('float') else int
+            py_type = float if elem.dtype.name.startswith("float") else int
             return numpy_type_map[elem.dtype.name](list(map(py_type, batch)))
     elif isinstance(batch[0], int_classes):
         return torch.LongTensor(batch)
@@ -162,7 +175,7 @@ handler needs to be set for all DataLoaders in a process."""
 
 def _set_SIGCHLD_handler():
     # Windows doesn't support SIGCHLD handler
-    if sys.platform == 'win32':
+    if sys.platform == "win32":
         return
     # can't set signal in child threads
     if not isinstance(threading.current_thread(), threading._MainThread):
@@ -210,13 +223,22 @@ class DataLoaderIter(object):
             self.rcvd_idx = 0
             self.reorder_dict = {}
 
-            base_seed = torch.LongTensor(1).random_(0, 2**31-1)[0]
+            base_seed = torch.LongTensor(1).random_(0, 2**31 - 1)[0]
             self.workers = [
                 multiprocessing.Process(
                     target=_worker_loop,
-                    args=(self.dataset, self.index_queue, self.worker_result_queue, self.collate_fn,
-                          base_seed + i, self.worker_init_fn, i))
-                for i in range(self.num_workers)]
+                    args=(
+                        self.dataset,
+                        self.index_queue,
+                        self.worker_result_queue,
+                        self.collate_fn,
+                        base_seed + i,
+                        self.worker_init_fn,
+                        i,
+                    ),
+                )
+                for i in range(self.num_workers)
+            ]
 
             if self.pin_memory or self.timeout > 0:
                 self.data_queue = queue.Queue()
@@ -227,8 +249,14 @@ class DataLoaderIter(object):
                     maybe_device_id = None
                 self.worker_manager_thread = threading.Thread(
                     target=_worker_manager_loop,
-                    args=(self.worker_result_queue, self.data_queue, self.done_event, self.pin_memory,
-                          maybe_device_id))
+                    args=(
+                        self.worker_result_queue,
+                        self.data_queue,
+                        self.done_event,
+                        self.pin_memory,
+                        maybe_device_id,
+                    ),
+                )
                 self.worker_manager_thread.daemon = True
                 self.worker_manager_thread.start()
             else:
@@ -254,7 +282,9 @@ class DataLoaderIter(object):
             try:
                 return self.data_queue.get(timeout=self.timeout)
             except queue.Empty:
-                raise RuntimeError('DataLoader timed out after {} seconds'.format(self.timeout))
+                raise RuntimeError(
+                    "DataLoader timed out after {} seconds".format(self.timeout)
+                )
         else:
             return self.data_queue.get()
 
@@ -276,7 +306,7 @@ class DataLoaderIter(object):
             raise StopIteration
 
         while True:
-            assert (not self.shutdown and self.batches_outstanding > 0)
+            assert not self.shutdown and self.batches_outstanding > 0
             idx, batch = self._get_batch()
             self.batches_outstanding -= 1
             if idx != self.rcvd_idx:
@@ -380,9 +410,20 @@ class DataLoader(object):
                  unpicklable object, e.g., a lambda function.
     """
 
-    def __init__(self, dataset, batch_size=1, shuffle=False, sampler=None, batch_sampler=None,
-                 num_workers=0, collate_fn=default_collate, pin_memory=False, drop_last=False,
-                 timeout=0, worker_init_fn=None):
+    def __init__(
+        self,
+        dataset,
+        batch_size=1,
+        shuffle=False,
+        sampler=None,
+        batch_sampler=None,
+        num_workers=0,
+        collate_fn=default_collate,
+        pin_memory=False,
+        drop_last=False,
+        timeout=0,
+        worker_init_fn=None,
+    ):
         self.dataset = dataset
         self.batch_size = batch_size
         self.num_workers = num_workers
@@ -393,19 +434,23 @@ class DataLoader(object):
         self.worker_init_fn = worker_init_fn
 
         if timeout < 0:
-            raise ValueError('timeout option should be non-negative')
+            raise ValueError("timeout option should be non-negative")
 
         if batch_sampler is not None:
             if batch_size > 1 or shuffle or sampler is not None or drop_last:
-                raise ValueError('batch_sampler is mutually exclusive with '
-                                 'batch_size, shuffle, sampler, and drop_last')
+                raise ValueError(
+                    "batch_sampler is mutually exclusive with "
+                    "batch_size, shuffle, sampler, and drop_last"
+                )
 
         if sampler is not None and shuffle:
-            raise ValueError('sampler is mutually exclusive with shuffle')
+            raise ValueError("sampler is mutually exclusive with shuffle")
 
         if self.num_workers < 0:
-            raise ValueError('num_workers cannot be negative; '
-                             'use num_workers=0 to disable multiprocessing.')
+            raise ValueError(
+                "num_workers cannot be negative; "
+                "use num_workers=0 to disable multiprocessing."
+            )
 
         if batch_sampler is None:
             if sampler is None:

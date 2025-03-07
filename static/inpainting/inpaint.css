@@ -979,14 +979,14 @@ body {
     --f: -0.4875s;
     --h: 91px;
   }
-  
+
   .wave[data-level="3"] .bar {
     width: 4px;
     background: linear-gradient(180deg, rgba(200,215,255,0.8) 0%, rgba(180,200,255,0.8) 100%);
     --f: -0.325s;
     --h: 109px;
   }
-  
+
   @-webkit-keyframes barHeight {
     from {
       height: var(--h);
@@ -995,7 +995,7 @@ body {
       height: calc(var(--h) + 50px);
     }
   }
-  
+
   @keyframes barHeight {
     from {
       height: var(--h);

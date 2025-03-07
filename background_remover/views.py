@@ -10,10 +10,6 @@ from background_remover.is_net.isnet_inference import save_inference
 
 
 def background_remover(request):
-    return render(request, "pages/background_remover.html")
-
-
-def api_background_remover(request):
     if request.method == "POST":
         try:
             # Ensure 'file' is in the request
@@ -59,8 +55,4 @@ def api_background_remover(request):
                 {"error": f"An error occurred: {str(e)}"},
             )
     else:
-        return render(
-            request,
-            "pages/background_remover.html",
-            {"error": "Invalid request method. Use POST."},
-        )
+        return render(request, "pages/background_remover.html")

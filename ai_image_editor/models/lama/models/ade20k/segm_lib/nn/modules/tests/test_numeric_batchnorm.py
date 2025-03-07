@@ -3,22 +3,21 @@
 # Author : Jiayuan Mao
 # Email  : maojiayuan@gmail.com
 # Date   : 27/01/2018
-# 
+#
 # This file is part of Synchronized-BatchNorm-PyTorch.
 
 import unittest
 
 import torch
 import torch.nn as nn
-from torch.autograd import Variable
-
 from sync_batchnorm.unittest import TorchTestCase
+from torch.autograd import Variable
 
 
 def handy_var(a, unbias=True):
     n = a.size(0)
     asum = a.sum(dim=0)
-    as_sum = (a ** 2).sum(dim=0)  # a square sum
+    as_sum = (a**2).sum(dim=0)  # a square sum
     sumvar = as_sum - asum * asum / n
     if unbias:
         return sumvar / (n - 1)
@@ -52,5 +51,5 @@ class NumericTestCase(TorchTestCase):
         self.assertTensorClose(a_var1.grad, a_var2.grad)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

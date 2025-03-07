@@ -3,17 +3,11 @@ from typing import Any, Callable, Dict, List, Optional, Union
 
 import numpy as np
 import torch
-from transformers import (
-    CLIPTextModel,
-    CLIPTokenizer,
-    T5EncoderModel,
-    T5TokenizerFast,
-)
-
 from diffusers.image_processor import PipelineImageInput, VaeImageProcessor
 from diffusers.loaders import FluxLoraLoaderMixin
 from diffusers.models.autoencoders import AutoencoderKL
-
+from diffusers.pipelines.flux.pipeline_output import FluxPipelineOutput
+from diffusers.pipelines.pipeline_utils import DiffusionPipeline
 from diffusers.schedulers import FlowMatchEulerDiscreteScheduler
 from diffusers.utils import (
     USE_PEFT_BACKEND,
@@ -24,11 +18,10 @@ from diffusers.utils import (
     unscale_lora_layers,
 )
 from diffusers.utils.torch_utils import randn_tensor
-from diffusers.pipelines.pipeline_utils import DiffusionPipeline
-from diffusers.pipelines.flux.pipeline_output import FluxPipelineOutput
+from transformers import CLIPTextModel, CLIPTokenizer, T5EncoderModel, T5TokenizerFast
 
-from ai_image_editor.models.transformer_flux import FluxTransformer2DModel
 from ai_image_editor.models.controlnet_flux import FluxControlNetModel
+from ai_image_editor.models.transformer_flux import FluxTransformer2DModel
 
 if is_torch_xla_available():
     import torch_xla.core.xla_model as xm
@@ -208,7 +201,12 @@ class FluxControlNetInpaintingPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
             if hasattr(self, "vae") and self.vae is not None
             else 16
         )
-        self.image_processor = VaeImageProcessor(vae_scale_factor=self.vae_scale_factor, do_resize=True, do_convert_rgb=True, do_normalize=True)
+        self.image_processor = VaeImageProcessor(
+            vae_scale_factor=self.vae_scale_factor,
+            do_resize=True,
+            do_convert_rgb=True,
+            do_normalize=True,
+        )
         self.mask_processor = VaeImageProcessor(
             vae_scale_factor=self.vae_scale_factor,
             do_resize=True,
@@ -222,7 +220,7 @@ class FluxControlNetInpaintingPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
             else 77
         )
         self.default_sample_size = 64
-    
+
     @property
     def do_classifier_free_guidance(self):
         return self._guidance_scale > 1
@@ -417,7 +415,7 @@ class FluxControlNetInpaintingPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
             # 处理 negative prompt
             negative_prompt = negative_prompt or ""
             negative_prompt_2 = negative_prompt_2 or negative_prompt
-            
+
             negative_pooled_prompt_embeds = self._get_clip_prompt_embeds(
                 negative_prompt,
                 device=device,
@@ -431,7 +429,7 @@ class FluxControlNetInpaintingPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
             )
         else:
             negative_pooled_prompt_embeds = None
-            negative_prompt_embeds = None            
+            negative_prompt_embeds = None
 
         if self.text_encoder is not None:
             if isinstance(self, FluxLoraLoaderMixin) and USE_PEFT_BACKEND:
@@ -447,7 +445,13 @@ class FluxControlNetInpaintingPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
             device=device, dtype=self.text_encoder.dtype
         )
 
-        return prompt_embeds, pooled_prompt_embeds, negative_prompt_embeds, negative_pooled_prompt_embeds,text_ids
+        return (
+            prompt_embeds,
+            pooled_prompt_embeds,
+            negative_prompt_embeds,
+            negative_pooled_prompt_embeds,
+            text_ids,
+        )
 
     def check_inputs(
         self,
@@ -646,7 +650,7 @@ class FluxControlNetInpaintingPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
         num_images_per_prompt,
         device,
         dtype,
-        do_classifier_free_guidance = False,
+        do_classifier_free_guidance=False,
     ):
         # Prepare image
         if isinstance(image, torch.Tensor):
@@ -676,14 +680,20 @@ class FluxControlNetInpaintingPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
         masked_image[(mask > 0.5).repeat(1, 3, 1, 1)] = -1
 
         # Encode to latents
-        image_latents = self.vae.encode(masked_image.to(self.vae.dtype)).latent_dist.sample()
+        image_latents = self.vae.encode(
+            masked_image.to(self.vae.dtype)
+        ).latent_dist.sample()
         image_latents = (
             image_latents - self.vae.config.shift_factor
         ) * self.vae.config.scaling_factor
         image_latents = image_latents.to(dtype)
 
         mask = torch.nn.functional.interpolate(
-            mask, size=(height // self.vae_scale_factor * 2, width // self.vae_scale_factor * 2)
+            mask,
+            size=(
+                height // self.vae_scale_factor * 2,
+                width // self.vae_scale_factor * 2,
+            ),
         )
         mask = 1 - mask
 
@@ -697,7 +707,7 @@ class FluxControlNetInpaintingPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
             control_image.shape[2],
             control_image.shape[3],
         )
-        
+
         if do_classifier_free_guidance:
             packed_control_image = torch.cat([packed_control_image] * 2)
 
@@ -730,7 +740,7 @@ class FluxControlNetInpaintingPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
         num_inference_steps: int = 28,
         timesteps: List[int] = None,
         guidance_scale: float = 7.0,
-        true_guidance_scale: float = 3.5 ,
+        true_guidance_scale: float = 3.5,
         negative_prompt: Optional[Union[str, List[str]]] = None,
         negative_prompt_2: Optional[Union[str, List[str]]] = None,
         control_image: PipelineImageInput = None,
@@ -853,31 +863,33 @@ class FluxControlNetInpaintingPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
             if self.joint_attention_kwargs is not None
             else None
         )
-        (            
+        (
             prompt_embeds,
             pooled_prompt_embeds,
             negative_prompt_embeds,
             negative_pooled_prompt_embeds,
-            text_ids
+            text_ids,
         ) = self.encode_prompt(
             prompt=prompt,
             prompt_2=prompt_2,
             prompt_embeds=prompt_embeds,
             pooled_prompt_embeds=pooled_prompt_embeds,
-            do_classifier_free_guidance = self.do_classifier_free_guidance,
-            negative_prompt = negative_prompt,
-            negative_prompt_2 = negative_prompt_2,
+            do_classifier_free_guidance=self.do_classifier_free_guidance,
+            negative_prompt=negative_prompt,
+            negative_prompt_2=negative_prompt_2,
             device=device,
             num_images_per_prompt=num_images_per_prompt,
             max_sequence_length=max_sequence_length,
             lora_scale=lora_scale,
         )
-        
+
         # 在 encode_prompt 之后
         if self.do_classifier_free_guidance:
-            prompt_embeds = torch.cat([negative_prompt_embeds, prompt_embeds], dim = 0)
-            pooled_prompt_embeds = torch.cat([negative_pooled_prompt_embeds, pooled_prompt_embeds], dim = 0)
-            text_ids = torch.cat([text_ids, text_ids], dim = 0)
+            prompt_embeds = torch.cat([negative_prompt_embeds, prompt_embeds], dim=0)
+            pooled_prompt_embeds = torch.cat(
+                [negative_pooled_prompt_embeds, pooled_prompt_embeds], dim=0
+            )
+            text_ids = torch.cat([text_ids, text_ids], dim=0)
 
         # 3. Prepare control image
         num_channels_latents = self.transformer.config.in_channels // 4
@@ -906,7 +918,7 @@ class FluxControlNetInpaintingPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
             generator,
             latents,
         )
-        
+
         if self.do_classifier_free_guidance:
             latent_image_ids = torch.cat([latent_image_ids] * 2)
 
@@ -939,11 +951,17 @@ class FluxControlNetInpaintingPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
             for i, t in enumerate(timesteps):
                 if self.interrupt:
                     continue
-                
-                latent_model_input = torch.cat([latents] * 2) if self.do_classifier_free_guidance else latents
+
+                latent_model_input = (
+                    torch.cat([latents] * 2)
+                    if self.do_classifier_free_guidance
+                    else latents
+                )
 
                 # broadcast to batch dimension in a way that's compatible with ONNX/Core ML
-                timestep = t.expand(latent_model_input.shape[0]).to(latent_model_input.dtype)
+                timestep = t.expand(latent_model_input.shape[0]).to(
+                    latent_model_input.dtype
+                )
 
                 # handle guidance
                 if self.transformer.config.guidance_embeds:
@@ -984,17 +1002,21 @@ class FluxControlNetInpaintingPipeline(DiffusionPipeline, FluxLoraLoaderMixin):
                     controlnet_single_block_samples=[
                         sample.to(dtype=self.transformer.dtype)
                         for sample in controlnet_single_block_samples
-                    ] if controlnet_single_block_samples is not None else controlnet_single_block_samples,
+                    ]
+                    if controlnet_single_block_samples is not None
+                    else controlnet_single_block_samples,
                     txt_ids=text_ids,
                     img_ids=latent_image_ids,
                     joint_attention_kwargs=self.joint_attention_kwargs,
                     return_dict=False,
                 )[0]
-                
+
                 # 在生成循环中
                 if self.do_classifier_free_guidance:
                     noise_pred_uncond, noise_pred_text = noise_pred.chunk(2)
-                    noise_pred = noise_pred_uncond + true_guidance_scale * (noise_pred_text - noise_pred_uncond)
+                    noise_pred = noise_pred_uncond + true_guidance_scale * (
+                        noise_pred_text - noise_pred_uncond
+                    )
 
                 # compute the previous noisy sample x_t -> x_t-1
                 latents_dtype = latents.dtype

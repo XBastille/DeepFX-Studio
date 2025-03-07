@@ -41,7 +41,7 @@ This text is not AI-generated—I have personally written it. Please take the ti
 These are seperate apps
 
 ```bash
-├── templates # Contains all the HTML page for all this app in a single folder 
+├── templates # Contains all the HTML page for all this app in a single folder
 ├── deepfx_studio # This is the main App which controls all other apps in this django project
 ├── user_auth # Contains UI related compoents related to Django all-auth
 ├── ai_colorization # Contains Code Releated to AI Eraser Page(DeOldify)
@@ -52,7 +52,7 @@ These are seperate apps
 ├── artistic_image_creator # Contains Code related to Artistix Image Create (NST)
 ├── background_remover # Contains Code Related to Backgroud Remover Page (Is-NET)
 ├── dashboard # Dashboard Page Related
-└── website # Contains all the pages related to the website i.e landing page, Abiout Page or etc 
+└── website # Contains all the pages related to the website i.e landing page, Abiout Page or etc
 ```
 
 Each Djnago App has a seperate folder named according to the model which they use
@@ -83,4 +83,3 @@ These are the pictures which will tell you where to place the models after you d
 #### Background Remover
 
 ![Background Remover](./images/background_remover_file_struct.png)
-
