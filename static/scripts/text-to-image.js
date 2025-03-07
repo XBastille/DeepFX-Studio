@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
         "4:3": { width: 1024, height: 768, class: "aspect-[4/3]" },
         "custom": { width: 1024, height: 1024, class: "aspect-square" }
     };
-    
+
     const imageSettings = {
         ratio: "1:1",
         dimensions: { width: 1024, height: 1024, class: "aspect-square" },
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
         useRandomSeed: true,
         usingCustomDimensions: false
     };
-    
+
     function updateDimensionsDisplay() {
         const dimensionsDisplay = document.querySelector('.settings-box-header .text-xs.text-gray-400');
         if (dimensionsDisplay) {
@@ -74,27 +74,27 @@ document.addEventListener("DOMContentLoaded", () => {
             siblings.forEach(sibling => {
                 sibling.classList.remove('active');
             });
-            
+
             if (section === sections.aspectRatio) {
                 const ratioText = element.querySelector('.text-xs')?.textContent;
-                
+
                 if (ratioText === "More") {
                     const customDimensionsContainer = document.getElementById('customDimensionsContainer');
                     if (customDimensionsContainer) {
                         customDimensionsContainer.classList.remove('hidden');
                         imageSettings.usingCustomDimensions = true;
-                        
+
                         const widthSlider = document.getElementById('widthSlider');
                         const heightSlider = document.getElementById('heightSlider');
                         const widthInput = document.getElementById('widthInput');
                         const heightInput = document.getElementById('heightInput');
-                        
+
                         if (widthSlider && heightSlider) {
                             widthSlider.value = imageSettings.dimensions.width;
                             heightSlider.value = imageSettings.dimensions.height;
                             widthInput.value = imageSettings.dimensions.width;
                             heightInput.value = imageSettings.dimensions.height;
-                            
+
                             updateSliderTrack(widthSlider);
                             updateSliderTrack(heightSlider);
                         }
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         customDimensionsContainer.classList.add('hidden');
                         imageSettings.usingCustomDimensions = false;
                     }
-                    
+
                     imageSettings.ratio = ratioText;
                     imageSettings.dimensions = aspectRatios[ratioText];
                     updateDimensionsDisplay();
@@ -114,38 +114,38 @@ document.addEventListener("DOMContentLoaded", () => {
                 imageSettings.quantity = parseInt(element.textContent) || 1;
             }
         }
-        
+
         element.classList.add('active');
     }
 
     function updateCustomDimensions() {
         const width = parseInt(document.getElementById('widthInput').value);
         const height = parseInt(document.getElementById('heightInput').value);
-        
+
         const validWidth = Math.min(Math.max(width, 256), 2048);
         const validHeight = Math.min(Math.max(height, 256), 2048);
-        
+
         imageSettings.dimensions.width = validWidth;
         imageSettings.dimensions.height = validHeight;
         imageSettings.ratio = "custom";
-        
+
         const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
         const divisor = gcd(validWidth, validHeight);
         const aspectW = validWidth / divisor;
         const aspectH = validHeight / divisor;
-        
+
         if (Math.abs(aspectW/aspectH - 1) < 0.01) {
-            imageSettings.dimensions.class = "aspect-square"; 
+            imageSettings.dimensions.class = "aspect-square";
         } else if (Math.abs(aspectW/aspectH - 4/3) < 0.01) {
-            imageSettings.dimensions.class = "aspect-[4/3]"; 
+            imageSettings.dimensions.class = "aspect-[4/3]";
         } else if (Math.abs(aspectW/aspectH - 2/3) < 0.01) {
-            imageSettings.dimensions.class = "aspect-[2/3]"; 
+            imageSettings.dimensions.class = "aspect-[2/3]";
         } else if (Math.abs(aspectW/aspectH - 9/16) < 0.01) {
-            imageSettings.dimensions.class = "aspect-[9/16]"; 
+            imageSettings.dimensions.class = "aspect-[9/16]";
         } else {
             imageSettings.dimensions.class = `aspect-[${aspectW}/${aspectH}]`;
         }
-        
+
         updateDimensionsDisplay();
     }
 
@@ -153,31 +153,31 @@ document.addEventListener("DOMContentLoaded", () => {
         if (sections.prompt) {
             sections.prompt.querySelector('.interactive-element')?.classList.remove('active');
         }
-        
+
         sections.inputs.forEach(input => input.classList.remove('active'));
-        
+
         const dropdowns = document.querySelectorAll('.dropdown-menu.active');
         if (dropdowns.length && !e.target.closest('.dropdown-menu') && !e.target.closest('.btn-dropdown')) {
             dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
         }
     });
     const defaultAspectRatio = sections.aspectRatio?.querySelector('.btn:nth-child(2)');
-    const defaultQuantity = sections.imageQuantity?.querySelector('.btn:nth-child(2)');  
-    
+    const defaultQuantity = sections.imageQuantity?.querySelector('.btn:nth-child(2)');
+
     if (defaultAspectRatio) defaultAspectRatio.classList.add('active');
     if (defaultQuantity) defaultQuantity.classList.add('active');
-    
+
     updateDimensionsDisplay();
 
     document.querySelectorAll('.interactive-element').forEach(element => {
         element.addEventListener('click', (e) => {
             e.stopPropagation();
-            
+
             let targetSection = null;
             let targetElement = e.target.closest('.interactive-element');
-            
+
             if (!targetElement) return;
-            
+
             if (sections.aspectRatio?.contains(targetElement)) {
                 targetSection = sections.aspectRatio;
             } else if (sections.imageQuantity?.contains(targetElement)) {
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
             }
-            
+
             if (targetSection) {
                 setActiveInSection(targetElement, targetSection);
             } else {
@@ -206,17 +206,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const heightSlider = document.getElementById('heightSlider');
     const widthInput = document.getElementById('widthInput');
     const heightInput = document.getElementById('heightInput');
-    
+
     if (widthSlider && heightSlider) {
         updateSliderTrack(widthSlider);
         updateSliderTrack(heightSlider);
-        
+
         widthSlider.addEventListener('input', () => {
             widthInput.value = widthSlider.value;
             updateSliderTrack(widthSlider);
             updateCustomDimensions();
         });
-        
+
         widthInput.addEventListener('input', () => {
             const value = parseInt(widthInput.value);
             if (!isNaN(value) && value >= 256 && value <= 2048) {
@@ -225,24 +225,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateCustomDimensions();
             }
         });
-        
+
         widthInput.addEventListener('change', () => {
             let value = parseInt(widthInput.value);
             if (isNaN(value)) value = 1024;
             value = Math.min(Math.max(value, 256), 2048);
-            
+
             widthInput.value = value;
             widthSlider.value = value;
             updateSliderTrack(widthSlider);
             updateCustomDimensions();
         });
-        
+
         heightSlider.addEventListener('input', () => {
             heightInput.value = heightSlider.value;
             updateSliderTrack(heightSlider);
             updateCustomDimensions();
         });
-        
+
         heightInput.addEventListener('input', () => {
             const value = parseInt(heightInput.value);
             if (!isNaN(value) && value >= 256 && value <= 2048) {
@@ -251,12 +251,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateCustomDimensions();
             }
         });
-        
+
         heightInput.addEventListener('change', () => {
             let value = parseInt(heightInput.value);
             if (isNaN(value)) value = 1024;
             value = Math.min(Math.max(value, 256), 2048);
-            
+
             heightInput.value = value;
             heightSlider.value = value;
             updateSliderTrack(heightSlider);
@@ -290,23 +290,23 @@ document.addEventListener("DOMContentLoaded", () => {
         textarea.value = settings.prompt;
         autoResize();
         updateGenerateButtonState();
-        
+
         if (settings.usingCustomDimensions) {
             const moreButton = sections.aspectRatio.querySelector('.btn:nth-child(5)');
             if (moreButton) {
                 setActiveInSection(moreButton, sections.aspectRatio);
-                
+
                 const widthSlider = document.getElementById('widthSlider');
                 const heightSlider = document.getElementById('heightSlider');
                 const widthInput = document.getElementById('widthInput');
                 const heightInput = document.getElementById('heightInput');
-                
+
                 if (widthSlider && heightSlider) {
                     widthSlider.value = settings.dimensions.width;
                     heightSlider.value = settings.dimensions.height;
                     widthInput.value = settings.dimensions.width;
                     heightInput.value = settings.dimensions.height;
-                    
+
                     updateSliderTrack(widthSlider);
                     updateSliderTrack(heightSlider);
                     updateCustomDimensions();
@@ -324,7 +324,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         }
-        
+
         if (settings.quantity) {
             const quantityButtons = sections.imageQuantity.querySelectorAll('.interactive-element');
             quantityButtons.forEach(button => {
@@ -334,7 +334,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
         }
-        
+
         if (settings.inferenceSteps) {
             const inferenceStepsSlider = document.getElementById('inferenceStepsSlider');
             const inferenceStepsInput = document.getElementById('inferenceStepsInput');
@@ -342,7 +342,7 @@ document.addEventListener("DOMContentLoaded", () => {
             inferenceStepsInput.value = settings.inferenceSteps;
             updateSliderTrack(inferenceStepsSlider);
         }
-        
+
         if (settings.guidanceScale) {
             const guidanceScaleSlider = document.getElementById('guidanceScaleSlider');
             const guidanceScaleInput = document.getElementById('guidanceScaleInput');
@@ -350,16 +350,16 @@ document.addEventListener("DOMContentLoaded", () => {
             guidanceScaleInput.value = settings.guidanceScale;
             updateSliderTrack(guidanceScaleSlider);
         }
-        
+
         if (settings.seed) {
             const seedInput = document.getElementById('seedInput');
             seedInput.value = settings.seed;
         }
-        
+
         if (settings.useRandomSeed !== undefined) {
             const randomSeedCheckbox = document.getElementById('randomSeedCheckbox');
             randomSeedCheckbox.checked = settings.useRandomSeed;
-            
+
             if (settings.useRandomSeed) {
                 seedInput.disabled = true;
                 seedInput.classList.add('opacity-50');
@@ -372,47 +372,47 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function setupImageActions() {
         const actions = generatedImagesContainer.querySelectorAll('.image-actions');
-        
+
         actions.forEach(actionContainer => {
             const entry = actionContainer.closest('.generation-entry');
             const prompt = entry.dataset.prompt;
             const settings = JSON.parse(entry.dataset.settings);
-            
+
             const topArrowBtn = actionContainer.querySelector('.btn-top-arrow');
             if (topArrowBtn) {
                 topArrowBtn.addEventListener('click', () => {
                     textarea.value = prompt;
                     autoResize();
                     updateGenerateButtonState();
-                    
+
                     textarea.scrollIntoView({ behavior: 'smooth' });
                     setTimeout(() => textarea.focus(), 500);
                 });
             }
-            
+
             const retryBtn = actionContainer.querySelector('.btn-retry');
             if (retryBtn) {
                 retryBtn.addEventListener('click', () => {
                     applySettings(settings);
-                    
+
                     generateBtn.scrollIntoView({ behavior: 'smooth' });
                     setTimeout(() => generateBtn.click(), 500);
                 });
             }
-            
+
             const dropdownBtn = actionContainer.querySelector('.btn-dropdown');
             if (dropdownBtn) {
                 dropdownBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     const dropdown = dropdownBtn.nextElementSibling;
                     dropdown.classList.toggle('active');
-                    
+
                     const allDropdowns = generatedImagesContainer.querySelectorAll('.dropdown-menu');
                     allDropdowns.forEach(d => {
                         if (d !== dropdown) d.classList.remove('active');
                     });
                 });
-                
+
                 const downloadBtn = actionContainer.querySelector('.btn-download');
                 if (downloadBtn) {
                     downloadBtn.addEventListener('click', () => {
@@ -420,12 +420,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         dropdownBtn.nextElementSibling.classList.remove('active');
                     });
                 }
-                
+
                 const deleteBtn = actionContainer.querySelector('.btn-delete');
                 if (deleteBtn) {
                     deleteBtn.addEventListener('click', () => {
-                        entry.nextElementSibling?.remove(); 
-                        entry.remove(); 
+                        entry.nextElementSibling?.remove();
+                        entry.remove();
                     });
                 }
             }
@@ -436,25 +436,25 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!textarea.value.trim() && generateBtn.classList.contains('generate-inactive')) {
             return;
         }
-        
+
         const randomSeedCheckbox = document.getElementById('randomSeedCheckbox');
         const seedInput = document.getElementById('seedInput');
-        
+
         if (randomSeedCheckbox.checked) {
             seedInput.value = generateRandomSeed();
         }
-        
+
         const promptText = textarea.value;
-        
+
         const currentSettings = getCurrentSettings();
-        
+
         const generationEntry = document.createElement("div");
         generationEntry.className = "generation-entry";
         generationEntry.dataset.prompt = promptText;
         generationEntry.dataset.settings = JSON.stringify(currentSettings);
 
         generationCount++;
-        
+
         const imagesHtml = Array(imageSettings.quantity).fill(0).map(() => `
           <div class="relative group rounded-lg overflow-hidden ${imageSettings.dimensions.class}" style="max-width: 256px;">
             <img src="${defaultImageUrl}" alt="Generated image" class="w-full h-full object-cover">
@@ -531,9 +531,9 @@ document.addEventListener("DOMContentLoaded", () => {
         const separator = document.createElement("hr")
         separator.className = "border-gray-800 my-6"
         generatedImagesContainer.insertBefore(separator, generationEntry.nextSibling)
-        
+
         setupImageActions();
-        
+
         autoResize()
     });
 
@@ -542,7 +542,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const max = parseFloat(slider.max);
         const val = parseFloat(slider.value);
         const percentage = ((val - min) / (max - min)) * 100;
-        slider.style.background = 
+        slider.style.background =
             `linear-gradient(to right, rgb(255, 255, 255) 0%, #3b82f6 ${percentage}%, #27272a ${percentage}%, #27272a 100%)`;
     }
 
@@ -550,15 +550,15 @@ document.addEventListener("DOMContentLoaded", () => {
     sliders.forEach(slider => {
         const inputId = slider.id.replace('Slider', 'Input');
         const numberInput = document.getElementById(inputId);
-        
+
         if (numberInput) {
             updateSliderTrack(slider);
-            
+
             slider.addEventListener('input', () => {
                 numberInput.value = slider.value;
                 updateSliderTrack(slider);
             });
-            
+
             numberInput.addEventListener('input', () => {
                 slider.value = numberInput.value;
                 updateSliderTrack(slider);
@@ -569,16 +569,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const diceBtn = document.getElementById('diceBtn');
     const seedInput = document.getElementById('seedInput');
     const randomSeedCheckbox = document.getElementById('randomSeedCheckbox');
-    
+
     diceBtn.addEventListener('click', () => {
         seedInput.value = generateRandomSeed();
     });
-    
+
     randomSeedCheckbox.checked = true;
     seedInput.disabled = true;
     seedInput.classList.add('opacity-50');
     seedInput.value = generateRandomSeed();
-    
+
     randomSeedCheckbox.addEventListener('change', () => {
         if (randomSeedCheckbox.checked) {
             seedInput.disabled = true;
@@ -589,7 +589,7 @@ document.addEventListener("DOMContentLoaded", () => {
             seedInput.classList.remove('opacity-50');
         }
     });
-    
+
     const resetBtn = document.getElementById('resetBtn');
     resetBtn.addEventListener('click', () => {
         const inferenceStepsSlider = document.getElementById('inferenceStepsSlider');
@@ -597,13 +597,13 @@ document.addEventListener("DOMContentLoaded", () => {
         inferenceStepsSlider.value = 40;
         inferenceStepsInput.value = 40;
         updateSliderTrack(inferenceStepsSlider);
-        
+
         const guidanceScaleSlider = document.getElementById('guidanceScaleSlider');
         const guidanceScaleInput = document.getElementById('guidanceScaleInput');
         guidanceScaleSlider.value = 4.5;
         guidanceScaleInput.value = 4.5;
         updateSliderTrack(guidanceScaleSlider);
-        
+
         seedInput.value = generateRandomSeed();
         randomSeedCheckbox.checked = true;
         seedInput.disabled = true;
@@ -613,7 +613,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const configHeader = document.getElementById('configHeader');
     const arrow = document.getElementById('arrow');
     const configContent = document.getElementById('configContent');
-    
+
     configHeader.addEventListener('click', () => {
         configContent.classList.toggle('hidden');
         arrow.classList.toggle('rotate-180');
@@ -631,9 +631,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     handleResponsiveLayout();
-    
+
     window.addEventListener('resize', handleResponsiveLayout);
-    
+
     setTimeout(() => {
         updateGenerateButtonState();
     }, 500);

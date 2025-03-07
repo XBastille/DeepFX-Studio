@@ -6,11 +6,11 @@
     .custom-padding {
       padding: 10px;
     }
-  
+
     @media (min-width: 640px) {
       .custom-padding {
         padding: 20px;
       }
     }
   }
-  
+

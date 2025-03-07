@@ -1,17 +1,17 @@
 # Contribution from @fredguth, https://github.com/fredguth/fastai_playground.
 
 # from fastai.basic_train import *
-from logging import warning
 import os
+from logging import warning
 from typing import Any
 
 import numpy as np
-from ai_colorization.deoldify_models.fastai.basic_train import Learner, LearnerCallback
-from ai_colorization.deoldify_models.fastai.callback import Callback
-from ai_colorization.deoldify_models.fastai.imports import torch
 from fastai.callback import *
 from fastai.torch_core import *
 
+from ai_colorization.deoldify_models.fastai.basic_train import Learner, LearnerCallback
+from ai_colorization.deoldify_models.fastai.callback import Callback
+from ai_colorization.deoldify_models.fastai.imports import torch
 
 __all__ = [
     "TerminateOnNaNCallback",

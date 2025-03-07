@@ -2,8 +2,9 @@
 import inspect
 from time import time
 
-from ai_colorization.deoldify_models.fastai.sixel import plot_sixel
 from fastprogress.fastprogress import IN_NOTEBOOK, format_time
+
+from ai_colorization.deoldify_models.fastai.sixel import plot_sixel
 
 from .basic_data import *
 from .callback import *

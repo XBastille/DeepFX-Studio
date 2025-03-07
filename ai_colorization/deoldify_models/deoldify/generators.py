@@ -5,11 +5,14 @@ from fastai.torch_core import SplitFuncOrIdxList, apply_init, to_device
 from fastai.vision import *
 from fastai.vision.learner import cnn_config, create_body
 from torch import nn
-from .unet import DynamicUnetWide, DynamicUnetDeep
+
 from .dataset import init_test_databunch
+from .unet import DynamicUnetDeep, DynamicUnetWide
+
 
 def init_wide_inference(
-    root_folder: Path, weights_name: str, nf_factor: int = 2, arch=models.resnet101) -> Learner:
+    root_folder: Path, weights_name: str, nf_factor: int = 2, arch=models.resnet101
+) -> Learner:
     data = init_test_databunch()
     learn = create_wide_learner(
         data=data, gen_loss=F.l1_loss, nf_factor=nf_factor, arch=arch
@@ -18,6 +21,7 @@ def init_wide_inference(
     learn.load(weights_name)
     learn.model.eval()
     return learn
+
 
 def create_wide_learner(
     data: ImageDataBunch, gen_loss, arch=models.resnet101, nf_factor: int = 2
@@ -34,6 +38,7 @@ def create_wide_learner(
         nf_factor=nf_factor,
     )
 
+
 def setup_wide_unet(
     data: DataBunch,
     arch: Callable,
@@ -47,7 +52,7 @@ def setup_wide_unet(
     last_cross: bool = True,
     bottle: bool = False,
     nf_factor: int = 1,
-    **kwargs: Any
+    **kwargs: Any,
 ) -> Learner:
     meta = cnn_config(arch)
     body = create_body(arch, pretrained)
@@ -67,14 +72,16 @@ def setup_wide_unet(
         data.device,
     )
     learn = Learner(data, model, **kwargs)
-    learn.split(ifnone(split_on, meta['split']))
+    learn.split(ifnone(split_on, meta["split"]))
     if pretrained:
         learn.freeze()
     apply_init(model[2], nn.init.kaiming_normal_)
     return learn
 
+
 def init_deep_inference(
-    root_folder: Path, weights_name: str, arch=models.resnet34, nf_factor: float = 1.5) -> Learner:
+    root_folder: Path, weights_name: str, arch=models.resnet34, nf_factor: float = 1.5
+) -> Learner:
     data = init_test_databunch()
     learn = create_deep_learner(
         data=data, gen_loss=F.l1_loss, arch=arch, nf_factor=nf_factor
@@ -83,6 +90,7 @@ def init_deep_inference(
     learn.load(weights_name)
     learn.model.eval()
     return learn
+
 
 def create_deep_learner(
     data: ImageDataBunch, gen_loss, arch=models.resnet34, nf_factor: float = 1.5
@@ -99,6 +107,7 @@ def create_deep_learner(
         nf_factor=nf_factor,
     )
 
+
 def setup_deep_unet(
     data: DataBunch,
     arch: Callable,
@@ -112,7 +121,7 @@ def setup_deep_unet(
     last_cross: bool = True,
     bottle: bool = False,
     nf_factor: float = 1.5,
-    **kwargs: Any
+    **kwargs: Any,
 ) -> Learner:
     meta = cnn_config(arch)
     body = create_body(arch, pretrained)
@@ -132,7 +141,7 @@ def setup_deep_unet(
         data.device,
     )
     learn = Learner(data, model, **kwargs)
-    learn.split(ifnone(split_on, meta['split']))
+    learn.split(ifnone(split_on, meta["split"]))
     if pretrained:
         learn.freeze()
     apply_init(model[2], nn.init.kaiming_normal_)

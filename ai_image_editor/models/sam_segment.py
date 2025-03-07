@@ -1,23 +1,29 @@
-import sys
 import argparse
-import numpy as np
+import sys
 from pathlib import Path
-from matplotlib import pyplot as plt
 from typing import Any, Dict, List
+
+import numpy as np
 import torch
+from matplotlib import pyplot as plt
 
 from ai_image_editor.models.segment_anything import SamPredictor, sam_model_registry
-from ai_image_editor.models.utils import load_img_to_array, save_array_to_img, dilate_mask, \
-    show_mask, show_points
+from ai_image_editor.models.utils import (
+    dilate_mask,
+    load_img_to_array,
+    save_array_to_img,
+    show_mask,
+    show_points,
+)
 
 
 def predict_masks_with_sam(
-        img: np.ndarray,
-        point_coords: List[List[float]],
-        point_labels: List[int],
-        model_type: str,
-        ckpt_p: str,
-        device="cuda"
+    img: np.ndarray,
+    point_coords: List[List[float]],
+    point_labels: List[int],
+    model_type: str,
+    ckpt_p: str,
+    device="cuda",
 ):
     point_coords = np.array(point_coords)
     point_labels = np.array(point_labels)
@@ -41,35 +47,50 @@ def build_sam_model(model_type: str, ckpt_p: str, device="cuda"):
     return predictor
 
 
-
 def setup_args(parser):
     parser.add_argument(
-        "--input_img", type=str, required=True,
+        "--input_img",
+        type=str,
+        required=True,
         help="Path to a single input img",
     )
     parser.add_argument(
-        "--point_coords", type=float, nargs='+', required=True,
+        "--point_coords",
+        type=float,
+        nargs="+",
+        required=True,
         help="The coordinate of the point prompt, [coord_W coord_H].",
     )
     parser.add_argument(
-        "--point_labels", type=int, nargs='+', required=True,
+        "--point_labels",
+        type=int,
+        nargs="+",
+        required=True,
         help="The labels of the point prompt, 1 or 0.",
     )
     parser.add_argument(
-        "--dilate_kernel_size", type=int, default=None,
+        "--dilate_kernel_size",
+        type=int,
+        default=None,
         help="Dilate kernel size. Default: None",
     )
     parser.add_argument(
-        "--output_dir", type=str, required=True,
+        "--output_dir",
+        type=str,
+        required=True,
         help="Output path to the directory with results.",
     )
     parser.add_argument(
-        "--sam_model_type", type=str,
-        default="vit_h", choices=['vit_h', 'vit_l', 'vit_b'],
-        help="The type of sam model to load. Default: 'vit_h"
+        "--sam_model_type",
+        type=str,
+        default="vit_h",
+        choices=["vit_h", "vit_l", "vit_b"],
+        help="The type of sam model to load. Default: 'vit_h",
     )
     parser.add_argument(
-        "--sam_ckpt", type=str, required=True,
+        "--sam_ckpt",
+        type=str,
+        required=True,
         help="The path to the SAM checkpoint to use for mask generation.",
     )
 
@@ -120,14 +141,15 @@ if __name__ == "__main__":
         save_array_to_img(mask, mask_p)
 
         # save the pointed and masked image
-        dpi = plt.rcParams['figure.dpi']
+        dpi = plt.rcParams["figure.dpi"]
         height, width = img.shape[:2]
-        plt.figure(figsize=(width/dpi/0.77, height/dpi/0.77))
+        plt.figure(figsize=(width / dpi / 0.77, height / dpi / 0.77))
         plt.imshow(img)
-        plt.axis('off')
-        show_points(plt.gca(), [args.point_coords], args.point_labels,
-                    size=(width*0.04)**2)
-        plt.savefig(img_points_p, bbox_inches='tight', pad_inches=0)
+        plt.axis("off")
+        show_points(
+            plt.gca(), [args.point_coords], args.point_labels, size=(width * 0.04) ** 2
+        )
+        plt.savefig(img_points_p, bbox_inches="tight", pad_inches=0)
         show_mask(plt.gca(), mask, random_color=False)
-        plt.savefig(img_mask_p, bbox_inches='tight', pad_inches=0)
+        plt.savefig(img_mask_p, bbox_inches="tight", pad_inches=0)
         plt.close()

@@ -1,10 +1,16 @@
-import torch
-import numpy as np
 from pathlib import Path
+
+import numpy as np
+import torch
 from matplotlib import pyplot as plt
 
 from ai_image_editor.models.sam_segment import predict_masks_with_sam
-from ai_image_editor.models.utils import load_img_to_array, save_array_to_img, dilate_mask
+from ai_image_editor.models.utils import (
+    dilate_mask,
+    load_img_to_array,
+    save_array_to_img,
+)
+
 
 def generate_masks(
     input_img,
@@ -14,18 +20,16 @@ def generate_masks(
     output_dir,
     sam_model_type,
     sam_ckpt,
-    operation_type="fill"  
+    operation_type="fill",
 ):
     device = "cuda" if torch.cuda.is_available() else "cpu"
     img = load_img_to_array(input_img)
 
     print("Generate masks input shape:", img.shape)
     print("Point coords in generate_masks:", point_coords)
-    
 
     point_coords = np.array(point_coords)
     point_coords = point_coords.reshape(1, 2)
-
 
     masks, _, _ = predict_masks_with_sam(
         img,
@@ -37,7 +41,6 @@ def generate_masks(
     )
     masks = masks.astype(np.uint8) * 255
 
-
     if operation_type == "replace":
         masks = [255 - mask for mask in masks]
 
@@ -48,7 +51,6 @@ def generate_masks(
     out_dir = Path(output_dir) / img_stem
     out_dir.mkdir(parents=True, exist_ok=True)
 
-
     mask = masks[-1]
 
     mask_p = out_dir / f"mask.png"
@@ -58,6 +60,7 @@ def generate_masks(
     save_array_to_img(mask, mask_p)
 
     return mask
+
 
 if __name__ == "__main__":
     input_img = "test.jpg"
@@ -77,5 +80,5 @@ if __name__ == "__main__":
         output_dir=output_dir,
         sam_model_type=sam_model_type,
         sam_ckpt=sam_ckpt,
-        operation_type=operation_type
+        operation_type=operation_type,
     )

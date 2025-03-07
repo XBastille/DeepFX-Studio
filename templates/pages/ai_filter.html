@@ -62,8 +62,9 @@
                 </div>
             </div>
             <!-- Upload Section -->
+            <!-- Upload Section -->
             <form id="upload-form"
-                  action="{% url 'background-remover:background_remover_api' %}"
+                  action="{% url 'background-remover:background_remover' %}"
                   method="post"
                   enctype="multipart/form-data"
                   class="w-full md:w-[35%] flex flex-col justify-between gap-6">
@@ -71,21 +72,19 @@
                 <input type="file"
                        accept=".jpg, .jpeg, .png"
                        class="file-input file-input-bordered file-input-md w-full max-w-xs" />
-                <div class="max-h-[30vh] bg-slate-700 rounded-lg overflow-y-auto p-4">
-                    <div class="flex flex-col gap-3">
+                <!-- Scrollable Container with Proper Spacing -->
+                <div class="max-h-[40vh] bg-slate-700 rounded-lg overflow-y-auto p-4">
+                    <div class="grid grid-cols-3 gap-3">
                         {% for i in "123456" %}
-                            <div class="card bg-base-100 image-full shadow-xl">
-                                <figure>
-                                    <img height=""
-                                         width=""
-                                         src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                                         alt="Shoes"
-                                         class="h-fit w-full object-cover" />
+                            <button type="button"
+                                    class="card bg-base-100 shadow-xl h-[150px] flex flex-col items-center justify-center transition duration-200 hover:scale-105 active:scale-95">
+                                <figure class="w-full h-[80%] overflow-hidden">
+                                    <img src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
+                                         alt="Sample"
+                                         class="w-full h-full object-cover rounded-t-lg" />
                                 </figure>
-                                <div class="card-body">
-                                    <h2 class="card-title">Stylish Shoes</h2>
-                                </div>
-                            </div>
+                                <div class="p-2 text-sm text-center font-semibold">Stylish Shoes</div>
+                            </button>
                         {% endfor %}
                     </div>
                 </div>
