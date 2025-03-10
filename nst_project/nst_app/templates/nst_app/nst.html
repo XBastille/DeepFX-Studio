@@ -1,0 +1,630 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neural Style Transfer</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-blue': '#0a1120',
+            'deep-blue-light': '#1a2433',
+          }
+        }
+      },
+      daisyui: {
+        themes: ["dark"],
+      },
+    }
+  </script>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #111827, #000000);
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    .upload-area {
+      border: 2px dashed #4b5563;
+      transition: all 0.3s ease;
+    }
+
+    .upload-area.highlight {
+      border-color: #ffffff;
+    }
+
+    .upload-area:hover {
+      border-color: #9ca3af;
+    }
+
+    #result-container {
+      display: none;
+    }
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .website-logo {
+      margin-top: 30px;
+      animation: logoFade 8s infinite;
+    }
+
+    .website-logo img {
+      max-width: 370px;
+      height: auto;
+    }
+
+    @keyframes logoFade {
+      0% {
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      80% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    .container {
+      padding: 0;
+      margin: 0 auto;
+      box-sizing: border-box;
+      position: relative;
+      width: 400px;
+      height: 400px;
+      margin-top: 85px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .wave {
+      padding: 0;
+      margin: 0 auto;
+      box-sizing: border-box;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+    }
+
+    .wave:nth-child(1) .bar {
+      padding: 0;
+      margin: 0 auto;
+      box-sizing: border-box;
+      width: 2px;
+      height: 400px;
+      background-color: #ccc;
+    }
+
+    .wave:nth-child(n + 2) .bar {
+      padding: 0;
+      margin: 0 auto;
+      box-sizing: border-box;
+      -webkit-animation:
+        barHeight 3.9s infinite ease-in-out alternate,
+        barSkew 3.9s infinite ease-in-out alternate;
+      animation:
+        barHeight 3.9s infinite ease-in-out alternate,
+        barSkew 3.9s infinite ease-in-out alternate;
+    }
+
+    .wave .bar:nth-child(1) {
+      -webkit-animation-delay: calc(var(--f) * 0), calc(var(--f) * 0 - 1.95s);
+      animation-delay: calc(var(--f) * 0), calc(var(--f) * 0 - 1.95s);
+    }
+
+    .wave .bar:nth-child(2) {
+      -webkit-animation-delay: calc(var(--f) * 1), calc(var(--f) * 1 - 1.95s);
+      animation-delay: calc(var(--f) * 1), calc(var(--f) * 1 - 1.95s);
+    }
+
+    .wave .bar:nth-child(3) {
+      -webkit-animation-delay: calc(var(--f) * 2), calc(var(--f) * 2 - 1.95s);
+      animation-delay: calc(var(--f) * 2), calc(var(--f) * 2 - 1.95s);
+    }
+
+    .wave .bar:nth-child(4) {
+      -webkit-animation-delay: calc(var(--f) * 3), calc(var(--f) * 3 - 1.95s);
+      animation-delay: calc(var(--f) * 3), calc(var(--f) * 3 - 1.95s);
+    }
+
+    .wave .bar:nth-child(5) {
+      -webkit-animation-delay: calc(var(--f) * 4), calc(var(--f) * 4 - 1.95s);
+      animation-delay: calc(var(--f) * 4), calc(var(--f) * 4 - 1.95s);
+    }
+
+    .wave .bar:nth-child(6) {
+      -webkit-animation-delay: calc(var(--f) * 5), calc(var(--f) * 5 - 1.95s);
+      animation-delay: calc(var(--f) * 5), calc(var(--f) * 5 - 1.95s);
+    }
+
+    .wave .bar:nth-child(7) {
+      -webkit-animation-delay: calc(var(--f) * 6), calc(var(--f) * 6 - 1.95s);
+      animation-delay: calc(var(--f) * 6), calc(var(--f) * 6 - 1.95s);
+    }
+
+    .wave .bar:nth-child(8) {
+      -webkit-animation-delay: calc(var(--f) * 7), calc(var(--f) * 7 - 1.95s);
+      animation-delay: calc(var(--f) * 7), calc(var(--f) * 7 - 1.95s);
+    }
+
+    .wave .bar:nth-child(9) {
+      -webkit-animation-delay: calc(var(--f) * 8), calc(var(--f) * 8 - 1.95s);
+      animation-delay: calc(var(--f) * 8), calc(var(--f) * 8 - 1.95s);
+    }
+
+    .wave .bar:nth-child(10) {
+      -webkit-animation-delay: calc(var(--f) * 9), calc(var(--f) * 9 - 1.95s);
+      animation-delay: calc(var(--f) * 9), calc(var(--f) * 9 - 1.95s);
+    }
+
+    .wave .bar:nth-child(11) {
+      -webkit-animation-delay: calc(var(--f) * 10), calc(var(--f) * 10 - 1.95s);
+      animation-delay: calc(var(--f) * 10), calc(var(--f) * 10 - 1.95s);
+    }
+
+    .wave .bar:nth-child(12) {
+      -webkit-animation-delay: calc(var(--f) * 11), calc(var(--f) * 11 - 1.95s);
+      animation-delay: calc(var(--f) * 11), calc(var(--f) * 11 - 1.95s);
+    }
+
+    .wave .bar:nth-child(13) {
+      -webkit-animation-delay: calc(var(--f) * 12), calc(var(--f) * 12 - 1.95s);
+      animation-delay: calc(var(--f) * 12), calc(var(--f) * 12 - 1.95s);
+    }
+
+    .wave .bar:nth-child(14) {
+      -webkit-animation-delay: calc(var(--f) * 13), calc(var(--f) * 13 - 1.95s);
+      animation-delay: calc(var(--f) * 13), calc(var(--f) * 13 - 1.95s);
+    }
+
+    .wave .bar:nth-child(15) {
+      -webkit-animation-delay: calc(var(--f) * 14), calc(var(--f) * 14 - 1.95s);
+      animation-delay: calc(var(--f) * 14), calc(var(--f) * 14 - 1.95s);
+    }
+
+    .wave .bar:nth-child(16) {
+      -webkit-animation-delay: calc(var(--f) * 15), calc(var(--f) * 15 - 1.95s);
+      animation-delay: calc(var(--f) * 15), calc(var(--f) * 15 - 1.95s);
+    }
+
+    .wave .bar:nth-child(17) {
+      -webkit-animation-delay: calc(var(--f) * 16), calc(var(--f) * 16 - 1.95s);
+      animation-delay: calc(var(--f) * 16), calc(var(--f) * 16 - 1.95s);
+    }
+
+    .wave .bar:nth-child(18) {
+      -webkit-animation-delay: calc(var(--f) * 17), calc(var(--f) * 17 - 1.95s);
+      animation-delay: calc(var(--f) * 17), calc(var(--f) * 17 - 1.95s);
+    }
+
+    .wave .bar:nth-child(19) {
+      -webkit-animation-delay: calc(var(--f) * 18), calc(var(--f) * 18 - 1.95s);
+      animation-delay: calc(var(--f) * 18), calc(var(--f) * 18 - 1.95s);
+    }
+
+    .wave .bar:nth-child(20) {
+      -webkit-animation-delay: calc(var(--f) * 19), calc(var(--f) * 19 - 1.95s);
+      animation-delay: calc(var(--f) * 19), calc(var(--f) * 19 - 1.95s);
+    }
+
+    .wave .bar:nth-child(21) {
+      -webkit-animation-delay: calc(var(--f) * 20), calc(var(--f) * 20 - 1.95s);
+      animation-delay: calc(var(--f) * 20), calc(var(--f) * 20 - 1.95s);
+    }
+
+    .wave .bar:nth-child(22) {
+      -webkit-animation-delay: calc(var(--f) * 21), calc(var(--f) * 21 - 1.95s);
+      animation-delay: calc(var(--f) * 21), calc(var(--f) * 21 - 1.95s);
+    }
+
+    .wave .bar:nth-child(23) {
+      -webkit-animation-delay: calc(var(--f) * 22), calc(var(--f) * 22 - 1.95s);
+      animation-delay: calc(var(--f) * 22), calc(var(--f) * 22 - 1.95s);
+    }
+
+    .wave .bar:nth-child(24) {
+      -webkit-animation-delay: calc(var(--f) * 23), calc(var(--f) * 23 - 1.95s);
+      animation-delay: calc(var(--f) * 23), calc(var(--f) * 23 - 1.95s);
+    }
+
+    .wave[data-level="1"] .bar {
+      width: 20px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(224, 240, 255, 1) 100%);
+      --f: -0.24375s;
+      --h: 73px;
+    }
+
+    .wave[data-level="2"] .bar {
+      width: 15px;
+      background: linear-gradient(180deg, rgba(224, 240, 255, 0.9) 0%, rgba(200, 215, 255, 0.9) 100%);
+      --f: -0.4875s;
+      --h: 182px;
+    }
+
+    .wave[data-level="3"] .bar {
+      width: 9px;
+      background: linear-gradient(180deg, rgba(200, 215, 255, 0.8) 0%, rgba(180, 200, 255, 0.8) 100%);
+      --f: -0.325s;
+      --h: 218px;
+    }
+
+    @-webkit-keyframes barHeight {
+      from {
+        height: var(--h);
+      }
+
+      to {
+        height: calc(var(--h) + 50px);
+      }
+    }
+
+    @keyframes barHeight {
+      from {
+        height: var(--h);
+      }
+
+      to {
+        height: calc(var(--h) + 50px);
+      }
+    }
+
+    @-webkit-keyframes barSkew {
+      from {
+        transform: skewY(30deg);
+      }
+
+      to {
+        transform: skewY(-30deg);
+      }
+    }
+
+    @keyframes barSkew {
+      from {
+        transform: skewY(30deg);
+      }
+
+      to {
+        transform: skewY(-30deg);
+      }
+    }
+  </style>
+</head>
+
+<body class="text-white flex flex-col items-center justify-center p-4">
+  <div class="mb-6">
+    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="white"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"></circle>
+      <circle cx="8" cy="8" r="2"></circle>
+      <circle cx="16" cy="8" r="2"></circle>
+      <circle cx="12" cy="16" r="2"></circle>
+      <path d="M12 2v2"></path>
+      <path d="M12 20v2"></path>
+      <path d="M2 12h2"></path>
+      <path d="M20 12h2"></path>
+    </svg>
+  </div>
+
+  <h1 class="text-4xl md:text-5xl font-bold mb-2 text-center">Neural Style Transfer</h1>
+  <p class="text-lg text-gray-300 mb-10 text-center">
+    Transform your visuals by blending content with artificial brilliance
+  </p>
+
+  <form id="style-transfer-form" class="w-full max-w-4xl" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="flex flex-col md:flex-row gap-6 mb-8">
+      <div id="source-drop-area"
+        class="upload-area flex-1 rounded-lg p-8 flex flex-col items-center justify-center h-64 cursor-pointer">
+        <input type="file" id="source-file-input" name="content_image" class="hidden" accept="image/*">
+        <div id="source-preview-container" class="w-full h-full flex flex-col items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-4">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <p class="text-center">
+            Drop Content Image Here<br>
+            Click to Upload
+          </p>
+        </div>
+        <img id="source-preview" class="hidden max-h-full max-w-full object-contain rounded" alt="Source preview">
+      </div>
+
+      <div id="style-drop-area"
+        class="upload-area flex-1 rounded-lg p-8 flex flex-col items-center justify-center h-64 cursor-pointer">
+        <input type="file" id="style-file-input" name="style_image" class="hidden" accept="image/*">
+        <div id="style-preview-container" class="w-full h-full flex flex-col items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mb-4">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="17 8 12 3 7 8"></polyline>
+            <line x1="12" y1="3" x2="12" y2="15"></line>
+          </svg>
+          <p class="text-center">
+            Drop the Art Style Image Here<br>
+            Click to Upload
+          </p>
+        </div>
+        <img id="style-preview" class="hidden max-h-full max-w-full object-contain rounded" alt="Style preview">
+      </div>
+    </div>
+
+    <button id="generate-btn" type="submit"
+      class="btn bg-deep-blue-light hover:bg-opacity-80 text-white border-none rounded px-8 py-3 w-full max-w-4xl flex items-center justify-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path>
+        <circle cx="12" cy="12" r="3"></circle>
+        <path d="M5 3v4"></path>
+        <path d="M19 3v4"></path>
+        <path d="M5 21v-4"></path>
+        <path d="M19 21v-4"></path>
+      </svg>
+      <span class="font-bold">GENERATE</span>
+    </button>
+  </form>
+
+  <div id="loading" class="mt-8 hidden">
+    <div class="wrapper">
+      <div class="container">
+        <div class="wave">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <div data-level="1" class="wave">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <div data-level="2" class="wave">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+        <div data-level="3" class="wave">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </div>
+    </div>
+    <p class="mt-4 text-center">Processing your images. This may take a moment...</p>
+  </div>
+
+  <div id="result-container" class="mt-8 w-full max-w-4xl">
+    <h2 class="text-2xl font-bold mb-4">Your Stylized Image</h2>
+    <div class="rounded-lg overflow-hidden">
+      <img id="result-image" class="w-full h-auto" alt="Stylized result">
+    </div>
+    <a id="download-btn" href="#" download
+      class="btn bg-deep-blue-light hover:bg-opacity-80 text-white border-none rounded px-8 py-3 w-full mt-4 flex items-center justify-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="7 10 12 15 17 10"></polyline>
+        <line x1="12" y1="15" x2="12" y2="3"></line>
+      </svg>
+      <span class="font-bold">DOWNLOAD</span>
+    </a>
+  </div>
+
+  <footer class="w-full max-w-6xl mt-16 mb-6 flex items-center">
+    <div class="flex items-center gap-4">
+      <img src="{% static 'nst_app/logo_final.jpg' %}" alt="Project Logo" class="h-12 w-auto">
+      <img src="{% static 'nst_app/website_logo.png' %}" alt="Website Logo" class="h-8 w-auto">
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      setupImageUpload('source-drop-area', 'source-file-input', 'source-preview', 'source-preview-container');
+      setupImageUpload('style-drop-area', 'style-file-input', 'style-preview', 'style-preview-container');
+
+      document.getElementById('style-transfer-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+
+        document.getElementById('loading').classList.remove('hidden');
+        document.getElementById('result-container').style.display = 'none';
+
+        fetch('{% url "nst_app:process_images" %}', {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+          },
+        })
+          .then(response => response.json())
+          .then(data => {
+            document.getElementById('loading').classList.add('hidden');
+
+            if (data.success) {
+              document.getElementById('result-container').style.display = 'block';
+              document.getElementById('result-image').src = data.result_url;
+              document.getElementById('download-btn').href = data.result_url;
+            } else {
+              alert('Error: ' + data.error);
+            }
+          })
+          .catch(error => {
+            document.getElementById('loading').classList.add('hidden');
+            alert('Error: ' + error.message);
+          });
+      });
+
+      function setupImageUpload(dropAreaId, fileInputId, previewId, previewContainerId) {
+        const dropArea = document.getElementById(dropAreaId);
+        const fileInput = document.getElementById(fileInputId);
+        const preview = document.getElementById(previewId);
+        const previewContainer = document.getElementById(previewContainerId);
+
+        dropArea.addEventListener('click', function () {
+          fileInput.click();
+        });
+
+        fileInput.addEventListener('change', function () {
+          if (fileInput.files && fileInput.files[0]) {
+            handleFile(fileInput.files[0]);
+          }
+        });
+
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+          dropArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+          dropArea.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+          dropArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight() {
+          dropArea.classList.add('highlight');
+        }
+
+        function unhighlight() {
+          dropArea.classList.remove('highlight');
+        }
+
+        dropArea.addEventListener('drop', function (e) {
+          const dt = e.dataTransfer;
+          if (dt.files && dt.files[0]) {
+            handleFile(dt.files[0]);
+          }
+        });
+
+        function handleFile(file) {
+          if (!file.type.match('image.*')) {
+            alert('Please upload an image file');
+            return;
+          }
+
+          const reader = new FileReader();
+
+          reader.onload = function (e) {
+            preview.src = e.target.result;
+            preview.classList.remove('hidden');
+            previewContainer.classList.add('hidden');
+          }
+
+          reader.readAsDataURL(file);
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
