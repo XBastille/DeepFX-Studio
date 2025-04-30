@@ -1,84 +1,78 @@
-import base64
-import logging
 import os
-import tempfile
-
-import numpy as np
+import shutil
+from django.conf import settings
+from django.shortcuts import render, redirect
+from django.core.files.base import ContentFile
 from django.http import JsonResponse
-from django.shortcuts import redirect, render, reverse
-from PIL import Image
-
 from artistic_image_creator.nst.nst import NeuralStyleTransfer
-from website.views import image_to_base64
+import io
+from PIL import Image
+from background_remover.models import StyleTransferImage
 
-# Set up logging
-logger = logging.getLogger(__name__)
+def index(request):
+    """Home page view."""
+    return render(request, 'nst_app/nst.html')
 
+def clean_media_folders():
+    """Clean up uploads and results folders to prevent accumulation of files."""
+    try:
+        uploads_dir = os.path.join(settings.MEDIA_ROOT, 'uploads')
+        if os.path.exists(uploads_dir):
+            for filename in os.listdir(uploads_dir):
+                file_path = os.path.join(uploads_dir, filename)
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+        
+        results_dir = os.path.join(settings.MEDIA_ROOT, 'results')
+        if os.path.exists(results_dir):
+            for filename in os.listdir(results_dir):
+                file_path = os.path.join(results_dir, filename)
+                if os.path.isfile(file_path):
+                    os.unlink(file_path)
+                    
+        StyleTransferImage.objects.all().delete()
+    except Exception as e:
+        print(f"Error cleaning media folders: {e}")
 
-def artistic_image_creator(request):
-    if request.method == "POST":
+def process_images(request):
+    """Process uploaded images for style transfer."""
+    if request.method == 'POST':
+        clean_media_folders()
+        
+        content_image = request.FILES.get('content_image')
+        style_image = request.FILES.get('style_image')
+        
+        if not content_image or not style_image:
+            return JsonResponse({'error': 'Please upload both content and style images'}, status=400)
+            
+        style_transfer = StyleTransferImage(
+            content_image=content_image,
+            style_image=style_image
+        )
+        style_transfer.save()
+        
+        content_path = style_transfer.content_image.path
+        style_path = style_transfer.style_image.path
+        
+        model_path = "https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2"
+        nst = NeuralStyleTransfer(model_path=model_path)
+        
         try:
-            # Ensure 'file' is in the request
-            if "file" not in request.FILES:
-                return JsonResponse(
-                    {"status": "error", "message": "No file uploaded."}, status=400
-                )
-
-            if "art_file" not in request.FILES:
-                return JsonResponse(
-                    {"status": "error", "message": "No Art-File uploaded."}, status=400
-                )
-
-            # Load the files
-            uploaded_file = request.FILES["file"]
-            uploaded_art_file = request.FILES["art_file"]
-
-            print(uploaded_art_file, "\n", uploaded_file)
-
-            # Process the uploaded files
-            img_file = Image.open(uploaded_file).convert("RGB")
-            img_art_file = Image.open(uploaded_art_file).convert("RGB")
-
-            # Save the files temporarily
-            temp_file_input = tempfile.NamedTemporaryFile(delete=False, suffix=".png")
-            img_file.save(temp_file_input.name, "PNG")
-            temp_file_input.close()
-
-            temp_art_file = tempfile.NamedTemporaryFile(delete=False, suffix=".png")
-            img_art_file.save(temp_art_file.name, "PNG")
-            temp_art_file.close()
-
-            # Process the image
-            model_path = (
-                "https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2"
-            )
-            nst = NeuralStyleTransfer(model_path=model_path)
-            content_image_path = temp_file_input.name
-            style_image_path = temp_art_file.name
-            processed_img = nst.stylize_image(content_image_path, style_image_path)
-
-            print("Processed Image :", processed_img)
-            output_image = image_to_base64(processed_img)
-
-            # Clean up temporary files
-            os.unlink(temp_file_input.name)
-            os.unlink(temp_art_file.name)
-
-            # Store the processed image in the session
-            # request.session["artistic_processed_image"] = output_image
-            # return redirect(reverse("artistic-image-creator:artistic_image_creator"))
-            return render(
-                request,
-                "pages/artistic_image_creator.html",
-                {"processed_image": output_image},
-            )
+            stylized_img = nst.stylize_image(content_path, style_path)
+            
+            img = Image.fromarray((stylized_img * 255).astype('uint8'))
+            buffer = io.BytesIO()
+            img.save(buffer, format='JPEG')
+            
+            result_filename = f"result_{style_transfer.id}.jpg"
+            style_transfer.result_image.save(result_filename, ContentFile(buffer.getvalue()))
+            
+            return JsonResponse({
+                'success': True,
+                'result_url': style_transfer.result_image.url
+            })
+            
         except Exception as e:
-            logger.error(f"An error occurred: {str(e)}")
-            # request.session["artistic_image_error"] = f"An error occurred: {str(e)}"
-            # return redirect(reverse("artistic-image-creator:artistic_image_creator"))
-
-            return render(
-                request, "pages/artistic_image_creator.html", {"error": str(e)}
-            )
-    else:
-        return render(request, "pages/artistic_image_creator.html")
+            return JsonResponse({'error': str(e)}, status=500)
+    
+    return JsonResponse({'error': 'Invalid request method'}, status=405)
