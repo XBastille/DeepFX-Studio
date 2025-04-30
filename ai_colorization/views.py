@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render
+from ai_image_editor.models.controlnet_flux import logger
 
-from artistic_image_creator.views import logger
 
 # Create your views here.
 

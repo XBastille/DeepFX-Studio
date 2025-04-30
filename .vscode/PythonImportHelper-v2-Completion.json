@@ -4249,14 +4249,6 @@
         "documentation": {}
     },
     {
-        "label": "redirect",
-        "importPath": "django.shortcuts",
-        "description": "django.shortcuts",
-        "isExtraImport": true,
-        "detail": "django.shortcuts",
-        "documentation": {}
-    },
-    {
         "label": "render",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
@@ -4265,7 +4257,7 @@
         "documentation": {}
     },
     {
-        "label": "reverse",
+        "label": "redirect",
         "importPath": "django.shortcuts",
         "description": "django.shortcuts",
         "isExtraImport": true,
@@ -4346,10 +4338,34 @@
     },
     {
         "label": "logger",
-        "importPath": "artistic_image_creator.views",
-        "description": "artistic_image_creator.views",
+        "importPath": "ai_image_editor.models.controlnet_flux",
+        "description": "ai_image_editor.models.controlnet_flux",
         "isExtraImport": true,
-        "detail": "artistic_image_creator.views",
+        "detail": "ai_image_editor.models.controlnet_flux",
+        "documentation": {}
+    },
+    {
+        "label": "FluxControlNetModel",
+        "importPath": "ai_image_editor.models.controlnet_flux",
+        "description": "ai_image_editor.models.controlnet_flux",
+        "isExtraImport": true,
+        "detail": "ai_image_editor.models.controlnet_flux",
+        "documentation": {}
+    },
+    {
+        "label": "FluxControlNetModel",
+        "importPath": "ai_image_editor.models.controlnet_flux",
+        "description": "ai_image_editor.models.controlnet_flux",
+        "isExtraImport": true,
+        "detail": "ai_image_editor.models.controlnet_flux",
+        "documentation": {}
+    },
+    {
+        "label": "FluxControlNetModel",
+        "importPath": "ai_image_editor.models.controlnet_flux",
+        "description": "ai_image_editor.models.controlnet_flux",
+        "isExtraImport": true,
+        "detail": "ai_image_editor.models.controlnet_flux",
         "documentation": {}
     },
     {
@@ -5791,30 +5807,6 @@
         "documentation": {}
     },
     {
-        "label": "FluxControlNetModel",
-        "importPath": "ai_image_editor.models.controlnet_flux",
-        "description": "ai_image_editor.models.controlnet_flux",
-        "isExtraImport": true,
-        "detail": "ai_image_editor.models.controlnet_flux",
-        "documentation": {}
-    },
-    {
-        "label": "FluxControlNetModel",
-        "importPath": "ai_image_editor.models.controlnet_flux",
-        "description": "ai_image_editor.models.controlnet_flux",
-        "isExtraImport": true,
-        "detail": "ai_image_editor.models.controlnet_flux",
-        "documentation": {}
-    },
-    {
-        "label": "FluxControlNetModel",
-        "importPath": "ai_image_editor.models.controlnet_flux",
-        "description": "ai_image_editor.models.controlnet_flux",
-        "isExtraImport": true,
-        "detail": "ai_image_editor.models.controlnet_flux",
-        "documentation": {}
-    },
-    {
         "label": "FluxControlNetInpaintingPipeline",
         "importPath": "ai_image_editor.models.pipeline_flux_controlnet_inpaint",
         "description": "ai_image_editor.models.pipeline_flux_controlnet_inpaint",
@@ -6569,14 +6561,6 @@
         "documentation": {}
     },
     {
-        "label": "image_to_base64",
-        "importPath": "website.views",
-        "description": "website.views",
-        "isExtraImport": true,
-        "detail": "website.views",
-        "documentation": {}
-    },
-    {
         "label": "flush_image_data",
         "importPath": "website.views",
         "description": "website.views",
@@ -6636,11 +6620,43 @@
         "documentation": {}
     },
     {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "settings",
+        "importPath": "django.conf",
+        "description": "django.conf",
+        "isExtraImport": true,
+        "detail": "django.conf",
+        "documentation": {}
+    },
+    {
+        "label": "ContentFile",
+        "importPath": "django.core.files.base",
+        "description": "django.core.files.base",
+        "isExtraImport": true,
+        "detail": "django.core.files.base",
+        "documentation": {}
+    },
+    {
         "label": "NeuralStyleTransfer",
         "importPath": "artistic_image_creator.nst.nst",
         "description": "artistic_image_creator.nst.nst",
         "isExtraImport": true,
         "detail": "artistic_image_creator.nst.nst",
+        "documentation": {}
+    },
+    {
+        "label": "StyleTransferImage",
+        "importPath": "background_remover.models",
+        "description": "background_remover.models",
+        "isExtraImport": true,
+        "detail": "background_remover.models",
         "documentation": {}
     },
     {
@@ -6770,14 +6786,6 @@
         "importPath": "dotenv",
         "description": "dotenv",
         "detail": "dotenv",
-        "documentation": {}
-    },
-    {
-        "label": "settings",
-        "importPath": "django.conf",
-        "description": "django.conf",
-        "isExtraImport": true,
-        "detail": "django.conf",
         "documentation": {}
     },
     {
@@ -19765,7 +19773,7 @@
         "kind": 5,
         "importPath": "artistic_image_creator.urls",
         "description": "artistic_image_creator.urls",
-        "peekOfCode": "app_name = \"artistic-image-creator\"\nurlpatterns = [path(\"\", views.artistic_image_creator, name=\"artistic_image_creator\")]",
+        "peekOfCode": "app_name = \"artistic-image-creator\"\nurlpatterns = [\n    path('', views.index, name='nst'),\n    path('process/', views.process_images, name='process_images'),\n]",
         "detail": "artistic_image_creator.urls",
         "documentation": {}
     },
@@ -19774,25 +19782,34 @@
         "kind": 5,
         "importPath": "artistic_image_creator.urls",
         "description": "artistic_image_creator.urls",
-        "peekOfCode": "urlpatterns = [path(\"\", views.artistic_image_creator, name=\"artistic_image_creator\")]",
+        "peekOfCode": "urlpatterns = [\n    path('', views.index, name='nst'),\n    path('process/', views.process_images, name='process_images'),\n]",
         "detail": "artistic_image_creator.urls",
         "documentation": {}
     },
     {
-        "label": "artistic_image_creator",
+        "label": "index",
         "kind": 2,
         "importPath": "artistic_image_creator.views",
         "description": "artistic_image_creator.views",
-        "peekOfCode": "def artistic_image_creator(request):\n    if request.method == \"POST\":\n        try:\n            # Ensure 'file' is in the request\n            if \"file\" not in request.FILES:\n                return JsonResponse(\n                    {\"status\": \"error\", \"message\": \"No file uploaded.\"}, status=400\n                )\n            if \"art_file\" not in request.FILES:\n                return JsonResponse(",
+        "peekOfCode": "def index(request):\n    \"\"\"Home page view.\"\"\"\n    return render(request, 'nst_app/nst.html')\ndef clean_media_folders():\n    \"\"\"Clean up uploads and results folders to prevent accumulation of files.\"\"\"\n    try:\n        uploads_dir = os.path.join(settings.MEDIA_ROOT, 'uploads')\n        if os.path.exists(uploads_dir):\n            for filename in os.listdir(uploads_dir):\n                file_path = os.path.join(uploads_dir, filename)",
         "detail": "artistic_image_creator.views",
         "documentation": {}
     },
     {
-        "label": "logger",
-        "kind": 5,
+        "label": "clean_media_folders",
+        "kind": 2,
         "importPath": "artistic_image_creator.views",
         "description": "artistic_image_creator.views",
-        "peekOfCode": "logger = logging.getLogger(__name__)\ndef artistic_image_creator(request):\n    if request.method == \"POST\":\n        try:\n            # Ensure 'file' is in the request\n            if \"file\" not in request.FILES:\n                return JsonResponse(\n                    {\"status\": \"error\", \"message\": \"No file uploaded.\"}, status=400\n                )\n            if \"art_file\" not in request.FILES:",
+        "peekOfCode": "def clean_media_folders():\n    \"\"\"Clean up uploads and results folders to prevent accumulation of files.\"\"\"\n    try:\n        uploads_dir = os.path.join(settings.MEDIA_ROOT, 'uploads')\n        if os.path.exists(uploads_dir):\n            for filename in os.listdir(uploads_dir):\n                file_path = os.path.join(uploads_dir, filename)\n                if os.path.isfile(file_path):\n                    os.unlink(file_path)\n        results_dir = os.path.join(settings.MEDIA_ROOT, 'results')",
+        "detail": "artistic_image_creator.views",
+        "documentation": {}
+    },
+    {
+        "label": "process_images",
+        "kind": 2,
+        "importPath": "artistic_image_creator.views",
+        "description": "artistic_image_creator.views",
+        "peekOfCode": "def process_images(request):\n    \"\"\"Process uploaded images for style transfer.\"\"\"\n    if request.method == 'POST':\n        clean_media_folders()\n        content_image = request.FILES.get('content_image')\n        style_image = request.FILES.get('style_image')\n        if not content_image or not style_image:\n            return JsonResponse({'error': 'Please upload both content and style images'}, status=400)\n        style_transfer = StyleTransferImage(\n            content_image=content_image,",
         "detail": "artistic_image_creator.views",
         "documentation": {}
     },
@@ -20064,6 +20081,15 @@
         "description": "background_remover.apps",
         "peekOfCode": "class BackgroundRemoverConfig(AppConfig):\n    default_auto_field = \"django.db.models.BigAutoField\"\n    name = \"background_remover\"",
         "detail": "background_remover.apps",
+        "documentation": {}
+    },
+    {
+        "label": "StyleTransferImage",
+        "kind": 6,
+        "importPath": "background_remover.models",
+        "description": "background_remover.models",
+        "peekOfCode": "class StyleTransferImage(models.Model):\n    content_image = models.ImageField(upload_to='uploads/')\n    style_image = models.ImageField(upload_to='uploads/')\n    result_image = models.ImageField(upload_to='results/', blank=True, null=True)\n    created_at = models.DateTimeField(auto_now_add=True)\n    def __str__(self):\n        return f\"Style Transfer {self.id}\"",
+        "detail": "background_remover.models",
         "documentation": {}
     },
     {
