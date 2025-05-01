@@ -1,5 +1,7 @@
 {% extends "layouts/base-layout.html" %}
+
 {% load static %}
+
 {% block metadata %}
     <meta name="description"
           content="Transform your images into stunning artwork with DeepFX Studio’s AI-powered Artistic Image Creator. Blend your content image with the style of your choice effortlessly!" />
@@ -15,9 +17,11 @@
     <meta property="og:url"
           content="https://www.deepfxstudio.com/artistic-image-creator" />
 {% endblock metadata %}
+
 {% block title %}
     Artistic Image Creator - DeepFX Studio
 {% endblock title %}
+
 {% block body %}
     <div class="bg-gradient-to-b from-gray-900 to-black text-aliceblue font-poppins min-h-screen pb-20">
         <div class="flex justify-center items-center pt-10">
@@ -40,7 +44,7 @@
         <div id="form-section"
              class="flex md:flex-row flex-col md:mx-auto justify-center items-center flex-wrap m-10 gap-10">
             <form id="upload-form"
-                  action="{% url 'artistic-image-creator:artistic_image_creator' %}"
+                  action="{% url 'artistic-image-creator:process_images' %}"
                   method="post"
                   enctype="multipart/form-data"
                   class="w-full md:w-[40%] flex flex-col justify-between gap-6">
@@ -64,8 +68,8 @@
                     </div>
                     <input hidden
                            id="file_input"
+                           name="content_image"
                            type="file"
-                           name="file"
                            accept=".jpg, .jpeg, .png">
                     {% comment %} art-style-image {% endcomment %}
                     <div id="uploadBoxArtStyle"
@@ -85,12 +89,12 @@
                     </div>
                     <input hidden
                            id="file_input_art_style"
+                           name="style_image"
                            type="file"
-                           name="art_file"
                            accept=".jpg, .jpeg, .png">
                 </div>
                 <button id="generateBtn" type="submit" class="btn w-full cursor-pointer">
-                    <i class="fa-solid fa-palette animate-spin"></i>
+                    <i class="fa-solid fa-palette"></i>
                     GENERATE
                 </button>
             </form>
@@ -140,5 +144,6 @@
             </div>
         {% endif %}
     </div>
-    <script src="{% static "./scripts/artistic-image-creator.js" %}"></script>
+
+    <script src="{% static './scripts/artistic-image-creator.js' %}"></script>
 {% endblock body %}

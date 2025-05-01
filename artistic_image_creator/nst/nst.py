@@ -1,6 +1,8 @@
 import os
+import uuid
 import pprint
 import sys
+from django.conf import settings
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -244,16 +246,22 @@ class NeuralStyleTransfer:
         stylized_image = stylized_image.reshape(
             stylized_image.shape[1], stylized_image.shape[2], stylized_image.shape[3]
         )
-        plt.imsave("output.jpg", stylized_image)
+        output_path = os.path.join(settings.MEDIA_ROOT, 'results', f"stylized_{uuid.uuid4().hex}.jpg")
+        plt.imsave(output_path, stylized_image)
 
-        return stylized_image
+        if not os.path.exists(output_path):
+            print("⚠️ Image was not saved correctly!")
+        else:
+            print("✅ Image saved at:", output_path)
+            
+        return output_path
 
 
-if __name__ == "__main__":
-    model_path = "https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2"
-    content_image_path = r"content.jpeg"
-    style_image_path = r"style.jpeg"
-    nst = NeuralStyleTransfer(model_path=model_path)
-    img = nst.stylize_image(content_image_path, style_image_path)
-    plt.imshow(img)
-    plt.show()
+# if __name__ == "__main__":
+#     model_path = "https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2"
+#     content_image_path = r"content.jpg"
+#     style_image_path = r"style.jpg"
+#     nst = NeuralStyleTransfer(model_path=model_path)
+#     img = nst.stylize_image(content_image_path, style_image_path)
+#     plt.imshow(img)
+#     plt.show()
