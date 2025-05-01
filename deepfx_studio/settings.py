@@ -55,18 +55,15 @@ EXTERNAL_INSTALLED_APP = [
     "user_auth",
     "dashboard",
     "tailwind",
-    # Font Awesome
-    "fontawesomefree",
-    # "django_browser_reload",
     "django_components",
-    "allauth_ui",
-    "widget_tweaks",
-    "slippers",
     "allauth",
+    "allauth_ui",
     "allauth.account",
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
     "allauth.socialaccount.providers.github",
+    "widget_tweaks",
+    "slippers",
 ]
 
 
