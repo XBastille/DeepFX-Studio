@@ -46,8 +46,8 @@
             </div>
             <!-- Upload Section -->
             <form id="upload-form"
-                  action="{% url 'background-remover:background_remover' %}"
-                  method="post"
+                  action="{% url 'background-remover:process' %}"
+                  method="POST"
                   enctype="multipart/form-data"
                   class="w-full md:w-[40%] flex flex-col justify-between gap-6">
                 {% csrf_token %}
@@ -96,7 +96,7 @@
                          alt="Sample 4">
                 </div>
                 <button id="generateBtn" type="submit" class="btn w-full cursor-pointer">
-                    <i class="fa-solid fa-palette animate-spin"></i>
+                    <i class="fa-solid fa-palette"></i>
                     GENERATE
                 </button>
             </form>

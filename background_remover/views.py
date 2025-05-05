@@ -9,7 +9,10 @@ from PIL import Image
 from background_remover.is_net.isnet_inference import save_inference
 
 
-def background_remover(request):
+def index(request):
+    return render(request, "pages/background_remover.html")
+
+def process_image(request):
     if request.method == "POST":
         try:
             # Ensure 'file' is in the request
@@ -54,5 +57,7 @@ def background_remover(request):
                 "pages/background_remover.html",
                 {"error": f"An error occurred: {str(e)}"},
             )
-    else:
+    else:  
         return render(request, "pages/background_remover.html")
+
+        

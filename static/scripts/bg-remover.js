@@ -66,9 +66,9 @@ uploadBox.addEventListener("drop", (event) => {
 
 // Form submission
 form.addEventListener("submit", async function (event) {
-    event.preventDefault();
-
+    const formData = new FormData(form);
     const image = document.getElementById("file_input").files[0];
+
     if (!document.getElementById("file_input").files.length) {
         alert("Please select an image before submitting!");
         return;
