@@ -2,7 +2,7 @@ import logging
 from abc import ABC, abstractmethod
 
 import cv2
-from deoldify import device as compute_manager
+from ai_colorization.deoldify_models.deoldify._device import is_accelerated
 from fastai import *
 from fastai.basic_data import DatasetType
 from fastai.basic_train import Learner
@@ -26,7 +26,7 @@ class BaseImgFilter(ImgFilterInterface):
         super().__init__()
         self.learner = learner
 
-        if not compute_manager.is_accelerated():
+        if not is_accelerated():
             self.learner.model = self.learner.model.cpu()
 
         self.device = next(self.learner.model.parameters()).device

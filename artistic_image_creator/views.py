@@ -1,6 +1,7 @@
 import os
 import uuid
 import base64
+import logging
 from django.conf import settings
 from django.shortcuts import render
 from django.core.files.base import ContentFile
@@ -8,7 +9,7 @@ from django.core.files.storage import default_storage
 from django.http import JsonResponse
 from artistic_image_creator.nst.nst import NeuralStyleTransfer
 
-
+logger = logging.getLogger(__name__)
 def index(request):
     """Home page view."""
     return render(request, 'pages/artistic_image_creator.html')
@@ -64,11 +65,12 @@ def process_images(request):
             encoded_img = encoded_image(result_image_path)
             print("Encoded Image: ", encoded_image)
 
-            return (request, "pages/artistic_image_creator.html", {
+            return render(request, "pages/artistic_image_creator.html", {
                 'processed_image': encoded_img
-            })
+            }, status=200)
 
         except Exception as e:
-            return render(request, "pages/artistic_image_creator.html", {'error': str(e)}, status=500)
+            logger.error(str(e))
+            return render(request, "pages/artistic_image_creator.html", {'error': "Internal Server Error"}, status=500)
 
     return render(request, "pages/artistic_image_creator.html", {'error': 'Invalid request method'}, status=405)

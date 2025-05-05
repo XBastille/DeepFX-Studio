@@ -4,7 +4,7 @@ from fastai.core import *
 from fastai.vision import *
 from matplotlib.axes import Axes
 
-from ai_colorization.deoldify_models.fastai.vision.image import Image
+# from ai_col orization.deoldify_models.fastai.vision.image import Image
 
 from .filters import ColorizeFilter, ImgFilterInterface, MultiStageFilter
 from .generators import init_deep_inference, init_wide_inference

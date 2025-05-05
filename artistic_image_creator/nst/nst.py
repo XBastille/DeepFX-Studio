@@ -246,6 +246,9 @@ class NeuralStyleTransfer:
         stylized_image = stylized_image.reshape(
             stylized_image.shape[1], stylized_image.shape[2], stylized_image.shape[3]
         )
+        
+        results_dir = os.path.join(settings.MEDIA_ROOT, 'results')
+        os.makedirs(results_dir, exist_ok=True)  
         output_path = os.path.join(settings.MEDIA_ROOT, 'results', f"stylized_{uuid.uuid4().hex}.jpg")
         plt.imsave(output_path, stylized_image)
 

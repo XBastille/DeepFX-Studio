@@ -112,7 +112,7 @@
                                  width=""
                                  src="data:image/png;base64,{{ processed_image }}"
                                  alt="Processed Image"
-                                 class="mb-4 rounded-md border-2 border-gray-300 shadow-lg max-w-xs md:max-w-md bg-[url('https://png.pngtree.com/thumb_back/fw800/background/20220703/pngtree-gray-and-white-checkered-illustration-perfect-for-a-background-photo-image_32339476.jpg')] bg-cover bg-cente">
+                                 class="output_image mb-4 rounded-md border-2 border-gray-300 shadow-lg max-w-xs md:max-w-md bg-[url('https://png.pngtree.com/thumb_back/fw800/background/20220703/pngtree-gray-and-white-checkered-illustration-perfect-for-a-background-photo-image_32339476.jpg')] bg-cover bg-cente">
                             <div class="modal-action">
                                 <form method="dialog">
                                     <button class="btn">Close</button>
@@ -122,18 +122,25 @@
                     </dialog>
                     <img src="data:image/png;base64,{{ processed_image }}"
                          alt="Processed Image"
-                         class="mb-4 rounded-md border-2 border-gray-300 shadow-lg max-w-xs md:max-w-md bg-[url('https://png.pngtree.com/thumb_back/fw800/background/20220703/pngtree-gray-and-white-checkered-illustration-perfect-for-a-background-photo-image_32339476.jpg')] bg-cover bg-cente"
+                         class="output_image mb-4 rounded-md border-2 border-gray-300 shadow-lg max-w-xs md:max-w-md bg-[url('https://png.pngtree.com/thumb_back/fw800/background/20220703/pngtree-gray-and-white-checkered-illustration-perfect-for-a-background-photo-image_32339476.jpg')] bg-cover bg-cente"
                          height=""
                          width="">
                 </div>
-                <div class="button-group flex gap-4">
+                <div class="button-group flex flex-col md:flex-row gap-4 justify-between align-middle items-center">
                     <a href="data:image/png;base64,{{ processed_image }}"
                        download="processed_image.png"
                        class="btn btn-wide text-lg rounded-md px-4 py-2 bg-blue-500 text-white hover:bg-blue-600">
                         Download
                     </a>
-                    <a href="{% url 'website:clear_session' %}"
-                       class="btn rounded-md px-4 py-2 bg-red-500 text-white hover:bg-red-600">Delete</a>
+                    <button onclick="
+                        const processed_image_content = document.querySelector('.processed_image_content');
+                        if (processed_image_content) {
+                            processed_image_content.classList.add('hidden');
+                        }
+                    "
+                    class="btn rounded-md px-4 py-2 bg-red-500 text-white hover:bg-red-600">
+                        Delete
+                    </button>
                 </div>
             </div>
         {% endif %}

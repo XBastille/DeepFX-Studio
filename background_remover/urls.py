@@ -5,5 +5,6 @@ from . import views
 app_name = "background-remover"
 
 urlpatterns = [
-    path("", views.background_remover, name="background_remover"),
+    path("", views.index, name="index"),
+    path('process/', views.process_image, name='process'),
 ]
