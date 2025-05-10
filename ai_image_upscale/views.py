@@ -13,7 +13,6 @@ from website.views import image_to_base64
 
 
 def ai_image_upscale(request):
-    request.session.flush()
 
     if request.method == "POST":
         try:

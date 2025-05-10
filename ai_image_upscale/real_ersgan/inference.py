@@ -78,7 +78,8 @@ class RealESRGAN:
 def process_image(input_path, output_path, file_extension, scale_size=4):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = RealESRGAN(device, scale=4)
-    model.load_weights(f"weights/RealESRGAN_x{scale_size}.pth")
+
+    model.load_weights(f"ai_image_upscale/real_ersgan/weights/RealESRGAN_x{scale_size}.pth")
 
     image = Image.open(input_path).convert("RGB")
     upscaled_img = model.upscale_img(image)
