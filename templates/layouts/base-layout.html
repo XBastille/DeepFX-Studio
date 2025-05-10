@@ -38,6 +38,7 @@
     <body id="root smooth-wrapper">
         <main id="smooth-content"
               class="bg-gray-950 text-white min-h-screen min-w-full dark scrollbar-slim">
+              <a href="{% url 'dashboard:dashboard_view' %}" class="btn fixed top-5 left-5 bg-transparent border-white">Back</a>
             {% block body %}
             {% endblock body %}
         </main>
