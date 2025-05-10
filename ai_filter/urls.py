@@ -2,7 +2,7 @@ from django.urls import path
 
 from . import views
 
-app_name = "ai-filter"
+app_name = "ai_filter"
 
 urlpatterns = [
     path("", views.ai_filter, name="ai_filter"),

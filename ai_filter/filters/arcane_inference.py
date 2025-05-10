@@ -107,7 +107,7 @@ def transform_tensor_to_img(tensor_data):
     )
 
 
-def execute_transformation(input_path, model_path):
+def execute_transformation(input_path, model_path="ai_filter/filters/pretrained_models/pretrained_models/Arcane.jit"):
     transformer = torch.jit.load(model_path).eval().cuda().half()
     source_image = PIL.Image.open(input_path).convert("RGB")
     optimized_image = optimize_image_size(
@@ -124,12 +124,12 @@ def execute_transformation(input_path, model_path):
         result_img = PIL.Image.fromarray(output_array)
         result_img.save(result_path)
 
-    return result_path
+    return output_array
 
 
-if __name__ == "__main__":
-    model_path = "pretrained_models/Arcane.jit"
-    input_image = "profile.jpeg"
+# if __name__ == "__main__":
+#     model_path = "ai_filter/filters/pretrained_models/pretrained_models/Arcane.jit"
+#     input_image = "profile.jpeg"
 
-    output_path = execute_transformation(input_image, model_path)
-    print(f"Image saved to: {output_path}")
+#     output_path = execute_transformation(input_image, model_path)
+#     print(f"Image saved to: {output_path}")

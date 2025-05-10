@@ -170,4 +170,6 @@ cython_debug/
 **/*.ckpt
 
 node_modules/
+outputs/
+result_images/
 .vscode
