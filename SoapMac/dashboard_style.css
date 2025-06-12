@@ -1,0 +1,502 @@
+* {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  font-family: 'poppins', sans-serif;
+
+}
+
+body {
+  background-color: black;
+  color: white;
+  opacity: 1;
+}
+
+.header {
+  padding: 0 20px;
+}
+
+.header .logo img {
+  height: 80px;
+  width: 80px;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+
+.header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90px;
+}
+
+.menus-ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style-type: none;
+
+}
+
+.menus-ul li a {
+  text-decoration: none;
+  margin-right: 170px;
+  color: white;
+  font-size: 20px;
+  position: relative;
+}
+
+.menus-ul li a::after {
+  content: '';
+  width: 0;
+  height: 3px;
+  background: linear-gradient(to right, #003366, #006699);
+  position: absolute;
+  left: 0px;
+  top: 25px;
+  transition: 0.5s;
+}
+
+.menus-ul li a:hover::after {
+  width: 100%;
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  z-index: 9;
+  top: 60px;
+  left: 300px;
+  width: 1200px;
+  height: 250px;
+  border-radius: 24px;
+  animation: dropdownanimation 0.5s ease-in-out;
+
+
+}
+
+.dropdown-menus {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 20px;
+  font-size: 20px;
+  border: 2px;
+  border-radius: 24px;
+  box-shadow: 0 4px 10px rgba(135, 206, 250, 0.7);
+}
+
+.dropdown-menus li {
+  margin-left: 25px;
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.dropdown-menus p {
+  height: 55px;
+}
+
+.more-about-us-menu {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.more-about-us-menu::after {
+  content: "";
+  height: 3px;
+  width: 100%;
+  position: absolute;
+  background-color: white;
+}
+.social-menu {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+.social-menu::after {
+  content: "";
+  height: 3px;
+  width: 50%;
+  position: absolute;
+  background-color: white;
+}
+.contact {
+  border: 1px solid white;
+  height: 25px;
+  width: 130px;
+  border-radius: 1rem;
+  padding: 10px;
+  align-items: center;
+  text-align: center;
+  color: black;
+  background-color: aliceblue;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s;
+}
+
+.contact:hover {
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(135, 206, 250, 0.7);
+}
+
+.mainarea {
+  padding: 0 20px;
+  display: flex;
+}
+
+.mainarea .leftside {
+  height: 75vh;
+  width: 220px;
+  margin-top: 70px;
+  position: fixed;
+  background-color: transparent;
+
+}
+
+.mainarea .leftside div {
+  display: flex;
+  padding: 4px;
+  border-radius: 25px;
+  margin-top: 30px;
+  padding-left: 20px;
+  font-size: 15px;
+  transition: 0.3s;
+  width: 150px;
+  height: 30px;
+  align-items: center;
+  margin-left: 20px;
+}
+.mainarea .leftside div a{
+  color: aliceblue;
+  text-decoration: none;
+  /* background: linear-gradient(180deg, rgba(0, 76, 109, 0.9) 0%, rgba(60, 60, 60, 1) 90%, rgba(0, 76, 109, 0.9) 100%); */
+  background: transparent;
+}
+.clicked {
+  background: linear-gradient(180deg, rgba(0, 76, 109, 0.9) 0%, rgba(60, 60, 60, 1) 90%, rgba(0, 76, 109, 0.9) 100%);
+
+}
+
+.mainarea .leftside div i {
+  margin-right: 10px;
+  font-size: 17px;
+  background: transparent;
+}
+
+.fa-chevron-down {
+  margin-left: 30px;
+}
+
+.mainarea .leftside div:hover {
+  background-color: rgb(34, 34, 34);
+  box-shadow: 0px 2px 20px rgba(150, 210, 248, 0.7);
+  cursor: pointer;
+}
+
+.account {
+  position: absolute;
+  bottom: 0;
+
+  background-color: rgb(34, 34, 34);
+}
+
+
+.rightside {
+  width: 80%;
+  margin-left: 300px;
+}
+
+.rightside .head-line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.greeting {
+  margin-top: 50px;
+}
+
+.wish {
+  position: absolute;
+  top: 500px;
+  font-size: 40px;
+  animation-name: appear;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.userName {
+  position: absolute;
+  top: 500px;
+  font-size: 40px;
+  opacity: 0;
+  animation-name: appearuser;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.greeting h1:nth-of-type(2) {
+  animation-delay: 1s;
+}
+
+.newproject {
+  border: 1px solid white;
+  height: 25px;
+  width: 130px;
+  border-radius: 1rem;
+  padding: 10px;
+  align-items: center;
+  text-align: center;
+  color: black;
+  background-color: aliceblue;
+  margin-right: 150px;
+  margin-top: 60px;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s;
+}
+
+.newproject i {
+  font-size: 20px;
+  margin-right: 10px;
+  background-color: aliceblue;
+  color: #1C1C1C;
+}
+
+.newproject:hover {
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(135, 206, 250, 0.7);
+}
+
+.popup-container {
+  display: none;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid white;
+  height: 400px;
+  width: 500px;
+  top: 200px;
+  left: 600px;
+  border-radius: 24px;
+  z-index: 2;
+  align-items: center;
+  font-size: 20px;
+  animation: popup 0.5s ease-in-out;
+}
+
+.popup h2 {
+  margin-left: 90px;
+  margin-top: 20px;
+}
+
+.popup input,
+.popup textarea {
+  width: 80%;
+  padding: 13px;
+  margin: 0px 40px;
+  margin-top: 25px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  outline: none;
+  color: white;
+}
+.popup p{
+  font-size: 15px;
+  margin-left: 50px;
+  margin-bottom:0;
+  color: red;
+  margin-bottom: 10px;
+}
+.btn{
+  position: relative;
+  bottom: 0;
+  border: 1px solid white;
+  height: 50px;
+  width: 200px;
+  padding: 10px;
+  align-items: center;
+  text-align: center;
+  color: black;
+  background-color: aliceblue;
+  margin-top: 25px;
+  margin-left: 145px;
+  font-size: 20px;
+  border-radius: 1rem;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: box-shadow 0.3s;
+}
+.btn:hover{
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(135, 206, 250, 0.7);
+}
+.popup .close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+#createProjectForm{
+  height: 320px;
+  width: 500px;
+}
+
+.projectname {
+  position: absolute;
+  top: 150px;
+}
+
+input {
+  margin-left: 200px;
+}
+
+.gridoptions {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.optionname {
+  margin-left: 60px;
+  margin-top: 40px;
+  font-size: 25px;
+}
+
+.line {
+  cursor: pointer;
+  position: relative;
+}
+
+.line::after {
+  content: '';
+  width: 0;
+  height: 3px;
+  background: linear-gradient(to right, #003366, #006699);
+  position: absolute;
+  left: 0px;
+  top: 35px;
+  transition: 0.3s;
+}
+
+.line:hover::after {
+  width: 100%;
+}
+
+.selected::after {
+  width: 60%;
+}
+
+hr {
+  margin-top: 10px;
+}
+
+.gridarea {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-gap: 40px;
+  grid-auto-rows: 200px;
+  margin-top: 50px;
+}
+
+.boxes {
+  border: 1px solid white;
+  border-radius: 20px;
+}
+.boxes:hover{
+  cursor: pointer;
+}
+
+.gridicon{
+  margin-left: 10px;
+  margin-top: 9px;
+  background: transparent;
+  color: #1C1C1C;
+  
+}
+.heart{
+  margin-left: 10px;
+  margin-top: 9px;
+  background: transparent;
+  color: red;
+}
+.gridpic{
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  height: 70%;
+  width: 100%;
+  background-image: url(Media/colour-1885352_640.jpg);
+}
+.gridname{
+  height: 30%;
+  background-color:#0c0c0c;
+  font-size: 20px;
+  font-weight: 600;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gridname p{
+  background-color:#0c0c0c;
+}
+
+@keyframes appear {
+  0% {
+    opacity: 0;
+    top: 200px;
+  }
+
+  100% {
+    opacity: 1;
+    top: 120px;
+  }
+}
+
+@keyframes appearuser {
+  0% {
+    opacity: 0;
+    top: 250px;
+  }
+
+  100% {
+    opacity: 1;
+    top: 180px;
+  }
+}
+
+@keyframes popup {
+  0% {
+      transform: translateY(50px);
+      opacity: 0;
+  }
+  100% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+}
+
+@keyframes dropdownanimation {
+  0% {
+    height: 0;
+    opacity: 0;
+  }
+  100%{
+    height: 250px;
+    opacity: 1;
+  }
+}

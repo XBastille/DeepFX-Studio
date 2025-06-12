@@ -1,0 +1,216 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: aliceblue;
+    font-family: 'poppins';
+}
+
+.logo img {
+    position: fixed;
+    height: 80px;
+    width: 80px;
+    margin-top: 20px;
+    margin-left: 80px;
+}
+
+.back {
+    position: fixed;
+    height: 40px;
+    width: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 40px;
+    left: 30px;
+}
+
+.back i {
+    font-size: 25px;
+    color: aliceblue;
+    background: transparent;
+}
+
+.back:hover {
+    /* border: 2px solid black; */
+    border-radius: 50%;
+    background-color: rgb(81, 80, 80);
+}
+
+.heading i {
+    /* background-color: black; */
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-left: 48%;
+    font-size: 40px;
+    /* height: 60px; */
+    /* width: 60px; */
+}
+
+.box-title {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+.tool-name {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tool-name p {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 56px;
+    margin-top: -19px;
+}
+
+.tool-desc {
+    display: flex;
+    justify-content: center;
+    margin-top: 14px;
+}
+
+.tool-desc p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 19px;
+    margin-top: -9px;
+}
+
+.main-area {
+    margin-top: 40px;
+    margin-left: 20%;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+
+
+.line {
+    position: relative;
+}
+
+.line::after {
+    content: '';
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(to right, #003366, #006699);
+    position: absolute;
+    left: 0px;
+    top: 40px;
+    border-radius: 5px;
+}
+
+.upload {
+    margin-left: 10px;
+    height: 70%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.drag-and-drop {
+    border: 2px solid white;
+    border-radius: 20px;
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.drag-and-drop:hover {
+    cursor: pointer;
+}
+
+.icon1 {
+    position: absolute;
+    top: 250px;
+    right: 765px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 9999;
+    display: none;
+    background: transparent;
+    pointer-events: auto !important;
+}
+
+.icon2 {
+    position: absolute;
+    top: 250px;
+    right: 300px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 9999;
+    display: none;
+    background: transparent;
+    pointer-events: auto !important;
+}
+
+.plus {
+    position: absolute;
+    top: 480px;
+    right: 737px;
+    font-size: 30px;
+}
+
+.hide {
+    display: none;
+}
+
+.drag-and-drop i {
+    display: block;
+    font-size: 30px;
+    margin-left: 120px;
+}
+
+.center {
+    text-align: center;
+}
+
+.preview {
+    /* position: absolute; */
+    height: 70%;
+    width: 100%;
+    z-index: 2;
+    top: 280px;
+    left: 795px;
+}
+
+.generate {
+    border: 1px solid white;
+    height: 30px;
+    width: 20%;
+    border-radius: 1rem;
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+    color: black;
+    background-color: aliceblue;
+    margin-left: 360px;
+    margin-top: 60px;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: box-shadow 0.3s;
+}
+
+.generate i {
+    font-size: 20px;
+    margin-right: 10px;
+    background-color: aliceblue;
+    color: #1C1C1C;
+}
+
+.generate:hover {
+    cursor: pointer;
+    box-shadow: 0 4px 30px rgba(135, 206, 250, 0.7);
+}
