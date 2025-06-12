@@ -41,7 +41,7 @@
 
 | **Role** | **Contributor** | **Primary Responsibilities** |
 |----------|-----------------|------------------------------|
-| **Lead Developer & ML Engineer** | **[XBastille](https://github.com/XBastille)** | Model Implementation, Training Pipeline Development, Research Reproduction |
+| **Lead Developer & DL Engineer** | **[XBastille](https://github.com/XBastille)** | Model Implementation, Training Pipeline Development, Research Reproduction |
 | **Full-Stack Engineer** | **[Abhinab Choudhary](https://github.com/Abhinab-Choudhury)** | System Architecture, Backend Infrastructure, API Development |
 | **Frontend Developer** | **[Soap-mac](https://github.com/Soap-mac)** | User Interface Design, Frontend Implementation, UX Development |
 
