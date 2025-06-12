@@ -19,7 +19,7 @@
     <img src="https://img.shields.io/github/forks/XBastille/DeepFX-Studio?style=social" alt="GitHub Forks">
   </a>
 
-  <br>
+  <br><br>
   
   <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch">
   <img src="https://img.shields.io/badge/Lightning.ai-792EE5?style=for-the-badge&logo=lightning&logoColor=white" alt="Lightning">
