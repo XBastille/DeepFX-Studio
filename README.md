@@ -194,7 +194,7 @@ Our platform reproduces state-of-the-art computer vision models from peer-review
 
 ### Prerequisites & Installation
 For detailed setup instructions, please refer to our comprehensive guides:
-- 📋 **[Installation Guide](INSTALLATION-2.md)**: Complete setup instructions with model placement
+- 📋 **[Installation Guide](INSTALLATION.md)**: Complete setup instructions with model placement
 - 🛠️ **[Setup Guide](SETUP.md)**: Docker setup and development environment configuration
 
 ### Quick Setup Summary
@@ -204,7 +204,7 @@ git clone https://github.com/XBastille/DeepFX-Studio.git
 cd DeepFX-Studio-3
 
 # 2. Download models from releases
-# See INSTALLATION-2.md for detailed model placement instructions
+# See INSTALLATION.md for detailed model placement instructions
 
 # 3. Setup environment
 python -m venv venv
@@ -253,7 +253,7 @@ DeepFX-Studio-3/
 ├──  static/                   # Frontend Assets (TailwindCSS)
 ├──  templates/                # HTML Templates (All Apps)
 ├──  deepfx_studio/            # Main Django Project Configuration
-├──  INSTALLATION-2.md         # Detailed Installation Guide
+├──  INSTALLATION.md         # Detailed Installation Guide
 ├──  SETUP.md                  # Development Setup Guide
 └──  docker-compose.yml        # Docker Configuration
 ```
@@ -305,7 +305,7 @@ DeepFX-Studio-3/
 ## 📖 Documentation & Resources
 
 ### Comprehensive Documentation Suite
-- 📋 **[Installation Guide](INSTALLATION-2.md)**: Complete setup with model placement diagrams
+- 📋 **[Installation Guide](INSTALLATION.md)**: Complete setup with model placement diagrams
 - 🛠️ **[Setup Guide](SETUP.md)**: Docker configuration and development environment
 - 📙 **Training Logs**: Detailed training curves and hyperparameter configurations
 - 📕 **Model Cards**: Individual documentation for each implemented model
@@ -334,9 +334,8 @@ inpainted_image = flux_inpainter(image, mask, prompt="fill with nature backgroun
 
 ### Development Guidelines
 Please refer to our detailed guides:
-- **[INSTALLATION-2.md](INSTALLATION-2.md)**: Model setup and placement instructions
+- **[INSTALLATION.md](INSTALLATION.md)**: Model setup and placement instructions
 - **[SETUP.md](SETUP.md)**: Development environment configuration
-- **[CONTRIBUTING.md](CONTRIBUTING.md)**: Code standards and contribution guidelines
 
 ### Model Integration
 Our modular architecture allows easy integration of new computer vision models:
@@ -348,10 +347,8 @@ Our modular architecture allows easy integration of new computer vision models:
 
 ---
 
-## 📜 Licensing & Attribution
+## 📜 Attribution
 
-### Project License
-This project is licensed under the **MIT License** with proper attribution to original research works.
 
 ### Original Paper Attributions
 We gratefully acknowledge the original authors of all reproduced papers:
@@ -376,7 +373,7 @@ We gratefully acknowledge the original authors of all reproduced papers:
   **Integration Platform**: HuggingFace Hub & APIs<br>
   
   
-  **Quick Links**: [Installation](INSTALLATION-2.md) • [Setup](SETUP.md) • [Contributing](CONTRIBUTING.md)
+  **Quick Links**: [Installation](INSTALLATION.md) • [Setup](SETUP.md) 
   
   <a href="#top">⬆️ Back to Top</a>
 </div>
