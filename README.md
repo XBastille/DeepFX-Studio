@@ -330,7 +330,7 @@ inpainted_image = flux_inpainter(image, mask, prompt="fill with nature backgroun
 
 ---
 
-## 🤝 Contributing & Development
+## 🌸 Development
 
 ### Development Guidelines
 Please refer to our detailed guides:
