@@ -1,7 +1,0 @@
-django
-torch
-torchvision
-numpy
-pillow
-scikit-image
-matplotlib
