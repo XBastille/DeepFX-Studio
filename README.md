@@ -2,7 +2,13 @@
   <img src="./static/images/website_logo.png" alt="DeepFX Studio" width="600"/>
   <p><strong>Advanced Computer Vision Platform for AI-Powered Image Processing</strong></p>
   <p><em>Comprehensive reproduction of state-of-the-art neural network architectures for practical deployment</em></p>
+  
   <br>
+  
+  > 🚧 **Work in Progress**: All features are fully functional except Text-to-Image generation, which is currently under development.
+  
+  <br>
+  
   <a href="https://github.com/XBastille/DeepFX-Studio">
     <img src="https://img.shields.io/github/stars/XBastille/DeepFX-Studio?style=social" alt="GitHub Stars">
   </a>
@@ -125,17 +131,16 @@ Our platform reproduces state-of-the-art computer vision models from peer-review
   - **Inference Time**: 3-8 seconds depending on image size and complexity
 - **Module**: `ai_image_editor/`
 
-### 🎭 **Photo-to-Cartoon Translation**
-- **Paper**: "CartoonGAN: Generative Adversarial Networks for Photo Cartoonization" (CVPR 2018)
-- **Authors**: Yang Chen, Yu-Kun Lai, Yong-Jin Liu
-- **DOI**: [10.1109/CVPR.2018.00986](https://doi.org/10.1109/CVPR.2018.00986)
-- **Architecture**: Two-stage adversarial training with edge-promoting loss
+### 🎭 **Photo-to-Anime Translation**
+- **Paper**: "AnimeGAN: A Novel Lightweight GAN for Photo Animation" & "AnimeGANv3"
+- **Authors**: Jie Chen, Gang Liu, Xin Chen
+- **Architecture**: Lightweight generative adversarial network with anime-specific losses
 - **Training Infrastructure**: Lightning.ai A100 × 2 GPUs
 - **Training Details**:
   - **Duration**: 60 hours total (30 hours per stage)
   - **Dataset**: 
     - Photo dataset: Places365 subset (50K natural images)
-    - Cartoon dataset: Studio Ghibli + Disney animation frames (6K images)
+    - Anime dataset: High-quality anime artwork collection (6K images)
   - **Batch Size**: 24 images per batch (12 per GPU)
   - **Input Resolution**: 256×256 pixels
   - **Stage 1 - Initialization**: 
@@ -144,12 +149,13 @@ Our platform reproduces state-of-the-art computer vision models from peer-review
     - **Learning Rate**: 2e-4 with linear decay
   - **Stage 2 - Adversarial Training**:
     - **Duration**: 30 hours  
-    - **Loss**: Content + Adversarial + Edge-promoting loss
+    - **Loss**: Content + Adversarial + Color loss + Grayscale style loss
     - **Learning Rate**: 2e-5 for generator, 2e-4 for discriminator
     - **Discriminator Updates**: 1 generator : 1 discriminator update ratio
   - **Optimizer**: Adam (β1=0.5, β2=0.999) for both networks
-  - **Edge Loss Weight**: λ_edge = 10.0
-  - **Content Loss Weight**: λ_content = 1.0
+  - **Color Loss Weight**: λ_color = 10.0
+  - **Content Loss Weight**: λ_content = 1.5
+  - **Style Loss Weight**: λ_gray = 3.0
 - **Module**: `ai_filter/`
 
 ### 🎪 **Neural Artistic Style Transfer**
@@ -174,11 +180,12 @@ Our platform reproduces state-of-the-art computer vision models from peer-review
   - **Style Images**: High-resolution artworks from famous painters
 - **Module**: `artistic_image_creator/`
 
-### 🖼️ **Text-to-Image Synthesis** *(API Integration)*
+### 🖼️ **Text-to-Image Synthesis** *(Under Development)*
 - **Primary Model**: Stable Diffusion via HuggingFace Diffusers
 - **Implementation**: API-based inference (no local training)
 - **Pipeline**: Pre-trained models from HuggingFace Hub
-- **Status**: Integration in progress
+- **Current Status**: Integration and optimization in progress
+- **Expected Completion**: Q1 2025
 - **Module**: `ai_text_to_image_generator/`
 
 ---
@@ -236,9 +243,9 @@ DeepFX-Studio-3/
 │   │   ├── pipeline_flux_controlnet_inpaint.py  # Main Flux pipeline
 │   │   ├── sam_segment.py       # SAM segmentation
 │   │   └── transformer_flux.py  # Flux transformer models
-├──  ai_filter/                # CartoonGAN Implementation
+├──  ai_filter/                # AnimeGANv3 Implementation
 ├──  artistic_image_creator/   # Neural Style Transfer
-├──  ai_text_to_image_generator/ # Stable Diffusion API Integration
+├──  ai_text_to_image_generator/ # Stable Diffusion API Integration (WIP)
 ├──  dashboard/                # User Dashboard & Analytics
 ├──  website/                  # Landing & Information Pages
 ├──  user_auth/                # Django Allauth Integration
@@ -267,7 +274,7 @@ DeepFX-Studio-3/
 | **DeOldify** | A100 × 2 | 72 hours | 100K+ images | 35GB | Progressive training 64→256→512px |
 | **Real-ESRGAN** | A100 × 4 | 120 hours | 300K+ images | 38GB | Multi-stage 2×→4×→8× upscaling |
 | **U²-Net** | A100 × 1 | 48 hours | 16K+ images | 28GB | Multi-scale deep supervision |
-| **CartoonGAN** | A100 × 2 | 60 hours | 56K+ images | 32GB | Two-stage adversarial training |
+| **AnimeGANv3** | A100 × 2 | 60 hours | 56K+ images | 32GB | Two-stage adversarial training |
 | **NST Models** | A100 × 1 | 16h/style | 118K images | 25GB | 50 individual style models |
 
 ---
@@ -298,7 +305,7 @@ DeepFX-Studio-3/
 ## 📖 Documentation & Resources
 
 ### Comprehensive Documentation Suite
-- 📋 **[Installation Guide](INSTALLATION.md)**: Complete setup with model placement diagrams
+- 📋 **[Installation Guide](INSTALLATION-2.md)**: Complete setup with model placement diagrams
 - 🛠️ **[Setup Guide](SETUP.md)**: Docker configuration and development environment
 - 📙 **Training Logs**: Detailed training curves and hyperparameter configurations
 - 📕 **Model Cards**: Individual documentation for each implemented model
@@ -327,7 +334,7 @@ inpainted_image = flux_inpainter(image, mask, prompt="fill with nature backgroun
 
 ### Development Guidelines
 Please refer to our detailed guides:
-- **[INSTALLATION.md](INSTALLATION.md)**: Model setup and placement instructions
+- **[INSTALLATION-2.md](INSTALLATION-2.md)**: Model setup and placement instructions
 - **[SETUP.md](SETUP.md)**: Development environment configuration
 - **[CONTRIBUTING.md](CONTRIBUTING.md)**: Code standards and contribution guidelines
 
@@ -351,7 +358,7 @@ We gratefully acknowledge the original authors of all reproduced papers:
 - DeOldify by Jason Antic et al.
 - Real-ESRGAN by Xintao Wang, Liangbin Xie, Chao Dong, Ying Shan
 - U²-Net by Xuebin Qin et al.
-- CartoonGAN by Yang Chen, Yu-Kun Lai, Yong-Jin Liu  
+- AnimeGANv3 by Jie Chen, Gang Liu, Xin Chen
 - Neural Style Transfer by Leon A. Gatys, Alexander S. Ecker, Matthias Bethge
 - FLUX.1 by Black Forest Labs
 - Segment Anything by Meta AI
@@ -369,7 +376,7 @@ We gratefully acknowledge the original authors of all reproduced papers:
   **Integration Platform**: HuggingFace Hub & APIs<br>
   
   
-  **Quick Links**: [Installation](INSTALLATION.md) • [Setup](SETUP.md) • [Contributing](CONTRIBUTING.md)
+  **Quick Links**: [Installation](INSTALLATION-2.md) • [Setup](SETUP.md) • [Contributing](CONTRIBUTING.md)
   
   <a href="#top">⬆️ Back to Top</a>
 </div>
