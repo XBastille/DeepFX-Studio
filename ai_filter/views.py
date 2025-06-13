@@ -7,11 +7,10 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
+from ai_filter.filters.arcane_inference import execute_transformation
 from ai_filter.filters.onnx_inference import execute_inference
-# from ai_filter.filters.arcane_inference import execute_transformation
 from website.views import image_to_base64
 
-from artistic_image_creator.views import clean_media_folders
 # Create your views here.
 
 
@@ -56,9 +55,9 @@ def api_ai_filter(request):
 
                 output_image = execute_inference(source_path=image_path_full,model_path=model_path)
             else:
-                pass
-                # output_image = execute_transformation(input_path=image_path_full)
-            
+                model_path = "ai_filter/filters/pretrained_models/Arcane.Arcane.jit"
+                output_image = execute_transformation(input_path=image_path_full, model_path=model_path)
+
             output_image_base64 = image_to_base64(output_image)
             orginal_image_base64 = image_to_base64(image_path_full)
             return render(

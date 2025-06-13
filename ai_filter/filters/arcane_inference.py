@@ -127,9 +127,9 @@ def execute_transformation(input_path, model_path="ai_filter/filters/pretrained_
     return output_array
 
 
-# if __name__ == "__main__":
-#     model_path = "ai_filter/filters/pretrained_models/pretrained_models/Arcane.jit"
-#     input_image = "profile.jpeg"
+if __name__ == "__main__":
+    model_path = "ai_filter/filters/pretrained_models/pretrained_models/Arcane.jit"
+    input_image = "profile.jpeg"
 
-#     output_path = execute_transformation(input_image, model_path)
-#     print(f"Image saved to: {output_path}")
+    output_path = execute_transformation(input_image, model_path)
+    print(f"Image saved to: {output_path}")

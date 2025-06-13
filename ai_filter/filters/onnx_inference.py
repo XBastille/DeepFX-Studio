@@ -82,24 +82,19 @@ def execute_inference(source_path, model_path, compute_device="gpu"):
     return result_path
 
 
-# if __name__ == "__main__":
+if __name__ == "__main__":
     # Supported Image Formats: jpg, png
 
-    # model_path = "pretrained_models/Shinkai.onnx"
-    # output_path = execute_inference(input_img, model_path)
-    # input_img = "test_img.jpeg"
-    # print(f"Image saved to: {output_path}")
+    Shinkai = "ai_filter/filters/pretrained_models/Shinkai.onnx"
+    JP_face = "ai_filter/filters/pretrained_models/JP_face.onnx"
+    PortraitSketch = "ai_filter/filters/pretrained_models/PortraitSketch.onnx"
+    Paprika = "ai_filter/filters/pretrained_models/Paprika.onnx"
+    Hayao = "ai_filter/filters/pretrained_models/Hayao.onnx"
 
-    # Shinkai = "ai_filter/filters/pretrained_models/Shinkai.onnx"
-    # JP_face = "ai_filter/filters/pretrained_models/JP_face.onnx"
-    # PortraitSketch = "ai_filter/filters/pretrained_models/PortraitSketch.onnx"
-    # Paprika = "ai_filter/filters/pretrained_models/Paprika.onnx"
-    # Hayao = "ai_filter/filters/pretrained_models/Hayao.onnx"
+    input_img = "jpeg_img3_success.jpeg"
 
-    # input_img = "jpeg_img3_success.jpeg"
-
-    # Shinkai_output_path = execute_inference(input_img, Shinkai)
-    # JP_face_output_path = execute_inference(input_img, JP_face)
-    # PortraitSketch_output_path = execute_inference(input_img, PortraitSketch)
-    # Paprika_output_path = execute_inference(input_img, Paprika)
-    # Hayao_output_path = execute_inference(input_img, Hayao)
+    Shinkai_output_path = execute_inference(input_img, Shinkai)
+    JP_face_output_path = execute_inference(input_img, JP_face)
+    PortraitSketch_output_path = execute_inference(input_img, PortraitSketch)
+    Paprika_output_path = execute_inference(input_img, Paprika)
+    Hayao_output_path = execute_inference(input_img, Hayao)
