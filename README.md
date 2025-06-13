@@ -310,24 +310,6 @@ DeepFX-Studio-3/
 - 📙 **Training Logs**: Detailed training curves and hyperparameter configurations
 - 📕 **Model Cards**: Individual documentation for each implemented model
 
-### Code Examples
-```python
-# Example: Using the integrated models
-from ai_image_editor.models.pipeline_flux_controlnet_inpaint import FluxInpaintPipeline
-from ai_colorization.models.deoldify import DeOldifyModel
-from ai_image_upscale.models.real_esrgan import RealESRGANModel
-
-# Initialize models
-flux_inpainter = FluxInpaintPipeline.from_pretrained("black-forest-labs/FLUX.1-dev")
-colorizer = DeOldifyModel.load_from_checkpoint("path/to/deoldify_model.ckpt")
-upscaler = RealESRGANModel.load_from_checkpoint("path/to/real_esrgan_model.ckpt")
-
-# Process images
-enhanced_image = upscaler(input_image)
-colorized_image = colorizer(grayscale_image)
-inpainted_image = flux_inpainter(image, mask, prompt="fill with nature background")
-```
-
 ---
 
 ## 🌸 Development
@@ -364,7 +346,7 @@ We gratefully acknowledge the original authors of all reproduced papers:
 
 <div align="center">
   <h2>🌟 Open Source Computer Vision Platform</h2>
-  <p><em>Faithful reproduction of state-of-the-art research with practical deployment</em></p>
+  <p><em>Faithful eproduction of state-of-the-art research with practical deployment</em></p>
   
   <br>
   
