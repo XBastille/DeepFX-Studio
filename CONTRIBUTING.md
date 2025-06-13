@@ -83,3 +83,7 @@ These are the pictures which will tell you where to place the models after you d
 #### Background Remover
 
 ![Background Remover](./images/background_remover_file_struct.png)
+
+#### Text To Image
+
+![Text To Image](./images/text-to-image_file_struct.png)

@@ -56,4 +56,6 @@ imgaug==0.4.0
 kornia==0.8.0
 diffusers==0.30.2
 transformers==4.49.0
+gradio_client==1.10.3
+diffusers==0.30.2
 # generated using pigar generate

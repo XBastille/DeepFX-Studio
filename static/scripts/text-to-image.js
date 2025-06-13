@@ -1,461 +1,510 @@
 document.addEventListener("DOMContentLoaded", () => {
-    const textarea = document.getElementById("prompt-input")
+  const textarea = document.getElementById("prompt-input");
 
-    function autoResize() {
-        textarea.style.height = "auto"
-        textarea.style.height = Math.min(textarea.scrollHeight, 120) + "px"
+  function autoResize() {
+    textarea.style.height = "auto";
+    textarea.style.height = Math.min(textarea.scrollHeight, 120) + "px";
+  }
+
+  textarea.addEventListener("input", autoResize);
+
+  if (textarea.value) {
+    autoResize();
+  }
+
+  const generateBtn = document.getElementById("generate-btn");
+  const generatedImagesContainer = document.getElementById("generated-images");
+
+  function updateGenerateButtonState() {
+    if (textarea.value.trim().length > 0) {
+      generateBtn.classList.remove("generate-inactive");
+      generateBtn.classList.add("generate-active");
+    } else {
+      generateBtn.classList.add("generate-inactive");
+      generateBtn.classList.remove("generate-active");
+    }
+  }
+
+  updateGenerateButtonState();
+
+  textarea.addEventListener("input", updateGenerateButtonState);
+
+  const aspectRatios = {
+    "2:3": { width: 688, height: 1024, class: "aspect-[2/3]" },
+    "1:1": { width: 1024, height: 1024, class: "aspect-square" },
+    "9:16": { width: 576, height: 1024, class: "aspect-[9/16]" },
+    "4:3": { width: 1024, height: 768, class: "aspect-[4/3]" },
+    custom: { width: 1024, height: 1024, class: "aspect-square" },
+  };
+
+  const imageSettings = {
+    ratio: "1:1",
+    dimensions: { width: 1024, height: 1024, class: "aspect-square" },
+    quantity: 2,
+    inferenceSteps: 40,
+    guidanceScale: 4.5,
+    seed: 42,
+    useRandomSeed: true,
+    usingCustomDimensions: false,
+  };
+
+  function updateDimensionsDisplay() {
+    const dimensionsDisplay = document.querySelector(
+      ".settings-box-header .text-xs.text-gray-400",
+    );
+    if (dimensionsDisplay) {
+      dimensionsDisplay.textContent = `${imageSettings.dimensions.width} × ${imageSettings.dimensions.height}`;
+    }
+  }
+
+  const sections = {
+    aspectRatio: document.querySelector(".settings-box .grid.grid-cols-5"),
+    imageQuantity: document.querySelector(".settings-box .grid.grid-cols-4"),
+    prompt: document.querySelector(".prompt-container"),
+    inputs: document.querySelectorAll("input.interactive-element"),
+    others: document.querySelectorAll(
+      ".settings-box.interactive-element, #resetBtn",
+    ),
+  };
+
+  function setActiveInSection(element, section) {
+    if (
+      section === sections.prompt ||
+      Array.from(sections.others).includes(element)
+    ) {
+      element.classList.add("active");
+      return;
     }
 
-    textarea.addEventListener("input", autoResize)
+    if (
+      section === sections.aspectRatio ||
+      section === sections.imageQuantity
+    ) {
+      const siblings = section.querySelectorAll(".interactive-element");
+      siblings.forEach((sibling) => {
+        sibling.classList.remove("active");
+      });
 
-    if (textarea.value) {
-        autoResize()
-    }
+      if (section === sections.aspectRatio) {
+        const ratioText = element.querySelector(".text-xs")?.textContent;
 
-    const generateBtn = document.getElementById("generate-btn")
-    const generatedImagesContainer = document.getElementById("generated-images")
+        if (ratioText === "More") {
+          const customDimensionsContainer = document.getElementById(
+            "customDimensionsContainer",
+          );
+          if (customDimensionsContainer) {
+            customDimensionsContainer.classList.remove("hidden");
+            imageSettings.usingCustomDimensions = true;
 
-    function updateGenerateButtonState() {
-        if (textarea.value.trim().length > 0) {
-            generateBtn.classList.remove("generate-inactive");
-            generateBtn.classList.add("generate-active");
-        } else {
-            generateBtn.classList.add("generate-inactive");
-            generateBtn.classList.remove("generate-active");
-        }
-    }
+            const widthSlider = document.getElementById("widthSlider");
+            const heightSlider = document.getElementById("heightSlider");
+            const widthInput = document.getElementById("widthInput");
+            const heightInput = document.getElementById("heightInput");
 
-    updateGenerateButtonState();
+            if (widthSlider && heightSlider) {
+              widthSlider.value = imageSettings.dimensions.width;
+              heightSlider.value = imageSettings.dimensions.height;
+              widthInput.value = imageSettings.dimensions.width;
+              heightInput.value = imageSettings.dimensions.height;
 
-    textarea.addEventListener("input", updateGenerateButtonState);
-
-    const aspectRatios = {
-        "2:3": { width: 688, height: 1024, class: "aspect-[2/3]" },
-        "1:1": { width: 1024, height: 1024, class: "aspect-square" },
-        "9:16": { width: 576, height: 1024, class: "aspect-[9/16]" },
-        "4:3": { width: 1024, height: 768, class: "aspect-[4/3]" },
-        "custom": { width: 1024, height: 1024, class: "aspect-square" }
-    };
-
-    const imageSettings = {
-        ratio: "1:1",
-        dimensions: { width: 1024, height: 1024, class: "aspect-square" },
-        quantity: 2,
-        inferenceSteps: 40,
-        guidanceScale: 4.5,
-        seed: 42,
-        useRandomSeed: true,
-        usingCustomDimensions: false
-    };
-
-    function updateDimensionsDisplay() {
-        const dimensionsDisplay = document.querySelector('.settings-box-header .text-xs.text-gray-400');
-        if (dimensionsDisplay) {
-            dimensionsDisplay.textContent = `${imageSettings.dimensions.width} × ${imageSettings.dimensions.height}`;
-        }
-    }
-
-    const sections = {
-        aspectRatio: document.querySelector('.settings-box .grid.grid-cols-5'),
-        imageQuantity: document.querySelector('.settings-box .grid.grid-cols-4'),
-        prompt: document.querySelector('.prompt-container'),
-        inputs: document.querySelectorAll('input.interactive-element'),
-        others: document.querySelectorAll('.settings-box.interactive-element, #resetBtn')
-    };
-
-    function setActiveInSection(element, section) {
-        if (section === sections.prompt || Array.from(sections.others).includes(element)) {
-            element.classList.add('active');
-            return;
-        }
-
-        if (section === sections.aspectRatio || section === sections.imageQuantity) {
-            const siblings = section.querySelectorAll('.interactive-element');
-            siblings.forEach(sibling => {
-                sibling.classList.remove('active');
-            });
-
-            if (section === sections.aspectRatio) {
-                const ratioText = element.querySelector('.text-xs')?.textContent;
-
-                if (ratioText === "More") {
-                    const customDimensionsContainer = document.getElementById('customDimensionsContainer');
-                    if (customDimensionsContainer) {
-                        customDimensionsContainer.classList.remove('hidden');
-                        imageSettings.usingCustomDimensions = true;
-
-                        const widthSlider = document.getElementById('widthSlider');
-                        const heightSlider = document.getElementById('heightSlider');
-                        const widthInput = document.getElementById('widthInput');
-                        const heightInput = document.getElementById('heightInput');
-
-                        if (widthSlider && heightSlider) {
-                            widthSlider.value = imageSettings.dimensions.width;
-                            heightSlider.value = imageSettings.dimensions.height;
-                            widthInput.value = imageSettings.dimensions.width;
-                            heightInput.value = imageSettings.dimensions.height;
-
-                            updateSliderTrack(widthSlider);
-                            updateSliderTrack(heightSlider);
-                        }
-                    }
-                } else if (ratioText && aspectRatios[ratioText]) {
-                    const customDimensionsContainer = document.getElementById('customDimensionsContainer');
-                    if (customDimensionsContainer) {
-                        customDimensionsContainer.classList.add('hidden');
-                        imageSettings.usingCustomDimensions = false;
-                    }
-
-                    imageSettings.ratio = ratioText;
-                    imageSettings.dimensions = aspectRatios[ratioText];
-                    updateDimensionsDisplay();
-                }
-            } else if (section === sections.imageQuantity) {
-                imageSettings.quantity = parseInt(element.textContent) || 1;
+              updateSliderTrack(widthSlider);
+              updateSliderTrack(heightSlider);
             }
-        }
+          }
+        } else if (ratioText && aspectRatios[ratioText]) {
+          const customDimensionsContainer = document.getElementById(
+            "customDimensionsContainer",
+          );
+          if (customDimensionsContainer) {
+            customDimensionsContainer.classList.add("hidden");
+            imageSettings.usingCustomDimensions = false;
+          }
 
-        element.classList.add('active');
+          imageSettings.ratio = ratioText;
+          imageSettings.dimensions = aspectRatios[ratioText];
+          updateDimensionsDisplay();
+        }
+      } else if (section === sections.imageQuantity) {
+        imageSettings.quantity = parseInt(element.textContent) || 1;
+      }
     }
 
-    function updateCustomDimensions() {
-        const width = parseInt(document.getElementById('widthInput').value);
-        const height = parseInt(document.getElementById('heightInput').value);
+    element.classList.add("active");
+  }
 
-        const validWidth = Math.min(Math.max(width, 256), 2048);
-        const validHeight = Math.min(Math.max(height, 256), 2048);
+  function updateCustomDimensions() {
+    const width = parseInt(document.getElementById("widthInput").value);
+    const height = parseInt(document.getElementById("heightInput").value);
 
-        imageSettings.dimensions.width = validWidth;
-        imageSettings.dimensions.height = validHeight;
-        imageSettings.ratio = "custom";
+    const validWidth = Math.min(Math.max(width, 256), 2048);
+    const validHeight = Math.min(Math.max(height, 256), 2048);
 
-        const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
-        const divisor = gcd(validWidth, validHeight);
-        const aspectW = validWidth / divisor;
-        const aspectH = validHeight / divisor;
+    imageSettings.dimensions.width = validWidth;
+    imageSettings.dimensions.height = validHeight;
+    imageSettings.ratio = "custom";
 
-        if (Math.abs(aspectW/aspectH - 1) < 0.01) {
-            imageSettings.dimensions.class = "aspect-square";
-        } else if (Math.abs(aspectW/aspectH - 4/3) < 0.01) {
-            imageSettings.dimensions.class = "aspect-[4/3]";
-        } else if (Math.abs(aspectW/aspectH - 2/3) < 0.01) {
-            imageSettings.dimensions.class = "aspect-[2/3]";
-        } else if (Math.abs(aspectW/aspectH - 9/16) < 0.01) {
-            imageSettings.dimensions.class = "aspect-[9/16]";
-        } else {
-            imageSettings.dimensions.class = `aspect-[${aspectW}/${aspectH}]`;
-        }
+    const gcd = (a, b) => (b === 0 ? a : gcd(b, a % b));
+    const divisor = gcd(validWidth, validHeight);
+    const aspectW = validWidth / divisor;
+    const aspectH = validHeight / divisor;
 
-        updateDimensionsDisplay();
+    if (Math.abs(aspectW / aspectH - 1) < 0.01) {
+      imageSettings.dimensions.class = "aspect-square";
+    } else if (Math.abs(aspectW / aspectH - 4 / 3) < 0.01) {
+      imageSettings.dimensions.class = "aspect-[4/3]";
+    } else if (Math.abs(aspectW / aspectH - 2 / 3) < 0.01) {
+      imageSettings.dimensions.class = "aspect-[2/3]";
+    } else if (Math.abs(aspectW / aspectH - 9 / 16) < 0.01) {
+      imageSettings.dimensions.class = "aspect-[9/16]";
+    } else {
+      imageSettings.dimensions.class = `aspect-[${aspectW}/${aspectH}]`;
     }
-
-    document.addEventListener('click', (e) => {
-        if (sections.prompt) {
-            sections.prompt.querySelector('.interactive-element')?.classList.remove('active');
-        }
-
-        sections.inputs.forEach(input => input.classList.remove('active'));
-
-        const dropdowns = document.querySelectorAll('.dropdown-menu.active');
-        if (dropdowns.length && !e.target.closest('.dropdown-menu') && !e.target.closest('.btn-dropdown')) {
-            dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
-        }
-    });
-    const defaultAspectRatio = sections.aspectRatio?.querySelector('.btn:nth-child(2)');
-    const defaultQuantity = sections.imageQuantity?.querySelector('.btn:nth-child(2)');
-
-    if (defaultAspectRatio) defaultAspectRatio.classList.add('active');
-    if (defaultQuantity) defaultQuantity.classList.add('active');
 
     updateDimensionsDisplay();
+  }
 
-    document.querySelectorAll('.interactive-element').forEach(element => {
-        element.addEventListener('click', (e) => {
-            e.stopPropagation();
+  document.addEventListener("click", (e) => {
+    if (sections.prompt) {
+      sections.prompt
+        .querySelector(".interactive-element")
+        ?.classList.remove("active");
+    }
 
-            let targetSection = null;
-            let targetElement = e.target.closest('.interactive-element');
+    sections.inputs.forEach((input) => input.classList.remove("active"));
 
-            if (!targetElement) return;
+    const dropdowns = document.querySelectorAll(".dropdown-menu.active");
+    if (
+      dropdowns.length &&
+      !e.target.closest(".dropdown-menu") &&
+      !e.target.closest(".btn-dropdown")
+    ) {
+      dropdowns.forEach((dropdown) => dropdown.classList.remove("active"));
+    }
+  });
+  const defaultAspectRatio =
+    sections.aspectRatio?.querySelector(".btn:nth-child(2)");
+  const defaultQuantity =
+    sections.imageQuantity?.querySelector(".btn:nth-child(2)");
 
-            if (sections.aspectRatio?.contains(targetElement)) {
-                targetSection = sections.aspectRatio;
-            } else if (sections.imageQuantity?.contains(targetElement)) {
-                targetSection = sections.imageQuantity;
-            } else if (sections.prompt?.contains(targetElement)) {
-                targetSection = sections.prompt;
-                targetElement = sections.prompt.querySelector('.interactive-element');
-            } else if (Array.from(sections.inputs).includes(targetElement)) {
-            } else {
-                Array.from(sections.others).forEach(other => {
-                    if (other.contains(targetElement) || other === targetElement) {
-                        targetSection = sections.others;
-                    }
-                });
-            }
+  if (defaultAspectRatio) defaultAspectRatio.classList.add("active");
+  if (defaultQuantity) defaultQuantity.classList.add("active");
 
-            if (targetSection) {
-                setActiveInSection(targetElement, targetSection);
-            } else {
-                targetElement.classList.add('active');
-            }
+  updateDimensionsDisplay();
+
+  document.querySelectorAll(".interactive-element").forEach((element) => {
+    element.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      let targetSection = null;
+      let targetElement = e.target.closest(".interactive-element");
+
+      if (!targetElement) return;
+
+      if (sections.aspectRatio?.contains(targetElement)) {
+        targetSection = sections.aspectRatio;
+      } else if (sections.imageQuantity?.contains(targetElement)) {
+        targetSection = sections.imageQuantity;
+      } else if (sections.prompt?.contains(targetElement)) {
+        targetSection = sections.prompt;
+        targetElement = sections.prompt.querySelector(".interactive-element");
+      } else if (Array.from(sections.inputs).includes(targetElement)) {
+      } else {
+        Array.from(sections.others).forEach((other) => {
+          if (other.contains(targetElement) || other === targetElement) {
+            targetSection = sections.others;
+          }
         });
+      }
+
+      if (targetSection) {
+        setActiveInSection(targetElement, targetSection);
+      } else {
+        targetElement.classList.add("active");
+      }
+    });
+  });
+
+  const widthSlider = document.getElementById("widthSlider");
+  const heightSlider = document.getElementById("heightSlider");
+  const widthInput = document.getElementById("widthInput");
+  const heightInput = document.getElementById("heightInput");
+
+  if (widthSlider && heightSlider) {
+    updateSliderTrack(widthSlider);
+    updateSliderTrack(heightSlider);
+
+    widthSlider.addEventListener("input", () => {
+      widthInput.value = widthSlider.value;
+      updateSliderTrack(widthSlider);
+      updateCustomDimensions();
     });
 
-    const widthSlider = document.getElementById('widthSlider');
-    const heightSlider = document.getElementById('heightSlider');
-    const widthInput = document.getElementById('widthInput');
-    const heightInput = document.getElementById('heightInput');
-
-    if (widthSlider && heightSlider) {
+    widthInput.addEventListener("input", () => {
+      const value = parseInt(widthInput.value);
+      if (!isNaN(value) && value >= 256 && value <= 2048) {
+        widthSlider.value = value;
         updateSliderTrack(widthSlider);
+        updateCustomDimensions();
+      }
+    });
+
+    widthInput.addEventListener("change", () => {
+      let value = parseInt(widthInput.value);
+      if (isNaN(value)) value = 1024;
+      value = Math.min(Math.max(value, 256), 2048);
+
+      widthInput.value = value;
+      widthSlider.value = value;
+      updateSliderTrack(widthSlider);
+      updateCustomDimensions();
+    });
+
+    heightSlider.addEventListener("input", () => {
+      heightInput.value = heightSlider.value;
+      updateSliderTrack(heightSlider);
+      updateCustomDimensions();
+    });
+
+    heightInput.addEventListener("input", () => {
+      const value = parseInt(heightInput.value);
+      if (!isNaN(value) && value >= 256 && value <= 2048) {
+        heightSlider.value = value;
         updateSliderTrack(heightSlider);
+        updateCustomDimensions();
+      }
+    });
 
-        widthSlider.addEventListener('input', () => {
-            widthInput.value = widthSlider.value;
-            updateSliderTrack(widthSlider);
-            updateCustomDimensions();
-        });
+    heightInput.addEventListener("change", () => {
+      let value = parseInt(heightInput.value);
+      if (isNaN(value)) value = 1024;
+      value = Math.min(Math.max(value, 256), 2048);
 
-        widthInput.addEventListener('input', () => {
-            const value = parseInt(widthInput.value);
-            if (!isNaN(value) && value >= 256 && value <= 2048) {
-                widthSlider.value = value;
-                updateSliderTrack(widthSlider);
-                updateCustomDimensions();
-            }
-        });
+      heightInput.value = value;
+      heightSlider.value = value;
+      updateSliderTrack(heightSlider);
+      updateCustomDimensions();
+    });
+  }
 
-        widthInput.addEventListener('change', () => {
-            let value = parseInt(widthInput.value);
-            if (isNaN(value)) value = 1024;
-            value = Math.min(Math.max(value, 256), 2048);
+  function generateRandomSeed() {
+    return Math.floor(Math.random() * 1000000);
+  }
 
-            widthInput.value = value;
-            widthSlider.value = value;
-            updateSliderTrack(widthSlider);
-            updateCustomDimensions();
-        });
+  const defaultImageUrl = "/static/images/undefined_image.png";
 
-        heightSlider.addEventListener('input', () => {
-            heightInput.value = heightSlider.value;
-            updateSliderTrack(heightSlider);
-            updateCustomDimensions();
-        });
+  let generationCount = 0;
 
-        heightInput.addEventListener('input', () => {
-            const value = parseInt(heightInput.value);
-            if (!isNaN(value) && value >= 256 && value <= 2048) {
-                heightSlider.value = value;
-                updateSliderTrack(heightSlider);
-                updateCustomDimensions();
-            }
-        });
+  function getCurrentSettings() {
+    return {
+      prompt: textarea.value,
+      ratio: imageSettings.ratio,
+      dimensions: { ...imageSettings.dimensions },
+      quantity: imageSettings.quantity,
+      inferenceSteps: parseInt(
+        document.getElementById("inferenceStepsInput").value,
+      ),
+      guidanceScale: parseFloat(
+        document.getElementById("guidanceScaleInput").value,
+      ),
+      seed: document.getElementById("seedInput").value,
+      useRandomSeed: document.getElementById("randomSeedCheckbox").checked,
+      usingCustomDimensions: imageSettings.usingCustomDimensions,
+    };
+  }
 
-        heightInput.addEventListener('change', () => {
-            let value = parseInt(heightInput.value);
-            if (isNaN(value)) value = 1024;
-            value = Math.min(Math.max(value, 256), 2048);
+  function applySettings(settings) {
+    textarea.value = settings.prompt;
+    autoResize();
+    updateGenerateButtonState();
 
-            heightInput.value = value;
-            heightSlider.value = value;
-            updateSliderTrack(heightSlider);
-            updateCustomDimensions();
-        });
+    if (settings.usingCustomDimensions) {
+      const moreButton =
+        sections.aspectRatio.querySelector(".btn:nth-child(5)");
+      if (moreButton) {
+        setActiveInSection(moreButton, sections.aspectRatio);
+
+        const widthSlider = document.getElementById("widthSlider");
+        const heightSlider = document.getElementById("heightSlider");
+        const widthInput = document.getElementById("widthInput");
+        const heightInput = document.getElementById("heightInput");
+
+        if (widthSlider && heightSlider) {
+          widthSlider.value = settings.dimensions.width;
+          heightSlider.value = settings.dimensions.height;
+          widthInput.value = settings.dimensions.width;
+          heightInput.value = settings.dimensions.height;
+
+          updateSliderTrack(widthSlider);
+          updateSliderTrack(heightSlider);
+          updateCustomDimensions();
+        }
+      }
+    } else if (settings.ratio) {
+      const ratioButtons = sections.aspectRatio.querySelectorAll(
+        ".interactive-element",
+      );
+      ratioButtons.forEach((button) => {
+        const ratioText = button.querySelector(".text-xs")?.textContent;
+        if (ratioText === settings.ratio) {
+          setActiveInSection(button, sections.aspectRatio);
+          imageSettings.ratio = settings.ratio;
+          imageSettings.dimensions = aspectRatios[settings.ratio];
+          updateDimensionsDisplay();
+        }
+      });
     }
 
-    function generateRandomSeed() {
-        return Math.floor(Math.random() * 1000000);
+    if (settings.quantity) {
+      const quantityButtons = sections.imageQuantity.querySelectorAll(
+        ".interactive-element",
+      );
+      quantityButtons.forEach((button) => {
+        if (parseInt(button.textContent) === settings.quantity) {
+          setActiveInSection(button, sections.imageQuantity);
+          imageSettings.quantity = settings.quantity;
+        }
+      });
     }
 
-    const defaultImageUrl = "undefined_image.png";
-
-    let generationCount = 0;
-
-    function getCurrentSettings() {
-        return {
-            prompt: textarea.value,
-            ratio: imageSettings.ratio,
-            dimensions: { ...imageSettings.dimensions },
-            quantity: imageSettings.quantity,
-            inferenceSteps: parseInt(document.getElementById('inferenceStepsInput').value),
-            guidanceScale: parseFloat(document.getElementById('guidanceScaleInput').value),
-            seed: document.getElementById('seedInput').value,
-            useRandomSeed: document.getElementById('randomSeedCheckbox').checked,
-            usingCustomDimensions: imageSettings.usingCustomDimensions
-        };
+    if (settings.inferenceSteps) {
+      const inferenceStepsSlider = document.getElementById(
+        "inferenceStepsSlider",
+      );
+      const inferenceStepsInput = document.getElementById(
+        "inferenceStepsInput",
+      );
+      inferenceStepsSlider.value = settings.inferenceSteps;
+      inferenceStepsInput.value = settings.inferenceSteps;
+      updateSliderTrack(inferenceStepsSlider);
     }
 
-    function applySettings(settings) {
-        textarea.value = settings.prompt;
-        autoResize();
-        updateGenerateButtonState();
-
-        if (settings.usingCustomDimensions) {
-            const moreButton = sections.aspectRatio.querySelector('.btn:nth-child(5)');
-            if (moreButton) {
-                setActiveInSection(moreButton, sections.aspectRatio);
-
-                const widthSlider = document.getElementById('widthSlider');
-                const heightSlider = document.getElementById('heightSlider');
-                const widthInput = document.getElementById('widthInput');
-                const heightInput = document.getElementById('heightInput');
-
-                if (widthSlider && heightSlider) {
-                    widthSlider.value = settings.dimensions.width;
-                    heightSlider.value = settings.dimensions.height;
-                    widthInput.value = settings.dimensions.width;
-                    heightInput.value = settings.dimensions.height;
-
-                    updateSliderTrack(widthSlider);
-                    updateSliderTrack(heightSlider);
-                    updateCustomDimensions();
-                }
-            }
-        } else if (settings.ratio) {
-            const ratioButtons = sections.aspectRatio.querySelectorAll('.interactive-element');
-            ratioButtons.forEach(button => {
-                const ratioText = button.querySelector('.text-xs')?.textContent;
-                if (ratioText === settings.ratio) {
-                    setActiveInSection(button, sections.aspectRatio);
-                    imageSettings.ratio = settings.ratio;
-                    imageSettings.dimensions = aspectRatios[settings.ratio];
-                    updateDimensionsDisplay();
-                }
-            });
-        }
-
-        if (settings.quantity) {
-            const quantityButtons = sections.imageQuantity.querySelectorAll('.interactive-element');
-            quantityButtons.forEach(button => {
-                if (parseInt(button.textContent) === settings.quantity) {
-                    setActiveInSection(button, sections.imageQuantity);
-                    imageSettings.quantity = settings.quantity;
-                }
-            });
-        }
-
-        if (settings.inferenceSteps) {
-            const inferenceStepsSlider = document.getElementById('inferenceStepsSlider');
-            const inferenceStepsInput = document.getElementById('inferenceStepsInput');
-            inferenceStepsSlider.value = settings.inferenceSteps;
-            inferenceStepsInput.value = settings.inferenceSteps;
-            updateSliderTrack(inferenceStepsSlider);
-        }
-
-        if (settings.guidanceScale) {
-            const guidanceScaleSlider = document.getElementById('guidanceScaleSlider');
-            const guidanceScaleInput = document.getElementById('guidanceScaleInput');
-            guidanceScaleSlider.value = settings.guidanceScale;
-            guidanceScaleInput.value = settings.guidanceScale;
-            updateSliderTrack(guidanceScaleSlider);
-        }
-
-        if (settings.seed) {
-            const seedInput = document.getElementById('seedInput');
-            seedInput.value = settings.seed;
-        }
-
-        if (settings.useRandomSeed !== undefined) {
-            const randomSeedCheckbox = document.getElementById('randomSeedCheckbox');
-            randomSeedCheckbox.checked = settings.useRandomSeed;
-
-            if (settings.useRandomSeed) {
-                seedInput.disabled = true;
-                seedInput.classList.add('opacity-50');
-            } else {
-                seedInput.disabled = false;
-                seedInput.classList.remove('opacity-50');
-            }
-        }
+    if (settings.guidanceScale) {
+      const guidanceScaleSlider = document.getElementById(
+        "guidanceScaleSlider",
+      );
+      const guidanceScaleInput = document.getElementById("guidanceScaleInput");
+      guidanceScaleSlider.value = settings.guidanceScale;
+      guidanceScaleInput.value = settings.guidanceScale;
+      updateSliderTrack(guidanceScaleSlider);
     }
 
-    function setupImageActions() {
-        const actions = generatedImagesContainer.querySelectorAll('.image-actions');
+    if (settings.seed) {
+      const seedInput = document.getElementById("seedInput");
+      seedInput.value = settings.seed;
+    }
 
-        actions.forEach(actionContainer => {
-            const entry = actionContainer.closest('.generation-entry');
-            const prompt = entry.dataset.prompt;
-            const settings = JSON.parse(entry.dataset.settings);
+    if (settings.useRandomSeed !== undefined) {
+      const randomSeedCheckbox = document.getElementById("randomSeedCheckbox");
+      randomSeedCheckbox.checked = settings.useRandomSeed;
 
-            const topArrowBtn = actionContainer.querySelector('.btn-top-arrow');
-            if (topArrowBtn) {
-                topArrowBtn.addEventListener('click', () => {
-                    textarea.value = prompt;
-                    autoResize();
-                    updateGenerateButtonState();
+      if (settings.useRandomSeed) {
+        seedInput.disabled = true;
+        seedInput.classList.add("opacity-50");
+      } else {
+        seedInput.disabled = false;
+        seedInput.classList.remove("opacity-50");
+      }
+    }
+  }
 
-                    textarea.scrollIntoView({ behavior: 'smooth' });
-                    setTimeout(() => textarea.focus(), 500);
-                });
-            }
+  function setupImageActions() {
+    const actions = generatedImagesContainer.querySelectorAll(".image-actions");
 
-            const retryBtn = actionContainer.querySelector('.btn-retry');
-            if (retryBtn) {
-                retryBtn.addEventListener('click', () => {
-                    applySettings(settings);
+    actions.forEach((actionContainer) => {
+      const entry = actionContainer.closest(".generation-entry");
+      const prompt = entry.dataset.prompt;
+      const settings = JSON.parse(entry.dataset.settings);
 
-                    generateBtn.scrollIntoView({ behavior: 'smooth' });
-                    setTimeout(() => generateBtn.click(), 500);
-                });
-            }
+      const topArrowBtn = actionContainer.querySelector(".btn-top-arrow");
+      if (topArrowBtn) {
+        topArrowBtn.addEventListener("click", () => {
+          textarea.value = prompt;
+          autoResize();
+          updateGenerateButtonState();
 
-            const dropdownBtn = actionContainer.querySelector('.btn-dropdown');
-            if (dropdownBtn) {
-                dropdownBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    const dropdown = dropdownBtn.nextElementSibling;
-                    dropdown.classList.toggle('active');
-
-                    const allDropdowns = generatedImagesContainer.querySelectorAll('.dropdown-menu');
-                    allDropdowns.forEach(d => {
-                        if (d !== dropdown) d.classList.remove('active');
-                    });
-                });
-
-                const downloadBtn = actionContainer.querySelector('.btn-download');
-                if (downloadBtn) {
-                    downloadBtn.addEventListener('click', () => {
-                        alert('Downloading all images from this generation');
-                        dropdownBtn.nextElementSibling.classList.remove('active');
-                    });
-                }
-
-                const deleteBtn = actionContainer.querySelector('.btn-delete');
-                if (deleteBtn) {
-                    deleteBtn.addEventListener('click', () => {
-                        entry.nextElementSibling?.remove();
-                        entry.remove();
-                    });
-                }
-            }
+          textarea.scrollIntoView({ behavior: "smooth" });
+          setTimeout(() => textarea.focus(), 500);
         });
+      }
+
+      const retryBtn = actionContainer.querySelector(".btn-retry");
+      if (retryBtn) {
+        retryBtn.addEventListener("click", () => {
+          applySettings(settings);
+
+          generateBtn.scrollIntoView({ behavior: "smooth" });
+          setTimeout(() => generateBtn.click(), 500);
+        });
+      }
+
+      const dropdownBtn = actionContainer.querySelector(".btn-dropdown");
+      if (dropdownBtn) {
+        dropdownBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const dropdown = dropdownBtn.nextElementSibling;
+          dropdown.classList.toggle("active");
+
+          const allDropdowns =
+            generatedImagesContainer.querySelectorAll(".dropdown-menu");
+          allDropdowns.forEach((d) => {
+            if (d !== dropdown) d.classList.remove("active");
+          });
+        });
+
+        const downloadBtn = actionContainer.querySelector(".btn-download");
+        if (downloadBtn) {
+          downloadBtn.addEventListener("click", () => {
+            alert("Downloading all images from this generation");
+            dropdownBtn.nextElementSibling.classList.remove("active");
+          });
+        }
+
+        const deleteBtn = actionContainer.querySelector(".btn-delete");
+        if (deleteBtn) {
+          deleteBtn.addEventListener("click", () => {
+            entry.nextElementSibling?.remove();
+            entry.remove();
+          });
+        }
+      }
+    });
+  }
+
+  generateBtn.addEventListener("click", () => {
+    if (
+      !textarea.value.trim() &&
+      generateBtn.classList.contains("generate-inactive")
+    ) {
+      return;
     }
 
-    generateBtn.addEventListener("click", () => {
-        if (!textarea.value.trim() && generateBtn.classList.contains('generate-inactive')) {
-            return;
-        }
+    const randomSeedCheckbox = document.getElementById("randomSeedCheckbox");
+    const seedInput = document.getElementById("seedInput");
 
-        const randomSeedCheckbox = document.getElementById('randomSeedCheckbox');
-        const seedInput = document.getElementById('seedInput');
+    if (randomSeedCheckbox.checked) {
+      seedInput.value = generateRandomSeed();
+    }
 
-        if (randomSeedCheckbox.checked) {
-            seedInput.value = generateRandomSeed();
-        }
+    const promptText = textarea.value;
 
-        const promptText = textarea.value;
+    const currentSettings = getCurrentSettings();
 
-        const currentSettings = getCurrentSettings();
+    const generationEntry = document.createElement("div");
+    generationEntry.className = "generation-entry";
+    generationEntry.dataset.prompt = promptText;
+    generationEntry.dataset.settings = JSON.stringify(currentSettings);
 
-        const generationEntry = document.createElement("div");
-        generationEntry.className = "generation-entry";
-        generationEntry.dataset.prompt = promptText;
-        generationEntry.dataset.settings = JSON.stringify(currentSettings);
+    generationCount++;
 
-        generationCount++;
+    const response = fetch("/text-to-image/generate/", {
+      method: "POST",
+    }).then((res) => JSON.stringify(res));
+    console.log(response);
 
-        const imagesHtml = Array(imageSettings.quantity).fill(0).map(() => `
+    const imagesHtml = Array(imageSettings.quantity)
+      .fill(0)
+      .map(
+        () => `
           <div class="relative group rounded-lg overflow-hidden ${imageSettings.dimensions.class}" style="max-width: 256px;">
             <img src="${defaultImageUrl}" alt="Generated image" class="w-full h-full object-cover">
             <div class="absolute bottom-2 right-2 flex flex-wrap gap-1">
@@ -477,9 +526,11 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
             </div>
           </div>
-        `).join('');
+        `,
+      )
+      .join("");
 
-        generationEntry.innerHTML = `
+    generationEntry.innerHTML = `
         <div class="flex flex-wrap items-center gap-2 mb-2">
           <div class="bg-gray-800/50 text-xs px-2 py-1 rounded">Txt2Img</div>
           <div class="text-gray-300 truncate max-w-full sm:max-w-xs">${promptText}</div>
@@ -520,121 +571,128 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="grid-images">
           ${imagesHtml}
         </div>
-      `
+      `;
 
-        if (generatedImagesContainer.firstChild) {
-            generatedImagesContainer.insertBefore(generationEntry, generatedImagesContainer.firstChild)
-        } else {
-            generatedImagesContainer.appendChild(generationEntry)
-        }
-
-        const separator = document.createElement("hr")
-        separator.className = "border-gray-800 my-6"
-        generatedImagesContainer.insertBefore(separator, generationEntry.nextSibling)
-
-        setupImageActions();
-
-        autoResize()
-    });
-
-    function updateSliderTrack(slider) {
-        const min = parseFloat(slider.min);
-        const max = parseFloat(slider.max);
-        const val = parseFloat(slider.value);
-        const percentage = ((val - min) / (max - min)) * 100;
-        slider.style.background =
-            `linear-gradient(to right, rgb(255, 255, 255) 0%, #3b82f6 ${percentage}%, #27272a ${percentage}%, #27272a 100%)`;
+    if (generatedImagesContainer.firstChild) {
+      generatedImagesContainer.insertBefore(
+        generationEntry,
+        generatedImagesContainer.firstChild,
+      );
+    } else {
+      generatedImagesContainer.appendChild(generationEntry);
     }
 
-    const sliders = document.querySelectorAll('input[type="range"]');
-    sliders.forEach(slider => {
-        const inputId = slider.id.replace('Slider', 'Input');
-        const numberInput = document.getElementById(inputId);
+    const separator = document.createElement("hr");
+    separator.className = "border-gray-800 my-6";
+    generatedImagesContainer.insertBefore(
+      separator,
+      generationEntry.nextSibling,
+    );
 
-        if (numberInput) {
-            updateSliderTrack(slider);
+    setupImageActions();
 
-            slider.addEventListener('input', () => {
-                numberInput.value = slider.value;
-                updateSliderTrack(slider);
-            });
+    autoResize();
+  });
 
-            numberInput.addEventListener('input', () => {
-                slider.value = numberInput.value;
-                updateSliderTrack(slider);
-            });
-        }
-    });
+  function updateSliderTrack(slider) {
+    const min = parseFloat(slider.min);
+    const max = parseFloat(slider.max);
+    const val = parseFloat(slider.value);
+    const percentage = ((val - min) / (max - min)) * 100;
+    slider.style.background = `linear-gradient(to right, rgb(255, 255, 255) 0%, #3b82f6 ${percentage}%, #27272a ${percentage}%, #27272a 100%)`;
+  }
 
-    const diceBtn = document.getElementById('diceBtn');
-    const seedInput = document.getElementById('seedInput');
-    const randomSeedCheckbox = document.getElementById('randomSeedCheckbox');
+  const sliders = document.querySelectorAll('input[type="range"]');
+  sliders.forEach((slider) => {
+    const inputId = slider.id.replace("Slider", "Input");
+    const numberInput = document.getElementById(inputId);
 
-    diceBtn.addEventListener('click', () => {
-        seedInput.value = generateRandomSeed();
-    });
+    if (numberInput) {
+      updateSliderTrack(slider);
 
+      slider.addEventListener("input", () => {
+        numberInput.value = slider.value;
+        updateSliderTrack(slider);
+      });
+
+      numberInput.addEventListener("input", () => {
+        slider.value = numberInput.value;
+        updateSliderTrack(slider);
+      });
+    }
+  });
+
+  const diceBtn = document.getElementById("diceBtn");
+  const seedInput = document.getElementById("seedInput");
+  const randomSeedCheckbox = document.getElementById("randomSeedCheckbox");
+
+  diceBtn.addEventListener("click", () => {
+    seedInput.value = generateRandomSeed();
+  });
+
+  randomSeedCheckbox.checked = true;
+  seedInput.disabled = true;
+  seedInput.classList.add("opacity-50");
+  seedInput.value = generateRandomSeed();
+
+  randomSeedCheckbox.addEventListener("change", () => {
+    if (randomSeedCheckbox.checked) {
+      seedInput.disabled = true;
+      seedInput.classList.add("opacity-50");
+      seedInput.value = generateRandomSeed();
+    } else {
+      seedInput.disabled = false;
+      seedInput.classList.remove("opacity-50");
+    }
+  });
+
+  const resetBtn = document.getElementById("resetBtn");
+  resetBtn.addEventListener("click", () => {
+    const inferenceStepsSlider = document.getElementById(
+      "inferenceStepsSlider",
+    );
+    const inferenceStepsInput = document.getElementById("inferenceStepsInput");
+    inferenceStepsSlider.value = 40;
+    inferenceStepsInput.value = 40;
+    updateSliderTrack(inferenceStepsSlider);
+
+    const guidanceScaleSlider = document.getElementById("guidanceScaleSlider");
+    const guidanceScaleInput = document.getElementById("guidanceScaleInput");
+    guidanceScaleSlider.value = 4.5;
+    guidanceScaleInput.value = 4.5;
+    updateSliderTrack(guidanceScaleSlider);
+
+    seedInput.value = generateRandomSeed();
     randomSeedCheckbox.checked = true;
     seedInput.disabled = true;
-    seedInput.classList.add('opacity-50');
-    seedInput.value = generateRandomSeed();
+    seedInput.classList.add("opacity-50");
+  });
 
-    randomSeedCheckbox.addEventListener('change', () => {
-        if (randomSeedCheckbox.checked) {
-            seedInput.disabled = true;
-            seedInput.classList.add('opacity-50');
-            seedInput.value = generateRandomSeed();
-        } else {
-            seedInput.disabled = false;
-            seedInput.classList.remove('opacity-50');
-        }
-    });
+  const configHeader = document.getElementById("configHeader");
+  const arrow = document.getElementById("arrow");
+  const configContent = document.getElementById("configContent");
 
-    const resetBtn = document.getElementById('resetBtn');
-    resetBtn.addEventListener('click', () => {
-        const inferenceStepsSlider = document.getElementById('inferenceStepsSlider');
-        const inferenceStepsInput = document.getElementById('inferenceStepsInput');
-        inferenceStepsSlider.value = 40;
-        inferenceStepsInput.value = 40;
-        updateSliderTrack(inferenceStepsSlider);
+  configHeader.addEventListener("click", () => {
+    configContent.classList.toggle("hidden");
+    arrow.classList.toggle("rotate-180");
+  });
 
-        const guidanceScaleSlider = document.getElementById('guidanceScaleSlider');
-        const guidanceScaleInput = document.getElementById('guidanceScaleInput');
-        guidanceScaleSlider.value = 4.5;
-        guidanceScaleInput.value = 4.5;
-        updateSliderTrack(guidanceScaleSlider);
+  function handleResponsiveLayout() {
+    const sidebar = document.querySelector(".sidebar");
+    const viewportWidth = window.innerWidth;
 
-        seedInput.value = generateRandomSeed();
-        randomSeedCheckbox.checked = true;
-        seedInput.disabled = true;
-        seedInput.classList.add('opacity-50');
-    });
-
-    const configHeader = document.getElementById('configHeader');
-    const arrow = document.getElementById('arrow');
-    const configContent = document.getElementById('configContent');
-
-    configHeader.addEventListener('click', () => {
-        configContent.classList.toggle('hidden');
-        arrow.classList.toggle('rotate-180');
-    });
-
-    function handleResponsiveLayout() {
-        const sidebar = document.querySelector('.sidebar');
-        const viewportWidth = window.innerWidth;
-
-        if (viewportWidth < 768) {
-            sidebar.classList.add('mobile-mode');
-        } else {
-            sidebar.classList.remove('mobile-mode');
-        }
+    if (viewportWidth < 768) {
+      sidebar.classList.add("mobile-mode");
+    } else {
+      sidebar.classList.remove("mobile-mode");
     }
+  }
 
-    handleResponsiveLayout();
+  handleResponsiveLayout();
 
-    window.addEventListener('resize', handleResponsiveLayout);
+  window.addEventListener("resize", handleResponsiveLayout);
 
-    setTimeout(() => {
-        updateGenerateButtonState();
-    }, 500);
-})
+  setTimeout(() => {
+    updateGenerateButtonState();
+  }, 500);
+});

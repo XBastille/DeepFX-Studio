@@ -92,5 +92,6 @@ Refer [CONTRIBUTING.md](CONTRIBUTING.md) to get an idea how to place the models
     ```
 
 ### Development Setup
+> Note: You need to set up your huggingface-cli by logging in and approving the use of stabilityai/stable-diffusion-3.5-large
 
-For developement setup you need to run `python manage.py runserver` in one terminal and then run `npm run watch:css` in other terminal
+.For developement setup you need to run `python manage.py runserver` in one terminal and then run `npm run watch:css` in other terminal

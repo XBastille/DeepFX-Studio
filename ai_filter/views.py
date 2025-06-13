@@ -1,9 +1,6 @@
 import os
 import uuid
-import base64
-import logging
 from django.conf import settings
-from django.http import JsonResponse
 from django.shortcuts import render
 from django.core.files.base import ContentFile
 from django.core.files.storage import default_storage
@@ -11,6 +8,7 @@ from ai_filter.filters.arcane_inference import execute_transformation
 from ai_filter.filters.onnx_inference import execute_inference
 from website.views import image_to_base64
 
+from artistic_image_creator.views import clean_media_folders
 # Create your views here.
 
 
@@ -27,7 +25,7 @@ def api_ai_filter(request):
                 return render(
                     request,
                     "pages/ai_filter.html",
-                    {"error": f"No File Uploaded"}
+                    {"error": "No File Uploaded"}
                 )
             filter = request.POST.get("filter")
             uploaded_file = request.FILES.get("image_file")
