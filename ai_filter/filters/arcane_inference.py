@@ -93,8 +93,14 @@ def optimize_image_size(
 
 means = [0.485, 0.456, 0.406]
 stds = [0.229, 0.224, 0.225]
-t_stds = torch.tensor(stds).cuda().half()[:, None, None]
-t_means = torch.tensor(means).cuda().half()[:, None, None]
+
+# Check if CUDA is available before using it
+if torch.cuda.is_available():
+    t_stds = torch.tensor(stds).cuda().half()[:, None, None]
+    t_means = torch.tensor(means).cuda().half()[:, None, None]
+else:
+    t_stds = torch.tensor(stds).float()[:, None, None]
+    t_means = torch.tensor(means).float()[:, None, None]
 
 img_transforms = transforms.Compose(
     [transforms.ToTensor(), transforms.Normalize(means, stds)]
@@ -127,9 +133,9 @@ def execute_transformation(input_path, model_path="ai_filter/filters/pretrained_
     return output_array
 
 
-if __name__ == "__main__":
-    model_path = "ai_filter/filters/pretrained_models/pretrained_models/Arcane.jit"
-    input_image = "profile.jpeg"
+# if __name__ == "__main__":
+#     model_path = "ai_filter/filters/pretrained_models/pretrained_models/Arcane.jit"
+#     input_image = "profile.jpeg"
 
-    output_path = execute_transformation(input_image, model_path)
-    print(f"Image saved to: {output_path}")
+#     output_path = execute_transformation(input_image, model_path)
+#     print(f"Image saved to: {output_path}")
