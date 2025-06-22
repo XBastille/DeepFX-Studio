@@ -94,7 +94,6 @@ def optimize_image_size(
 means = [0.485, 0.456, 0.406]
 stds = [0.229, 0.224, 0.225]
 
-# Check if CUDA is available before using it
 if torch.cuda.is_available():
     t_stds = torch.tensor(stds).cuda().half()[:, None, None]
     t_means = torch.tensor(means).cuda().half()[:, None, None]
