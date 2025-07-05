@@ -54,7 +54,6 @@ EXTERNAL_INSTALLED_APP = [
     "ai_image_editor",
     "user_auth",
     "dashboard",
-    "tailwind",
     "django_components",
     "allauth",
     "allauth_ui",

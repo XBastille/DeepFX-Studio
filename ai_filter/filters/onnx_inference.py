@@ -72,7 +72,7 @@ def execute_inference(source_path, model_path, compute_device="gpu"):
     input_tensor = inference_engine.get_inputs()[0].name
     output_tensor = inference_engine.get_outputs()[0].name
     model_identifier = get_model_name(model_path)
-    result_path = get_unique_output_path(source_path, "outputs", model_identifier)
+    result_path = get_unique_output_path(source_path, "static", model_identifier)
 
     input_tensor_data, original_dims = prepare_input_data(source_path, model_path)
     generated_output = inference_engine.run(None, {input_tensor: input_tensor_data})

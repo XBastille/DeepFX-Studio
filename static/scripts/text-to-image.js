@@ -470,7 +470,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  generateBtn.addEventListener("click", () => {
+  generateBtn.addEventListener("click", async (event) => {
+    event.preventDefault();
     if (
       !textarea.value.trim() &&
       generateBtn.classList.contains("generate-inactive")
@@ -496,17 +497,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     generationCount++;
 
-    const response = fetch("/text-to-image/generate/", {
+    const response = await fetch("/text-to-image/generate/", {
       method: "POST",
-    }).then((res) => JSON.stringify(res));
-    console.log(response);
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        prompt: document.querySelector("#prompt-input").value,
+        negative_prompt: "",
+        seed: document.querySelector("#seedInput").value,
+        randomize_seed: false,
+        width: document.querySelector("#smooth-content > div > div.sidebar-container > div > div:nth-child(2) > div.settings-box-header > div.text-xs.text-gray-400").innerHTML.split(" × ")[0],
+        height: document.querySelector("#smooth-content > div > div.sidebar-container > div > div:nth-child(2) > div.settings-box-header > div.text-xs.text-gray-400").innerHTML.split(" × ")[1],
+        guidance_scale: currentSettings.guidanceScale,
+        num_inference_steps: document.querySelector("#inferenceStepsInput").value,
+        num_images: currentSettings.quantity
+      })
+    });
+    
+    const result = await response.json();
 
-    const imagesHtml = Array(imageSettings.quantity)
-      .fill(0)
+    const imagesHtml = result.images
       .map(
-        () => `
+        (image) => `
           <div class="relative group rounded-lg overflow-hidden ${imageSettings.dimensions.class}" style="max-width: 256px;">
-            <img src="${defaultImageUrl}" alt="Generated image" class="w-full h-full object-cover">
+            <img src="/${image}" alt="Generated image" class="w-full h-full object-cover">
             <div class="absolute bottom-2 right-2 flex flex-wrap gap-1">
               <div class="bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
                 <span>Model</span>

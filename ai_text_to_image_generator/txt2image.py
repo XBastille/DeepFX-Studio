@@ -3,6 +3,8 @@ import torch
 from gradio_client import Client
 from diffusers import StableDiffusion3Pipeline
 import shutil
+import uuid
+
 
 def generate_with_diffusers(prompt, negative_prompt, seed, randomize_seed, width, height, guidance_scale, num_inference_steps):
     pipe = StableDiffusion3Pipeline.from_pretrained(
@@ -28,13 +30,15 @@ def generate_with_diffusers(prompt, negative_prompt, seed, randomize_seed, width
 
     return image
 
+
 def generate_images(prompt, negative_prompt, seed, randomize_seed, width, height, guidance_scale, num_inference_steps, num_images):
     output_paths = []
-    os.makedirs('output', exist_ok=True)
+
+    output_dir = os.path.join('static', 'images')
+    os.makedirs(output_dir, exist_ok=True)
 
     try:
         client = Client("stabilityai/stable-diffusion-3.5-large")
-
         for i in range(num_images):
             current_seed = seed + i if not randomize_seed else None
             result = client.predict(
@@ -49,7 +53,7 @@ def generate_images(prompt, negative_prompt, seed, randomize_seed, width, height
                 api_name="/infer"
             )
 
-            output_path = os.path.join('output', f'generated_image_{i+1}.png')
+            output_path = os.path.join(output_dir, f'generated_image_{uuid.uuid4()}.png')
             shutil.copy(result[0], output_path)
             output_paths.append(output_path)
 
@@ -69,23 +73,24 @@ def generate_images(prompt, negative_prompt, seed, randomize_seed, width, height
                 num_inference_steps=num_inference_steps
             )
 
-            output_path = os.path.join('output', f'generated_image_{i+1}.png')
+            output_path = os.path.join(output_dir, f'generated_image_{uuid.uuid4()}.png')
             image.save(output_path)
             output_paths.append(output_path)
 
     return output_paths
 
+
 if __name__ == "__main__":
     params = {
-        "prompt": "",
+        "prompt": "Generate me a image of a black mustang doing drifts",
         "negative_prompt": "",
-        "seed": 0,
+        "seed": 9424,
         "randomize_seed": True,
         "width": 1024,
         "height": 768,
         "guidance_scale": 4.5,
         "num_inference_steps": 40,
-        "num_images": 1
+        "num_images": 2
     }
 
     output_paths = generate_images(**params)

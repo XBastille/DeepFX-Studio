@@ -53,8 +53,9 @@ def api_ai_filter(request):
 
                 output_image = execute_inference(source_path=image_path_full,model_path=model_path)
             else:
-                model_path = "ai_filter/filters/pretrained_models/Arcane.Arcane.jit"
+                model_path = "ai_filter/filters/pretrained_models/Arcane.jit"
                 output_image = execute_transformation(input_path=image_path_full, model_path=model_path)
+                print("Output Image Path : ",output_image);
 
             output_image_base64 = image_to_base64(output_image)
             orginal_image_base64 = image_to_base64(image_path_full)

@@ -119,7 +119,7 @@ def execute_transformation(input_path, model_path="ai_filter/filters/pretrained_
         source_image, face_target=300, max_res=1_500_000, scale_limit=2
     )
     model_identifier = get_model_name(model_path)
-    result_path = get_unique_output_path(input_path, "outputs", model_identifier)
+    result_path = get_unique_output_path(input_path, "static", model_identifier)
     processed_tensor = img_transforms(optimized_image)[None, ...].cuda().half()
 
     with torch.no_grad():
@@ -129,12 +129,12 @@ def execute_transformation(input_path, model_path="ai_filter/filters/pretrained_
         result_img = PIL.Image.fromarray(output_array)
         result_img.save(result_path)
 
-    return output_array
+    return result_path
 
 
-# if __name__ == "__main__":
-#     model_path = "ai_filter/filters/pretrained_models/pretrained_models/Arcane.jit"
-#     input_image = "profile.jpeg"
+if __name__ == "__main__":
+    model_path = "ai_filter/filters/pretrained_models/pretrained_models/Arcane.jit"
+    input_image = "profile.jpeg"
 
-#     output_path = execute_transformation(input_image, model_path)
-#     print(f"Image saved to: {output_path}")
+    output_path = execute_transformation(input_image, model_path)
+    print(f"Image saved to: {output_path}")
