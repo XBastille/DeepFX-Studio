@@ -1,0 +1,26 @@
+{
+  "scripts": {
+    "watch:css": "npx @tailwindcss/cli -i ./static/css/global.css -o ./static/css/output.css --watch",
+    "build": "npx @tailwindcss/cli -i ./static/css/global.css -o ./static/css/output.css"
+  },
+  "devDependencies": {
+    "daisyui": "^5.0.0-beta.9",
+    "tailwindcss": "^4.0.9"
+  },
+  "name": "deepfx-studio",
+  "version": "1.0.0",
+  "description": "Welcome to **DeepFX Studio**! This AI-powered toolkit provides a suite of advanced image editing features powered by cutting-edge deep learning techniques. From enhancing image quality to creative transformations, DeepFX Studio is designed to be a comprehensive solution for all your image processing needs.",
+  "main": "tailwind.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.9",
+    "@tailwindcss/forms": "^0.5.10",
+    "@tailwindcss/postcss": "^4.0.9",
+    "@tailwindcss/typography": "^0.5.16",
+    "postcss": "^8.5.3",
+    "tailwind-scrollbar": "^4.0.1"
+  }
+}

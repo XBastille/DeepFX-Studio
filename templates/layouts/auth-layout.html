@@ -1,0 +1,76 @@
+{% extends "layouts/base-layout.html" %}
+{% load static %}
+{% block title %}
+{% endblock title %}
+{% load socialaccount %}
+{% block body %}
+    <div class="flex flex-row justify-center items-center bg-black w-[100%] mb:pb-0  min-h-screen">
+        <div class="mx-auto flex flex-col justify-center px-5 pt-0 md:max-w-1/2 lg:max-w-1/2">
+            <a class="mt-6 text-white" href={% url "website:index_view" %}>
+                <div class="flex items-center">
+                    <svg stroke="currentColor"
+                         fill="currentColor"
+                         viewBox="0 0 320 512"
+                         class="mr-2 h-4 w-4"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l192 192c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256 246.6 86.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-192 192z">
+                        </path>
+                    </svg>
+                    <p class="text-sm">Back to the website</p>
+                </div>
+            </a>
+            <div class="my-auto flex flex-col w-full max-w-lg mx-auto mt-8">
+                {% block pageHeading %}
+                {% endblock pageHeading %}
+                {% block pageInstruction %}
+                {% endblock pageInstruction %}
+                <div class="mt-8 flex flex-row w-full gap-3">
+                    <div class="pb-2 w-full">
+                        <a href="{% provider_login_url 'google' %}"
+                           class="flex w-full items-center justify-center h-10 px-4 text-sm font-medium text-white bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 transition">
+                            <span class="mr-2">
+                                <img height="20px"
+                                     width="20px"
+                                     src="{% static 'images/google.svg' %}"
+                                     alt="Google Logo">
+                            </span>
+                            <span>Google</span>
+                        </a>
+                    </div>
+                    <div class="pb-2 w-full">
+                        {% providers_media_js %}
+                        <a href="{% provider_login_url 'github' method='js_sdk' %}?next=https://github.com"
+                           class="flex w-full items-center justify-center h-10 px-4 text-sm font-medium text-white bg-gray-800 border border-gray-700 rounded-md hover:bg-gray-700 transition">
+                            <span class="mr-2">
+                                <img height="20px"
+                                     width="20px"
+                                     src="{% static 'images/github.svg' %}"
+                                     alt="Github Logo">
+                            </span>
+                            <span>Github</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="relative my-2">
+                    <div class="flex items-center">
+                        <div class="flex-grow border-t border-gray-700"></div>
+                        <span class="mx-2 text-zinc-400">OR</span>
+                        <div class="flex-grow border-t border-gray-700"></div>
+                    </div>
+                </div>
+                {% block form %}
+                {% endblock form %}
+            </div>
+        </div>
+        {% block animation %}
+        {% endblock animation %}
+    </div>
+    {% if error_message %}
+        <div id="message-box"
+             class="absolute top-5 left-5 right-5 md:left-auto md:top-10 md:right-10 animate-appear">
+            {% component "toast" title="Error Occured" content="{{ error_message }}" %}{% endcomponent %}
+        </div>
+    {% endif %}
+{% endblock body %}
+{% block banner %}
+{% endblock banner %}

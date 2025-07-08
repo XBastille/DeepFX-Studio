@@ -1,0 +1,537 @@
+{% extends 'layouts/base-layout.html' %}
+{% load static %}
+{% block metadata %}
+    <meta name="description"
+          content="Explore the DeepFX Studio dashboard showcasing cutting-edge AI-powered image manipulation tools and past projects, including colorization, background removal, deepfake effects, and more." />
+    <meta name="keywords"
+          content="DeepFX Studio, AI Image Tools, Image Manipulation, Dashboard, Projects, Background Removal, Colorization, Deepfake, AI-powered tools, Image Enhancements" />
+    <meta name="author" content="DeepFX Studio Team" />
+{% endblock %}
+{% block title %}Dashboard - DeepFX Studio | Explore Our Projects &amp; AI Image Tools{% endblock %}
+{% block body %}
+    <div class="drawer lg:drawer-open bg-gradient-to-br from-gray-950 via-gray-900 to-slate-900 min-h-screen">
+        <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content flex flex-col relative overflow-hidden">
+            <div class="fixed inset-0 pointer-events-none">
+                <div class="floating-orbs"></div>
+                <div class="grid-overlay"></div>
+            </div>
+            
+            <label for="my-drawer-2"
+                   class="btn btn-ghost drawer-button lg:hidden fixed top-6 right-6 z-50 glass-effect hover:scale-110 transition-all duration-300">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </label>
+            
+            <div class="relative z-10 p-6 md:p-10">
+                {% block dashboard %}{% endblock %}
+            </div>
+        </div>
+        
+        <div class="drawer-side">
+            <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
+            <div class="sidebar-container">
+                <div class="logo-section">
+                    <div class="logo-wrapper">
+                        <div class="logo-glow"></div>
+                        <img src="{% static 'images/logo.png' %}"
+                             alt="logo"
+                             class="logo-image" />
+                    </div>
+                    <div class="logo-text-wrapper">
+                        <img src="{% static 'images/website_logo.png' %}"
+                             alt="DeepFX Studio"
+                             class="logo-text" />
+                    </div>
+                </div>
+                
+                <nav class="nav-menu">
+                    {% url 'dashboard:dashboard_view' as dashboard_url %}
+                    <a href="javascript:void(0)"
+                       class="nav-item {% if request.path == dashboard_url %}active{% endif %}"
+                       id="dashboard-nav"
+                       data-tooltip="Dashboard"
+                       onclick="closeToDashboard(); return false;">
+                        <div class="nav-icon">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                            </svg>
+                        </div>
+                        <span class="nav-text">Dashboard</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                    
+                    {% url 'projects' as projects_url %}
+                    <a href="javascript:void(0)"
+                       class="nav-item"
+                       data-tooltip="Showcase" onclick="openShowcase(); return false;">
+                        <div class="nav-icon">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2-2z"></path>
+                            </svg>
+                        </div>
+                        <span class="nav-text">Showcase</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                    
+                    {% url 'profile' as profile_url %}
+                    <a href="{{ profile_url|default:'#' }}"
+                       class="nav-item {% if request.path == profile_url %}active{% endif %}"
+                       data-tooltip="Settings">
+                        <div class="nav-icon">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <span class="nav-text">Settings</span>
+                        <div class="nav-indicator"></div>
+                    </a>
+                </nav>
+                
+                <div class="user-profile">
+                    <div class="profile-card">
+                        <div class="profile-avatar">
+                            <img src="https://avatar.iran.liara.run/public" alt="profile">
+                            <div class="status-indicator"></div>
+                        </div>
+                        <div class="profile-info">
+                            <div class="profile-name">{% block user %}{{ user }}{% endblock %}</div>
+                            <div class="profile-email">{% block email %}email@mail.com{% endblock %}</div>
+                        </div>
+                    </div>
+                    
+                    <a href="{% url 'account_logout' %}" class="logout-btn">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                        </svg>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-light: #818cf8;
+            --primary-dark: #4f46e5;
+            --secondary: #8b5cf6;
+            --accent: #06b6d4;
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-effect {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+        }
+
+        .floating-orbs {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .floating-orbs::before,
+        .floating-orbs::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .floating-orbs::before {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 10%;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            animation-delay: 0s;
+        }
+
+        .floating-orbs::after {
+            width: 200px;
+            height: 200px;
+            bottom: 20%;
+            right: 20%;
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            animation-delay: 10s;
+            animation-direction: reverse;
+        }
+
+        .grid-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(99, 102, 241, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 30s linear infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(30px) rotate(240deg); }
+        }
+
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+
+        .sidebar-container {
+            width: 320px;
+            min-height: 100vh;
+            background: linear-gradient(180deg, 
+                rgba(15, 23, 42, 0.95) 0%,
+                rgba(30, 41, 59, 0.9) 100%);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sidebar-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                transparent 0%,
+                rgba(99, 102, 241, 0.05) 50%,
+                transparent 100%);
+            pointer-events: none;
+        }
+
+        .logo-section {
+            padding: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo-wrapper {
+            position: relative;
+            width: 60px;
+            height: 60px;
+        }
+
+        .logo-glow {
+            position: absolute;
+            inset: -10px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            filter: blur(20px);
+            opacity: 0;
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+
+        .logo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-image:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .logo-text-wrapper {
+            flex: 1;
+        }
+
+        .logo-text {
+            height: 40px;
+            object-fit: contain;
+            filter: brightness(1.2);
+            transition: all 0.3s ease;
+        }
+
+        .logo-text:hover {
+            filter: brightness(1.5) saturate(1.2);
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { opacity: 0; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.1); }
+        }
+
+        .nav-menu {
+            flex: 1;
+            padding: 0 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .nav-item {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 16px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 255, 255, 0.1), 
+                transparent);
+            transition: left 0.6s ease;
+        }
+
+        .nav-item:hover::before {
+            left: 100%;
+        }
+
+        .nav-item:hover {
+            color: white;
+            background: var(--glass-bg);
+            transform: translateX(8px);
+            box-shadow: 0 8px 32px rgba(99, 102, 241, 0.2);
+        }
+
+        .nav-item.active {
+            color: white;
+            background: linear-gradient(135deg, 
+                rgba(99, 102, 241, 0.2), 
+                rgba(139, 92, 246, 0.1));
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .nav-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-text {
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nav-indicator {
+            position: absolute;
+            right: 1rem;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--primary);
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.3s ease;
+        }
+
+        .nav-item.active .nav-indicator {
+            opacity: 1;
+            transform: scale(1);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.2); opacity: 0.7; }
+        }
+
+        .user-profile {
+            padding: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .profile-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--glass-bg);
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-avatar {
+            position: relative;
+            width: 48px;
+            height: 48px;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary);
+        }
+
+        .status-indicator {
+            position: absolute;
+            bottom: 2px;
+            right: 2px;
+            width: 12px;
+            height: 12px;
+            background: #10b981;
+            border-radius: 50%;
+            border: 2px solid #1f2937;
+            animation: statusPulse 2s infinite;
+        }
+
+        @keyframes statusPulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+            50% { box-shadow: 0 0 0 4px rgba(16, 185, 129, 0); }
+        }
+
+        .profile-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .profile-name {
+            font-weight: 700;
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .profile-email {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            truncate: true;
+        }
+
+        .logout-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            padding: 0.75rem;
+            border-radius: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            background: rgba(239, 68, 68, 0.1);
+        }
+
+        .logout-btn:hover {
+            color: #fca5a5;
+            background: rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.5);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 1024px) {
+            .sidebar-container {
+                width: 100%;
+                max-width: 320px;
+            }
+        }
+
+        .sidebar-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar-container::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .sidebar-container::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+        }
+
+        .sidebar-container::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            navItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.setProperty('--glow-opacity', '1');
+                });
+                
+                item.addEventListener('mouseleave', function() {
+                    this.style.setProperty('--glow-opacity', '0');
+                });
+            });
+
+            const logoImage = document.querySelector('.logo-image');
+            if (logoImage) {
+                logoImage.addEventListener('click', function() {
+                    this.style.animation = 'spin 0.8s ease-in-out';
+                    setTimeout(() => {
+                        this.style.animation = '';
+                    }, 800);
+                });
+            }
+
+            const profileCard = document.querySelector('.profile-card');
+            if (profileCard) {
+                profileCard.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            }
+        });
+
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes spin {
+                from { transform: rotate(0deg) scale(1.1); }
+                to { transform: rotate(360deg) scale(1.1); }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+{% endblock %}
+{% block banner %}{% endblock %}

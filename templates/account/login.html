@@ -1,0 +1,59 @@
+{% extends "layouts/auth-layout.html" %}
+{% load static %}
+{% block title %}
+    Signin | DeepFX Studio
+{% endblock title %}
+{% block pageHeading %}
+    <p class="text-3xl font-bold text-white">Sign In</p>
+{% endblock pageHeading %}
+{% block pageInstruction %}
+    <p class="mt-2 mb-4 text-zinc-400">Enter your username and password to sign in!</p>
+{% endblock pageInstruction %}
+{% block form %}
+    <div>
+        <form action={% url "user_auth:signin_view" %} method="post">
+            {% csrf_token %}
+            <div class="grid gap-2">
+                <div>
+                    <label class="text-white mb-3" for="email">Username</label>
+                    <input class="w-full h-12 rounded-lg border border-gray-700 bg-gray-800 my-1 px-4 py-3 text-sm text-white placeholder:text-zinc-400 focus:outline-none"
+                           id="username"
+                           placeholder="deepfx_studio"
+                           type="text"
+                           name="username"
+                           required />
+                </div>
+                <div>
+                    <label class="text-white mb-3" for="password">Password</label>
+                    <input class="w-full h-12 rounded-lg border border-gray-700 bg-gray-800 my-1 px-4 py-3 text-sm text-white placeholder:text-zinc-400 focus:outline-none"
+                           id="password"
+                           placeholder="Password"
+                           type="password"
+                           name="password"
+                           required />
+                </div>
+            </div>
+            <button class="mt-4 w-full h-10 px-4 text-sm font-medium text-black bg-white rounded-lg hover:bg-gray-200 hover:border hover:border-white hover:rounded-lg transition"
+                    type="submit">Sign in</button>
+        </form>
+        <p class="font-light text-white text-sm mt-3">
+            <a href="{% url "user_auth:forgot_password_view" %}"
+               class="font-bold hover:underline">Forgot password?</a>
+        </p>
+        <p class="font-light text-white text-sm mb-3 md:mb-0">
+            Don't have an account? <a href="{% url 'account_signup' %}" class="font-bold hover:underline">Sign up</a>
+        </p>
+    </div>
+{% endblock form %}
+{% block animation %}
+    <div class="w-2/3 h-screen hidden lg:block">
+        <div class="absolute top-[100%] left-[56%] translate-x-[-50%] opacity-0 animate-moveToTop">
+            <h1 class="text-3xl font-extrabold relative mx-10">Welcome Back to</h1>
+            <h1 class="text-6xl font-extrabold relative mx-10">DeepFx Studio</h1>
+        </div>
+        <video autoplay muted loop class="object-cover w-full h-full">
+            <source src="{% static 'videos/video.mp4' %}" type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
+    </div>
+{% endblock animation %}
