@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            /* scroll-behavior: smooth; */
+            background-color: black;
+            color: aliceblue;
+        }
+
+        .title {
+            margin-top: 35px;
+            margin-left: 50px;
+            width: 60%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+
+        }
+
+        .header-Title {
+            font-size: 6.9em;
+            font-weight: 400;
+            letter-spacing: -0.03em;
+            line-height: 1.09;
+            background: transparent;
+            overflow: visible;
+            padding-bottom: 0.2em
+        }
+
+        .subtitle {
+            margin-top: 20px;
+            margin-left: 50px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .header-Subtitle {
+            font-weight: 400;
+            font-size: 1.5em;
+            animation: riseUp 1s forwards;
+
+        }
+
+        .discover {
+            margin-top: 30px;
+            margin-left: 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .discover-button {
+            background: transparent;
+            border: none;
+            font-weight: 400;
+            font-size: 1.5em;
+            width: 13%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: riseUp 1s forwards;
+        }
+
+        .header-Title span {
+            display: inline-block;
+            opacity: 0;
+            animation: riseUp 1s forwards;
+        }
+
+        .left-subtitle {
+            margin-left: 60%;
+            margin-top: 100px;
+            margin-left: 50px;
+            text-align: right;
+            width: 90%;
+            height: 200px;
+        }
+
+        .left-header {
+            font-size: 5em;
+            font-weight: 400;
+            letter-spacing: -0.03em;
+            line-height: 0.9;
+            /* animation: riseUp 1s forwards; */
+        }
+
+        .box {
+            height: 400px;
+            width: 300px;
+            border: 1px solid white;
+            background-position: center;
+            background-size: cover;
+        }
+
+        .boxes {
+            margin-top: 50px;
+            height: 700px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .box-image {
+            height: 398px;
+            width: 298px;
+        }
+
+        .box2 {
+            margin-top: 100px;
+        }
+
+        .box3 {
+            margin-top: 200px;
+        }
+
+        .box4 {
+            margin-top: 300px;
+        }
+
+        .footer-top {
+            height: 300px;
+            width: 100%;
+            border: 2px solid white;
+            margin-top: 100px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            /* font-size: 5em; */
+            line-height: 0.9;
+        }
+
+        .footer-title {
+            font-size: 5em;
+        }
+
+        .footer-btn {
+            background: transparent;
+            border: none;
+            font-size: 2.8em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: rgb(48, 48, 149);
+            border-bottom: 2px solid white;
+        }
+
+        .arrow {
+            font-weight: 900;
+            width: 60px;
+        }
+
+        .logos {
+            display: flex;
+            /* justify-content: space-around; */
+            align-items: center;
+        }
+
+        .logo {
+            width: 20%;
+        }
+
+        .logo img {
+            height: 80px;
+            width: 80px;
+            margin-left: 40px;
+            margin-top: 10px;
+        }
+
+        .name-logo {
+            width: 70%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .name-logo img {
+            height: 60px;
+            width: 350px;
+            margin-right: 150px;
+        }
+
+
+        @keyframes riseUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <section class="logos">
+        <div class="logo">
+            <img src="logo.png" alt="">
+        </div>
+        <div class="name-logo">
+            <img src="website_logo.png" alt="">
+        </div>
+    </section>
+    <section>
+        <div class="title">
+            <p class="header-Title">The future <br> belongs to those <br> who invest in it</p>
+        </div>
+        <div class="subtitle">
+            <p class="header-Subtitle">Hartmann Capital is a frontier tech <br> investment firm specializing in Spatial
+                <br>
+                Computing, Artificial
+                Intelligence, and <br>the emerging 3D Creator Economy.
+            </p>
+        </div>
+        <div class="discover">
+            <button class="discover-button">Discover More <i class="fa-solid fa-down-long"></i></button>
+        </div>
+    </section>
+
+
+
+    <section>
+        <div class="left-subtitle">
+            <p class="left-header" data-aos="fade-up">We envision a <br>transformative <br>decade
+                ahead</p>
+        </div>
+        <div class="boxes">
+            <div class="box1 box" data-aos="fade-up">
+                <img src="pic.webp" alt="" class="box-image">
+            </div>
+            <div class="box2 box" data-aos="fade-up">
+                <img src="pic.webp" alt="" class="box-image">
+            </div>
+            <div class="box3 box" data-aos="fade-up">
+                <img src="pic.webp" alt="" class="box-image">
+            </div>
+            <div class="box4 box" data-aos="fade-up">
+                <img src="pic.webp" alt="" class="box-image">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-top">
+            <p class="footer-title">Learn more about <br> our offerings</p>
+            <button class="footer-btn">
+                <p class="arrow">↗ </p>Get In Touch
+            </button>
+        </div>
+    </footer>
+
+    <br><br><br><br><br><br><br><br><br><br>
+
+
+
+    <script>
+
+        window.addEventListener("DOMContentLoaded", () => {
+            const p = document.querySelector(".header-Title");
+            const text = p.innerHTML.replace(/<br\s*\/?>/gi, " <br> "); // handle <br> properly
+            const words = text.split(" ").map(word => word === "<br>" ? "<br>" : word);
+            p.innerHTML = "";
+
+            words.forEach((word, i) => {
+                if (word === "<br>") {
+                    p.appendChild(document.createElement("br"));
+                } else {
+                    const span = document.createElement("span");
+                    span.textContent = word;
+                    span.classList.add("word");
+                    span.style.animationDelay = `${i * 0.08}s`;
+                    p.appendChild(span);
+                    p.append(" "); // ⬅️ ADD a space **after** the span
+                }
+            });
+        });
+
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 300,
+            duration: 1000,
+        });
+    </script>
+</body>
+
+</html>
