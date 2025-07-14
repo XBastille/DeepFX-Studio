@@ -14,9 +14,11 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            /* scroll-behavior: smooth; */
-            background-color: black;
             color: aliceblue;
+        }
+
+        body {
+            background-color: black;
         }
 
         .title {
@@ -26,7 +28,7 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-
+            background: transparent; 
         }
 
         .header-Title {
@@ -45,13 +47,14 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            background: transparent; 
         }
 
         .header-Subtitle {
             font-weight: 400;
             font-size: 1.5em;
             animation: riseUp 1s forwards;
-
+            background: transparent; 
         }
 
         .discover {
@@ -60,6 +63,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: transparent; 
         }
 
         .discover-button {
@@ -87,22 +91,7 @@
             text-align: right;
             width: 90%;
             height: 200px;
-        }
-
-        .left-header {
-            font-size: 5em;
-            font-weight: 400;
-            letter-spacing: -0.03em;
-            line-height: 0.9;
-            /* animation: riseUp 1s forwards; */
-        }
-
-        .box {
-            height: 400px;
-            width: 300px;
-            border: 1px solid white;
-            background-position: center;
-            background-size: cover;
+            background: black; 
         }
 
         .boxes {
@@ -111,6 +100,15 @@
             width: 100%;
             display: flex;
             justify-content: space-around;
+            background: black; 
+        }
+
+        .box {
+            height: 400px;
+            width: 300px;
+            border: 1px solid white;
+            background-position: center;
+            background-size: cover;
         }
 
         .box-image {
@@ -138,8 +136,8 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            /* font-size: 5em; */
             line-height: 0.9;
+            background: black; 
         }
 
         .footer-title {
@@ -164,7 +162,6 @@
 
         .logos {
             display: flex;
-            /* justify-content: space-around; */
             align-items: center;
         }
 
@@ -204,20 +201,52 @@
                 transform: translateY(0);
             }
         }
+
+        .spline-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        #canvas3d {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-section {
+            position: relative;
+            z-index: 1;
+            height: 100vh;
+        }
+
+        .logos {
+            position: relative;
+            z-index: 2;
+        }
     </style>
 
 </head>
 
 <body>
-    <section class="logos">
-        <div class="logo">
-            <img src="logo.png" alt="">
-        </div>
-        <div class="name-logo">
-            <img src="website_logo.png" alt="">
-        </div>
-    </section>
-    <section>        <div class="title">
+    <div class="spline-container">
+        <canvas id="canvas3d"></canvas>
+    </div>
+    
+    <div class="hero-section">
+        <section class="logos">
+            <div class="logo">
+                <img src="logo.png" alt="">
+            </div>
+            <div class="name-logo">
+                <img src="website_logo.png" alt="">
+            </div>
+        </section>
+        <section>
+        <div class="title">
             <p class="header-Title">Transform images <br> with the power of <br> deep learning</p>
         </div>
         <div class="subtitle">
@@ -291,6 +320,13 @@
             offset: 300,
             duration: 1000,
         });
+    </script>
+    <script type="module">
+        import { Application } from 'https://unpkg.com/@splinetool/runtime@1.9.29/build/runtime.js';
+        
+        const canvas = document.getElementById('canvas3d');
+        const app = new Application(canvas);
+        app.load('https://prod.spline.design/v7lcNzOxxaKgcWYr/scene.splinecode');
     </script>
 </body>
 
