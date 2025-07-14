@@ -1,240 +1,123 @@
-{% extends "layouts/base-layout.html" %}
 {% load static %}
-{% block body %}
-    <div class="pt-5 pb-10">
-        <nav class="pt-3 fixed top-0 left-0 right-0 z-50 bg-transparent backdrop-blur-lg">
-            <div class="max-w-screen-lg flex flex-wrap items-center justify-between mx-auto p-4">
-                <a href="{% url 'website:index_view' %}"
-                   class="flex items-center space-x-3">
-                    <img height="40px"
-                         width="40px"
-                         src="{% static 'images/logo.png' %}"
-                         alt="logo" />
-                    <span class="text-xl text-white font-bold">DeepFX Studio</span>
-                </a>
-                {% if user.is_authenticated %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DeepFX Studio - Deep Learning Image Tools</title>
+    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}" />
+</head>
+
+<body>
+    <div class="spline-container">
+        <canvas id="spline-container__canvas3d"></canvas>
+    </div>
+    <main>
+        <section>
+            <nav class="nav">
+                <img class="nav__icon" src="{% static 'images/logo.png' %}" alt="Logo icon" />
+                <img class="nav__name" src="{% static 'images/website_logo.png' %}" alt="Website logo" />
+                <div class="nav__link-section">
+                    <ul class="nav__link-section__link">
+                        <li><a href="#hero_section">Home</a></li>
+                        <li><a href="#showcase_section">Showcase</a></li>
+                    </ul>
+                    {% if user.is_authenticated %}
                     <div class="flex flex-row md:order-2 space-x-3">
                         <a href={% url 'dashboard:dashboard_view' %}>
-                            <button class="btn btn-outline btn-primary">Dashboard</button>
+                            <button>Dashboard</button>
                         </a>
                     </div>
-                {% else %}
+                    {% else %}
                     <div class="flex flex-row md:order-2 space-x-3">
                         <a href={% url 'account_login' %}>
-                            <button class="btn btn-primary">Get Started</button>
+                            <button>Sign in</button>
                         </a>
                     </div>
-                {% endif %}
-            </div>
-        </nav>
-        <section class="max-w-7xl mx-auto shadow-lg mt-20 p-10 md:p-20 lg:rounded-2xl relative overflow-hidden"
-                 style="background-image: url({% static 'images/hero-image.webp' %});
-                        background-size: cover">
-            <!-- Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-b from-black/50 to-black/80"></div>
-            <div class="relative z-10">
-                <p class="font-silkscreen text-3xl md:text-5xl font-extrabold text-white mb-6">
-                    Generate Unique Images Tailored to Your Specifications
-                </p>
-                <div class="mt-4">
-                    <p class="w-full max-w-2xl text-sm md:text-base text-gray-100 font-medium p-6 md:p-8 rounded-lg shadow-lg leading-relaxed backdrop-blur-lg">
-                        <span class="block text-base md:text-xl font-semibold text-white mb-4">
-                            Imagine it, and let DeepFX Studio transform your vision into stunning visual masterpieces.
-                        </span>
-                        From restoring old memories to creating futuristic edits, our cutting-edge AI tools bring your ideas to life.
-                        <br>
-                        Unleash the power of features like <span class="font-semibold text-white">Neural Style Transfer</span>,
-                        <span class="font-semibold text-white">Background Removal</span>,
-                        <span class="font-semibold text-white">Cartoonization</span>, and more.
-                        <br>
-                        <i class="block mt-2 text-gray-200">
-                            — All designed to elevate your projects to the next level.
-                        </i>
-                    </p>
-                    <div>
-                        <form class="flex max-w-full w-fit flex-col sm:flex-row items-center p-5 rounded-lg space-y-4 sm:space-y-0 sm:space-x-4 shadow-md backdrop-blur-sm">
-                            <input type="text"
-                                   placeholder="Enter your idea..."
-                                   class="input input-bordered w-full sm:w-2/3 text-gray-900 font-medium" />
-                            <button type="submit" class="btn btn-primary w-full sm:w-auto">Generate AI Image</button>
-                        </form>
-                    </div>
+                    {% endif %}
                 </div>
-            </div>
+            </nav>
         </section>
-        <!-- Featured Tools Section -->
-        <section class="max-w-7xl mx-auto mt-16 px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-white">Our Most Powerful Tools</h2>
-                <p class="mt-4 text-lg text-white max-w-3xl mx-auto">
-                    All tools are built in-house with our proprietary algorithms, ensuring the highest quality results without relying on external services.
+
+        <section id="hero_section" class="hero">
+            <div class="hero__title">
+                <h1 class="hero__headline">
+                    Transform images <br />
+                    With the power of <br />
+                    deep learning
+                </h1>
+            </div>
+            <div class="hero__subtitle">
+                <p class="hero__description">
+                    DeepFX Studio brings advanced computer vision models to
+                    your fingertips with intuitive tools for colorization,
+                    upscaling, background removal, and artistic style
+                    transfer.
                 </p>
             </div>
-            <div class="mb-8">
-                <div class="group relative bg-gradient-to-br from-indigo-900/40 to-purple-900/40 rounded-2xl p-8 transition-all duration-300 hover:-translate-y-2 shadow-xl hover:shadow-indigo-500/30 border border-indigo-500/30 hover:border-indigo-500/50 overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-indigo-600/10 to-purple-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    </div>
-                    <div class="relative z-10 flex flex-col md:flex-row gap-6 items-center">
-                        <div class="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/20 p-4">
-                            <img src="{% static 'images/ai_image_creator.svg' %}"
-                                 alt="Image Generator Icon"
-                                 class="w-12 h-12" />
-                        </div>
-                        <div class="flex-grow text-center md:text-left">
-                            <div class="inline-block mb-3 px-3 py-1 bg-indigo-500/20 rounded-full text-xs text-indigo-300 font-medium tracking-wide">
-                                FEATURED TOOL
-                            </div>
-                            <h3 class="text-2xl font-extrabold text-white mb-2 leading-tight">AI Image Creator</h3>
-                            <p class="text-gray-300 text-base mb-4 max-w-2xl">
-                                Generate stunning, high-quality images from text descriptions with our advanced AI. Create anything from photorealistic scenes to artistic illustrations with simple text prompts.
-                            </p>
-                            <a href="{% url 'ai-text-to-image:ai_text_to_image' %}"
-                               class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white text-sm font-semibold rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-md hover:shadow-indigo-500/30">
-                                Start Creating Images
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                     class="h-5 w-5 ml-2"
-                                     viewBox="0 0 20 20"
-                                     fill="currentColor">
-                                    <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
+            <div class="hero__cta">
+                <a href="#showcase_section">
+                    <button class="button">
+                        Explore Features
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </button>
+                </a>
+            </div>
+        </section>
+
+        <section id="showcase_section" class="showcase">
+            <div class="showcase__header" data-aos="fade-up">
+                <p class="showcase__title">
+                    Experience what modern <br />neural networks <br />can do for images
+                </p>
+            </div>
+            <div class="showcase__gallery">
+                <div class="showcase__gallery__card image-card--offset-0" data-aos="fade-up">
+                    <img src="{% static 'images/10.png' %}" alt="Image enhancement example"
+                        class="showcase__gallery__card__img" />
+                </div>
+                <div class="showcase__gallery__card image-card--offset-1" data-aos="fade-up">
+                    <img src="{% static 'images/12.png' %}" alt="Image enhancement example"
+                        class="showcase__gallery__card__img" />
+                </div>
+                <div class="showcase__gallery__card image-card--offset-2" data-aos="fade-up">
+                    <img src="{% static 'images/11.png' %}" alt="Image enhancement example"
+                        class="showcase__gallery__card__img" />
+                </div>
+                <div class="showcase__gallery__card image-card--offset-3" data-aos="fade-up">
+                    <img src="{% static 'images/04.png' %}" alt="Image enhancement example"
+                        class="showcase__gallery__card__img" />
                 </div>
             </div>
         </section>
-        <!-- Technology Stack Section -->
-        <section class="max-w-7xl mx-auto mt-20 px-4 sm:px-6 lg:px-8 mb-16">
-            <div class="bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl shadow-xl overflow-hidden">
-                <div class="px-6 py-12 sm:px-12 lg:px-16">
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                        <div>
-                            <h2 class="text-3xl font-bold text-white">Powered by Cutting-Edge Technology</h2>
-                            <p class="mt-4 text-gray-300 text-lg">
-                                Our platform is built with a modern tech stack, designed for performance and scalability.
-                                Every feature is developed in-house by our team of AI and ML experts.
-                            </p>
-                            <div class="mt-8 space-y-4">
-                                <div class="flex items-start">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                         class="h-6 w-6 text-green-400 mt-0.5"
-                                         fill="none"
-                                         viewBox="0 0 24 24"
-                                         stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                    </svg>
-                                    <div class="ml-3">
-                                        <h3 class="text-lg font-medium text-white">100% In-House Development</h3>
-                                        <p class="mt-1 text-gray-400">
-                                            All our AI models are developed and trained by our team, with no reliance on external APIs.
-                                        </p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                         class="h-6 w-6 text-green-400 mt-0.5"
-                                         fill="none"
-                                         viewBox="0 0 24 24"
-                                         stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                    </svg>
-                                    <div class="ml-3">
-                                        <h3 class="text-lg font-medium text-white">Privacy-First Approach</h3>
-                                        <p class="mt-1 text-gray-400">Your images are processed on our secure servers and never shared with third parties.</p>
-                                    </div>
-                                </div>
-                                <div class="flex items-start">
-                                    <svg xmlns="http://www.w3.org/2000/svg"
-                                         class="h-6 w-6 text-green-400 mt-0.5"
-                                         fill="none"
-                                         viewBox="0 0 24 24"
-                                         stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                                    </svg>
-                                    <div class="ml-3">
-                                        <h3 class="text-lg font-medium text-white">Continuous Innovation</h3>
-                                        <p class="mt-1 text-gray-400">We regularly update our models and add new features based on the latest research.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="bg-gray-800 bg-opacity-50 rounded-xl p-6">
-                            <h3 class="text-xl font-semibold text-white mb-6">Our Technology Stack</h3>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div class="bg-gray-900 bg-opacity-70 p-4 rounded-lg">
-                                    <h4 class="text-white font-medium mb-3">Frontend</h4>
-                                    <div class="space-y-2">
-                                        <div class="flex items-center">
-                                            <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
-                                            <span class="ml-2 text-gray-300">Tailwind CSS</span>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                                            <span class="ml-2 text-gray-300">JavaScript</span>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="w-2 h-2 bg-teal-400 rounded-full"></div>
-                                            <span class="ml-2 text-gray-300">HTML5/CSS3</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bg-gray-900 bg-opacity-70 p-4 rounded-lg">
-                                    <h4 class="text-white font-medium mb-3">Backend</h4>
-                                    <div class="space-y-2">
-                                        <div class="flex items-center">
-                                            <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                                            <span class="ml-2 text-gray-300">Django</span>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
-                                            <span class="ml-2 text-gray-300">Python</span>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
-                                            <span class="ml-2 text-gray-300">PostgreSQL</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bg-gray-900 bg-opacity-70 p-4 rounded-lg">
-                                    <h4 class="text-white font-medium mb-3">AI/ML Stack</h4>
-                                    <div class="space-y-2">
-                                        <div class="flex items-center">
-                                            <div class="w-2 h-2 bg-orange-400 rounded-full"></div>
-                                            <span class="ml-2 text-gray-300">PyTorch</span>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                                            <span class="ml-2 text-gray-300">TensorFlow</span>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
-                                            <span class="ml-2 text-gray-300">NumPy/OpenCV</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="bg-gray-900 bg-opacity-70 p-4 rounded-lg">
-                                    <h4 class="text-white font-medium mb-3">Infrastructure</h4>
-                                    <div class="space-y-2">
-                                        <div class="flex items-center">
-                                            <div class="w-2 h-2 bg-red-400 rounded-full"></div>
-                                            <span class="ml-2 text-gray-300">Docker</span>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="w-2 h-2 bg-purple-400 rounded-full"></div>
-                                            <span class="ml-2 text-gray-300">AWS/GCP</span>
-                                        </div>
-                                        <div class="flex items-center">
-                                            <div class="w-2 h-2 bg-blue-400 rounded-full"></div>
-                                            <span class="ml-2 text-gray-300">Redis</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+
+
+        <footer class="footer">
+            <div class="footer__top">
+                <p class="footer__title">
+                    Ready to transform <br />
+                    Your images?
+                </p>
+                <button class="footer__btn">
+                    <span class="footer__arrow">↗</span>
+                    Try it Now
+                </button>
             </div>
-        </section>
-    </div>
-    <script src="{% static './scripts/landing.js' %}"></script>
-{% endblock body %}
+        </footer>
+
+    </main>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <!-- <script src="./scripts.js" type="module"></script> -->
+    <script src="{% static '/scripts/landing.js' %}" type="module"></script>
+
+</body>
+
+</html>
