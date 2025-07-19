@@ -1,6 +1,30 @@
 document.addEventListener("DOMContentLoaded", () => {
   const textarea = document.getElementById("prompt-input");
 
+  if (textarea) {
+    textarea.addEventListener('focus', function() {
+      if (window.innerWidth <= 768) {
+        this.style.fontSize = '16px';
+      }
+    });
+
+    textarea.addEventListener('input', function() {
+      if (window.innerWidth <= 768) {
+        setTimeout(() => {
+          this.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
+      }
+    });
+
+    if ('ontouchstart' in window) {
+      textarea.addEventListener('focus', function() {
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+        }, 300);
+      });
+    }
+  }
+
   function autoResize() {
     textarea.style.height = "auto";
     textarea.style.height = Math.min(textarea.scrollHeight, 120) + "px";
@@ -26,8 +50,227 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   updateGenerateButtonState();
+  textarea.addEventListener("input", updateGenerateButtonState);  
+  window.openImageModal = function(imageElement) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalParams = document.getElementById('modalParams');
+    
+    if (!modal || !modalImage || !modalParams) {
+      console.error('Modal elements not found');
+      return;
+    }
+    
+    modalImage.src = imageElement.src;
+    const prompt = imageElement.dataset.prompt || '';
+    const guidanceScale = imageElement.dataset.guidanceScale || '';
+    const inferenceSteps = imageElement.dataset.inferenceSteps || '';
+    const seed = imageElement.dataset.seed || '';
+    const creationTime = imageElement.dataset.creationTime || new Date().toLocaleString();
+      modalParams.innerHTML = `
+      <div class="param-item">
+        <div class="param-label">Prompt</div>
+        <div class="param-value-with-copy">
+          <div class="param-value-text">${prompt}</div>
+          <button class="copy-prompt-btn" onclick="copyToClipboard('${prompt.replace(/'/g, "\\'")}', this)">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 002.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 00-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 00-3.375-3.375h-1.5a1.125 1.125 0 01-1.125-1.125v-1.5A3.375 3.375 0 006.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0015 2.25h-1.5a2.251 2.251 0 00-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 00-9-9z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="param-item">
+        <div class="param-label">Inference Steps</div>
+        <div class="param-value">${inferenceSteps}</div>
+      </div>
+      <div class="param-item">
+        <div class="param-label">Guidance Scale</div>
+        <div class="param-value">${guidanceScale}</div>
+      </div>
+      <div class="param-item">
+        <div class="param-label">Seed</div>
+        <div class="param-value">${seed}</div>
+      </div>
+      <div class="param-item">
+        <div class="param-label">Generation Date</div>
+        <div class="param-value">${creationTime}</div>
+      </div>
+    `;
+    
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
 
-  textarea.addEventListener("input", updateGenerateButtonState);
+  window.closeImageModal = function() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  };
+
+  document.getElementById('imageModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+      closeImageModal();
+    }
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeImageModal();
+    }
+  });  
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.modal-close')) {
+      closeImageModal();
+      return;
+    }
+    
+    if (e.target.classList.contains('generated-image')) {
+      openImageModal(e.target);
+      return;
+    }
+    
+    if (e.target.closest('.relative.group')) {
+      const parentContainer = e.target.closest('.relative.group');
+      const imageElement = parentContainer.querySelector('.generated-image');
+      if (imageElement && !e.target.closest('.btn-download-single')) {
+        openImageModal(imageElement);
+        return;
+      }
+    }
+    
+    if (e.target.closest('.btn-download-single')) {
+      e.stopPropagation();
+      const imageElement = e.target.closest('.relative').querySelector('.generated-image');
+      if (imageElement) {
+        downloadImage(imageElement.src);
+      }
+      return;
+    }
+    
+    if (e.target.closest('.btn-download')) {
+      e.stopPropagation();
+      const generationEntry = e.target.closest('.generation-entry');
+      if (generationEntry) {
+        downloadAllImages(generationEntry);
+      }
+      return;
+    }
+  });
+
+  function downloadImage(imageSrc) {
+    const link = document.createElement('a');
+    link.href = imageSrc;
+    link.download = `generated-image-${Date.now()}.png`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  function downloadAllImages(generationEntry) {
+    const images = generationEntry.querySelectorAll('.generated-image');
+    images.forEach((img, index) => {
+      setTimeout(() => {
+        downloadImage(img.src);
+      }, index * 100); 
+    });
+  }
+  
+  function createLoadingAnimation() {
+    return `
+      <div class="loading-skeleton">
+        <div class="loading-wave-container">
+          <div class="loading-wave">
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+          </div>
+          <div class="loading-wave loading-wave-level-1">
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+          </div>          <div class="loading-wave loading-wave-level-2">
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+            <div class="loading-bar"></div>
+          </div>
+        </div>
+      </div>
+    `;
+  }
 
   const aspectRatios = {
     "2:3": { width: 688, height: 1024, class: "aspect-[2/3]" },
@@ -405,15 +648,18 @@ document.addEventListener("DOMContentLoaded", () => {
         seedInput.classList.remove("opacity-50");
       }
     }
-  }
-
-  function setupImageActions() {
+  }  function setupImageActions() {
     const actions = generatedImagesContainer.querySelectorAll(".image-actions");
 
     actions.forEach((actionContainer) => {
       const entry = actionContainer.closest(".generation-entry");
+      
+      if (!entry || !entry.dataset) {
+        return;
+      }
+
       const prompt = entry.dataset.prompt;
-      const settings = JSON.parse(entry.dataset.settings);
+      const settings = entry.dataset.settings ? JSON.parse(entry.dataset.settings) : {};
 
       const topArrowBtn = actionContainer.querySelector(".btn-top-arrow");
       if (topArrowBtn) {
@@ -449,14 +695,8 @@ document.addEventListener("DOMContentLoaded", () => {
           allDropdowns.forEach((d) => {
             if (d !== dropdown) d.classList.remove("active");
           });
-        });
-
-        const downloadBtn = actionContainer.querySelector(".btn-download");
+        });        const downloadBtn = actionContainer.querySelector(".btn-download");
         if (downloadBtn) {
-          downloadBtn.addEventListener("click", () => {
-            alert("Downloading all images from this generation");
-            dropdownBtn.nextElementSibling.classList.remove("active");
-          });
         }
 
         const deleteBtn = actionContainer.querySelector(".btn-delete");
@@ -469,7 +709,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
   generateBtn.addEventListener("click", async (event) => {
     event.preventDefault();
     if (
@@ -487,7 +726,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const promptText = textarea.value;
-
     const currentSettings = getCurrentSettings();
 
     const generationEntry = document.createElement("div");
@@ -497,53 +735,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     generationCount++;
 
-    const response = await fetch("/text-to-image/generate/", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        prompt: document.querySelector("#prompt-input").value,
-        negative_prompt: "",
-        seed: document.querySelector("#seedInput").value,
-        randomize_seed: false,
-        width: document.querySelector("#smooth-content > div > div.sidebar-container > div > div:nth-child(2) > div.settings-box-header > div.text-xs.text-gray-400").innerHTML.split(" × ")[0],
-        height: document.querySelector("#smooth-content > div > div.sidebar-container > div > div:nth-child(2) > div.settings-box-header > div.text-xs.text-gray-400").innerHTML.split(" × ")[1],
-        guidance_scale: currentSettings.guidanceScale,
-        num_inference_steps: document.querySelector("#inferenceStepsInput").value,
-        num_images: currentSettings.quantity
-      })
-    });
-    
-    const result = await response.json();
-
-    const imagesHtml = result.images
-      .map(
-        (image) => `
-          <div class="relative group rounded-lg overflow-hidden ${imageSettings.dimensions.class}" style="max-width: 256px;">
-            <img src="/${image}" alt="Generated image" class="w-full h-full object-cover">
-            <div class="absolute bottom-2 right-2 flex flex-wrap gap-1">
-              <div class="bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
-                <span>Model</span>
-                <span class="font-medium">SD 3.5 Large</span>
-              </div>
-              <div class="bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded-full">
-                ${imageSettings.dimensions.width} × ${imageSettings.dimensions.height}px
-              </div>
-            </div>
-            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
-              <div class="flex gap-2">
-                <button class="bg-black bg-opacity-70 text-white p-2 rounded-full hover:bg-opacity-90 transition-all">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        `,
-      )
-      .join("");
+    const loadingPlaceholders = Array(currentSettings.quantity).fill().map(() => createLoadingAnimation()).join("");
 
     generationEntry.innerHTML = `
         <div class="flex flex-wrap items-center gap-2 mb-2">
@@ -584,7 +776,7 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </div>
         <div class="grid-images">
-          ${imagesHtml}
+          ${loadingPlaceholders}
         </div>
       `;
 
@@ -604,10 +796,95 @@ document.addEventListener("DOMContentLoaded", () => {
       generationEntry.nextSibling,
     );
 
-    setupImageActions();
-
-    autoResize();
+    try {
+      const response = await fetch("/text-to-image/generate/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          prompt: promptText,
+          negative_prompt: "",
+          seed: seedInput.value,
+          randomize_seed: randomSeedCheckbox.checked,
+          width: imageSettings.dimensions.width,
+          height: imageSettings.dimensions.height,
+          guidance_scale: currentSettings.guidanceScale,
+          num_inference_steps: currentSettings.inferenceSteps,
+          num_images: currentSettings.quantity
+        })
+      });
+      
+      const result = await response.json();      if (result.status === 200) {
+        const generationTime = new Date().toLocaleString();
+        const imagesHtml = result.images
+          .map(
+            (image) => `
+              <div class="relative group rounded-lg overflow-hidden ${imageSettings.dimensions.class}" style="max-width: 256px;">                <img src="/${image}" alt="Generated image" class="w-full h-full object-cover cursor-pointer generated-image" 
+                     data-prompt="${promptText}"
+                     data-negative-prompt="${currentSettings.negativePrompt || ''}"
+                     data-width="${imageSettings.dimensions.width}"
+                     data-height="${imageSettings.dimensions.height}"
+                     data-seed="${seedInput.value}"
+                     data-randomize-seed="${randomSeedCheckbox.checked}"
+                     data-guidance-scale="${currentSettings.guidanceScale}"
+                     data-inference-steps="${currentSettings.inferenceSteps}"
+                     data-num-images="${currentSettings.quantity}"
+                     data-creation-time="${generationTime}">
+                <div class="absolute bottom-2 right-2 flex flex-wrap gap-1">
+                  <div class="bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
+                    <span>Model</span>
+                    <span class="font-medium">SD 3.5 Large</span>
+                  </div>
+                  <div class="bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded-full">
+                    ${imageSettings.dimensions.width} × ${imageSettings.dimensions.height}px
+                  </div>
+                </div>                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                  <div class="flex gap-2">
+                    <button class="btn-download-single bg-black bg-opacity-70 text-white p-2 rounded-full hover:bg-opacity-90 transition-all" title="Download Image">
+                      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            `,
+          )
+          .join("");      
+        const gridImagesContainer = generationEntry.querySelector('.grid-images');
+        gridImagesContainer.innerHTML = imagesHtml;
+        
+        setupImageActions();
+      } else {
+        const gridImagesContainer = generationEntry.querySelector('.grid-images');
+        const errorMessage = result.message || 'Error generating images';
+        gridImagesContainer.innerHTML = `<div class="text-red-500 text-center p-4">${errorMessage}</div>`;
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      const gridImagesContainer = generationEntry.querySelector('.grid-images');
+      gridImagesContainer.innerHTML = `<div class="text-red-500 text-center p-4">Network error: ${error.message}</div>`;
+    }    autoResize();
   });
+  window.copyToClipboard = function(text, button) {
+    navigator.clipboard.writeText(text).then(function() {
+      const originalHTML = button.innerHTML;
+      button.innerHTML = `
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+        </svg>
+      `;
+      button.classList.add('copied');
+      
+      setTimeout(() => {
+        button.innerHTML = originalHTML;
+        button.classList.remove('copied');
+      }, 2000);
+    }).catch(function(err) {
+      console.error('Failed to copy text: ', err);
+    });
+  };
 
   function updateSliderTrack(slider) {
     const min = parseFloat(slider.min);
@@ -683,15 +960,6 @@ document.addEventListener("DOMContentLoaded", () => {
     seedInput.classList.add("opacity-50");
   });
 
-  const configHeader = document.getElementById("configHeader");
-  const arrow = document.getElementById("arrow");
-  const configContent = document.getElementById("configContent");
-
-  configHeader.addEventListener("click", () => {
-    configContent.classList.toggle("hidden");
-    arrow.classList.toggle("rotate-180");
-  });
-
   function handleResponsiveLayout() {
     const sidebar = document.querySelector(".sidebar");
     const viewportWidth = window.innerWidth;
@@ -701,13 +969,204 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       sidebar.classList.remove("mobile-mode");
     }
-  }
-
-  handleResponsiveLayout();
+  }  handleResponsiveLayout();
 
   window.addEventListener("resize", handleResponsiveLayout);
 
-  setTimeout(() => {
+  const infoButtons = document.querySelectorAll('.info-btn');
+  let currentTooltip = null;
+
+  infoButtons.forEach(btn => {
+    btn.addEventListener('mouseenter', function() {
+      if (currentTooltip) {
+        currentTooltip.remove();
+      }
+
+      const tooltipText = this.getAttribute('data-tooltip');
+      if (!tooltipText) return;
+
+      const tooltip = document.createElement('div');
+      tooltip.className = 'info-tooltip show';
+      tooltip.textContent = tooltipText;
+      document.body.appendChild(tooltip);
+
+      const rect = this.getBoundingClientRect();
+      const tooltipRect = tooltip.getBoundingClientRect();
+      
+      let left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
+      let top = rect.top - tooltipRect.height - 12;
+
+      if (left < 10) left = 10;
+      if (left + tooltipRect.width > window.innerWidth - 10) {
+        left = window.innerWidth - tooltipRect.width - 10;
+      }
+      if (top < 10) {
+        top = rect.bottom + 12;
+        tooltip.classList.add('arrow-bottom');
+      }
+
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = top + 'px';
+
+      currentTooltip = tooltip;
+    });
+
+    btn.addEventListener('mouseleave', function() {
+      if (currentTooltip) {
+        currentTooltip.classList.remove('show');
+        setTimeout(() => {
+          if (currentTooltip) {
+            currentTooltip.remove();
+            currentTooltip = null;
+          }
+        }, 300);
+      }
+    });
+  }); 
+  function updateResponsiveLayout() {
+    const isMobile = window.innerWidth <= 768;
+    const isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
+    
+    if (isMobile) {
+      const modal = document.getElementById('imageModal');
+      if (modal) {
+        modal.style.padding = '10px';
+      }
+    }
+    
+    const gridImages = document.querySelectorAll('.grid-images');
+    gridImages.forEach(grid => {
+      if (window.innerWidth <= 480) {
+        grid.style.gridTemplateColumns = '1fr';
+      } else if (window.innerWidth <= 640) {
+        grid.style.gridTemplateColumns = 'repeat(2, 1fr)';
+      } else {
+        grid.style.gridTemplateColumns = 'repeat(auto-fill, minmax(180px, 1fr))';
+      }
+    });
+  }
+
+  updateResponsiveLayout();
+  
+  window.addEventListener('resize', updateResponsiveLayout);
+
+  if ('ontouchstart' in window) {
+    document.addEventListener('touchstart', function(e) {
+      if (e.target.classList.contains('generated-image')) {
+        e.target.style.opacity = '0.8';
+      }
+    });
+    
+    document.addEventListener('touchend', function(e) {
+      if (e.target.classList.contains('generated-image')) {
+        e.target.style.opacity = '1';
+      }
+    });
+  }  setTimeout(() => {
     updateGenerateButtonState();
   }, 500);
+  setTimeout(() => {
+    const sidebarToggle = document.getElementById('sidebar-toggle');
+    const hamburgerIcon = document.getElementById('hamburger-icon');
+    const closeIcon = document.getElementById('close-icon');
+    const sidebarContainer = document.querySelector('.sidebar-container');
+    const sidebar = document.querySelector('.sidebar');
+    let sidebarOpen = false;
+
+    console.log('Sidebar elements found:', {
+      sidebarContainer: !!sidebarContainer,
+      sidebar: !!sidebar,
+      sidebarToggle: !!sidebarToggle,
+      hamburgerIcon: !!hamburgerIcon,
+      closeIcon: !!closeIcon
+    });    function toggleSidebar() {
+      console.log('Toggle sidebar clicked', sidebarOpen); 
+      console.log('Sidebar elements:', { sidebarContainer, sidebar }); 
+      
+      sidebarOpen = !sidebarOpen;
+      if (sidebarOpen) {
+        if (sidebarContainer) {
+          sidebarContainer.classList.add('open');
+          sidebarContainer.style.transform = 'translateX(0)';
+          sidebarContainer.style.opacity = '1';
+          sidebarContainer.style.pointerEvents = 'all';
+          console.log('Added open class to sidebar container');
+          console.log('Sidebar container computed styles:', {
+            transform: window.getComputedStyle(sidebarContainer).transform,
+            opacity: window.getComputedStyle(sidebarContainer).opacity,
+            display: window.getComputedStyle(sidebarContainer).display,
+            visibility: window.getComputedStyle(sidebarContainer).visibility
+          });
+        } else {
+          console.error('Sidebar container not found!');
+        }
+        
+        if (hamburgerIcon && closeIcon) {
+          hamburgerIcon.classList.add('hidden');
+          closeIcon.classList.remove('hidden');
+        }
+        
+        sidebarToggle.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      } else {
+        if (sidebarContainer) {
+          sidebarContainer.classList.remove('open');
+          sidebarContainer.style.transform = 'translateX(-100%)';
+          sidebarContainer.style.opacity = '0';
+          sidebarContainer.style.pointerEvents = 'none';
+          console.log('Removed open class from sidebar container');
+        }
+        
+        if (hamburgerIcon && closeIcon) {
+          hamburgerIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        }
+        
+        sidebarToggle.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }    function closeSidebar() {
+      if (sidebarOpen) {
+        sidebarOpen = false;
+        if (sidebarContainer) {
+          sidebarContainer.classList.remove('open');
+          sidebarContainer.style.transform = 'translateX(-100%)';
+          sidebarContainer.style.opacity = '0';
+          sidebarContainer.style.pointerEvents = 'none';
+        }
+        
+        if (hamburgerIcon && closeIcon) {
+          hamburgerIcon.classList.remove('hidden');
+          closeIcon.classList.add('hidden');
+        }
+        
+        sidebarToggle.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      }
+    }
+
+    if (!sidebarToggle) {
+      console.error('Sidebar toggle button not found!');
+      return;
+    }
+
+    sidebarToggle.addEventListener('click', toggleSidebar);
+
+    document.addEventListener('click', function(e) {
+      if (window.innerWidth <= 1024 && sidebarOpen && 
+          !e.target.closest('.sidebar') && 
+          !e.target.closest('.sidebar-toggle')) {
+        closeSidebar();
+      }
+    });
+
+    function handleSidebarResponsive() {
+      if (window.innerWidth > 1024) {
+        closeSidebar();
+      }
+    }
+
+    window.addEventListener('resize', handleSidebarResponsive);
+    handleSidebarResponsive(); 
+  }, 200); 
 });

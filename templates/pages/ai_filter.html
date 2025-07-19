@@ -36,15 +36,12 @@
                 stunning artwork.
             </p>
         </div>
-    </div>
-    <div
+    </div>    <div
         id="form-section"
-        class="flex md:flex-row flex-col md:w-[90vw] md:mx-auto justify-center items-center flex-wrap m-10 gap-10"
+        class="flex md:flex-row flex-col md:w-[90vw] md:mx-auto justify-center items-start flex-wrap m-10 gap-10"
     >
         <!-- Diff Section -->
-        <div
-            class="relative w-full md:w-[30%] h-full flex items-center justify-center"
-        >
+        <div class="relative w-full md:w-[30%] h-full flex items-center justify-center">
             <a
                 href="data:image/png;base64,{{ processed_image }}"
                 download="processed_image.png"
@@ -82,7 +79,8 @@
                 <div class="diff-resizer"></div>
             </div>
         </div>
-        <!-- Upload Section -->
+
+        <!-- Upload and Control Section -->
         <form
             id="uploadForm"
             action="{% url 'ai_filter:ai_filter_api' %}"
@@ -91,134 +89,181 @@
             class="w-full md:w-[40%] flex flex-col justify-between gap-6"
         >
             {% csrf_token %}
+              <!-- Upload Section -->
+            <div 
+                id="drop-zone"
+                class="border-2 border-dashed border-slate-600 rounded-lg p-6 text-center cursor-pointer hover:border-blue-400 transition-colors duration-300 bg-slate-900 hover:bg-slate-800 aspect-[4/3] flex items-center justify-center"
+            >                <div id="upload-content">
+                    <div class="mb-4">
+                        <svg class="w-16 h-16 mx-auto text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+                        </svg>
+                    </div>
+                    <p class="text-slate-300 text-lg mb-2">Drag & drop an image here</p>
+                    <p class="text-slate-400 text-sm">or click to browse</p>
+                </div>
+                  <!-- Image Preview -->
+                <div id="image-preview" class="hidden">
+                    <img id="preview-img" class="max-w-full max-h-full mx-auto rounded-lg shadow-lg object-contain" alt="Preview">
+                    <div class="mt-4 flex justify-center gap-4">
+                        <p id="file-name" class="text-slate-300 text-sm"></p>
+                        <button type="button" id="remove-image" class="text-red-400 hover:text-red-300 text-sm">Remove</button>
+                    </div>
+                </div>
+            </div>
+
             <input
                 type="file"
                 name="image_file"
                 id="fileInput"
                 accept=".jpg, .jpeg, .png"
-                class="file-input file-input-bordered file-input-md w-[100%] max-w-xs"
+                class="hidden"
             />
-            <!-- Scrollable Container with Proper Spacing -->
-            <div
-                class="max-h-[40vh] bg-slate-700 rounded-lg overflow-y-auto p-4"
-            >
-            <div class="grid grid-cols-3 gap-4 p-4">
-                <!-- Arcane -->
-                <label class="cursor-pointer transition">
-                  <input type="radio" name="filter" value="arcane" class="peer" />
-                  <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-300 
-                              peer-checked:ring-2 peer-checked:ring-primary peer-checked:scale-105 peer-checked:border-primary">
-                    <figure>
-                      <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Arcane"
-                        class="w-full h-48 object-cover"
-                      />
-                    </figure>
-                    <div class="card-body">
-                      <h2 class="card-title">Arcane</h2>
-                    </div>
-                  </div>
-                </label>
-              
-                <!-- Hayao -->
-                <label class="cursor-pointer transition">
-                  <input type="radio" name="filter" value="hayao" class="peer" />
-                  <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-300 
-                              peer-checked:ring-2 peer-checked:ring-primary peer-checked:scale-105 peer-checked:border-primary">
-                    <figure>
-                      <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Hayao"
-                        class="w-full h-48 object-cover"
-                      />
-                    </figure>
-                    <div class="card-body">
-                      <h2 class="card-title">Hayao</h2>
-                    </div>
-                  </div>
-                </label>
-              
-                <!-- Paprik -->
-                <label class="cursor-pointer transition">
-                  <input type="radio" name="filter" value="paprik" class="peer" />
-                  <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-300 
-                              peer-checked:ring-2 peer-checked:ring-primary peer-checked:scale-105 peer-checked:border-primary">
-                    <figure>
-                      <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Paprik"
-                        class="w-full h-48 object-cover"
-                      />
-                    </figure>
-                    <div class="card-body">
-                      <h2 class="card-title">Paprik</h2>
-                    </div>
-                  </div>
-                </label>
-              
-                <!-- Portrait Sketch -->
-                <label class="cursor-pointer transition">
-                  <input type="radio" name="filter" value="portraitsketch" class="peer" />
-                  <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-300 
-                              peer-checked:ring-2 peer-checked:ring-primary peer-checked:scale-105 peer-checked:border-primary">
-                    <figure>
-                      <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Portrait Sketch"
-                        class="w-full h-48 object-cover"
-                      />
-                    </figure>
-                    <div class="card-body">
-                      <h2 class="card-title">Sketch</h2>
-                    </div>
-                  </div>
-                </label>
-              
-                <!-- JP Face -->
-                <label class="cursor-pointer transition">
-                  <input type="radio" name="filter" value="jp_face" class="peer" />
-                  <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-300 
-                              peer-checked:ring-2 peer-checked:ring-primary peer-checked:scale-105 peer-checked:border-primary">
-                    <figure>
-                      <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="JP Face"
-                        class="w-full h-48 object-cover"
-                      />
-                    </figure>
-                    <div class="card-body">
-                      <h2 class="card-title">JP Face</h2>
-                    </div>
-                  </div>
-                </label>
-              
-                <!-- Shinkai -->
-                <label class="cursor-pointer transition">
-                  <input type="radio" name="filter" value="shinkai" class="peer" />
-                  <div class="card bg-base-100 shadow-md hover:shadow-lg transition-all duration-300 
-                              peer-checked:ring-2 peer-checked:ring-primary peer-checked:scale-105 peer-checked:border-primary">
-                    <figure>
-                      <img
-                        src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.webp"
-                        alt="Shinkai"
-                        class="w-full h-48 object-cover"
-                      />
-                    </figure>
-                    <div class="card-body">
-                      <h2 class="card-title">Shinkai</h2>
-                    </div>
-                  </div>
-                </label>
-              </div>       
+
+            <!-- Filter Selection -->
+            <div class="max-h-[40vh] bg-slate-700 rounded-lg overflow-y-auto p-4">
+                <div class="grid grid-cols-3 gap-4 p-4">
+                    <!-- Arcane -->
+                    <label class="cursor-pointer transition">
+                        <input type="radio" name="filter" value="arcane" class="peer hidden" />
+                        <div class="filter-card bg-slate-900 border border-slate-700 shadow-md hover:shadow-lg transition-all duration-300 
+                                    peer-checked:ring-2 peer-checked:ring-blue-400 peer-checked:scale-105 peer-checked:border-blue-400 rounded-lg overflow-hidden">                            <div class="slideshow-container relative">
+                                <img
+                                    src="{% static 'images/filter3.jpg' %}"
+                                    alt="Arcane Before"
+                                    class="slideshow-image active w-full h-24 object-cover"
+                                />
+                                <img
+                                    src="{% static 'images/filtered3.jpg' %}"
+                                    alt="Arcane After"
+                                    class="slideshow-image w-full h-24 object-cover"
+                                />
+                            </div>
+                            <div class="p-2">
+                                <h5 class="font-semibold text-white text-xs">Arcane</h5>
+                            </div>
+                        </div>
+                    </label>
+                    
+                    <!-- Hayao -->
+                    <label class="cursor-pointer transition">
+                        <input type="radio" name="filter" value="hayao" class="peer hidden" />
+                        <div class="filter-card bg-slate-900 border border-slate-700 shadow-md hover:shadow-lg transition-all duration-300 
+                                    peer-checked:ring-2 peer-checked:ring-blue-400 peer-checked:scale-105 peer-checked:border-blue-400 rounded-lg overflow-hidden">                            <div class="slideshow-container relative">
+                                <img
+                                    src="{% static 'images/filter.jpg' %}"
+                                    alt="Hayao Before"
+                                    class="slideshow-image active w-full h-24 object-cover"
+                                />
+                                <img
+                                    src="{% static 'images/filtered.webp' %}"
+                                    alt="Hayao After"
+                                    class="slideshow-image w-full h-24 object-cover"
+                                />
+                            </div>
+                            <div class="p-2">
+                                <h5 class="font-semibold text-white text-xs">Hayao</h5>
+                            </div>
+                        </div>
+                    </label>
+                    
+                    <!-- Paprik -->
+                    <label class="cursor-pointer transition">
+                        <input type="radio" name="filter" value="paprik" class="peer hidden" />
+                        <div class="filter-card bg-slate-900 border border-slate-700 shadow-md hover:shadow-lg transition-all duration-300 
+                                    peer-checked:ring-2 peer-checked:ring-blue-400 peer-checked:scale-105 peer-checked:border-blue-400 rounded-lg overflow-hidden">                            <div class="slideshow-container relative">
+                                <img
+                                    src="{% static 'images/filter5.jpg' %}"
+                                    alt="Paprik Before"
+                                    class="slideshow-image active w-full h-24 object-cover"
+                                />
+                                <img
+                                    src="{% static 'images/filtered5.png' %}"
+                                    alt="Paprik After"
+                                    class="slideshow-image w-full h-24 object-cover"
+                                />
+                            </div>
+                            <div class="p-2">
+                                <h5 class="font-semibold text-white text-xs">Paprik</h5>
+                            </div>
+                        </div>
+                    </label>
+                    
+                    <!-- Portrait Sketch -->
+                    <label class="cursor-pointer transition">
+                        <input type="radio" name="filter" value="portraitsketch" class="peer hidden" />
+                        <div class="filter-card bg-slate-900 border border-slate-700 shadow-md hover:shadow-lg transition-all duration-300 
+                                    peer-checked:ring-2 peer-checked:ring-blue-400 peer-checked:scale-105 peer-checked:border-blue-400 rounded-lg overflow-hidden">                            <div class="slideshow-container relative">
+                                <img
+                                    src="{% static 'images/img3.jpg' %}"
+                                    alt="Sketch Before"
+                                    class="slideshow-image active w-full h-24 object-cover"
+                                />
+                                <img
+                                    src="{% static 'images/output_filter.jpg' %}"
+                                    alt="Sketch After"
+                                    class="slideshow-image w-full h-24 object-cover"
+                                />
+                            </div>
+                            <div class="p-2">
+                                <h5 class="font-semibold text-white text-xs">Sketch</h5>
+                            </div>
+                        </div>
+                    </label>
+                    
+                    <!-- JP Face -->
+                    <label class="cursor-pointer transition">
+                        <input type="radio" name="filter" value="jp_face" class="peer hidden" />
+                        <div class="filter-card bg-slate-900 border border-slate-700 shadow-md hover:shadow-lg transition-all duration-300 
+                                    peer-checked:ring-2 peer-checked:ring-blue-400 peer-checked:scale-105 peer-checked:border-blue-400 rounded-lg overflow-hidden">                            <div class="slideshow-container relative">
+                                <img
+                                    src="{% static 'images/filter2.jpg' %}"
+                                    alt="JP Face Before"
+                                    class="slideshow-image active w-full h-24 object-cover"
+                                />
+                                <img
+                                    src="{% static 'images/filtered2.jpg' %}"
+                                    alt="JP Face After"
+                                    class="slideshow-image w-full h-24 object-cover"
+                                />
+                            </div>
+                            <div class="p-2">
+                                <h5 class="font-semibold text-white text-xs">JP Face</h5>
+                            </div>
+                        </div>
+                    </label>
+                    
+                    <!-- Shinkai -->
+                    <label class="cursor-pointer transition">
+                        <input type="radio" name="filter" value="shinkai" class="peer hidden" />
+                        <div class="filter-card bg-slate-900 border border-slate-700 shadow-md hover:shadow-lg transition-all duration-300 
+                                    peer-checked:ring-2 peer-checked:ring-blue-400 peer-checked:scale-105 peer-checked:border-blue-400 rounded-lg overflow-hidden">                            <div class="slideshow-container relative">
+                                <img
+                                    src="{% static 'images/filter4.jpg' %}"
+                                    alt="Shinkai Before"
+                                    class="slideshow-image active w-full h-24 object-cover"
+                                />
+                                <img
+                                    src="{% static 'images/filtered4.webp' %}"
+                                    alt="Shinkai After"
+                                    class="slideshow-image w-full h-24 object-cover"
+                                />
+                            </div>
+                            <div class="p-2">
+                                <h5 class="font-semibold text-white text-xs">Shinkai</h5>
+                            </div>
+                        </div>
+                    </label>
+                </div>
             </div>
+
             <!-- Submit Button -->
             <button
                 id="generateBtn"
                 type="submit"
                 class="btn btn-primary w-full mt-1"
             >
-                <i class="fa-solid fa-magic mr-2"></i> Generate Colorized Image
+                <i class="fa-solid fa-magic mr-2"></i> Generate Filtered Image
             </button>
         </form>
     </div>
@@ -232,5 +277,109 @@
     </div>
     {% endif %}
 </div>
+
+<style>
+    #drop-zone {
+        height: 42vh;
+    }
+    .drop-zone-active {
+        border-color: #3b82f6 !important;
+        background-color: #1e293b !important;
+    }
+    
+    .drop-zone-active svg {
+        color: #3b82f6;
+    }
+    .slideshow-container {
+        position: relative;
+        width: 100%;
+        height: 96px;
+        overflow: hidden;
+    }
+    
+    .slideshow-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: opacity 0.8s ease-in-out;
+    }
+      .slideshow-image.active {
+        opacity: 1;
+    }
+    .filter-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    .filter-card {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .peer:checked + .filter-card {
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+        border-color: #3b82f6;
+        transform: scale(1.05);
+        box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+    }
+    
+    .peer:checked + .filter-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0.05) 100%);
+        border-radius: 0.5rem;
+        z-index: 1;
+        pointer-events: none;
+    }
+    
+    .peer:checked + .filter-card::after {
+        content: '✓';
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: #3b82f6;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+        z-index: 10;
+        box-shadow: 0 2px 8px rgba(59, 130, 246, 0.5);
+    }
+    
+    .peer:checked + .filter-card .slideshow-container,
+    .peer:checked + .filter-card .p-2 {
+        position: relative;
+        z-index: 5;
+    }
+    
+    @media (max-width: 768px) {
+        .slideshow-container {
+            height: 96px;
+        }
+        
+        #form-section {
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        
+        .filter-card .slideshow-container {
+            height: 80px;
+        }
+    }
+</style>
+
 <script src="{% static 'scripts/ai-filter.js' %}"></script>
 {% endblock body %}

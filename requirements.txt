@@ -1,5 +1,6 @@
 asgiref==3.8.1
 certifi==2024.8.30
+'git+https://github.com/facebookresearch/detectron2.git'
 cffi==1.17.1
 charset-normalizer==3.4.0
 cryptography==44.0.0
@@ -41,7 +42,8 @@ tensorflow==2.14.0
 tensorflow-hub==0.14.0
 timm==1.0.14
 torch==2.2.2
-torchvision==0.17.2
+torchvision==0.22.1
+onnxruntime==1.22.1
 tqdm==4.67.1
 sentencepiece==0.2.0
 accelerate==1.8.1
@@ -53,9 +55,8 @@ webdataset==0.2.111
 albumentations==0.5.2
 imgaug==0.4.0
 kornia==0.8.0
-transformers==4.49.0
 gradio_client==1.10.3
-diffusers==0.34.0
+diffusers==0.30.2
 hf-xet==1.1.5
 huggingface-hub==0.33.1
 transformers==4.53.0

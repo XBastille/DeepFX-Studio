@@ -2,7 +2,6 @@ const dragAndDrop = document.querySelector('.drag-and-drop');
 const fileInput = document.querySelector('.file-input');
 const msg = document.querySelector('.drag-drop-msg');
 const icon = document.querySelector('.content i');
-const back = document.querySelector('.back');
 const slide = document.querySelector('.slide');
 const container = document.querySelector('.container');
 const closeIcon = document.querySelector('.close-icon');
@@ -117,14 +116,24 @@ function createProcessingAnimation() {
 
     const waveContainer = document.createElement('div');
     waveContainer.className = 'container';
+    
+    const screenWidth = window.innerWidth;
+    if (screenWidth <= 480) {
+        waveContainer.style.width = '180px';
+        waveContainer.style.height = '180px';
+    } else if (screenWidth <= 768) {
+        waveContainer.style.width = '220px';
+        waveContainer.style.height = '220px';
+    } else {
+        waveContainer.style.width = '280px';
+        waveContainer.style.height = '280px';
+    }
 
-    // Create 4 wave levels
     for (let i = 0; i < 4; i++) {
         const wave = document.createElement('div');
         wave.className = 'wave';
         if (i > 0) wave.setAttribute('data-level', i);
 
-        // Create 24 bars for each wave
         for (let j = 0; j < 24; j++) {
             const bar = document.createElement('div');
             bar.className = 'bar';
@@ -158,6 +167,9 @@ document.querySelectorAll('.action-btn').forEach(btn => {
 
         btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
         btn.disabled = true;
+
+        const finalContainer = document.querySelector('.final-container');
+        finalContainer.style.display = 'block';
 
         const finalDiv = document.querySelector('.final');
         finalDiv.innerHTML = '';
@@ -289,6 +301,9 @@ resetBtn.addEventListener('click', () => {
 
 let isDrawing = false;
 let isErasing = false;
+let isMobile = window.innerWidth <= 480;
+
+const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
 dragAndDrop.addEventListener('click', () => {
     drawingCanvas.style.display = 'block';
@@ -333,10 +348,6 @@ closeIcon.addEventListener('click', (e) => {
     fileInput.disabled = false;
 });
 
-back.addEventListener('click', () => {
-    window.close();
-});
-
 function setCanvasSizes() {
     const width = dragAndDrop.offsetWidth;
     const height = dragAndDrop.offsetHeight;
@@ -350,10 +361,95 @@ function setCanvasSizes() {
 }
 setCanvasSizes();
 
+addDrawingEvents();
+
 drawingContext.lineWidth = 50;
 drawingContext.strokeStyle = "white";
 drawingContext.lineCap = "round";
 drawingContext.globalCompositeOperation = "source-over";
+
+function addDrawingEvents() {
+    drawingCanvas.addEventListener('mousedown', handleStart);
+    drawingCanvas.addEventListener('mousemove', handleMove);
+    drawingCanvas.addEventListener('mouseup', handleEnd);
+    drawingCanvas.addEventListener('mouseleave', handleEnd);
+    
+    if (isTouchDevice) {
+        drawingCanvas.addEventListener('touchstart', handleStart, { passive: false });
+        drawingCanvas.addEventListener('touchmove', handleMove, { passive: false });
+        drawingCanvas.addEventListener('touchend', handleEnd, { passive: false });
+        drawingCanvas.addEventListener('touchcancel', handleEnd, { passive: false });
+    }
+}
+
+function getEventPos(e) {
+    const rect = drawingCanvas.getBoundingClientRect();
+    const scaleX = drawingCanvas.width / rect.width;
+    const scaleY = drawingCanvas.height / rect.height;
+    
+    let clientX, clientY;
+    
+    if (e.touches && e.touches.length > 0) {
+        clientX = e.touches[0].clientX;
+        clientY = e.touches[0].clientY;
+    } else {
+        clientX = e.clientX;
+        clientY = e.clientY;
+    }
+    
+    return {
+        x: (clientX - rect.left) * scaleX,
+        y: (clientY - rect.top) * scaleY
+    };
+}
+
+function handleStart(e) {
+    if (e.touches && e.touches.length > 1) {
+        isDrawing = false;
+        return;
+    }
+    
+    if (e.target === drawingCanvas) {
+        e.preventDefault(); 
+    }
+    isDrawing = true;
+    drawingContext.strokeStyle = "white";
+    
+    const pos = getEventPos(e);
+    drawingContext.beginPath();
+    drawingContext.moveTo(pos.x, pos.y);
+    draw(e);
+}
+
+function handleMove(e) {
+    if (!isDrawing) {
+        return;
+    }
+    
+    if (e.touches && e.touches.length > 1) {
+        isDrawing = false;
+        drawingContext.beginPath();
+        return;
+    }
+    
+    if (e.target === drawingCanvas && isDrawing) {
+        e.preventDefault(); 
+    }
+    
+    const pos = getEventPos(e);
+    
+    if (isErasing) {
+        drawingContext.clearRect(pos.x - drawingContext.lineWidth / 2, pos.y - drawingContext.lineWidth / 2, drawingContext.lineWidth, drawingContext.lineWidth);
+    } else {
+        drawingContext.lineTo(pos.x, pos.y);
+        drawingContext.stroke();
+    }
+}
+
+function handleEnd(e) {
+    isDrawing = false;
+    drawingContext.beginPath();
+}
 
 drawingCanvas.addEventListener('mousedown', (e) => {
     isDrawing = true;
@@ -500,10 +596,16 @@ submit.addEventListener('click', async (e) => {
                         maskContext.drawImage(maskImage, 0, 0, maskPreview.width, maskPreview.height);
                         submit.innerHTML = originalContent;
                         submit.disabled = false;
-                    };
-                    maskImage.src = result.mask;
+                    };                    maskImage.src = result.mask;
                     popup.style.display = 'none';
                     popupBox.style.display = 'none';
+                    
+                    if (isTouchDevice && window.innerWidth <= 480) {
+                        body.style.overflow = '';
+                        body.style.position = '';
+                        body.style.width = '';
+                        body.style.height = '';
+                    }
                 }
             }
         } catch (error) {
@@ -540,10 +642,17 @@ submit.addEventListener('click', async (e) => {
         });
 
         const result = await response.json();
-        if (result.status === 'success') {
-            currentSessionId = result.session_id;
+        if (result.status === 'success') {            currentSessionId = result.session_id;
             popup.style.display = 'none';
             popupBox.style.display = 'none';
+            
+            if (isTouchDevice && window.innerWidth <= 480) {
+                body.style.overflow = '';
+                body.style.position = '';
+                body.style.width = '';
+                body.style.height = '';
+            }
+            
             maskPreview.style.display = 'block';
             maskPreview.style.width = 'auto';
             maskPreview.style.height = 'auto';
@@ -625,13 +734,20 @@ function resetPreview() {
     drawingCanvas.style.zIndex = '1';
     drawingCanvas.style.display = 'none';
     imageCanvas.style.display = 'none';
-    maskPreview.style.display = 'none';
-
-    currentSessionId = null;
-
-    popup.style.display = 'none';
+    maskPreview.style.display = 'none';    currentSessionId = null;    
+    
+    const finalContainer = document.querySelector('.final-container');
+    finalContainer.style.display = 'none';
+      popup.style.display = 'none';
     popupBox.style.display = 'none';
-    body.style.backgroundColor = 'black';
+    body.style.background = 'linear-gradient(to bottom, #111827, #000000)';
+    
+    if (isTouchDevice && window.innerWidth <= 480) {
+        body.style.overflow = '';
+        body.style.position = '';
+        body.style.width = '';
+        body.style.height = '';
+    }
 
     setCanvasSizes();
 }
@@ -639,9 +755,27 @@ function resetPreview() {
 
 function preview(file) {
     popup.style.display = 'block';
-    body.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    body.style.background = 'rgba(0, 0, 0, 0.7)';
     body.style.backdropFilter = 'blur(5px)';
     popupBox.style.display = 'block';
+    
+    if (isTouchDevice && window.innerWidth <= 480) {
+        body.style.overflow = 'hidden';
+        body.style.position = 'fixed';
+        body.style.width = '100%';
+        body.style.height = '100%';
+        
+        popupBox.style.overflowY = 'auto';
+        popupBox.style.overflowX = 'hidden';
+        popupBox.style.touchAction = 'pan-y'; 
+        popupBox.style.webkitOverflowScrolling = 'touch'; 
+        popupBox.style.overscrollBehavior = 'contain'; 
+        
+        drawingCanvas.style.touchAction = 'none'; 
+        
+        popup.style.touchAction = 'none';
+    }
+    
     const existingPreview = dragAndDrop.querySelector('.preview');
 
     if (existingPreview) existingPreview.remove();
@@ -674,13 +808,11 @@ function preview(file) {
                 image.className = 'preview';
                 dragAndDrop.appendChild(image);
 
-                // Reattach dropdown event listeners
                 const dropdownToggle = document.querySelector('.dropdown-toggle');
                 const submitDropdown = document.querySelector('.submit-dropdown');
                 const oldToggle = dropdownToggle.cloneNode(true);
                 dropdownToggle.parentNode.replaceChild(oldToggle, dropdownToggle);
 
-                // Add fresh event listeners
                 oldToggle.addEventListener('click', (e) => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -715,23 +847,54 @@ function preview(file) {
     dragAndDrop.style.pointerEvents = 'none';
 }
 
+function setupPopupTouchHandling() {
+    if (!isTouchDevice) return;
+    
+    popupBox.addEventListener('touchstart', function(e) {
+        if (e.target !== drawingCanvas && !drawingCanvas.contains(e.target)) {
+            e.stopPropagation();
+        }
+    }, { passive: true });
+    
+    popupBox.addEventListener('touchmove', function(e) {
+        if (e.target !== drawingCanvas && !drawingCanvas.contains(e.target)) {
+            e.stopPropagation();
+        }
+    }, { passive: true });
+    
+    let touchStartY = 0;
+    let scrollStartY = 0;
+    
+    popupBox.addEventListener('touchstart', function(e) {
+        if (e.touches.length === 2) {
+            touchStartY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+            scrollStartY = popupBox.scrollTop;
+        }
+    }, { passive: true });
+    
+    popupBox.addEventListener('touchmove', function(e) {
+        if (e.touches.length === 2) {
+            const touchCurrentY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+            const deltaY = touchStartY - touchCurrentY;
+            const scrollSpeed = window.innerWidth <= 480 ? 1.2 : 1.0; 
+            popupBox.scrollTop = scrollStartY + (deltaY * scrollSpeed);
+            e.preventDefault(); 
+        }
+    }, { passive: false });
+}
 
-
+document.addEventListener('DOMContentLoaded', setupPopupTouchHandling);
 
 
 function draw(e) {
     if (!isDrawing) return;
 
-    const rect = drawingCanvas.getBoundingClientRect();
-    const scaleX = drawingCanvas.width / rect.width;
-    const scaleY = drawingCanvas.height / rect.height;
-    const x = (e.clientX - rect.left) * scaleX;
-    const y = (e.clientY - rect.top) * scaleY;
-
+    const pos = getEventPos(e);
+    
     drawingContext.lineWidth = sizeInput.value;
     drawingContext.lineCap = 'round';
-    drawingContext.lineTo(x, y);
+    drawingContext.lineTo(pos.x, pos.y);
     drawingContext.stroke();
     drawingContext.beginPath();
-    drawingContext.moveTo(x, y);
+    drawingContext.moveTo(pos.x, pos.y);
 }
