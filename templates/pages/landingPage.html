@@ -10,11 +10,16 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <style>        * {
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             color: aliceblue;
+            font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
         }
 
         body {
@@ -24,18 +29,18 @@
         .title {
             margin-top: 35px;
             margin-left: 50px;
-            width: 60%;
+            width: 80%;
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            background: transparent; 
+            background: transparent;
         }
 
         .header-Title {
             font-size: 6.9em;
             font-weight: 400;
             letter-spacing: -0.03em;
-            line-height: 1.09;
+            line-height: 1;
             background: transparent;
             overflow: visible;
             padding-bottom: 0.2em
@@ -47,23 +52,26 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            background: transparent; 
+            background: transparent;
         }
 
         .header-Subtitle {
             font-weight: 400;
             font-size: 1.5em;
             animation: riseUp 1s forwards;
-            background: transparent; 
+            background: transparent;
         }
 
         .discover {
-            margin-top: 30px;
+            width: 16%;
+            margin-top: 5px;
             margin-left: 50px;
             display: flex;
+            /* border: 2px solid white; */
+            height: 80px;
             justify-content: space-between;
             align-items: center;
-            background: transparent; 
+            background: transparent;
         }
 
         .discover-button {
@@ -71,11 +79,17 @@
             border: none;
             font-weight: 400;
             font-size: 1.5em;
-            width: 13%;
+            width: 100%;
+            height: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             animation: riseUp 1s forwards;
+            transition: transform 0.3s ease;
+        }
+
+        .discover-button:hover {
+            cursor: pointer;
         }
 
         .header-Title span {
@@ -85,13 +99,14 @@
         }
 
         .left-subtitle {
+            font-size: 3em;
             margin-left: 60%;
             margin-top: 100px;
             margin-left: 50px;
             text-align: right;
             width: 90%;
             height: 200px;
-            background: black; 
+            /* background: black; */
         }
 
         .boxes {
@@ -100,7 +115,7 @@
             width: 100%;
             display: flex;
             justify-content: space-around;
-            background: black; 
+            /* background: black; */
         }
 
         .box {
@@ -137,7 +152,7 @@
             justify-content: space-around;
             align-items: center;
             line-height: 0.9;
-            background: black; 
+            background: black;
         }
 
         .footer-title {
@@ -227,7 +242,321 @@
             position: relative;
             z-index: 2;
         }
+
+        .section-title {
+            margin-top: 10px;
+            margin-left: 50px;
+        }
+
+        .section-title p {
+            background: transparent;
+            border: none;
+            font-weight: 400;
+            font-size: 3.5em;
+            width: 100%;
+        }
+
+        .grid-container {
+            height: 2500px;
+            width: 100%;
+            background: rgba(23, 29, 81, 0.9);
+            color: black;
+            position: relative;
+            z-index: 1;
+        }
+
+        .grid-row {
+            margin-top: 100px;
+            margin-bottom: 100px;
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        .grid-box1 {
+            display: flex;
+            height: 550px;
+            width: 87%;
+            border: 2px solid #4a90e2;
+            background: transparent;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(13, 4, 65, 0.3);
+        }
+
+        .grid-box1-heading-div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .grid-box1-heading {
+            margin-top: 30px;
+            font-size: 72px !important;
+            font-weight: 700;
+            color: white;
+            text-shadow:
+                0 0 15px rgba(100, 181, 246, 0.6),
+                0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .grid-info {
+            height: 90%;
+            width: 60%;
+        }
+
+        .grid-info-text {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 86%;
+            padding: 0 30px 0 40px;
+            font-size: 33px;
+            /* border: 2px solid white; */
+        }
+
+        .grid-img-box {
+            height: 100%;
+            width: 40%;
+            border: 2px solid #4a90e2;
+            border-radius: 10px;
+        }
+
+        .grid-box1 .grid-img-box img {
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .card-front img {
+            height: 100%;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        @keyframes riseUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-out {
+            height: 200px;
+            background: teal;
+            color: white;
+            font-size: 2em;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        .spline-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        #canvas3d {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-section {
+            position: relative;
+            z-index: 1;
+            height: 100vh;
+        }
+
+        .logos {
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-container {
+            perspective: 1000px;
+            position: relative;
+            height: 480px;
+            width: 40%;
+            background: transparent;
+            border-radius: 15px;
+            padding: 10px;
+            box-shadow: 0 20px 40px rgba(13, 4, 65, 0.3);
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s;
+            background: transparent;
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
+            border: 2px solid #4a90e2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 15px;
+            box-shadow:
+                0 8px 32px rgba(74, 144, 226, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            transition: opacity 0.8s ease;
+        }
+
+        .card.flipped .card-front {
+            opacity: 0.01;
+        }
+
+        .card-front::before,
+        .card-back::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(74, 144, 226, 0.1) 50%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-front:hover::before,
+        .card-back:hover::before {
+            opacity: 1;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, #070224 0%, #162c55 50%, #1c3868 100%);
+            /* border-color: #64b5f6; */
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-flip-button {
+            z-index: 10;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: transparent;
+            /* background: linear-gradient(135deg, #4a90e2 0%, #2196f3 100%); */
+
+            border: 2px solid #0a1d96;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 25px;
+            cursor: pointer;
+
+            box-shadow:
+                0 4px 15px rgba(74, 144, 226, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            pointer-events: auto;
+        }
+
+        .card-flip-button i {
+            font-size: 24px;
+            color: white;
+        }
+
+        .card-flip-button:hover {
+            background: linear-gradient(135deg, #64b5f6 0%, #42a5f5 100%);
+            transform: translateY(-2px);
+            box-shadow:
+                0 6px 20px rgba(74, 144, 226, 0.6),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        }
+
+        .card-flip-button:active {
+            transform: translateY(0);
+            box-shadow:
+                0 2px 10px rgba(74, 144, 226, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+
+        .flip-card-heading {
+            z-index: 3;
+            position: absolute;
+            top: 30px;
+            left: 20px;
+            font-size: 58px;
+            font-weight: 700;
+            color: white;
+            text-shadow:
+                0 0 15px rgba(100, 181, 246, 0.6),
+                0 2px 4px rgba(0, 0, 0, 0.4);
+            text-transform: uppercase;
+        }
+
+        .card-back .flip-card-heading {
+            z-index: 3;
+            color: #64b5f6;
+            text-shadow:
+                0 0 15px rgba(100, 181, 246, 0.6),
+                0 2px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .box-image-grid {
+            z-index: 2;
+            width: 60%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            border: 2px solid #4a90e2;
+            box-shadow:
+                0 8px 25px rgba(74, 144, 226, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.8s ease;
+            background: linear-gradient(135deg, #000000 0%, #1a1a2e 50%, #16213e 100%);
+        }
+
+        .card-back-text {
+            padding: 24px 30px;
+            font-size: 30px;
+            line-height: 1.4;
+            color: #e3f2fd;
+            text-align: center;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+            /* background: rgba(13, 4, 65, 0.3); */
+            border-radius: 10px;
+            /* border: 1px solid rgba(74, 144, 226, 0.3); */
+            /* backdrop-filter: blur(10px); */
+        }
+
+        .card-container:hover .card {
+            box-shadow: 0 0 30px rgba(74, 144, 226, 0.4);
+        }
+
+        .grid-box1:hover {
+            box-shadow: 0 0 30px rgba(74, 144, 226, 0.4);
+        }
     </style>
+
 
 </head>
 
@@ -235,99 +564,457 @@
     <div class="spline-container">
         <canvas id="canvas3d"></canvas>
     </div>
-    
+
     <div class="hero-section">
         <section class="logos">
             <div class="logo">
-                <img src="logo.png" alt="">
+                <img src="../../static/images/logo.png" alt="">
             </div>
             <div class="name-logo">
-                <img src="website_logo.png" alt="">
+                <img src="../../static/images/website_logo.png" alt="">
             </div>
         </section>
         <section>
-        <div class="title">
-            <p class="header-Title">Transform images <br> with the power of <br> deep learning</p>
-        </div>
-        <div class="subtitle">
-            <p class="header-Subtitle">DeepFX Studio brings advanced computer vision models <br> to your fingertips with intuitive tools for
-                <br>
-                colorization, upscaling, background removal, <br>and artistic style transfer.
-            </p>
-        </div><div class="discover">
-            <button class="discover-button">Explore Features <i class="fa-solid fa-down-long"></i></button>
-        </div>
-    </section>
-
-
-
-    <section>        <div class="left-subtitle">
-            <p class="left-header" data-aos="fade-up">Experience what modern <br>neural networks <br>can do for images</p>
-        </div>
-        <div class="boxes">
-            <div class="box1 box" data-aos="fade-up">
-                <img src="pic.webp" alt="" class="box-image">
+            <div class="title">
+                <p class="header-Title">Transform images <br> with the power of <br> deep learning</p>
             </div>
-            <div class="box2 box" data-aos="fade-up">
-                <img src="pic.webp" alt="" class="box-image">
+            <div class="subtitle">
+                <p class="header-Subtitle">DeepFX Studio brings advanced computer vision models <br> to your fingertips
+                    with intuitive tools for
+                    <br>
+                    colorization, upscaling, background removal, <br>and artistic style transfer.
+                </p>
             </div>
-            <div class="box3 box" data-aos="fade-up">
-                <img src="pic.webp" alt="" class="box-image">
+            <div class="discover">
+                <button class="discover-button">Explore Features <i class="fa-solid fa-down-long"></i></button>
             </div>
-            <div class="box4 box" data-aos="fade-up">
-                <img src="pic.webp" alt="" class="box-image">
+        </section>
+
+
+
+        <section>
+            <div class="left-subtitle">
+                <p class="left-header" data-aos="fade-up">Experience what modern <br>neural networks <br>can do for
+                    images</p>
             </div>
-        </div>
-    </section>    <footer>
-        <div class="footer-top">
-            <p class="footer-title">Ready to transform <br> your images?</p>
-            <button class="footer-btn">
-                <p class="arrow">↗ </p>Try it Now
-            </button>
-        </div>
-    </footer>
+            <div class="boxes">
+                <div class="box1 box" data-aos="fade-up">
+                    <img src="../../static/images/10.png" alt="" class="box-image">
+                </div>
+                <div class="box2 box" data-aos="fade-up">
+                    <img src="../../static/images/12.png" alt="" class="box-image">
+                </div>
+                <div class="box3 box" data-aos="fade-up">
+                    <img src="../../static/images/11.png" alt="" class="box-image">
+                </div>
+                <div class="box4 box" data-aos="fade-up">
+                    <img src="../../static/images/04.png" alt="" class="box-image">
+                </div>
+            </div>
+        </section>
 
-    <br><br><br><br><br><br><br><br><br><br>
+
+        <section class="features-section">
+            <div class="grid-container">
+                <div class="for-blending-background"></div>
+                <div class="section-title" data-aos="fade-up">
+                    <p class="">What we can do</p>
+                </div>
+                <div class="grid-row" data-aos="fade-up">
+
+                    <div class="grid-box1">
+
+                        <div class="grid-img-box">
+                            <img src="../../static/images/10.png" alt="" class="box-image1">
+
+                        </div>
+                        <div class="grid-info">
+                            <div class="grid-box1-heading-div">
+                                <h3 class="grid-box1-heading">HEADING</h3>
+                            </div>
+                            <div class="grid-info-text">
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem amet,
+                                    asperiores
+                                    accusantium dolor minima nulla aliquid placeat reprehenderit odio facilis eos
+                                    natus
+                                    quam nostrum similique assumenda doloremque minus cum libero.Lorem ipsum dolor sit
+                                    amet consectetur adipisicing elit. Voluptatem amet,
+                                    asperiores
+                                    accusantium </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-row" data-aos="fade-up">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="card-front">
+                                <h3 class="flip-card-heading">Impainting</h3>
+
+                                <img src="../../static/images/mask3.webp" alt="" class="box-image-grid hover-img1">
+                                <!-- <img src="https://www.planetware.com/wpimages/2020/01/india-in-pictures-beautiful-places-to-photograph-taj-mahal.jpg"
+                                        alt="hover" class="hover-img"> -->
 
 
 
-    <script>
+                                <button class="card-flip-button btn1" onclick="flipCard(this)"><i
+                                        class="fa-solid fa-info"></i>
+                                </button>
+                            </div>
+                            <div class="card-back">
+                                <h3 class="flip-card-heading">Impainting</h3>
+                                <p class="card-back-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+                                    fugiat, nobis aut
+                                    molestiae enim eos nihil culpa et ipsum modi, tenetur sed minus similique eaque ipsa
+                                    hic atque blanditiis quidem?</p>
+                                <button class="card-flip-button" onclick="flipCard(this)"><i
+                                        class="fa-solid fa-rotate-left"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="card-front">
+                                <h3 class="flip-card-heading">Background Removal</h3>
+                                <img src="../../static/images/bg_rem2.png" alt="" class="box-image-grid hover-img2">
+                                <button class="card-flip-button" onclick="flipCard(this)"><i
+                                        class="fa-solid fa-info"></i></button>
+                            </div>
+                            <div class="card-back">
+                                <h3 class="flip-card-heading">background removal</h3>
+                                <p class="card-back-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+                                    fugiat, nobis aut
+                                    molestiae enim eos nihil culpa et ipsum modi, tenetur sed minus similique eaque ipsa
+                                    hic atque blanditiis quidem?</p>
+                                <button class="card-flip-button" onclick="flipCard(this)"><i
+                                        class="fa-solid fa-rotate-left"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-row" data-aos="fade-up">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="card-front">
+                                <h3 class="flip-card-heading">Neural Style Transfer</h3>
+                                <img src="../../static/images/" alt="" class="box-image-grid hover-img3">
+                                <button class="card-flip-button" onclick="flipCard(this)"><i
+                                        class="fa-solid fa-info"></i></button>
+                            </div>
+                            <div class="card-back">
+                                <h3 class="flip-card-heading">Neural Style Transfer</h3>
+                                <p class="card-back-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+                                    fugiat, nobis aut
+                                    molestiae enim eos nihil culpa et ipsum modi, tenetur sed minus similique eaque ipsa
+                                    hic atque blanditiis quidem?</p>
+                                <button class="card-flip-button" onclick="flipCard(this)"><i
+                                        class="fa-solid fa-rotate-left"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="card-front">
+                                <h3 class="flip-card-heading">Image Upscaler</h3>
+                                <img src="../../static/images/ai_upscale_output_image.jpg" alt=""
+                                    class="box-image-grid hover-img4">
+                                <button class="card-flip-button" onclick="flipCard(this)"><i
+                                        class="fa-solid fa-info"></i></button>
+                            </div>
+                            <div class="card-back">
+                                <h3 class="flip-card-heading">Image Upscaler</h3>
+                                <p class="card-back-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+                                    fugiat, nobis aut
+                                    molestiae enim eos nihil culpa et ipsum modi, tenetur sed minus similique eaque ipsa
+                                    hic atque blanditiis quidem?</p>
+                                <button class="card-flip-button" onclick="flipCard(this)"><i
+                                        class="fa-solid fa-rotate-left"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-row" data-aos="fade-up">
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="card-front">
+                                <h3 class="flip-card-heading">b&w to color</h3>
+                                <img src="../../static/images/bnw2.jpg" alt="" class="box-image-grid hover-img5">
+                                <button class="card-flip-button" onclick="flipCard(this)"><i
+                                        class="fa-solid fa-info"></i></button>
+                            </div>
+                            <div class="card-back">
+                                <h3 class="flip-card-heading">b&w to color</h3>
+                                <p class="card-back-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+                                    fugiat, nobis aut
+                                    molestiae enim eos nihil culpa et ipsum modi, tenetur sed minus similique eaque ipsa
+                                    hic atque blanditiis quidem?</p>
+                                <button class="card-flip-button" onclick="flipCard(this)"><i
+                                        class="fa-solid fa-rotate-left"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-container">
+                        <div class="card">
+                            <div class="card-front">
+                                <h3 class="flip-card-heading">ai filter</h3>
+                                <img src="../../static/images/filter.jpg" alt="" class="box-image-grid hover-img6">
+                                <button class="card-flip-button" onclick="flipCard(this)"><i
+                                        class="fa-solid fa-info"></i></button>
+                            </div>
+                            <div class="card-back">
+                                <h3 class="flip-card-heading">ai filter</h3>
+                                <p class="card-back-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+                                    fugiat, nobis aut
+                                    molestiae enim eos nihil culpa et ipsum modi, tenetur sed minus similique eaque ipsa
+                                    hic atque blanditiis quidem?</p>
+                                <button class="card-flip-button" onclick="flipCard(this)"><i
+                                        class="fa-solid fa-rotate-left"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-        window.addEventListener("DOMContentLoaded", () => {
-            const p = document.querySelector(".header-Title");
-            const text = p.innerHTML.replace(/<br\s*\/?>/gi, " <br> "); // handle <br> properly
-            const words = text.split(" ").map(word => word === "<br>" ? "<br>" : word);
-            p.innerHTML = "";
+        </section>
 
-            words.forEach((word, i) => {
-                if (word === "<br>") {
-                    p.appendChild(document.createElement("br"));
-                } else {
-                    const span = document.createElement("span");
-                    span.textContent = word;
-                    span.classList.add("word");
-                    span.style.animationDelay = `${i * 0.08}s`;
-                    p.appendChild(span);
-                    p.append(" "); // ⬅️ ADD a space **after** the span
-                }
+        <footer>
+            <div class="footer-top">
+                <p class="footer-title">Ready to transform <br> your images?</p>
+                <button class="footer-btn">
+                    <p class="arrow">↗ </p>Try it Now
+                </button>
+            </div>
+        </footer>
+
+        <br><br><br><br><br><br><br><br><br><br>
+
+
+
+        <script>
+
+            window.addEventListener("DOMContentLoaded", () => {
+                const p = document.querySelector(".header-Title");
+                const text = p.innerHTML.replace(/<br\s*\/?>/gi, " <br> ");
+                const words = text.split(" ").map(word => word === "<br>" ? "<br>" : word);
+                p.innerHTML = "";
+
+                words.forEach((word, i) => {
+                    if (word === "<br>") {
+                        p.appendChild(document.createElement("br"));
+                    } else {
+                        const span = document.createElement("span");
+                        span.textContent = word;
+                        span.classList.add("word");
+                        span.style.animationDelay = `${i * 0.08}s`;
+                        p.appendChild(span);
+                        p.append(" ");
+                    }
+                });
+
+
+                // CHANGE THE IMAGE OF EVERY BOX ON HOVER FROM HERE .... JUST PUT THE MAIN IMAGE AT THAT LOCATION AND THE HOVERED IMAGE HERE AND YOU ARE GOOD TO GO
+
+                // FOR SMALL BOX -1 
+                const img1 = document.querySelector('.hover-img1');
+
+
+                img1.addEventListener('mouseenter', () => {
+                    img1.style.opacity = 0;
+                    setTimeout(() => {
+
+                        img1.src = "https://www.planetware.com/wpimages/2020/01/india-in-pictures-beautiful-places-to-photograph-taj-mahal.jpg";
+
+                        img1.style.opacity = 1;
+                    }, 300);
+                    console.log('mouse enter');
+
+                });
+
+                img1.addEventListener('mouseleave', () => {
+                    img1.style.opacity = 0;
+                    setTimeout(() => {
+                        img1.src = "pic.webp";
+                        img1.style.opacity = 1;
+                    }, 300);
+
+                    console.log('mouse leave');
+
+                });
+
+                // FOR SMALL BOX -2
+                const img2 = document.querySelector('.hover-img2');
+
+
+                img2.addEventListener('mouseenter', () => {
+                    img2.style.opacity = 0;
+                    setTimeout(() => {
+
+                        img2.src = "../../static/images/bg_rem2.png";
+
+                        img2.style.opacity = 1;
+                    }, 300);
+                    console.log('mouse enter');
+
+                });
+
+                img2.addEventListener('mouseleave', () => {
+                    img2.style.opacity = 0;
+                    setTimeout(() => {
+                        img2.src = "../../static/images/bg2.jpg";
+                        img2.style.opacity = 1;
+                    }, 300);
+
+                    console.log('mouse leave');
+
+                });
+
+                // FOR SMALL BOX -3
+                const img3 = document.querySelector('.hover-img3');
+
+
+                img3.addEventListener('mouseenter', () => {
+                    img3.style.opacity = 0;
+                    setTimeout(() => {
+
+                        img3.src = "../../static/images/output.jpg";
+
+                        img3.style.opacity = 1;
+                    }, 300);
+                    console.log('mouse enter');
+
+                });
+
+                img3.addEventListener('mouseleave', () => {
+                    img3.style.opacity = 0;
+                    setTimeout(() => {
+                        img3.src = "../../static/images/style.jpg";
+                        img3.style.opacity = 1;
+                    }, 300);
+
+                    console.log('mouse leave');
+
+                });
+
+
+                // FOR SMALL BOX -4
+                const img4 = document.querySelector('.hover-img4');
+
+
+                img4.addEventListener('mouseenter', () => {
+                    img4.style.opacity = 0;
+                    setTimeout(() => {
+
+                        img4.src = "../../static/images/ai_upscale_output_image.jpg";
+
+                        img4.style.opacity = 1;
+                    }, 300);
+                    console.log('mouse enter');
+
+                });
+
+                img4.addEventListener('mouseleave', () => {
+                    img4.style.opacity = 0;
+                    setTimeout(() => {
+                        img4.src = "../../static/images/ai_upscale_input_image.jpeg";
+                        img4.style.opacity = 1;
+                    }, 300);
+
+                    console.log('mouse leave');
+
+                });
+
+
+                // FOR SMALL BOX -5
+                const img5 = document.querySelector('.hover-img5');
+
+
+                img5.addEventListener('mouseenter', () => {
+                    img5.style.opacity = 0;
+                    setTimeout(() => {
+
+                        img5.src = "../../static/images/colored2.jpg";
+
+                        img5.style.opacity = 1;
+                    }, 300);
+                    console.log('mouse enter');
+
+                });
+
+                img5.addEventListener('mouseleave', () => {
+                    img5.style.opacity = 0;
+                    setTimeout(() => {
+                        img5.src = "../../static/images/bnw2.jpg";
+                        img5.style.opacity = 1;
+                    }, 300);
+
+                    console.log('mouse leave');
+
+                });
+
+
+                // FOR SMALL BOX -6
+                const img6 = document.querySelector('.hover-img6');
+
+
+                img6.addEventListener('mouseenter', () => {
+                    img6.style.opacity = 0;
+                    setTimeout(() => {
+
+                        img6.src = "../../static/images/filtered.webp";
+
+                        img6.style.opacity = 1;
+                    }, 300);
+                    console.log('mouse enter');
+
+                });
+
+                img6.addEventListener('mouseleave', () => {
+                    img6.style.opacity = 0;
+                    setTimeout(() => {
+                        img6.src = "../../static/images/filter.jpg";
+                        img6.style.opacity = 1;
+                    }, 300);
+
+                    console.log('mouse leave');
+
+                });
+
+
             });
-        });
 
-    </script>
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            offset: 300,
-            duration: 1000,
-        });
-    </script>
-    <script type="module">
-        import { Application } from 'https://unpkg.com/@splinetool/runtime@1.9.29/build/runtime.js';
-        
-        const canvas = document.getElementById('canvas3d');
-        const app = new Application(canvas);
-        app.load('https://prod.spline.design/v7lcNzOxxaKgcWYr/scene.splinecode');
-    </script>
+            const BoxImg = document.querySelector('.box-image-grid');
+            // console.log(BoxImg);
+
+            function flipCard(button) {
+
+                const card = button.closest('.card');
+                card.classList.toggle('flipped');
+                console.log(BoxImg);
+                BoxImg.style['z - index'] = 0;
+                console.log(BoxImg.style['z - index']);
+                console.log(BoxImg);
+            }
+
+
+
+
+        </script>
+        <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+        <script>
+            AOS.init({
+                offset: 300,
+                duration: 1000,
+            });
+        </script>
+        <script type="module">
+            import { Application } from 'https://unpkg.com/@splinetool/runtime@1.9.29/build/runtime.js';
+
+            const canvas = document.getElementById('canvas3d');
+            const app = new Application(canvas);
+            app.load('https://prod.spline.design/v7lcNzOxxaKgcWYr/scene.splinecode');
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </body>
 
 </html>
