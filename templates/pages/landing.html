@@ -6,11 +6,17 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DeepFX Studio - Deep Learning Image Tools</title>
-    <link rel="shortcut icon" href="./logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link rel="shortcut icon" href="{% static 'images/logo.png' %}" type="image/x-icon">
+    <!-- Font-awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- GSAP CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <!-- GSAP Plugins CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+
     <link rel="stylesheet" href="{% static 'css/landing.css' %}" />
 </head>
 
@@ -19,37 +25,90 @@
         <canvas id="spline-container__canvas3d"></canvas>
     </div>
     <main>
-        <section>
+        <!-- Navbar Section -->
+        <section class="navbar" id="navbar_section">
             <nav class="nav">
-                <img class="nav__icon" src="{% static 'images/logo.png' %}" alt="Logo icon" />
-                <img class="nav__name" src="{% static 'images/website_logo.png' %}" alt="Website logo" />
+                <div class="flex-container">
+                    <img class="nav__icon" src="{% static 'images/logo.png' %}" alt="Logo icon" />
+                    <img class="nav__name" src="{% static 'images/website_logo.png' %}" alt="Website logo" />
+                </div>
                 <div class="nav__link-section">
                     <ul class="nav__link-section__link">
-                        <li><a href="#hero_section">Home</a></li>
+                        <li class="dropdown-wrapper">
+                            <p class="dropdown-toggle" id="dropdownToggle" aria-expanded="false">
+                                <i class="fa-regular fa-square-caret-down fa-rotate-270"></i>
+                                Products
+                            </p>
+                            <ul class="dropdown-menu" id="dropdownMenu">
+                                <li>
+                                    <a href="{% url 'ai-text-to-image:ai_text_to_image' %}">
+                                        <img src="{% static 'images/logo.png' %}" alt="Image Upscale" />
+                                        Image Generation
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'artistic-image-creator:nst' %}">
+                                        <img src="{% static 'images/aristic-image-logo.svg' %}" alt="Artistic Image Creator" />
+                                        Artistic Image Generation
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'ai-image-upscale:ai_image_upscale' %}">
+                                        <img src="{% static 'images/ai_upscale.svg' %}" alt="Image Upscale" />
+                                        Image Upscale
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'background-remover:background_remover' %}">
+                                        <img src="{% static 'images/bg-remove.jpg' %}" alt="Background Remover" />
+                                        Background Remover
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'ai_image_editor:inpaint' %}">
+                                        <img src="{% static 'images/ai_image_editor.svg' %}" alt="AI Image Editor" />
+                                        AI Image Editor
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'ai-colorization:ai_colorization' %}">
+                                        <img src="{% static 'images/ai_colorization.svg' %}" alt="AI Colorizer" />
+                                        AI Image Colorizer
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{% url 'ai_filter:ai_filter' %}">
+                                        <img src="{% static 'images/ai_filter.svg' %}" alt="AI Filter" />
+                                        AI Filter
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="selected-output" id="selectedOutput">
+                            </div>
+                        </li>
                         <li><a href="#showcase_section">Showcase</a></li>
+                        <li><a href="#insights_section">Insights</a></li>
+                        <li><a href="#about_section">About</a></li>
                     </ul>
                     {% if user.is_authenticated %}
-                    <div class="flex flex-row md:order-2 space-x-3">
-                        <a href={% url 'dashboard:dashboard_view' %}>
-                            <button>Dashboard</button>
-                        </a>
-                    </div>
+                    <a href={% url 'dashboard:dashboard_view' %}>
+                        <button>Dashboard</button>
+                    </a>
                     {% else %}
-                    <div class="flex flex-row md:order-2 space-x-3">
-                        <a href={% url 'account_login' %}>
-                            <button>Sign in</button>
-                        </a>
-                    </div>
+                    <a href={% url 'account_login' %}>
+                        <button>Sign in</button>
+                    </a>
                     {% endif %}
                 </div>
             </nav>
         </section>
 
-        <section id="hero_section" class="hero">
+        <!-- Hero Section -->
+        <section class="hero" id="hero_section">
             <div class="hero__title">
                 <h1 class="hero__headline">
                     Transform images <br />
-                    With the power of <br />
+                    with the power of <br />
                     deep learning
                 </h1>
             </div>
@@ -71,51 +130,291 @@
             </div>
         </section>
 
-        <section id="showcase_section" class="showcase">
-            <div class="showcase__header" data-aos="fade-up">
+        <!-- Showcase Section -->
+        <section class="showcase" id="showcase_section">
+            <div class="showcase__header">
                 <p class="showcase__title">
                     Experience what modern <br />neural networks <br />can do for images
                 </p>
             </div>
             <div class="showcase__gallery">
-                <div class="showcase__gallery__card image-card--offset-0" data-aos="fade-up">
-                    <img src="{% static 'images/10.png' %}" alt="Image enhancement example"
-                        class="showcase__gallery__card__img" />
+                <div class="showcase__gallery__card image-card--offset-0">
+                    <img src="{% static 'images/10.png' %}" alt="Image enhancement example" class="showcase__gallery__card__img" />
                 </div>
-                <div class="showcase__gallery__card image-card--offset-1" data-aos="fade-up">
-                    <img src="{% static 'images/12.png' %}" alt="Image enhancement example"
-                        class="showcase__gallery__card__img" />
+                <div class="showcase__gallery__card image-card--offset-1">
+                    <img src="{% static 'images/12.png' %}" alt="Image enhancement example" class="showcase__gallery__card__img" />
                 </div>
-                <div class="showcase__gallery__card image-card--offset-2" data-aos="fade-up">
-                    <img src="{% static 'images/11.png' %}" alt="Image enhancement example"
-                        class="showcase__gallery__card__img" />
+                <div class="showcase__gallery__card image-card--offset-2">
+                    <img src="{% static 'images/11.png' %}" alt="Image enhancement example" class="showcase__gallery__card__img" />
                 </div>
-                <div class="showcase__gallery__card image-card--offset-3" data-aos="fade-up">
-                    <img src="{% static 'images/04.png' %}" alt="Image enhancement example"
-                        class="showcase__gallery__card__img" />
+                <div class="showcase__gallery__card image-card--offset-3">
+                    <img src="{% static 'images/04.png' %}" alt="Image enhancement example" class="showcase__gallery__card__img" />
                 </div>
             </div>
         </section>
 
+        <section class="scroll-sync">
+            <div class="scroll-sync__header">
+                <span>Discover our</span>
+                <span>best</span>
+                <span>models</span>
+            </div>
+            <div class="scroll-sync__container">
+                <!-- Sticky Image Container -->
+                <div class="scroll-sync__image-container">
+                    <img id="sticky-image" src="{% static 'images/05.png' %}" alt="Sticky Visual" />
+                </div>
 
+                <!-- Scrollable Text Blocks -->
+                <div class="scroll-sync__content">
+                    <div class="scroll-sync__text-block" data-image="{% static 'images/05.png' %}">
+                        <h2>
+                            <img src="{% static 'images/logo.png' %}" />
+                            AI Image Generation
+                        </h2>
+                        <p>
+                            <strong>AI Image Generation</strong> tool is powered by <em>Stable Diffusion</em> and
+                            integrated with <em>Hugging Face</em> models, enabling you to turn any text prompt into
+                            <strong>visually stunning, high-resolution images</strong>.
+                            Whether you're creating <em>concept art</em> or <em>realistic scenes</em>, our models
+                            deliver <strong>exceptional quality, sharpness</strong>, and <strong>creative
+                                freedom</strong>.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, impedit deleniti! Nulla
+                            tenetur iusto debitis deleniti odio beatae omnis eius facilis aspernatur in natus
+                            accusantium iure, exercitationem nemo optio dolorem?
+                        </p>
+                        <button>Learn More</button>
+                    </div>
 
-        <footer class="footer">
-            <div class="footer__top">
-                <p class="footer__title">
+                    <div class="scroll-sync__text-block" data-image="{% static 'images/img1.jpg' %}">
+                        <h2>
+                            <img src="{% static 'images/ai_upscale.svg' %}" />
+                            Image Upscaler
+                        </h2>
+                        <p>
+                            Using the power of <strong>Real-ESRGAN</strong>, our image enhancement engine transforms
+                            <em>low-resolution or compressed images</em> into <strong>crystal-clear, high-definition
+                                visuals</strong>.
+                            It intelligently <strong>reconstructs details</strong>, removes noise, and improves texture
+                            fidelity, all <em>without introducing artifacts or blurs</em>.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, impedit deleniti! Nulla
+                            tenetur iusto debitis deleniti odio beatae omnis eius facilis aspernatur in natus
+                            accusantium iure, exercitationem nemo optio dolorem?
+                        </p>
+                        <button>Learn More</button>
+                    </div>
+
+                    <div class="scroll-sync__text-block" data-image="{% static 'images/bg2.jpg' %}">
+                        <h2>
+                            <img src="{% static 'images/background_image.png' %}" />
+                            Background Remover
+                        </h2>
+                        <p>
+                            Our <strong>Background Remover</strong> is built on both <em>custom ONNX</em> and <em>Neural
+                                Style Transfer (NST)</em> pipelines, offering <strong>ultra-precise subject
+                                separation</strong> across diverse backgrounds.
+                            It ensures <strong>clean cuts</strong>, smooth edges, and delivers <em>professional-grade
+                                results</em> ideal for e-commerce, portraits, and creative workflows.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, impedit deleniti! Nulla
+                            tenetur iusto debitis deleniti odio beatae omnis eius facilis aspernatur in natus
+                            accusantium iure, exercitationem nemo optio dolorem?
+                        </p>
+                        <button>Learn More</button>
+                    </div>
+
+                    <div class="scroll-sync__text-block" data-image="{% static 'images/filter2.jpg' %}">
+                        <h2>
+                            <img src="{% static 'images/ai_filter.svg' %}" />
+                            AI Filters
+                        </h2>
+                        <p>
+                            Our collection of <strong>AI Filters</strong> uses optimized <em>ONNX</em> and
+                            <em>JIT-compiled models</em> to enable <strong>real-time stylization</strong> and dynamic
+                            transformations.
+                            From <em>vintage aesthetics</em> to <strong>cinematic and abstract styles</strong>, these
+                            filters apply artistic effects with <strong>impressive speed</strong> and vibrant results.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, impedit deleniti! Nulla
+                            tenetur iusto debitis deleniti odio beatae omnis eius facilis aspernatur in natus
+                            accusantium iure, exercitationem nemo optio dolorem?
+                        </p>
+                        <button>Learn More</button>
+                    </div>
+
+                    <div class="scroll-sync__text-block" data-image="{% static 'images/06.png' %}">
+                        <h2>
+                            <img src="{% static 'images/ai_image_creator.svg' %}" />
+                            Artistic Image Creator
+                        </h2>
+                        <p>
+                            The <strong>Artistic Image Creator</strong> uses <em>Neural Style Transfer (NST)</em> to
+                            blend any image with a selected artistic style — from <em>classical paintings</em> to
+                            <strong>modern digital art</strong>.
+                            It produces beautifully fused visuals that preserve content while adopting the unique
+                            character of the chosen style.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, impedit deleniti! Nulla
+                            tenetur iusto debitis deleniti odio beatae omnis eius facilis aspernatur in natus
+                            accusantium iure, exercitationem nemo optio dolorem?
+                        </p>
+                        <button>Learn More</button>
+                    </div>
+
+                    <div class="scroll-sync__text-block" data-image="{% static 'images/edit3.jpg' %}">
+                        <h2>
+                            <img src="{% static 'images/ai_image_editor.svg' %}" />
+                            AI Image Editor
+                        </h2>
+                        <p>
+                            Our <strong>AI Image Editor</strong> delivers a <em>magical editing experience</em> using
+                            Meta's cutting-edge <strong>Segment Anything Model (SAM)</strong>, which intelligently
+                            identifies and isolates objects.
+                            From <em>removing elements</em> to <em>region-specific edits</em>, this tool provides
+                            <strong>pixel-level accuracy</strong> and feels as intuitive as a single click.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, impedit deleniti! Nulla
+                            tenetur iusto debitis deleniti odio beatae omnis eius facilis aspernatur in natus
+                            accusantium iure, exercitationem nemo optio dolorem?
+                        </p>
+                        <button>Learn More</button>
+                    </div>
+
+                    <div class="scroll-sync__text-block" data-image="{% static 'images/08.png' %}">
+                        <h2>
+                            <img src="{% static 'images/ai_colorization.svg' %}" />
+                            AI Colorizer
+                        </h2>
+                        <p>
+                            Our <strong>AI Colorizer</strong> brings black-and-white images to life using the advanced
+                            <em>DeOldify model</em>, known for its <strong>natural and vibrant colorization</strong>.
+                            Whether it's <em>vintage portraits</em> or <em>historic photos</em>, it intelligently adds
+                            color and depth, turning old memories into <strong>visually rich masterpieces</strong>.
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, impedit deleniti! Nulla
+                            tenetur iusto debitis deleniti odio beatae omnis eius facilis aspernatur in natus
+                            accusantium iure, exercitationem nemo optio dolorem?
+                        </p>
+                        <button>Learn More</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <div class="cta">
+            <div class="cta__top">
+                <p class="cta__title">
                     Ready to transform <br />
-                    Your images?
+                    your images?
                 </p>
-                <button class="footer__btn">
-                    <span class="footer__arrow">↗</span>
+                <button class="cta__btn">
+                    <i class="fa-solid fa-arrow-up"></i>
                     Try it Now
                 </button>
             </div>
-        </footer>
+        </div>
 
+        <footer>
+            <div class="footer__header">
+                <div class="flex-container">
+                    <img class="nav__icon" src="{% static 'images/logo.png' %}" alt="Logo icon" />
+                    <img class="nav__name" src="{% static 'images/website_logo.png' %}" alt="Website logo" />
+                </div>
+            </div>
+            <div class="footer__content">
+                <div>
+                    This website is a general communication for informational purposes only and is not and should not be
+                    construed as advice or a recommendation concerning any security or other asset, or an offer to sell,
+                    or the solicitation of an offer to buy, any security, product, service of Hartmann Capital (together
+                    with its subsidiaries and affiliates, “Hartmann”) or any fund for which Hartmann Capital serves as
+                    investment manager or general partner, whether existing or contemplated,
+                </div>
+                <div>
+                    for which an offer can be made only by such fund's confidential private placement memorandum and in
+                    compliance with applicable law. Hartmann Capital is not registered as an investment adviser with the
+                    U.S. Securities and Exchange Commission. Hartmann Capital is federally exempt under the Investment
+                    Company Act, Section 3 (c)(1) Rule 506 (c), therefore, is not required to register with the SEC or
+                    any state regulatory agency.
+                </div>
+                <div>
+                    <h1>Follow us</h1>
+                    <div class="flex-container">
+                        <span><i class="fa-brands fa-square-x-twitter"></i></span>
+                        <span><i class="fa-brands fa-square-facebook"></i></span>
+                        <span><i class="fa-brands fa-linkedin"></i></span>
+                        <span><i class="fa-brands fa-youtube"></i></span>
+                        <span><i class="fa-brands fa-square-instagram"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <ul>
+                    <li>
+                        <a href="{% url 'ai-text-to-image:ai_text_to_image' %}">
+                            Image Generation
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'artistic-image-creator:nst' %}">
+                            Artistic Image Generation
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ai-image-upscale:ai_image_upscale' %}">
+                            Image Upscale
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'background-remover:background_remover' %}">
+                            Background Remover
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ai-colorization:ai_colorization' %}">
+                            AI Image Colorizer
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ai_filter:ai_filter' %}">
+                            AI Filter
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{% url 'ai_image_editor:inpaint' %}">
+                            AI Image Editor
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            Showcase
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            Insights
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            About
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
     </main>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <!-- <script src="./scripts.js" type="module"></script> -->
     <script src="{% static '/scripts/landing.js' %}" type="module"></script>
 
 </body>
