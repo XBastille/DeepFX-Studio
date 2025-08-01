@@ -11,11 +11,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- GSAP CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js">
+    </script>
     <!-- GSAP Plugins CDN -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
 
     <link rel="stylesheet" href="{% static 'css/landing.css' %}" />
 </head>
@@ -34,60 +37,7 @@
                 </div>
                 <div class="nav__link-section">
                     <ul class="nav__link-section__link">
-                        <li class="dropdown-wrapper">
-                            <p class="dropdown-toggle" id="dropdownToggle" aria-expanded="false">
-                                <i class="fa-regular fa-square-caret-down fa-rotate-270"></i>
-                                Products
-                            </p>
-                            <ul class="dropdown-menu" id="dropdownMenu">
-                                <li>
-                                    <a href="{% url 'ai-text-to-image:ai_text_to_image' %}">
-                                        <img src="{% static 'images/logo.png' %}" alt="Image Upscale" />
-                                        Image Generation
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'artistic-image-creator:nst' %}">
-                                        <img src="{% static 'images/aristic-image-logo.svg' %}" alt="Artistic Image Creator" />
-                                        Artistic Image Generation
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'ai-image-upscale:ai_image_upscale' %}">
-                                        <img src="{% static 'images/ai_upscale.svg' %}" alt="Image Upscale" />
-                                        Image Upscale
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'background-remover:background_remover' %}">
-                                        <img src="{% static 'images/bg-remove.jpg' %}" alt="Background Remover" />
-                                        Background Remover
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'ai_image_editor:inpaint' %}">
-                                        <img src="{% static 'images/ai_image_editor.svg' %}" alt="AI Image Editor" />
-                                        AI Image Editor
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'ai-colorization:ai_colorization' %}">
-                                        <img src="{% static 'images/ai_colorization.svg' %}" alt="AI Colorizer" />
-                                        AI Image Colorizer
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{% url 'ai_filter:ai_filter' %}">
-                                        <img src="{% static 'images/ai_filter.svg' %}" alt="AI Filter" />
-                                        AI Filter
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="selected-output" id="selectedOutput">
-                            </div>
-                        </li>
-                        <li><a href="#showcase_section">Showcase</a></li>
-                        <li><a href="#insights_section">Insights</a></li>
+                        <li><a href="#ai_showcase_section">Showcase</a></li>
                         <li><a href="#about_section">About</a></li>
                     </ul>
                     {% if user.is_authenticated %}
@@ -139,175 +89,571 @@
             </div>
             <div class="showcase__gallery">
                 <div class="showcase__gallery__card image-card--offset-0">
-                    <img src="{% static 'images/10.png' %}" alt="Image enhancement example" class="showcase__gallery__card__img" />
+                    <img src="{% static 'images/10.png' %}" alt="Image enhancement example"
+                        class="showcase__gallery__card__img" />
                 </div>
                 <div class="showcase__gallery__card image-card--offset-1">
-                    <img src="{% static 'images/12.png' %}" alt="Image enhancement example" class="showcase__gallery__card__img" />
+                    <img src="{% static 'images/12.png' %}" alt="Image enhancement example"
+                        class="showcase__gallery__card__img" />
                 </div>
                 <div class="showcase__gallery__card image-card--offset-2">
-                    <img src="{% static 'images/11.png' %}" alt="Image enhancement example" class="showcase__gallery__card__img" />
+                    <img src="{% static 'images/11.png' %}" alt="Image enhancement example"
+                        class="showcase__gallery__card__img" />
                 </div>
                 <div class="showcase__gallery__card image-card--offset-3">
-                    <img src="{% static 'images/04.png' %}" alt="Image enhancement example" class="showcase__gallery__card__img" />
+                    <img src="{% static 'images/04.png' %}" alt="Image enhancement example"
+                        class="showcase__gallery__card__img" />
+                </div>
+            </div>
+        </section>
+
+        <section class="ai-showcase" id="ai_showcase_section">
+            <div class="ai-showcase__header">
+                <span>Discover our</span>
+                <span>best</span>
+                <span>models</span>
+            </div>
+            <div class="ai-showcase__container">
+                <div class="ai-showcase__hero">
+                    <div class="ai-showcase__demo">
+                        <div class="ai-showcase__input">
+                            <div class="typewriter-container">
+                                <span class="typewriter-prompt">Prompt: </span>
+                                <span id="typewriter-text"></span>
+                                <span class="typewriter-cursor">|</span>
+                            </div>
+                        </div>
+                        <div class="ai-showcase__output">
+                            <div class="image-generation-area">
+                                <div class="loading-placeholder">
+                                    <div class="loading-animation">
+                                        <div class="loading-dots">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                        <p>Generating image...</p>
+                                    </div>
+                                    <img src="{% static 'images/15.png' %}" alt="Generated AI Image"
+                                        class="generated-image" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ai-showcase__description">
+                        <h2>Text-to-Image Generation</h2>
+                        <p>Experience the power of advanced diffusion models that transform textual descriptions into
+                            stunning visual art. Our implementation leverages state-of-the-art architectures for
+                            photorealistic image synthesis.</p>
+                        <div class="tech-specs">
+                            <span class="tech-tag">Stable Diffusion 3.5 Large</span>
+                            <span class="tech-tag">Real-time</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ai-showcase__grid">
+                    <div class="flip-card" data-model="colorization">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="{% static 'images/bnw.jpg' %}" alt="Black and White Image"
+                                    class="input-image" />
+                                <img src="{% static 'images/colored.jpg' %}" alt="Colorized Result"
+                                    class="result-image" />
+                                <div class="card-overlay">
+                                    <h3>AI Colorization</h3>
+                                    <button class="info-btn">
+                                        <i class="fa-solid fa-info"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <button class="back-btn">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                </button>
+                                <div class="model-icon">
+                                    <img src="{% static 'images/ai_colorization.svg' %}" alt="AI Colorization" />
+                                </div>
+                                <div class="card-info">
+                                    <h3>AI Colorization</h3>
+                                    <p>Transform black & white photos into vibrant colored images using advanced deep
+                                        learning models.</p>
+                                    <div class="model-stats">
+                                        <span>High Quality</span>
+                                        <span>Fast Process</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" data-model="upscale">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="{% static 'images/low.jpg' %}" alt="Low Resolution Image"
+                                    class="input-image" />
+                                <img src="{% static 'images/high.jpg' %}" alt="High Resolution Result"
+                                    class="result-image" />
+                                <div class="card-overlay">
+                                    <h3>AI Image Upscale</h3>
+                                    <button class="info-btn">
+                                        <i class="fa-solid fa-info"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <button class="back-btn">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                </button>
+                                <div class="model-icon">
+                                    <img src="{% static 'images/ai_upscale.svg' %}" alt="AI Upscale" />
+                                </div>
+                                <div class="card-info">
+                                    <h3>AI Image Upscale</h3>
+                                    <p>Enhance image resolution and restore fine details with
+                                        super-resolution technology.</p>
+                                    <div class="model-stats">
+                                        <span>4x Resolution</span>
+                                        <span>HD Quality</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" data-model="background">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="{% static 'images/bg.jpg' %}" alt="Image with Background"
+                                    class="input-image" />
+                                <img src="{% static 'images/bg_rem.png' %}" alt="Background Removed"
+                                    class="result-image" />
+                                <div class="card-overlay">
+                                    <h3>Background Removal</h3>
+                                    <button class="info-btn">
+                                        <i class="fa-solid fa-info"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <button class="back-btn">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                </button>
+                                <div class="model-icon">
+                                    <img src="{% static 'images/ai_eraser.svg' %}" alt="Background Removal" />
+                                </div>
+                                <div class="card-info">
+                                    <h3>Background Removal</h3>
+                                    <p>background removal with precise edge detection for professional
+                                        results.</p>
+                                    <div class="model-stats">
+                                        <span>Precise Edges</span>
+                                        <span>Auto Detect</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" data-model="artistic">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="{% static 'images/content.jpg' %}" alt="Original Image" class="input-image" />
+                                <img src="{% static 'images/generated.jpg' %}" alt="Artistic Result"
+                                    class="result-image" />
+                                <div class="card-overlay">
+                                    <h3>Style Transfer</h3>
+                                    <button class="info-btn">
+                                        <i class="fa-solid fa-info"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <button class="back-btn">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                </button>
+                                <div class="model-icon">
+                                    <img src="{% static 'images/ai_image_creator.svg' %}" alt="Style Transfer" />
+                                </div>
+                                <div class="card-info">
+                                    <h3>Style Transfer</h3>
+                                    <p>Neural style transfer for artistic image transformations using any painting
+                                        styles or abstract art.</p>
+                                    <div class="model-stats">
+                                        <span>Fast Process</span>
+                                        <span>High Quality</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" data-model="filter">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="{% static 'images/filter.jpg' %}" alt="Original Image" class="input-image" />
+                                <img src="{% static 'images/filtered.webp' %}" alt="Filtered Result"
+                                    class="result-image" />
+                                <div class="card-overlay">
+                                    <h3>AI Filters</h3>
+                                    <button class="info-btn">
+                                        <i class="fa-solid fa-info"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <button class="back-btn">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                </button>
+                                <div class="model-icon">
+                                    <img src="{% static 'images/ai_filter.svg' %}" alt="AI Filters" />
+                                </div>
+                                <div class="card-info">
+                                    <h3>AI Filters</h3>
+                                    <p>Apply artistic filters and style transformations with real-time inference.
+                                    </p>
+                                    <div class="model-stats">
+                                        <span>6+ Filters</span>
+                                        <span>Real-time</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flip-card" data-model="inpaint">
+                        <div class="flip-card-inner">
+                            <div class="flip-card-front">
+                                <img src="{% static 'images/edit4.jpg' %}" alt="Image to Edit" class="input-image" />
+                                <img src="{% static 'images/output4.jpg' %}" alt="Inpainted Result"
+                                    class="result-image" />
+                                <div class="card-overlay">
+                                    <h3>Image Inpainting</h3>
+                                    <button class="info-btn">
+                                        <i class="fa-solid fa-info"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="flip-card-back">
+                                <button class="back-btn">
+                                    <i class="fa-solid fa-arrow-left"></i>
+                                </button>
+                                <div class="model-icon">
+                                    <img src="{% static 'images/ai_image_editor.svg' %}" alt="Image Inpainting" />
+                                </div>
+                                <div class="card-info">
+                                    <h3>Image Inpainting</h3>
+                                    <p>Intelligent object removal, fill and replacement with inpainting technology.</p>
+                                    <div class="model-stats">
+                                        <span>Smart Fill</span>
+                                        <span>Seamless</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="showcase-cta">
+                    <a href="{% url 'dashboard:dashboard_view' %}" class="view-showcase-btn">
+                        <span>View Full Showcase</span>
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </section>
 
         <section class="scroll-sync">
             <div class="scroll-sync__header">
-                <span>Discover our</span>
-                <span>best</span>
-                <span>models</span>
+                <span>Research-grade</span>
+                <span>implementation</span>
+                <span>details</span>
             </div>
+            
             <div class="scroll-sync__container">
-                <!-- Sticky Image Container -->
-                <div class="scroll-sync__image-container">
-                    <img id="sticky-image" src="{% static 'images/05.png' %}" alt="Sticky Visual" />
+                <div class="scroll-sync__lottie-container">
+                    <dotlottie-wc id="lottie-animation-1"
+                        src="https://lottie.host/4f202e11-88e5-400e-bb3b-77ace5b6ae27/U1rA5jtnMH.lottie"
+                        style="width: 550px; height: 450px;" speed="1" autoplay loop></dotlottie-wc>
+                    <dotlottie-wc id="lottie-animation-2"
+                        src="https://lottie.host/64fd115a-aed7-437b-b608-afb5fcad3cb1/4SKhFb4A1j.json"
+                        style="width: 500px; height: 500px; display: none;" speed="1" autoplay loop></dotlottie-wc>
                 </div>
 
-                <!-- Scrollable Text Blocks -->
                 <div class="scroll-sync__content">
-                    <div class="scroll-sync__text-block" data-image="{% static 'images/05.png' %}">
+                    <div class="scroll-sync__text-block" data-lottie="neural-network">
                         <h2>
-                            <img src="{% static 'images/logo.png' %}" />
-                            AI Image Generation
+                            <i class="fa-solid fa-brain"></i>
+                            Neural Architecture Excellence
                         </h2>
                         <p>
-                            <strong>AI Image Generation</strong> tool is powered by <em>Stable Diffusion</em> and
-                            integrated with <em>Hugging Face</em> models, enabling you to turn any text prompt into
-                            <strong>visually stunning, high-resolution images</strong>.
-                            Whether you're creating <em>concept art</em> or <em>realistic scenes</em>, our models
-                            deliver <strong>exceptional quality, sharpness</strong>, and <strong>creative
-                                freedom</strong>.
+                            Meticulously reproduced from peer-reviewed research, each model maintains architectural
+                            fidelity to seminal computer vision papers. From self-attention GANs to enhanced
+                            discriminator networks.
                         </p>
                         <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, impedit deleniti! Nulla
-                            tenetur iusto debitis deleniti odio beatae omnis eius facilis aspernatur in natus
-                            accusantium iure, exercitationem nemo optio dolorem?
+                            Research-grade implementations with optimized inference pipelines, delivering professional
+                            results through memory-efficient deployment strategies.
                         </p>
-                        <button>Learn More</button>
                     </div>
 
-                    <div class="scroll-sync__text-block" data-image="{% static 'images/img1.jpg' %}">
+                    <div class="scroll-sync__text-block" data-lottie="training-process">
                         <h2>
-                            <img src="{% static 'images/ai_upscale.svg' %}" />
-                            Image Upscaler
+                            <i class="fa-solid fa-microchip"></i>
+                            Enterprise Training Infrastructure
                         </h2>
                         <p>
-                            Using the power of <strong>Real-ESRGAN</strong>, our image enhancement engine transforms
-                            <em>low-resolution or compressed images</em> into <strong>crystal-clear, high-definition
-                                visuals</strong>.
-                            It intelligently <strong>reconstructs details</strong>, removes noise, and improves texture
-                            fidelity, all <em>without introducing artifacts or blurs</em>.
+                            Powered by Lightning.ai's A100 clusters spanning 300+ GPU hours. Multi-node configurations
+                            with InfiniBand interconnects enable large-batch training across distributed systems.
                         </p>
                         <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, impedit deleniti! Nulla
-                            tenetur iusto debitis deleniti odio beatae omnis eius facilis aspernatur in natus
-                            accusantium iure, exercitationem nemo optio dolorem?
+                            Comprehensive hyperparameter tracking and validation metrics ensure convergence rates
+                            matching original research benchmarks.
                         </p>
-                        <button>Learn More</button>
+                        <a href="https://github.com/XBastille/DeepFX-Studio" target="_blank" rel="noopener noreferrer">
+                            <button>View Repository <i class="fa-solid fa-external-link"></i></button>
+                        </a>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="scroll-sync__text-block" data-image="{% static 'images/bg2.jpg' %}">
-                        <h2>
-                            <img src="{% static 'images/background_image.png' %}" />
-                            Background Remover
-                        </h2>
-                        <p>
-                            Our <strong>Background Remover</strong> is built on both <em>custom ONNX</em> and <em>Neural
-                                Style Transfer (NST)</em> pipelines, offering <strong>ultra-precise subject
-                                separation</strong> across diverse backgrounds.
-                            It ensures <strong>clean cuts</strong>, smooth edges, and delivers <em>professional-grade
-                                results</em> ideal for e-commerce, portraits, and creative workflows.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, impedit deleniti! Nulla
-                            tenetur iusto debitis deleniti odio beatae omnis eius facilis aspernatur in natus
-                            accusantium iure, exercitationem nemo optio dolorem?
-                        </p>
-                        <button>Learn More</button>
-                    </div>
+        <section class="about-us" id="about_section">
+            <div class="about-us__container">
+                <div class="about-us__header">
+                    <span>Meet the</span>
+                    <span>development</span>
+                    <span>team</span>
+                </div>
 
-                    <div class="scroll-sync__text-block" data-image="{% static 'images/filter2.jpg' %}">
-                        <h2>
-                            <img src="{% static 'images/ai_filter.svg' %}" />
-                            AI Filters
-                        </h2>
-                        <p>
-                            Our collection of <strong>AI Filters</strong> uses optimized <em>ONNX</em> and
-                            <em>JIT-compiled models</em> to enable <strong>real-time stylization</strong> and dynamic
-                            transformations.
-                            From <em>vintage aesthetics</em> to <strong>cinematic and abstract styles</strong>, these
-                            filters apply artistic effects with <strong>impressive speed</strong> and vibrant results.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, impedit deleniti! Nulla
-                            tenetur iusto debitis deleniti odio beatae omnis eius facilis aspernatur in natus
-                            accusantium iure, exercitationem nemo optio dolorem?
-                        </p>
-                        <button>Learn More</button>
-                    </div>
+                <div class="about-us__content">
+                    <div class="about-us__story">
+                        <div class="story-card">
+                            <div class="story-icon">
+                                <i class="fa-solid fa-graduation-cap"></i>
+                            </div>
+                            <h3>Our Journey</h3>
+                            <p>
+                                We're a team of Computer Science students who just completed our second year, united by
+                                an
+                                unshakeable passion for coding and software development. This project represents our
+                                ambitious dive into full-stack development—a learning adventure that's taught us as much
+                                about collaboration as it has about cutting-edge technology.
+                            </p>
+                        </div>
 
-                    <div class="scroll-sync__text-block" data-image="{% static 'images/06.png' %}">
-                        <h2>
-                            <img src="{% static 'images/ai_image_creator.svg' %}" />
-                            Artistic Image Creator
-                        </h2>
-                        <p>
-                            The <strong>Artistic Image Creator</strong> uses <em>Neural Style Transfer (NST)</em> to
-                            blend any image with a selected artistic style — from <em>classical paintings</em> to
-                            <strong>modern digital art</strong>.
-                            It produces beautifully fused visuals that preserve content while adopting the unique
-                            character of the chosen style.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, impedit deleniti! Nulla
-                            tenetur iusto debitis deleniti odio beatae omnis eius facilis aspernatur in natus
-                            accusantium iure, exercitationem nemo optio dolorem?
-                        </p>
-                        <button>Learn More</button>
-                    </div>
+                        <div class="story-card">
+                            <div class="story-icon">
+                                <i class="fa-solid fa-rocket"></i>
+                            </div>
+                            <h3>Our Mission</h3>
+                            <p>
+                                DeepFX Studio isn't just a project—it's our playground for exploring the intersection of
+                                machine learning and web development. We built this to gain real-world experience, learn
+                                from feedback, and push the boundaries of what we can create together as a team.
+                            </p>
+                        </div>
 
-                    <div class="scroll-sync__text-block" data-image="{% static 'images/edit3.jpg' %}">
-                        <h2>
-                            <img src="{% static 'images/ai_image_editor.svg' %}" />
-                            AI Image Editor
-                        </h2>
-                        <p>
-                            Our <strong>AI Image Editor</strong> delivers a <em>magical editing experience</em> using
-                            Meta's cutting-edge <strong>Segment Anything Model (SAM)</strong>, which intelligently
-                            identifies and isolates objects.
-                            From <em>removing elements</em> to <em>region-specific edits</em>, this tool provides
-                            <strong>pixel-level accuracy</strong> and feels as intuitive as a single click.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, impedit deleniti! Nulla
-                            tenetur iusto debitis deleniti odio beatae omnis eius facilis aspernatur in natus
-                            accusantium iure, exercitationem nemo optio dolorem?
-                        </p>
-                        <button>Learn More</button>
-                    </div>
-
-                    <div class="scroll-sync__text-block" data-image="{% static 'images/08.png' %}">
-                        <h2>
-                            <img src="{% static 'images/ai_colorization.svg' %}" />
-                            AI Colorizer
-                        </h2>
-                        <p>
-                            Our <strong>AI Colorizer</strong> brings black-and-white images to life using the advanced
-                            <em>DeOldify model</em>, known for its <strong>natural and vibrant colorization</strong>.
-                            Whether it's <em>vintage portraits</em> or <em>historic photos</em>, it intelligently adds
-                            color and depth, turning old memories into <strong>visually rich masterpieces</strong>.
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam, impedit deleniti! Nulla
-                            tenetur iusto debitis deleniti odio beatae omnis eius facilis aspernatur in natus
-                            accusantium iure, exercitationem nemo optio dolorem?
-                        </p>
-                        <button>Learn More</button>
+                        <div class="story-card">
+                            <div class="story-icon">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <h3>Our Team</h3>
+                            <p>
+                                Three minds, one vision. Our diverse skill set combines deep learning expertise,
+                                full-stack development prowess, and frontend artistry. Together, we're committed to
+                                continuous learning and creating software that makes a difference.
+                            </p>
+                        </div>
                     </div>
                 </div>
 
+                <div class="team-section">
+                    <h3 class="team-title">Meet The Team</h3>
+                    <div class="team-grid">
+                        <div class="team-member" data-role="fullstack">
+                            <div class="member-card">
+                                <div class="member-avatar">
+                                    <div class="avatar-placeholder">
+                                        <i class="fa-solid fa-code"></i>
+                                    </div>
+                                    <div class="role-badge">Fullstack Developer</div>
+                                </div>
+                                <div class="member-info">
+                                    <h4>Abhinab Choudhary</h4>
+                                    <p>Crafting seamless experiences from backend to frontend</p>
+                                    <div class="social-links">
+                                        <a href="https://github.com/abhinab-choudhury" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <i class="fa-brands fa-github"></i>
+                                        </a>
+                                        <a href="https://www.linkedin.com/in/abhinab-choudhury" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </a>
+                                        <a href="https://x.com/abhinabc_" target="_blank" rel="noopener noreferrer">
+                                            <i class="fa-brands fa-x-twitter"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="team-member" data-role="ml">
+                            <div class="member-card">
+                                <div class="member-avatar">
+                                    <div class="avatar-placeholder">
+                                        <i class="fa-solid fa-brain"></i>
+                                    </div>
+                                    <div class="role-badge">Deep Learning Engineer</div>
+                                </div>
+                                <div class="member-info">
+                                    <h4>XBastille</h4>
+                                    <p>Architecting neural networks and bringing models to life</p>
+                                    <div class="social-links">
+                                        <a href="https://www.linkedin.com/in/bibhor-puhan-b36529302/" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </a>
+                                        <a href="https://github.com/XBastille" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <i class="fa-brands fa-github"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="team-member" data-role="frontend">
+                            <div class="member-card">
+                                <div class="member-avatar">
+                                    <div class="avatar-placeholder">
+                                        <i class="fa-solid fa-palette"></i>
+                                    </div>
+                                    <div class="role-badge">Frontend Engineer</div>
+                                </div>
+                                <div class="member-info">
+                                    <h4>Arpit Mishra</h4>
+                                    <p>Designing beautiful interfaces and user experiences</p>
+                                    <div class="social-links">
+                                        <a href="https://www.linkedin.com/in/arpit-mishra-02ab56230/" target="_blank"
+                                            rel="noopener noreferrer">
+                                            <i class="fa-brands fa-linkedin"></i>
+                                        </a>
+                                        <a href="https://github.com/Soap-mac" target="_blank" rel="noopener noreferrer">
+                                            <i class="fa-brands fa-github"></i>
+                                        </a>
+                                        <a href="#" target="_blank" rel="noopener noreferrer">
+                                            <i class="fa-brands fa-instagram"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="floating-elements">
+                    <div class="floating-shape shape-1"></div>
+                    <div class="floating-shape shape-2"></div>
+                    <div class="floating-shape shape-3"></div>
+                    <div class="floating-shape shape-4"></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq" id="faq_section">
+            <div class="faq__container">
+                <div class="faq__header">
+                    <span>Frequently</span>
+                    <span>asked</span>
+                    <span>questions</span>
+                </div>
+
+                <div class="faq__content">
+                    <div class="faq__item">
+                        <div class="faq__question">
+                            <h3>How did you get access to such powerful compute resources for training?</h3>
+                            <div class="faq__toggle">
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                        </div>
+                        <div class="faq__answer">
+                            <p>We leveraged Lightning.ai's cloud platform to access NVIDIA A100 GPU clusters for our
+                                model training. Lightning.ai provides students and researchers with affordable access to
+                                enterprise-grade hardware, allowing us to train complex deep learning models that would
+                                otherwise require significant infrastructure investment. We loved the fact that we were
+                                able to seamlessly switch between CPU and GPU resources, plus the built-in VS Code
+                                environment made development incredibly smooth.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <div class="faq__question">
+                            <h3>How can I support this project?</h3>
+                            <div class="faq__toggle">
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                        </div>
+                        <div class="faq__answer">
+                            <p>The best way to support us is by starring our <a
+                                    href="https://github.com/XBastille/DeepFX-Studio" target="_blank"
+                                    style="color: #58a6ff;"></a>GitHub repository</a>! It helps other developers
+                                discover our work and motivates us to keep improving. You can also follow us on social
+                                media for updates, or if you'd like to support us financially, consider <a
+                                    href="https://buymeacoffee.com/deepfxstudio" target="_blank"
+                                    style="color: #58a6ff;">buying us a coffee</a>. Every bit of support means the world
+                                to us as student developers!</p>
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <div class="faq__question">
+                            <h3>Will this project receive future updates?</h3>
+                            <div class="faq__toggle">
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                        </div>
+                        <div class="faq__answer">
+                            <p>As computer science students, we're constantly learning and working on new projects.
+                                While we can't guarantee long-term maintenance, we're actively seeking feedback from the
+                                community and plan to implement improvements based on user suggestions. Our goal is to
+                                apply lessons learned here to future projects.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <div class="faq__question">
+                            <h3>Do you store images on the cloud or save user data?</h3>
+                            <div class="faq__toggle">
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                        </div>
+                        <div class="faq__answer">
+                            <p>Honestly? We don't store your images on our servers or in the cloud because we don't have
+                                the money for cloud storage! All image processing happens locally in your browser using
+                                client-side caching and temporary storage. Your images are only temporarily cached in
+                                your browser's local storage during processing and are automatically cleared when you
+                                close the session.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq__item">
+                        <div class="faq__question">
+                            <h3>How can I access the source code and model architectures?</h3>
+                            <div class="faq__toggle">
+                                <i class="fa-solid fa-plus"></i>
+                            </div>
+                        </div>
+                        <div class="faq__answer">
+                            <p>Everything is open source! You can find our complete codebase, model implementations, and
+                                architectural details on our <a href="https://github.com/XBastille/DeepFX-Studio"
+                                    target="_blank" style="color: #58a6ff;">GitHub repository</a>. We've documented our
+                                training procedures, hyperparameters, and implementation details to help other
+                                researchers and developers. Feel free to fork or use our code for your own projects!</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -317,10 +663,21 @@
                     Ready to transform <br />
                     your images?
                 </p>
-                <button class="cta__btn">
-                    <i class="fa-solid fa-arrow-up"></i>
-                    Try it Now
-                </button>
+                {% if user.is_authenticated %}
+                <a href="{% url 'dashboard:dashboard_view' %}">
+                    <button class="cta__btn">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        Try it Now
+                    </button>
+                </a>
+                {% else %}
+                <a href="{% url 'account_login' %}">
+                    <button class="cta__btn">
+                        <i class="fa-solid fa-arrow-up"></i>
+                        Try it Now
+                    </button>
+                </a>
+                {% endif %}
             </div>
         </div>
 
@@ -333,85 +690,34 @@
             </div>
             <div class="footer__content">
                 <div>
-                    This website is a general communication for informational purposes only and is not and should not be
-                    construed as advice or a recommendation concerning any security or other asset, or an offer to sell,
-                    or the solicitation of an offer to buy, any security, product, service of Hartmann Capital (together
-                    with its subsidiaries and affiliates, “Hartmann”) or any fund for which Hartmann Capital serves as
-                    investment manager or general partner, whether existing or contemplated,
+                    DeepFX Studio is an educational project developed by computer science students passionate about deep
+                    learning and web development. This platform demonstrates advanced computer vision techniques and
+                    serves as a learning experience for exploring AI model implementation in web applications.
                 </div>
                 <div>
-                    for which an offer can be made only by such fund's confidential private placement memorandum and in
-                    compliance with applicable law. Hartmann Capital is not registered as an investment adviser with the
-                    U.S. Securities and Exchange Commission. Hartmann Capital is federally exempt under the Investment
-                    Company Act, Section 3 (c)(1) Rule 506 (c), therefore, is not required to register with the SEC or
-                    any state regulatory agency.
-                </div>
-                <div>
-                    <h1>Follow us</h1>
-                    <div class="flex-container">
-                        <span><i class="fa-brands fa-square-x-twitter"></i></span>
-                        <span><i class="fa-brands fa-square-facebook"></i></span>
-                        <span><i class="fa-brands fa-linkedin"></i></span>
-                        <span><i class="fa-brands fa-youtube"></i></span>
-                        <span><i class="fa-brands fa-square-instagram"></i></span>
-                    </div>
+                    Built with cutting-edge technologies including PyTorch, Django, and React. Our models are trained using
+                    peer-reviewed research implementations and deployed with modern web technologies for optimal performance
+                    and user experience.
                 </div>
             </div>
             <div class="footer__bottom">
                 <ul>
-                    <li>
-                        <a href="{% url 'ai-text-to-image:ai_text_to_image' %}">
-                            Image Generation
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'artistic-image-creator:nst' %}">
-                            Artistic Image Generation
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'ai-image-upscale:ai_image_upscale' %}">
-                            Image Upscale
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'background-remover:background_remover' %}">
-                            Background Remover
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'ai-colorization:ai_colorization' %}">
-                            AI Image Colorizer
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'ai_filter:ai_filter' %}">
-                            AI Filter
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{% url 'ai_image_editor:inpaint' %}">
-                            AI Image Editor
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            Showcase
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            Insights
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            About
-                        </a>
-                    </li>
+                    <li><a href="#showcase_section">Showcase</a></li>
+                    <li><a href="#about_section">About Us</a></li>
+                    <li><a href="#faq_section">FAQ</a></li>
+                    <li><a href="https://github.com/XBastille/DeepFX-Studio" target="_blank">GitHub</a></li>
                 </ul>
             </div>
         </footer>
+
+        <div class="buy-coffee-btn">
+            <a href="https://buymeacoffee.com/XBastille" target="_blank" rel="noopener noreferrer">
+                <div class="coffee-icon">
+                    <i class="fa-solid fa-coffee"></i>
+                </div>
+                <span>Buy me a coffee</span>
+            </a>
+        </div>
     </main>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
