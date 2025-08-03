@@ -32,14 +32,9 @@ ENV DEBUG="false" \
 
 COPY --chown=python:python . .
 
-RUN mkdir -p background_remover/is_net/saved_models
-RUN curl -L -o background_remover/is_net/saved_models/isnet.pth https://github.com/XBastille/DeepFX-Studio/releases/download/models/isnet.pth
-
 RUN npm install && npm run build
 
 RUN python manage.py collectstatic --no-input
-
-RUN export UID=$(id -u) && export GID=$(id -g)
 
 EXPOSE 8000
 
