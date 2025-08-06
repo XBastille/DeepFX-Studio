@@ -77,8 +77,8 @@ SAM_VIT_H_4B8939_001="1AbkmKhWB3iLLRSiP35A6xJEwoRb4L4oU"
 STTN="1skLb1xxXcQDth0joaqFk_o0reuitFjKt"
 BEST="1nDYIwUYR-s51oHF3XWjqe97Opl09fdn2"
 
-echo "Downloading SAM_VIT_H_4B8939_001.pth..."
-python3 -m gdown https://drive.google.com/uc?id=$SAM_VIT_H_4B8939_001 --output ./ai_image_editor/models/pretrained_models/sam_vit_h_4b8939-001.pth
+echo "Downloading SAM_VIT_H_4B8939.pth..."
+python3 -m gdown https://drive.google.com/uc?id=$SAM_VIT_H_4B8939_001 --output ./ai_image_editor/models/pretrained_models/sam_vit_h_4b8939.pth
 
 echo "Downloading STTN.pth..."
 python3 -m gdown https://drive.google.com/uc?id=$STTN --output ./ai_image_editor/models/pretrained_models/sttn.pth
