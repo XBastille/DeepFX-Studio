@@ -45,17 +45,25 @@ ENV DEBUG="false" \
     USER="python" \
     QT_QPA_PLATFORM="offscreen"
 
+COPY --chown=python:python package.json tailwind.config.js ./
+
+RUN npm install
+
 COPY --chown=python:python . .
+
+RUN mkdir -p static/css staticfiles media
+
+RUN chmod +x ./startup.sh
 
 RUN chmod +x ./download-models.sh
 RUN ./download-models.sh
 
-RUN npm install && npm run build
+RUN npm run build
 
-RUN python manage.py collectstatic --no-input
+RUN python manage.py collectstatic --no-input --verbosity 2
 
 RUN python manage.py migrate
 
 EXPOSE 8000
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000", "--noreload"]
+CMD ["./startup.sh"]
