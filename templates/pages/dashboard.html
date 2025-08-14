@@ -741,8 +741,8 @@
 .image-modal {
     position: fixed;
     top: 0;
-    left: 0;
-    width: 100%;
+    left: 320px;
+    right: 0;
     height: 100%;
     z-index: 2000;
     display: flex;
@@ -2764,6 +2764,11 @@
 
 @media (max-width: 1024px) {
 
+    .image-modal {
+        left: 0;
+        right: 0;
+    }
+
     .drawer-toggle:checked~.drawer-side::before {
         content: '';
         position: fixed;
@@ -3897,7 +3902,8 @@
             {
                 id: 'up1',
                 type: 'upscale',
-                after: "{% static 'images/upscale/output_1.jpg' %}",
+                before: "{% static 'images/low.jpg' %}",
+                after: "{% static 'images/high.jpg' %}",
                 parameters: {
                     scale_size: 4
                 }
@@ -3905,8 +3911,8 @@
             {
                 id: 'up2',
                 type: 'upscale',
-                before: "{% static 'images/upscale/input_2.jpg' %}",
-                after: "{% static 'images/upscale/output_2.jpg' %}",
+                before: "{% static 'images/low2.jpg' %}",
+                after: "{% static 'images/high2.jpg' %}",
                 parameters: {
                     scale_size: 2
                 }
@@ -3914,8 +3920,8 @@
             {
                 id: 'up3',
                 type: 'upscale',
-                before: "{% static 'images/upscale/input_3.jpg' %}",
-                after: "{% static 'images/upscale/output_3.jpg' %}",
+                before: "{% static 'images/low3.jpg' %}",
+                after: "{% static 'images/high3.jpg' %}",
                 parameters: {
                     scale_size: 4
                 }
@@ -3923,8 +3929,8 @@
             {
                 id: 'up4',
                 type: 'upscale',
-                before: "{% static 'images/upscale/input_4.jpg' %}",
-                after: "{% static 'images/upscale/output_4.jpg' %}",
+                before: "{% static 'images/low4.jpg' %}",
+                after: "{% static 'images/high4.jpg' %}",
                 parameters: {
                     scale_size: 2
                 }
