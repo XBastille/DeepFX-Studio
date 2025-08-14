@@ -35,5 +35,5 @@ jobs:
       - name: Deploy to Azure App Service
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'deepfx-studio' # ❗️ REPLACE THIS with your actual Web App name
+          app-name: 'deepfx-studio' 
           images: '${{ secrets.REGISTRY_LOGIN_SERVER }}/deepfx-studio:${{ github.sha }}'
