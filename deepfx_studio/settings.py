@@ -36,11 +36,18 @@ GITHUB_CLIENT_ID = os.environ.get("GITHUB_CLIENT_ID")
 GITHUB_CLIENT_SECRET = os.environ.get("GITHUB_CLIENT_SECRET")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = True
 
 # Production
-# DEBUG = False
+DEBUG = False
 ALLOWED_HOSTS = ["*"]
+
+# CSRF settings for production
+CSRF_TRUSTED_ORIGINS = [
+    "https://deepfx-studio.azurewebsites.net",
+    "http://127.0.0.1:8000",
+    "http://localhost:8000",
+]
 
 # Application definition
 EXTERNAL_INSTALLED_APP = [
@@ -158,7 +165,7 @@ SOCIALACCOUNT_PROVIDERS = {
             "client_id": GITHUB_CLIENT_ID,
             "secret": GITHUB_CLIENT_SECRET,
             "key": "",
-            "redirect_uri": "http://127.0.0.1:8000/accounts/github/login/callback",
+            "redirect_uri": "https://deepfx-studio.azurewebsites.net/accounts/github/login/callback",
         },
     },
 }
@@ -219,9 +226,9 @@ SITE_ID = 2
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
-LOGIN_REDIRECT_URL = "http://localhost:8000/dashboard/"
+LOGIN_REDIRECT_URL = "https://deepfx-studio.azurewebsites.net/dashboard/"
 
-LOGOUT_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "https://deepfx-studio.azurewebsites.net/"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
