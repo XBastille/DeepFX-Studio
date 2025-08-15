@@ -46,14 +46,18 @@
     </div>
 {% endblock form %}
 {% block animation %}
-    <div class="w-2/3 h-screen hidden lg:block">
-        <div class="absolute top-[100%] left-[56%] translate-x-[-50%] opacity-0 animate-moveToTop">
-            <h1 class="text-3xl font-extrabold relative mx-10">Welcome Back to</h1>
-            <h1 class="text-6xl font-extrabold relative mx-10">DeepFx Studio</h1>
-        </div>
-        <video autoplay muted loop class="object-cover w-full h-full">
+    <div class="w-2/3 h-screen relative hidden lg:block">
+        <!-- Background Video -->
+        <video autoplay muted loop playsinline class="absolute inset-0 object-cover w-full h-full z-0">
             <source src="{% static 'videos/video.mp4' %}" type="video/mp4" />
             Your browser does not support the video tag.
         </video>
+        <!-- Text Overlay -->
+         <div class="absolute inset-0 flex items-center justify-center z-10">
+            <div class="text-center fade-in-text">
+                <h1 class="text-3xl font-extrabold text-white">Welcome Back to</h1>
+                <h1 class="text-6xl font-extrabold text-white">DeepFx Studio</h1>
+            </div>
+        </div>
     </div>
 {% endblock animation %}
