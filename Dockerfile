@@ -41,9 +41,11 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 
 ENV DEBUG="false" \
     PYTHONUNBUFFERED="true" \
+    PYTHONDONTWRITEBYTECODE="1" \
     PATH="${PATH}:/home/python/.local/bin" \
     USER="python" \
-    QT_QPA_PLATFORM="offscreen"
+    QT_QPA_PLATFORM="offscreen" \
+    WEB_CONCURRENCY="4"
 
 COPY --chown=python:python package.json tailwind.config.js ./
 
@@ -51,7 +53,7 @@ RUN npm install
 
 COPY --chown=python:python . .
 
-RUN mkdir -p static/css staticfiles media
+RUN mkdir -p static/css staticfiles media tmp
 
 RUN chmod +x ./startup.sh
 
@@ -63,6 +65,9 @@ RUN npm run build
 RUN python manage.py collectstatic --no-input --verbosity 2
 
 RUN python manage.py migrate
+
+HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:8000/admin/login/ || exit 1
 
 EXPOSE 8000
 

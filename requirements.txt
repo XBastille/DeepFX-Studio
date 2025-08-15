@@ -9,6 +9,7 @@ django-allauth-ui==1.5.0
 django-components==0.123
 django-widget-tweaks==1.5.0
 whitenoise==6.6.0
+gunicorn==23.0.0
 facenet_pytorch==2.6.0
 fastai==1.0.60
 fastprogress==1.0.3
