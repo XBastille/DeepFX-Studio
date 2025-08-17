@@ -123,11 +123,43 @@
             --accent: #06b6d4;
             --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
+            --animation-duration: 1s;
+            --backdrop-filter: blur(20px);
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --animation-duration: 0.5s;
+                --backdrop-filter: none;
+            }
+        }
+
+        .glass-effect,
+        .floating-orbs,
+        .grid-overlay,
+        .sidebar-container,
+        .nav-item,
+        .profile-card {
+            transform: translateZ(0);
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+
+        .animation-complete {
+            will-change: auto;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .floating-orbs::before,
+            .floating-orbs::after,
+            .grid-overlay {
+                animation: none !important;
+            }
         }
 
         .glass-effect {
             background: var(--glass-bg);
-            backdrop-filter: blur(20px);
+            backdrop-filter: var(--backdrop-filter);
             border: 1px solid var(--glass-border);
         }
 
@@ -147,6 +179,15 @@
             border-radius: 50%;
             filter: blur(40px);
             animation: float 20s infinite ease-in-out;
+            will-change: transform;
+        }
+
+        @media (max-width: 768px) {
+            .floating-orbs::before,
+            .floating-orbs::after {
+                filter: blur(20px);
+                animation-duration: 40s;
+            }
         }
 
         .floating-orbs::before {
@@ -440,7 +481,9 @@
         .profile-email {
             font-size: 0.875rem;
             color: rgba(255, 255, 255, 0.6);
-            truncate: true;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .logout-btn {
@@ -493,24 +536,51 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const navItems = document.querySelectorAll('.nav-item');
+            const isMobile = window.innerWidth <= 768;
+            const isLowEndDevice = navigator.hardwareConcurrency <= 4;
+            
+            if (isMobile || isLowEndDevice) {
+                document.body.classList.add('reduced-motion');
+                document.documentElement.style.setProperty('--backdrop-filter', 'none');
+                
+                const floatingOrbs = document.querySelector('.floating-orbs');
+                const gridOverlay = document.querySelector('.grid-overlay');
+                
+                if (floatingOrbs) {
+                    floatingOrbs.style.display = 'none';
+                }
+                if (gridOverlay) {
+                    gridOverlay.style.opacity = '0.3';
+                }
+            }
             
             navItems.forEach(item => {
                 item.addEventListener('mouseenter', function() {
-                    this.style.setProperty('--glow-opacity', '1');
+                    if (!isMobile) {
+                        this.style.setProperty('--glow-opacity', '1');
+                    }
                 });
                 
                 item.addEventListener('mouseleave', function() {
                     this.style.setProperty('--glow-opacity', '0');
+                });
+                
+                item.addEventListener('transitionend', function() {
+                    this.style.willChange = 'auto';
+                    this.classList.add('animation-complete');
                 });
             });
 
             const logoImage = document.querySelector('.logo-image');
             if (logoImage) {
                 logoImage.addEventListener('click', function() {
-                    this.style.animation = 'spin 0.8s ease-in-out';
-                    setTimeout(() => {
-                        this.style.animation = '';
-                    }, 800);
+                    if (!isMobile) { 
+                        this.style.animation = 'spin 0.8s ease-in-out';
+                        setTimeout(() => {
+                            this.style.animation = '';
+                            this.style.willChange = 'auto';
+                        }, 800);
+                    }
                 });
             }
 
@@ -520,9 +590,18 @@
                     this.style.transform = 'scale(0.98)';
                     setTimeout(() => {
                         this.style.transform = '';
+                        this.style.willChange = 'auto';
                     }, 150);
                 });
             }
+
+            window.addEventListener('beforeunload', () => {
+                document.querySelectorAll('[style*="will-change"]').forEach(el => {
+                    el.style.willChange = 'auto';
+                });
+            });
+
+            console.log('Dashboard layout optimizations loaded');
         });
 
         const style = document.createElement('style');
@@ -530,6 +609,16 @@
             @keyframes spin {
                 from { transform: rotate(0deg) scale(1.1); }
                 to { transform: rotate(360deg) scale(1.1); }
+            }
+            
+            .low-performance .floating-orbs::before,
+            .low-performance .floating-orbs::after {
+                animation: none !important;
+            }
+            
+            .low-performance .grid-overlay {
+                animation: none !important;
+                opacity: 0.1 !important;
             }
         `;
         document.head.appendChild(style);

@@ -2,19 +2,110 @@ import { Application } from "https://unpkg.com/@splinetool/runtime@1.9.29/build/
 
 const canvas = document.getElementById("spline-container__canvas3d");
 const spline = new Application(canvas);
-spline.load("https://prod.spline.design/v7lcNzOxxaKgcWYr/scene.splinecode");
+
+const isMobile = window.innerWidth <= 768;
+const isLowEndDevice = navigator.hardwareConcurrency <= 4;
+
+if (!isMobile && !isLowEndDevice) {
+    spline.load("https://prod.spline.design/v7lcNzOxxaKgcWYr/scene.splinecode");
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                spline.play();
+            } else {
+                spline.pause();
+            }
+        });
+    });
+    observer.observe(canvas);
+} else {
+    canvas.style.display = 'none';
+}
 
 document.addEventListener("DOMContentLoaded", () => {
-    // GSAP Plugin Register
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
-    // GSAP Animation for Hero Section
+    gsap.config({
+        force3D: true, 
+        nullTargetWarn: false
+    });
+
+    if (isMobile || isLowEndDevice) {
+        gsap.globalTimeline.timeScale(0.7); 
+        document.body.classList.add('reduced-motion');
+        document.documentElement.style.setProperty('--animation-duration', '0.5s');
+    }
+
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+    const hamburger = document.getElementById('hamburger');
+
+    function openMobileMenu() {
+        hamburger.classList.add('active');
+        mobileMenuOverlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+        hamburger.classList.remove('active');
+        mobileMenuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (mobileMenuToggle && mobileMenuOverlay && hamburger) {
+        mobileMenuToggle.addEventListener('click', () => {
+            if (mobileMenuOverlay.classList.contains('active')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+
+        if (mobileMenuClose) {
+            console.log('Close button found, adding event listener');
+            mobileMenuClose.addEventListener('click', (e) => {
+                console.log('Close button clicked!');
+                e.preventDefault();
+                e.stopPropagation();
+                closeMobileMenu();
+            });
+            
+            mobileMenuClose.addEventListener('touchstart', (e) => {
+                console.log('Close button touched!');
+                e.preventDefault();
+                e.stopPropagation();
+                closeMobileMenu();
+            });
+        } else {
+            console.log('Close button NOT found!');
+        }
+
+        mobileMenuOverlay.addEventListener('click', (e) => {
+            if (e.target === mobileMenuOverlay) {
+                closeMobileMenu();
+            }
+        });
+
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-links a');
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                closeMobileMenu();
+            });
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenuOverlay.classList.contains('active')) {
+                closeMobileMenu();
+            }
+        });
+    }
+
     const heroHeadline = new SplitText(".hero__headline", { type: 'words,chars' });
     const heroParagraph = new SplitText(".hero__description", { type: 'lines' });
 
-    // Add gradient class for each character
     heroHeadline.chars.forEach(char => char.classList.add("text-gradient"));
-    // Headline Animation
     gsap.from(heroHeadline.chars, {
         y: 100,
         scale: 1.4,
@@ -28,7 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    // Paragraph Animation
     gsap.from(heroParagraph.lines, {
         opacity: 0,
         y: 50,
@@ -47,7 +137,6 @@ document.addEventListener("DOMContentLoaded", () => {
         delay: 2.2
     });
 
-    // GSAP Animation for Showcase section
     const showcaseHeadline = new SplitText(".showcase__title", { type: 'lines' });
     gsap.from(showcaseHeadline.lines, {
         scrollTrigger: {
@@ -65,7 +154,6 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 1,
     });
 
-    // Animate gallery cards on scroll
     gsap.utils.toArray(".showcase__gallery__card").forEach((card, i) => {
         gsap.from(card, {
             scrollTrigger: {
@@ -76,9 +164,13 @@ document.addEventListener("DOMContentLoaded", () => {
             y: 60,
             opacity: 0,
             scale: 0.95,
-            duration: 1,
+            duration: isMobile ? 0.6 : 1, 
             ease: "power3.out",
-            delay: i * 0.15, // staggered delay
+            delay: i * 0.1, 
+            onComplete: function() {
+                card.style.willChange = 'auto';
+                card.classList.add('animation-complete');
+            }
         });
     });
 
@@ -443,7 +535,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // Animate each text block on scroll
     gsap.utils.toArray(".scroll-sync__text-block").forEach((block) => {
         gsap.from(block, {
             scrollTrigger: {
@@ -576,4 +667,52 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     initFAQSection();
+
+    let animationTimeouts = [];
+    let fps = 0;
+    let lastFrame = performance.now();
+
+    function measureFPS() {
+        const now = performance.now();
+        fps = 1000 / (now - lastFrame);
+        lastFrame = now;
+        
+        if (fps < 30) {
+            gsap.globalTimeline.timeScale(0.5);
+            document.body.classList.add('low-performance');
+        }
+        
+        requestAnimationFrame(measureFPS);
+    }
+
+    if (!isMobile && !isLowEndDevice) {
+        requestAnimationFrame(measureFPS);
+    }
+
+    let scrollTimeout;
+    function handleScroll() {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+        }, 16); 
+    }
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    window.addEventListener('beforeunload', () => {
+        animationTimeouts.forEach(timeout => clearTimeout(timeout));
+        clearTimeout(scrollTimeout);
+        
+        ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        
+        document.querySelectorAll('[style*="will-change"]').forEach(el => {
+            el.style.willChange = 'auto';
+        });
+        
+        if (spline && typeof spline.pause === 'function') {
+            spline.pause();
+        }
+    });
+
+    console.log('Landing page optimizations loaded');
+    console.log('Device info:', { isMobile, isLowEndDevice, cores: navigator.hardwareConcurrency });
 });

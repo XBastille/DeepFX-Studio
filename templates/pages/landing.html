@@ -50,7 +50,41 @@
                     </a>
                     {% endif %}
                 </div>
+                
+                <div class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <div class="hamburger" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </div>
             </nav>
+            
+            <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+                <div class="mobile-menu-close" id="mobileMenuClose">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div class="mobile-menu-content">
+                    <h2>Menu</h2>
+                    <ul class="mobile-menu-links">
+                        <li><a href="#ai_showcase_section">Showcase</a></li>
+                        <li><a href="#about_section">About</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="{% url 'dashboard:dashboard_view' %}">Dashboard</a></li>
+                        {% else %}
+                        <li><a href="{% url 'account_login' %}">Sign in</a></li>
+                        {% endif %}
+                    </ul>
+                    <div class="mobile-social-links">
+                        <a href="https://github.com/XBastille" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Hero Section -->
