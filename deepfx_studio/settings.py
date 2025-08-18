@@ -34,21 +34,25 @@ GOOGLE_CLIENT_ID = os.environ.get("GOOGLE_CLIENT_ID")
 GOOGLE_CLIENT_SECRET = os.environ.get("GOOGLE_CLIENT_SECRET")
 GITHUB_CLIENT_ID = os.environ.get("GITHUB_CLIENT_ID")
 GITHUB_CLIENT_SECRET = os.environ.get("GITHUB_CLIENT_SECRET")
+OAUTH_REDIRECT_BASE = os.environ.get(
+    "OAUTH_REDIRECT_BASE", "https://deepfx-studio.azurewebsites.net"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False").lower() in ("true", "1", "yes", "on")
 
 # Production
-ALLOWED_HOSTS = ["*"]  
+ALLOWED_HOSTS = ["*"]  # In production, specify exact domains
+
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
 if not DEBUG:
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_SECONDS = 31536000 
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
     SECURE_REDIRECT_EXEMPT = []
     SECURE_SSL_REDIRECT = os.environ.get("SECURE_SSL_REDIRECT", "False").lower() in ("true", "1", "yes", "on")
-    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     USE_TZ = True
     
     SESSION_COOKIE_SECURE = True
@@ -59,12 +63,24 @@ if not DEBUG:
     CSRF_COOKIE_HTTPONLY = True
     CSRF_COOKIE_SAMESITE = 'Lax'
 
-# CSRF settings for production
 CSRF_TRUSTED_ORIGINS = [
-    "https://deepfx-studio.azurewebsites.net",
     "http://127.0.0.1:8000",
     "http://localhost:8000",
+    "https://deepfx-studio.azurewebsites.net",
+    "https://*.azurewebsites.net",
+    "https://*.cloudspaces.litng.ai",
 ]
+
+if DEBUG:
+    CSRF_TRUSTED_ORIGINS.extend([
+        "http://44.206.230.5:8000",
+        "https://44.206.230.5:8000",
+    ])
+
+_extra_csrf = [
+    o.strip() for o in os.environ.get("EXTRA_TRUSTED_ORIGINS", "").split(",") if o.strip()
+]
+CSRF_TRUSTED_ORIGINS.extend(_extra_csrf)
 
 # Application definition
 EXTERNAL_INSTALLED_APP = [
@@ -122,6 +138,9 @@ MIDDLEWARE = [
     "allauth.account.middleware.AccountMiddleware",
 ]
 
+if DEBUG:
+    MIDDLEWARE = [m for m in MIDDLEWARE if m != "django.middleware.csrf.CsrfViewMiddleware"]
+
 
 ROOT_URLCONF = "deepfx_studio.urls"
 
@@ -138,17 +157,9 @@ TEMPLATES = [
             ],
             # for django-components
             "loaders": [
-                (
-                    "django.template.loaders.cached.Loader",
-                    [
-                        # Default Django loader
-                        "django.template.loaders.filesystem.Loader",
-                        # Inluding this is the same as APP_DIRS=True
-                        "django.template.loaders.app_directories.Loader",
-                        # Components loader
-                        "django_components.template_loader.Loader",
-                    ],
-                )
+                "django.template.loaders.filesystem.Loader",
+                "django.template.loaders.app_directories.Loader",
+                "django_components.template_loader.Loader",
             ],
             # for django-components
             "builtins": [
@@ -183,7 +194,7 @@ SOCIALACCOUNT_PROVIDERS = {
             "client_id": GITHUB_CLIENT_ID,
             "secret": GITHUB_CLIENT_SECRET,
             "key": "",
-            "redirect_uri": "https://deepfx-studio.azurewebsites.net/accounts/github/login/callback",
+            "redirect_uri": f"{OAUTH_REDIRECT_BASE}/accounts/github/login/callback",
         },
     },
 }
@@ -216,7 +227,7 @@ DATABASES = {
     }
 }
 
-# For production, if we need to use PostgreSQL or MySQL ig 
+# For production, you might want to use PostgreSQL or MySQL
 # Uncomment and configure as needed:
 # if not DEBUG:
 #     DATABASES = {
@@ -258,9 +269,9 @@ SITE_ID = 2
 
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
-LOGIN_REDIRECT_URL = "https://deepfx-studio.azurewebsites.net/dashboard/"
+LOGIN_REDIRECT_URL = "/dashboard/"
 
-LOGOUT_REDIRECT_URL = "https://deepfx-studio.azurewebsites.net/"
+LOGOUT_REDIRECT_URL = "/"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
