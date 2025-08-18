@@ -141,29 +141,36 @@ main {
     animation: fadeInUp 0.5s forwards;
 }
 
+.navbar { position: sticky; top: 0; z-index: 1000; isolation: isolate; }
 .nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     gap: 1rem;
-    padding: 2.5rem 3rem;
+    padding: 1.25rem 2rem 1rem 2rem;
+    transition: background-color 220ms ease, backdrop-filter 220ms ease, border-color 220ms ease;
+    background: transparent;
 }
+.nav.nav--glass {
+    background: linear-gradient(180deg, rgba(13, 17, 23, 0.55), rgba(13, 17, 23, 0.35));
+    backdrop-filter: blur(14px) saturate(120%);
+    border-bottom: 1px solid rgba(88, 166, 255, 0.22);
+}
+.nav.nav--glass.nav--scrolled { backdrop-filter: blur(18px) saturate(135%); background: rgba(13,17,23,0.65); }
 
-.nav__icon {
-    height: 50px;
-    width: 50px;
-}
+.nav__icon { height: 50px; width: 50px; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 50%; }
 
 .nav__name {
     height: 40px;
-    width: 240px;
+    width: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
     font-weight: 600;
     color: rgba(255, 255, 255, 0.8);
+    object-fit: contain;
 }
 
 .nav__link-section {
@@ -202,7 +209,7 @@ main {
 }
 
 .nav__link-section button {
-    padding: 10px 16px;
+    padding: 8px 14px; 
     font-size: 1.1em;
     font-weight: lighter;
     color: black;
@@ -262,6 +269,22 @@ main {
     color: white;
     font-weight: 900;
 }
+
+.only-mobile { display: none; }
+@media (max-width: 768px) { .only-mobile { display: inline-block; } }
+
+.btn-dive-in {
+    padding: 12px 20px;
+    border-radius: 24px;
+    border: 2px solid rgba(77, 75, 228, 0.45);
+    background: linear-gradient(135deg, rgba(77, 75, 228, 0.2), rgba(31, 164, 253, 0.2));
+    color: #58a6ff;
+    font-weight: 700;
+    backdrop-filter: blur(10px);
+    transition: all 200ms ease;
+}
+.btn-dive-in i { margin-left: 8px; }
+.btn-dive-in:hover { transform: translateY(-2px); border-color: rgba(77,75,228,0.65); }
 
 .showcase {
     padding: 20px 0px;
@@ -340,7 +363,7 @@ main {
             rgba(10, 10, 15, 0.7) 60%,
             rgba(10, 10, 15, 1) 100%);
     filter: blur(8px);
-    z-index: 1;
+    z-index: 0;
     pointer-events: none;
 }
 
@@ -365,7 +388,7 @@ main {
     bottom: 0;
     background: radial-gradient(circle at 20% 50%, rgba(77, 75, 228, 0.1) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(31, 164, 253, 0.1) 0%, transparent 50%);
-    z-index: 2;
+    z-index: 0; 
     pointer-events: none;
 }
 
@@ -960,6 +983,8 @@ main {
     }
 
     .ai-showcase__grid {
+    .hero__cta { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; }
+    .btn-explore { margin-left: 0 !important; }
         grid-template-columns: 1fr;
         grid-template-rows: repeat(6, 1fr);
         gap: 30px;
@@ -998,6 +1023,9 @@ main {
         gap: 25px;
         max-width: 500px;
     }
+    .nav { padding: 14px 16px; }
+    .nav__icon { width: 58px; height: 58px; }
+    .nav__name { height: 30px; width: auto; object-fit: contain; }
 
     .flip-card {
         height: 400px;
@@ -1111,6 +1139,7 @@ main {
     justify-content: flex-start;
     margin-left: -120px;
     margin-top: 20px;
+    z-index: 0; 
 }
 
 #lottie-animation-1,
@@ -1144,6 +1173,8 @@ main {
     gap: 220px;
     margin-left: 100px;
     max-width: 800px;
+    position: relative;
+    z-index: 1; 
 }
 
 .scroll-sync__text-block {
@@ -1152,6 +1183,7 @@ main {
     gap: 25px;
     min-height: 80vh;
     padding: 40px 0;
+    position: relative;
 }
 
 .scroll-sync__text-block h2 {
@@ -2052,11 +2084,17 @@ footer .footer__bottom ul li>a {
     .buy-coffee-btn {
         bottom: 15px;
         right: 15px;
+        left: auto;
+        transform: none;
+        max-width: none;
     }
 
     .buy-coffee-btn a {
         padding: 10px 14px;
         font-size: 0.8rem;
+        width: auto;
+        justify-content: center;
+        white-space: nowrap;
     }
 
     .buy-coffee-btn span {
@@ -2668,7 +2706,14 @@ footer .footer__bottom ul li>a {
 
 @media (max-width: 768px) {
     .scroll-sync {
-        padding: 40px 20px 60px;
+    padding: 32px 16px 48px;
+    overflow: visible;
+    }
+
+    .scroll-sync::after {
+        bottom: -140px;
+        height: 60px;
+        z-index: 0; 
     }
     
     .scroll-sync__header {
@@ -2680,33 +2725,110 @@ footer .footer__bottom ul li>a {
         line-height: 1.1;
         color: #ffffff; 
     }
+
+    .ai-showcase__header {
+        font-size: clamp(2.4rem, 7.2vw, 3.4rem);
+        margin-top: 24px;
+        margin-bottom: 36px;
+        line-height: 1.06;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+
+    .about-us__header {
+        font-size: clamp(2.4rem, 7.2vw, 3.4rem);
+        margin-top: 20px;
+        margin-bottom: 26px;
+        line-height: 1.06;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+
+    .nav {
+        padding: 16px 18px;
+    }
+    .nav__icon {
+        width: 56px;
+        height: 56px;
+    }
+    .nav__name {
+        width: auto;        
+        height: 30px;         
+        max-width: 55vw;       
+        object-fit: contain;  
+    }
     
     .scroll-sync__container {
         display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: visible;
+        contain: none;
     }
     
     .scroll-sync__lottie-container {
+        position: relative;
         width: 100%;
-        max-width: 280px;
-        height: 200px;
-        margin: 0 auto 25px;
+        max-width: 720px;
+        height: auto;
+        margin: 0 auto 6px auto;
         display: flex;
         justify-content: center;
         align-items: center;
-        background: rgba(31, 164, 253, 0.08);
+        background: transparent;
         border-radius: 16px;
-        border: 1px solid rgba(31, 164, 253, 0.25);
+        border: none;
+        overflow: visible;
+        contain: none;
+    }
+
+    .scroll-sync__container > .scroll-sync__lottie-container {
+        display: none !important;
+    }
+    
+    .mobile-lottie-container {
+        position: relative !important;
+        width: 100% !important;
+        max-width: 720px !important;
+        height: auto !important;
+        margin: 0 auto 0 auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        background: transparent !important;
+        border-radius: 16px !important;
+        border: none !important;
+        overflow: visible !important;
+        contain: none !important;
+    }
+    
+    .mobile-lottie-container dotlottie-wc {
+        overflow: visible !important;
+        contain: none !important;
     }
     
     .scroll-sync__content {
         width: 100%;
-        max-width: none;
+        max-width: 680px;
+        margin: 0 auto;
+    padding: 0 4px;
+    gap: 6px; 
+        overflow: visible;
+        contain: none;
+    display: block !important;
     }
     
     .scroll-sync__text-block {
-        margin-bottom: 40px;
-        text-align: center;
-        padding: 0 15px;
+    margin-bottom: 4px;
+    margin-top: 8px;
+        text-align: left;
+    padding: 4px 6px;
+    gap: 6px; 
+    min-height: auto !important; 
+        overflow: visible;
+        contain: none;
     }
     
     .scroll-sync__text-block:last-child {
@@ -2714,21 +2836,26 @@ footer .footer__bottom ul li>a {
     }
     
     .scroll-sync__text-block h2 {
-        font-size: 1.6rem;
+        font-size: clamp(1.55rem, 1.45rem + 0.6vw, 1.85rem);
         font-weight: 500;
-        margin-bottom: 12px;
+        margin-bottom: 6px;
+        margin-top: 8px;
         color: #ffffff;
         line-height: 1.3;
+        word-break: break-word;
+        overflow-wrap: anywhere;
     }
     
     .scroll-sync__text-block p {
-        font-size: 0.9rem;
+        font-size: clamp(0.92rem, 0.9rem + 0.2vw, 1rem);
         line-height: 1.6;
-        color: rgba(255, 255, 255, 0.75);
-        margin-bottom: 18px;
-        max-width: 320px;
-        margin-left: auto;
-        margin-right: auto;
+        color: rgba(255, 255, 255, 0.85);
+        margin-bottom: 4px;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        word-break: break-word;
+        overflow-wrap: anywhere;
     }
     
     .scroll-sync__text-block button {
@@ -2741,6 +2868,8 @@ footer .footer__bottom ul li>a {
         cursor: pointer;
         transition: all 0.3s ease;
         font-weight: 500;
+        width: 100%;
+        max-width: 280px;
     }
     
     .scroll-sync__text-block button:hover {
@@ -2753,46 +2882,102 @@ footer .footer__bottom ul li>a {
 
 @media (max-width: 500px) {
     .scroll-sync {
-        padding: 30px 15px 50px;
+    padding: 20px 12px 28px;
+    overflow-x: hidden;
+    }
+
+    .scroll-sync::after {
+        bottom: -160px;
+        height: 60px;
+        z-index: 0;
     }
     
     .scroll-sync__header {
         text-align: left;
         padding-left: 15px;
-        font-size: 3.2rem; 
+        font-size: 2.6rem; 
         line-height: 1.2;
         margin-bottom: 25px;
         color: #ffffff;
         font-weight: 300;
     }
+
+    .ai-showcase__header {
+        font-size: clamp(2.2rem, 7.6vw, 3rem);
+        margin-top: 20px;
+        margin-bottom: 28px;
+        line-height: 1.06;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+    .about-us__header {
+        font-size: clamp(2.2rem, 7.6vw, 3rem);
+        margin-top: 18px;
+        margin-bottom: 22px;
+        line-height: 1.06;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+    }
+
+    .nav {
+        padding: 14px 14px;
+    }
+    .nav__icon {
+        width: 52px;
+        height: 52px;
+    }
+    .nav__name {
+        height: 28px;
+        max-width: 60vw;
+    }
     
     .scroll-sync__lottie-container {
-        max-width: 300px;
-        height: 200px;
-        margin-bottom: 25px;
+        max-width: 100%;
+        height: auto;
+        margin: 0 auto 0 auto !important;
     }
     
     .scroll-sync__text-block {
-        padding: 0 10px;
-        margin-bottom: 40px;
+        padding: 2px 6px; 
+        margin-bottom: 2px !important;
+        margin-top: 2px !important;
+        gap: 4px !important;
+        min-height: auto !important;
     }
     
     .scroll-sync__text-block h2 {
         font-size: 1.5rem;
-        line-height: 1.3;
-        margin-bottom: 12px;
+        line-height: 1.2;
+        margin-bottom: 4px !important;
+        margin-top: 4px !important;
     }
     
     .scroll-sync__text-block p {
-        font-size: 0.9rem;
-        margin-bottom: 18px;
+        font-size: 0.95rem;
+        margin-bottom: 2px !important;
     }
     
     .scroll-sync__text-block button {
         padding: 10px 16px;
-        font-size: 0.85rem;
+        font-size: 0.86rem;
         width: 100%;
-        max-width: 250px;
+        max-width: 260px;
+    }
+}
+
+@media (max-width: 768px) {
+    dotlottie-wc#lottie-animation-1,
+    dotlottie-wc#lottie-animation-2 {
+        width: clamp(320px, 92vw, 720px) !important;
+        height: clamp(280px, 80vw, 640px) !important;
+        max-width: 100% !important;
+        display: block;
+    }
+    .scroll-sync__lottie-container dotlottie-wc {
+        width: clamp(320px, 92vw, 720px) !important;
+        height: clamp(280px, 80vw, 640px) !important;
+        max-width: 100% !important;
+        display: block;
     }
 }
 

@@ -24,6 +24,36 @@ if (!isMobile && !isLowEndDevice) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    const navEl = document.querySelector('.nav');
+    const glassZones = [
+        document.querySelector('.ai-showcase'),
+        document.querySelector('.scroll-sync'),
+        document.querySelector('.faq'),
+        document.querySelector('.cta')
+    ].filter(Boolean);
+
+    if (navEl && 'IntersectionObserver' in window && glassZones.length) {
+        const intersecting = new Set();
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting && e.intersectionRatio > 0.01) intersecting.add(e.target);
+                else intersecting.delete(e.target);
+            });
+            if (intersecting.size > 0) navEl.classList.add('nav--glass');
+            else navEl.classList.remove('nav--glass');
+        }, { root: null, rootMargin: '-20% 0px -70% 0px', threshold: [0, 0.01, 0.1] });
+        glassZones.forEach(z => io.observe(z));
+    }
+
+    const onScrollNav = () => {
+        if (!navEl) return;
+        if (!navEl.classList.contains('nav--glass')) { navEl.classList.remove('nav--scrolled'); return; }
+        if (window.scrollY > 8) navEl.classList.add('nav--scrolled');
+        else navEl.classList.remove('nav--scrolled');
+    };
+    onScrollNav();
+    window.addEventListener('scroll', onScrollNav, { passive: true });
+
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
     gsap.config({
@@ -516,36 +546,89 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 300);
     }
 
-    lottieAnimation1.style.display = 'block';
-    lottieAnimation2.style.display = 'none';
-    lottieAnimation1.classList.add('lottie-fade-in');
+    if (isMobile) {
+        const originalLottieContainer = document.querySelector('.scroll-sync__container > .scroll-sync__lottie-container');
+        if (originalLottieContainer) {
+            originalLottieContainer.style.display = 'none';
+        }
 
-    blocks.forEach((block, index) => {
-        const animationType = block.getAttribute("data-lottie");
-        ScrollTrigger.create({
-            trigger: block,
-            start: "top center+=70",
-            end: "bottom center",
-            onEnter: () => {
-                showLottieAnimation(animationType);
-            },
-            onEnterBack: () => {
-                showLottieAnimation(animationType);
-            },
+        if (lottieAnimation1 && lottieAnimation2) {
+            lottieAnimation1.style.display = 'block';
+            lottieAnimation2.style.display = 'block';
+        }
+
+        const content = document.querySelector('.scroll-sync__content');
+        if (content) {
+            content.style.gap = '4px';
+        }
+
+        blocks.forEach((block) => {
+            const type = block.getAttribute('data-lottie');
+            Object.assign(block.style, {
+                paddingTop: '0px',
+                paddingBottom: '0px',
+                marginTop: '2px',
+                marginBottom: '2px',
+                gap: '6px'
+            });
+
+            const container = document.createElement('div');
+            container.className = 'mobile-lottie-container';
+            container.style.cssText = `
+                width: 100%;
+                max-width: 720px;
+                height: auto;
+                margin: 0 auto 0 auto;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: transparent;
+                border-radius: 16px;
+                border: none;
+                overflow: visible;
+            `;
+            let toClone = (type === 'training-process') ? lottieAnimation2 : lottieAnimation1;
+            if (toClone) {
+                const clone = toClone.cloneNode(true);
+                clone.removeAttribute('id');
+                clone.style.display = 'block';
+                clone.style.overflow = 'visible';
+                block.insertBefore(container, block.firstChild);
+                container.appendChild(clone);
+            }
         });
-    });
+    } else {
+        lottieAnimation1.style.display = 'block';
+        lottieAnimation2.style.display = 'none';
+        lottieAnimation1.classList.add('lottie-fade-in');
+
+        blocks.forEach((block) => {
+            const animationType = block.getAttribute("data-lottie");
+            ScrollTrigger.create({
+                trigger: block,
+                start: "top center+=70",
+                end: "bottom center",
+                onEnter: () => {
+                    showLottieAnimation(animationType);
+                },
+                onEnterBack: () => {
+                    showLottieAnimation(animationType);
+                },
+            });
+        });
+    }
 
     gsap.utils.toArray(".scroll-sync__text-block").forEach((block) => {
         gsap.from(block, {
             scrollTrigger: {
                 trigger: block,
-                start: "top 80%",
+                start: "top 85%",
                 toggleActions: "play none none reverse",
             },
-            y: 80,
+            y: 60,
             opacity: 0,
-            duration: 1.2,
-            ease: "expo.out",
+            duration: 0.9,
+            ease: "power2.out",
         });
     });
 
