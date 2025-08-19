@@ -5,7 +5,7 @@
 
 Download all the necessey models for the releases page from [Releases](https://github.com/XBastille/DeepFX-Studio/releases)
 
-Refer [CONTRIBUTING.md](CONTRIBUTING.md) to get an idea how to place the models
+Refer [setup.md](setup.md) to get an idea how to place the models
 
 ## Docker Setup
 
