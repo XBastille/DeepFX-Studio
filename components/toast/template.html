@@ -20,15 +20,27 @@
                 </div>
                 <!-- Close Button -->
                 <button class="bg-white p-4 border rounded-md"
-                        aria-label="Close alert"
-                        onclick=" (function() { const message_box = document.getElementById('message-box'); message_box.style.display='none' })() ">
-                    <img class="text-white rounded-sm"
-                         height="8px"
-                         width="8px"
-                         src="{% static 'images/close.svg' %}"
-                         alt="Close Icon" />
+                    type="button"
+                    id="alert-btn"
+                    onclick="closeAlert()"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        fill="none" viewBox="0 0 24 24" 
+                        stroke-width="2" stroke="black" 
+                        class="w-5 h-5">
+                        <path stroke-linecap="round" 
+                            stroke-linejoin="round" 
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                 </button>
             </div>
         </div>
     </div>
+    <script>
+        function closeAlert() {
+            console.log("Clicked Close Alert Btn");
+            const alertDiv = document.getElementById("alert-box")
+            alertDiv.style.display = "none";
+        };
+    </script>
 </section>
