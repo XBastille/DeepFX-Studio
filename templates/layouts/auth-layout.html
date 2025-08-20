@@ -65,10 +65,10 @@
         {% block animation %}
         {% endblock animation %}
     </div>
-    {% if error_message %}
+    {% if request.GET.error_message %}
         <div id="message-box"
              class="absolute top-5 left-5 right-5 md:left-auto md:top-10 md:right-10 animate-appear">
-            {% component "toast" title="Error Occured" content="{{ error_message }}" %}{% endcomponent %}
+            {% component "toast" title="Error Occured" content="{{ request.GET.error_message }}" %}{% endcomponent %}
         </div>
     {% endif %}
 {% endblock body %}
