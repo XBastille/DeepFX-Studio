@@ -64,16 +64,11 @@ def signin_view(request):
             login(request, user)
             return redirect(reverse("dashboard:dashboard_view"))
         else:
-            return render(
-                request,
-                "pages/signin.html",
-                {
-                    "error_message": "Your credentials could not be verified. Please try again."
-                },
-            )
+            error_message= "Invalid credentials"
+            return redirect(reverse("account_login", query={"error_message": error_message}))
     else:
         return render(request, "pages/signin.html")
-
+        
 
 def signout(request):
     logout(request)
