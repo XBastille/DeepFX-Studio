@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.db import IntegrityError
 from django.shortcuts import HttpResponseRedirect, redirect, render
 from django.urls import reverse
+import urllib.parse
 
 # Create your views here.
 
@@ -20,13 +21,11 @@ def signup_view(request):
 
         # Ensure passwords match
         if password != repeat_password:
-            return render(
-                request,
-                "pages/signup.html",
-                {
-                    "error_message": "The passwords entered do not match. Please try again."
-                },
-            )
+            error_message = "The passwords entered do not match. Please try again."
+            base_url = reverse("account_signup") 
+            query = urllib.parse.urlencode({"error_message": error_message})
+            url = f"{base_url}?{query}"
+            return redirect(url)
 
         try:
             # Create the new user
@@ -42,13 +41,11 @@ def signup_view(request):
 
             return redirect(reverse("dashboard:dashboard_view"))
         except IntegrityError:
-            return render(
-                request,
-                "pages/signup.html",
-                {
-                    "error_message": "This username or email is already in use. Please choose a different one."
-                },
-            )
+            error_message = "Invalid credentials"
+            base_url = reverse("account_signup") 
+            query = urllib.parse.urlencode({"error_message": error_message})
+            url = f"{base_url}?{query}"
+            return redirect(url)
     else:
         return render(request, "pages/signup.html")
 
@@ -64,11 +61,14 @@ def signin_view(request):
             login(request, user)
             return redirect(reverse("dashboard:dashboard_view"))
         else:
-            error_message= "Invalid credentials"
-            return redirect(reverse("account_login", query={"error_message": error_message}))
+            error_message = "Invalid credentials."
+            base_url = reverse("account_login") 
+            query = urllib.parse.urlencode({"error_message": error_message})
+            url = f"{base_url}?{query}"
+            return redirect(url)
     else:
         return render(request, "pages/signin.html")
-        
+
 
 def signout(request):
     logout(request)
