@@ -3,7 +3,7 @@
 on:
   push:
     branches:
-      - testing
+      - main
 
 jobs:
   build-and-deploy:
