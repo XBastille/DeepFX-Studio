@@ -35,3 +35,4 @@ jobs:
         with:
           app-name: 'deepfx-studio' 
           images: '${{ secrets.REGISTRY_LOGIN_SERVER }}/deepfx-studio:${{ github.sha }}'
+#
