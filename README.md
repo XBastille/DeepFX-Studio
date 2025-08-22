@@ -267,15 +267,8 @@ Experience DeepFX Studio live at: **[https://deepfx-studio.azurewebsites.net/](h
 
 ### 📸 **Showcase**
 
-<div align="center">
-  <iframe width="800" height="450"
-          src="https://www.youtube.com/embed/pneOi7lxMzA"
-          title="DeepFX Studio Demo"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-  </iframe>
-</div>
+[![Watch the demo video]([https://youtu.be/VIDEO_ID](https://youtu.be/pneOi7lxMzA?si=c_ITgM_DgSNSG37X))
+
 
 ![Website Preview 1](media/showcase.png)
 
