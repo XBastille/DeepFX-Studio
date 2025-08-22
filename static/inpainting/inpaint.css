@@ -88,7 +88,7 @@ body {
 .close-icon {
     /* display: none; */
     position: absolute;
-    top: 180px;
+    top: 223px;
     left: 740px;
     font-size: 24px;
     cursor: pointer;
@@ -1030,6 +1030,28 @@ body {
 }
 
 @media screen and (max-width: 480px) {
+    .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100dvh; 
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+    overflow: hidden;
+    pointer-events: none; 
+    }
+    .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.8);
+        z-index: 1000;
+        overflow: hidden;
+    }
+
     .logo img {
         height: 50px;
         width: 50px;
@@ -1099,8 +1121,8 @@ body {
     }
 
     .close-icon {
-        top: 10px;
-        right: 10px;
+        top: 175px;
+        right: 15px;
         left: auto;
         font-size: 20px;
     }
@@ -1217,17 +1239,25 @@ body {
     }
 
     .popup-box {
-        width: 96%;
-        height: 88vh;
-        padding: 18px;
-        margin: 0;
-        overflow-y: auto;
-        overflow-x: hidden;
+        position: fixed !important;
+        top: 5vh !important;         
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        width: min(600px, 96vw) !important;
+        height: 150vh !important;
+        padding: 18px !important;
+        box-sizing: border-box !important; 
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
         -webkit-overflow-scrolling: touch;
         overscroll-behavior: contain;
-        border-radius: 20px;
-        border: 2px solid rgba(255, 255, 255, 0.8);
-        box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+        border-radius: 20px !important;
+        border: 2px solid rgba(255, 255, 255, 0.8) !important;
+        box-shadow: 0 0 25px rgba(0, 0, 0, 0.7) !important;
+        z-index: 1001 !important;
+        background: #000 !important;
+        padding-bottom: calc(env(safe-area-inset-bottom) + 18px) !important;
+        pointer-events: auto !important; 
     }
 
     .popup-submit {

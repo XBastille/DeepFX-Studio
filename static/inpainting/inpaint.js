@@ -326,6 +326,7 @@ dragAndDrop.addEventListener('dragleave', (e) => {
 fileInput.addEventListener('change', (e) => {
     const file = e.target.files[0];
     if (file) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
         preview(file);
         fileInput.disabled = true;
     }
@@ -338,6 +339,7 @@ dragAndDrop.addEventListener('drop', (e) => {
     fileInput.files = e.dataTransfer.files;
     const file = e.dataTransfer.files[0];
     if (file) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
         preview(file);
     }
 });
@@ -743,10 +745,9 @@ function resetPreview() {
     body.style.background = 'linear-gradient(to bottom, #111827, #000000)';
     
     if (isTouchDevice && window.innerWidth <= 480) {
-        body.style.overflow = '';
-        body.style.position = '';
-        body.style.width = '';
-        body.style.height = '';
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+        document.body.style.touchAction = '';
     }
 
     setCanvasSizes();
@@ -760,20 +761,18 @@ function preview(file) {
     popupBox.style.display = 'block';
     
     if (isTouchDevice && window.innerWidth <= 480) {
-        body.style.overflow = 'hidden';
-        body.style.position = 'fixed';
-        body.style.width = '100%';
-        body.style.height = '100%';
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
         
         popupBox.style.overflowY = 'auto';
         popupBox.style.overflowX = 'hidden';
-        popupBox.style.touchAction = 'pan-y'; 
-        popupBox.style.webkitOverflowScrolling = 'touch'; 
-        popupBox.style.overscrollBehavior = 'contain'; 
+    popupBox.style.touchAction = 'pan-y';
+    popupBox.style.webkitOverflowScrolling = 'touch';
+    popupBox.style.overscrollBehavior = 'contain';
         
         drawingCanvas.style.touchAction = 'none'; 
         
-        popup.style.touchAction = 'none';
+    popup.style.touchAction = 'none';
     }
     
     const existingPreview = dragAndDrop.querySelector('.preview');

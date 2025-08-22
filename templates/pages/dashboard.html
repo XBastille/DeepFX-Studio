@@ -179,7 +179,6 @@
                 <div class="feature-matrix">
                     <span class="matrix-node">High Resolution</span>
                     <span class="matrix-node">Multiple Styles</span>
-                    <span class="matrix-node">Lightning Fast</span>
                 </div>
 
                 <a href="{% url 'ai-text-to-image:ai_text_to_image' %}" class="launch-portal">
@@ -238,7 +237,11 @@
                 <div class="pod-aura"></div>
                 <div class="pod-header">
                     <div class="mini-core"><img src="{% static 'images/ai_image_editor.svg' %}" alt="Editor"></div>
-                    <div class="status-active">Ready</div>
+                    {% if request.get_host == 'deepfx-studio.azurewebsites.net' %}
+                        <div class="status-limited">Limited</div>
+                    {% else %}
+                        <div class="status-active">Ready</div>
+                    {% endif %}
                 </div>
                 <h3 class="pod-title">AI Image Editor</h3>
                 <p class="pod-desc">Intelligent inpainting and editing. Erase, enhance, and transform with AI-powered
@@ -255,7 +258,11 @@
                 <div class="pod-aura"></div>
                 <div class="pod-header">
                     <div class="mini-core"><img src="{% static 'images/ai_upscale.svg' %}" alt="Upscale"></div>
+                    {% if request.get_host == 'deepfx-studio.azurewebsites.net' %}
+                    <div class="status-coming-soon">Not Ready</div>
+                    {% else %}
                     <div class="status-active">Ready</div>
+                    {% endif %}
                 </div>
                 <h3 class="pod-title">AI Image Upscale</h3>
                 <p class="pod-desc">Enhance resolution and restore details. Transform low-quality images into
@@ -272,7 +279,11 @@
                 <div class="pod-aura"></div>
                 <div class="pod-header">
                     <div class="mini-core"><img src="{% static 'images/ai_filter.svg' %}" alt="Filter"></div>
-                    <div class="status-active">Ready</div>
+                    {% if request.get_host == 'deepfx-studio.azurewebsites.net' %}
+                        <div class="status-limited">Limited</div>
+                    {% else %}
+                        <div class="status-active">Ready</div>
+                    {% endif %}
                 </div>
                 <h3 class="pod-title">AI Filter</h3>
                 <p class="pod-desc">Apply intelligent artistic filters that understand your image content for perfect
@@ -1640,6 +1651,26 @@
     font-size: 0.75rem;
     font-weight: 600;
     border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.status-limited {
+    background: rgba(245, 158, 11, 0.2);
+    color: #f59e0b;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.status-coming-soon {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
 .pod-title {
@@ -4278,7 +4309,7 @@
 
     function generateParametersHTML(data) {
         if (data.type === 'background-remover' || data.type === 'artistic') {
-            return '<div class="modal-parameters"><h4>Processing Parameters</h4><p style="color: rgba(255,255,255,0.7); padding: 1rem; text-align: center;">No additional parameters required for this processing type.</p></div>';
+            return '<div class="modal-parameters"><h4>Processing Parameters</h4><p style="color: rgba(255,255,255,0.7); padding: 1rem; text-align: center;"></p></div>';
         }
 
         let parametersHTML = '<div class="modal-parameters"><h4>Processing Parameters</h4><div class="parameter-grid">';

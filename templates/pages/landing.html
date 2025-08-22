@@ -21,6 +21,7 @@
     <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
 
     <link rel="stylesheet" href="{% static 'css/landing.css' %}" />
+    <link rel="stylesheet" href="{% static 'showcase/showcase.css' %}" />
 </head>
 
 <body>
@@ -37,7 +38,7 @@
                 </div>
                 <div class="nav__link-section">
                     <ul class="nav__link-section__link">
-                        <li><a href="#ai_showcase_section">Showcase</a></li>
+                        <li><a href="javascript:void(0)" onclick="openShowcase()">Showcase</a></li>
                         <li><a href="#about_section">About</a></li>
                     </ul>
                     {% if user.is_authenticated %}
@@ -67,7 +68,7 @@
                 <div class="mobile-menu-content">
                     <h2>Menu</h2>
                     <ul class="mobile-menu-links">
-                        <li><a href="#ai_showcase_section">Showcase</a></li>
+                        <li><a href="javascript:void(0)" onclick="openShowcase()">Showcase</a></li>
                         <li><a href="#about_section">About</a></li>
                         {% if user.is_authenticated %}
                         <li><a href="{% url 'dashboard:dashboard_view' %}">Dashboard</a></li>
@@ -395,7 +396,7 @@
                 </div>
 
                 <div class="showcase-cta">
-                    <a href="{% url 'dashboard:dashboard_view' %}" class="view-showcase-btn">
+                    <a href="javascript:void(0)" onclick="openShowcase()" class="view-showcase-btn">
                         <span>View Full Showcase</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </a>
@@ -584,7 +585,7 @@
                                         <a href="https://github.com/Soap-mac" target="_blank" rel="noopener noreferrer">
                                             <i class="fa-brands fa-github"></i>
                                         </a>
-                                        <a href="#" target="_blank" rel="noopener noreferrer">
+                                        <a href="https://www.instagram.com/__arpit_mishra____?igsh=MTkxZmNvcWg3bDM3Mw==" target="_blank" rel="noopener noreferrer">
                                             <i class="fa-brands fa-instagram"></i>
                                         </a>
                                     </div>
@@ -731,19 +732,19 @@
             </div>
             <div class="footer__content">
                 <div>
-                    DeepFX Studio is an educational project developed by computer science students passionate about deep
+                    DeepFX Studio is a platform developed by computer science students passionate about deep
                     learning and web development. This platform demonstrates advanced computer vision techniques and
-                    serves as a learning experience for exploring AI model implementation in web applications.
+                    serves as a unqiue experience for users for exploring deep learning model implementation in web applications.
                 </div>
                 <div>
-                    Built with cutting-edge technologies including PyTorch, Django, and React. Our models are trained using
+                    Built with cutting-edge technologies including PyTorch, Django. Our models are trained using
                     peer-reviewed research implementations and deployed with modern web technologies for optimal performance
                     and user experience.
                 </div>
             </div>
             <div class="footer__bottom">
                 <ul>
-                    <li><a href="#showcase_section">Showcase</a></li>
+                    <li><a href="javascript:void(0)" onclick="openShowcase()">Showcase</a></li>
                     <li><a href="#about_section">About Us</a></li>
                     <li><a href="#faq_section">FAQ</a></li>
                     <li><a href="https://github.com/XBastille/DeepFX-Studio" target="_blank">GitHub</a></li>
@@ -760,9 +761,11 @@
             </a>
         </div>
     </main>
+    {% include 'showcase/showcase.html' %}
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script src="{% static '/scripts/landing.js' %}" type="module"></script>
+    <script src="{% static 'showcase/showcase.js' %}"></script>
 
 </body>
 

@@ -1,4 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Auto-prepare SD 3.5 environment on page load
+  async function autoPrepareEnvironment() {
+    try {
+      await fetch('/api/auto-prepare/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          page_type: 'text-to-image'
+        })
+      });
+      console.log('SD 3.5 environment preparation triggered');
+    } catch (error) {
+      console.warn('Failed to trigger environment preparation:', error);
+    }
+  }
+  
+  // Trigger environment preparation immediately
+  autoPrepareEnvironment();
+
   const textarea = document.getElementById("prompt-input");
 
   if (textarea) {
@@ -815,7 +836,9 @@ document.addEventListener("DOMContentLoaded", () => {
         })
       });
       
-      const result = await response.json();      if (result.status === 200) {
+      const result = await response.json();
+      
+      if (result.status === 200) {
         const generationTime = new Date().toLocaleString();
         const imagesHtml = result.images
           .map(
@@ -856,6 +879,18 @@ document.addEventListener("DOMContentLoaded", () => {
         gridImagesContainer.innerHTML = imagesHtml;
         
         setupImageActions();
+      } else if (result.status === 202 && result.queued) {
+        // Handle queued task
+        const gridImagesContainer = generationEntry.querySelector('.grid-images');
+        gridImagesContainer.innerHTML = `
+          <div class="text-yellow-500 text-center p-4">
+            <div class="mb-2">🔄 ${result.message}</div>
+            <div class="text-sm text-gray-400">Task ID: ${result.task_id}</div>
+          </div>
+        `;
+        
+        // Poll for task completion
+        pollTaskStatus(result.task_id, generationEntry, promptText, currentSettings, imageSettings, seedInput.value, randomSeedCheckbox.checked);
       } else {
         const gridImagesContainer = generationEntry.querySelector('.grid-images');
         const errorMessage = result.message || 'Error generating images';
@@ -867,6 +902,109 @@ document.addEventListener("DOMContentLoaded", () => {
       gridImagesContainer.innerHTML = `<div class="text-red-500 text-center p-4">Network error: ${error.message}</div>`;
     }    autoResize();
   });
+  
+  // Function to poll task status for queued generations
+  async function pollTaskStatus(taskId, generationEntry, promptText, currentSettings, imageSettings, seed, randomSeed) {
+    const maxAttempts = 180; // 3 minutes with 1-second intervals
+    let attempts = 0;
+    
+    const poll = async () => {
+      try {
+        const response = await fetch(`/text-to-image/status/${taskId}/`);
+        const status = await response.json();
+        
+        const gridImagesContainer = generationEntry.querySelector('.grid-images');
+        
+        if (status.status === 'completed' && status.result) {
+          // Task completed successfully
+          const generationTime = new Date().toLocaleString();
+          const imagesHtml = status.result
+            .map(
+              (image) => `
+                <div class="relative group rounded-lg overflow-hidden ${imageSettings.dimensions.class}" style="max-width: 256px;">
+                  <img src="/${image}" alt="Generated image" class="w-full h-full object-cover cursor-pointer generated-image" 
+                       data-prompt="${promptText}"
+                       data-negative-prompt="${currentSettings.negativePrompt || ''}"
+                       data-width="${imageSettings.dimensions.width}"
+                       data-height="${imageSettings.dimensions.height}"
+                       data-seed="${seed}"
+                       data-randomize-seed="${randomSeed}"
+                       data-guidance-scale="${currentSettings.guidanceScale}"
+                       data-inference-steps="${currentSettings.inferenceSteps}"
+                       data-num-images="${currentSettings.quantity}"
+                       data-creation-time="${generationTime}">
+                    <div class="absolute bottom-2 right-2 flex flex-wrap gap-1">
+                      <div class="bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded-full flex items-center gap-1">
+                        <span>Model</span>
+                        <span class="font-medium">SD 3.5 Large</span>
+                      </div>
+                      <div class="bg-black bg-opacity-50 text-white text-xs px-2 py-1 rounded-full">
+                        ${imageSettings.dimensions.width} × ${imageSettings.dimensions.height}px
+                      </div>
+                    </div>
+                    <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100">
+                      <div class="flex gap-2">
+                        <button class="btn-download-single bg-black bg-opacity-70 text-white p-2 rounded-full hover:bg-opacity-90 transition-all" title="Download Image">
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                `,
+            )
+            .join("");
+          
+          gridImagesContainer.innerHTML = imagesHtml;
+          setupImageActions();
+          return;
+        } else if (status.status === 'failed') {
+          // Task failed
+          gridImagesContainer.innerHTML = `<div class="text-red-500 text-center p-4">❌ Generation failed: ${status.error || 'Unknown error'}</div>`;
+          return;
+        } else if (status.status === 'running') {
+          // Task is running
+          gridImagesContainer.innerHTML = `
+            <div class="text-blue-500 text-center p-4">
+              <div class="mb-2">🚀 Generating images...</div>
+              <div class="text-sm text-gray-400">This may take a few moments</div>
+            </div>
+          `;
+        } else {
+          // Task is still queued
+          gridImagesContainer.innerHTML = `
+            <div class="text-yellow-500 text-center p-4">
+              <div class="mb-2">⏳ Task queued...</div>
+              <div class="text-sm text-gray-400">Please wait</div>
+            </div>
+          `;
+        }
+        
+        // Continue polling if not completed and within retry limit
+        attempts++;
+        if (attempts < maxAttempts) {
+          setTimeout(poll, 1000); // Poll every second
+        } else {
+          gridImagesContainer.innerHTML = `<div class="text-red-500 text-center p-4">⏰ Generation timeout. Please try again.</div>`;
+        }
+        
+      } catch (error) {
+        console.error('Error polling task status:', error);
+        attempts++;
+        if (attempts < maxAttempts) {
+          setTimeout(poll, 2000); // Retry after 2 seconds on error
+        } else {
+          const gridImagesContainer = generationEntry.querySelector('.grid-images');
+          gridImagesContainer.innerHTML = `<div class="text-red-500 text-center p-4">❌ Error checking task status</div>`;
+        }
+      }
+    };
+    
+    // Start polling
+    poll();
+  }
+  
   window.copyToClipboard = function(text, button) {
     navigator.clipboard.writeText(text).then(function() {
       const originalHTML = button.innerHTML;
