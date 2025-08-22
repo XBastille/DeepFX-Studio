@@ -267,6 +267,15 @@ Experience DeepFX Studio live at: **[https://deepfx-studio.azurewebsites.net/](h
 
 ### 📸 **Showcase**
 
+<div align="center">
+  <iframe width="800" height="450"
+          src="https://www.youtube.com/embed/pneOi7lxMzA"
+          title="DeepFX Studio Demo"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+  </iframe>
+</div>
 ![Website Preview 1](media/showcase.png)
 
 ![Website Preview 2](media/showcase_2.png)
@@ -275,13 +284,6 @@ Experience DeepFX Studio live at: **[https://deepfx-studio.azurewebsites.net/](h
 
 ![Website Preview 4](media/showcase_4.png)
 
-<div align="center">
-  <video controls autoplay playsinline preload="metadata" width="800" poster=>
-    <source src="media/showcase.mp4"  type="video/mp4">
-  </video>
-  <p style="font-size:0.9em;color:#666;margin-top:6px;">
-  </p>
-</div>
 
 ---
 
