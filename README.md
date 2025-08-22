@@ -288,8 +288,8 @@ Experience DeepFX Studio live at: **[https://deepfx-studio.azurewebsites.net/](h
 
 ### Prerequisites & Installation
 For detailed setup instructions, please refer to our comprehensive guides:
-- 📋 **[Installation Guide](INSTALLATION.md)**: Complete setup instructions with model placement
-- 🛠️ **[Setup Guide](SETUP.md)**: Docker setup and development environment configuration
+- 📋 **[Installation Guide](INSTALLATION.md)**: Docker setup and development environment configuration
+- 🛠️ **[Setup Guide](SETUP.md)**: Complete setup instructions with model placement
 
 Ready to get started? Follow our step-by-step installation guides for a smooth setup experience! 🎉
 
@@ -412,3 +412,4 @@ We gratefully acknowledge the original authors of all reproduced papers:
   
   <a href="#top">⬆️ Back to Top</a>
 </div>
+
