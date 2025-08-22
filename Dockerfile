@@ -58,7 +58,7 @@ RUN mkdir -p static/css staticfiles media tmp
 
 RUN chmod +x ./startup.sh
 RUN chmod +x ./download-models.sh
-RUN bash ./download-models.sh
+RUN ./download-models.sh
 
 RUN npm run build
 
@@ -72,3 +72,4 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
 EXPOSE 8000
 
 CMD ["./startup.sh"]
+
