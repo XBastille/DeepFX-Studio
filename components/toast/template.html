@@ -1,0 +1,46 @@
+{% load component_tags %}
+{% load static %}
+<section class="bg-gray-800">
+    <div class="mx-auto sm:container">
+        <div class="flex justify-end">
+            <div id="alert-box"
+                 class="flex gap-3 w-fit max-w-[490px] items-center rounded-lg border p-5 border-black bg-gray-800">
+                <!-- Icon Section -->
+                <div class="flex h-[45px] w-[45px] sm:h-[60px] sm:w-[60px] items-center justify-center rounded-[5px] bg-red-600 text-white">
+                    <img height=""
+                         width="20"
+                         src="{% static 'images/i-icon.svg' %}"
+                         alt="Info Icon"
+                         class="h-10 w-10 object-contain mx-3" />
+                </div>
+                <!-- Content Section -->
+                <div class="flex-1">
+                    <h6 class="text-base font-semibold sm:text-lg text-red-600">{{ title }}</h6>
+                    <p class="text-sm text-gray-300">{{ content }}</p>
+                </div>
+                <!-- Close Button -->
+                <button class="bg-white p-4 border rounded-md"
+                    type="button"
+                    id="alert-btn"
+                    onclick="closeAlert()"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" 
+                        fill="none" viewBox="0 0 24 24" 
+                        stroke-width="2" stroke="black" 
+                        class="w-5 h-5">
+                        <path stroke-linecap="round" 
+                            stroke-linejoin="round" 
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script>
+        function closeAlert() {
+            console.log("Clicked Close Alert Btn");
+            const alertDiv = document.getElementById("alert-box")
+            alertDiv.style.display = "none";
+        };
+    </script>
+</section>

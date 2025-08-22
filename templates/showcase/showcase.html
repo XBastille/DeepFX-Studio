@@ -1,0 +1,130 @@
+{% load static %}
+<div id="showcase-container" class="showcase-quantum" style="display: none;">
+    <div class="showcase-header">
+        <div class="showcase-title-section">
+            <h1 class="showcase-title">AI Gallery Showcase</h1>
+            <p class="showcase-subtitle">Discover the power of our AI tools through stunning results</p>
+        </div>
+        <button class="showcase-close-btn" onclick="closeShowcase()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+
+    <div class="showcase-grid">
+        <div class="showcase-category" data-category="text-to-image">
+            <div class="category-header">
+                <div class="category-icon">
+                    <img src="{% static 'images/ai_image_creator.svg' %}" alt="Text to Image">
+                </div>
+                <div class="category-info">
+                    <h3>Text-to-Image Generation</h3>
+                    <p>AI-powered image creation from text prompts using Stable Diffusion 3.5</p>
+                </div>
+            </div>
+            <div class="results-gallery large-gallery" id="txt2img-gallery">
+            </div>
+        </div>
+
+        <div class="showcase-category" data-category="background-remover">
+            <div class="category-header">
+                <div class="category-icon">
+                    <img src="{% static 'images/bg-remove.jpg' %}" alt="Background Remover">
+                </div>
+                <div class="category-info">
+                    <h3>Background Remover</h3>
+                    <p>AI-powered background removal with precise edge detection</p>
+                </div>
+            </div>
+            <div class="results-gallery slideshow-gallery" id="bg-remover-gallery">
+            </div>
+        </div>
+
+        <div class="showcase-category" data-category="ai-colorization">
+            <div class="category-header">
+                <div class="category-icon">
+                    <img src="{% static 'images/ai_colorization.svg' %}" alt="AI Colorization">
+                </div>
+                <div class="category-info">
+                    <h3>AI Colorization</h3>
+                    <p>Transform black & white photos into vibrant colored images</p>
+                </div>
+            </div>
+            <div class="results-gallery slideshow-gallery" id="colorization-gallery">
+            </div>
+        </div>
+
+        <div class="showcase-category" data-category="ai-filter">
+            <div class="category-header">
+                <div class="category-icon">
+                    <img src="{% static 'images/ai_filter.svg' %}" alt="AI Filter">
+                </div>
+                <div class="category-info">
+                    <h3>AI Filter</h3>
+                    <p>Apply artistic filters and style transformations</p>
+                </div>
+            </div>
+            <div class="results-gallery slideshow-gallery" id="filter-gallery">
+            </div>
+        </div>
+
+        <div class="showcase-category" data-category="ai-image-editor">
+            <div class="category-header">
+                <div class="category-icon">
+                    <img src="{% static 'images/ai_image_editor.svg' %}" alt="AI Image Editor">
+                </div>
+                <div class="category-info">
+                    <h3>AI Image Editor</h3>
+                    <p>Intelligent object removal and replacement with AI inpainting</p>
+                </div>
+            </div>
+            <div class="results-gallery slideshow-gallery" id="editor-gallery">
+            </div>
+        </div>
+
+        <div class="showcase-category" data-category="image-upscale">
+            <div class="category-header">
+                <div class="category-icon">
+                    <img src="{% static 'images/ai_upscale.svg' %}" alt="Image Upscale">
+                </div>
+                <div class="category-info">
+                    <h3>AI Image Upscale</h3>
+                    <p>Enhance image resolution and restore fine details</p>
+                </div>
+            </div>
+            <div class="results-gallery slideshow-gallery" id="upscale-gallery">
+            </div>
+        </div>
+
+        <div class="showcase-category" data-category="artistic-creator">
+            <div class="category-header">
+                <div class="category-icon">
+                    <img src="{% static 'images/aristic-image-logo.svg' %}" alt="Artistic Creator">
+                </div>
+                <div class="category-info">
+                    <h3>Artistic Image Creator</h3>
+                    <p>Neural style transfer for artistic image transformations</p>
+                </div>
+            </div>
+            <div class="results-gallery artistic-gallery" id="artistic-gallery">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="image-modal" class="image-modal" style="display: none;">
+    <div class="modal-backdrop" onclick="closeImageModal()"></div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title">Generation Details</h3>
+            <button class="modal-close" onclick="closeImageModal()">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <div class="modal-body" id="modal-body-content">
+        </div>
+    </div>
+</div>

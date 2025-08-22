@@ -1,0 +1,162 @@
+{% extends "layouts/base-layout.html" %}
+{% load static %}
+{% block metadata %}
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+          content="Enhance image quality effortlessly with DeepFX Studio's AI-powered Image Upscale. Improve resolution, sharpness, and details with a single click." />
+    <meta name="keywords"
+          content="AI Image Upscale, Image Upscaling, DeepFX Studio, AI Photo Enhancement, Image Quality Improvement, AI Super Resolution, Photo Sharpening" />
+    <meta name="author" content="DeepFX Studio Team" />
+    <meta name="robots" content="index, follow" />
+{% endblock metadata %}
+{% block title %}
+    AI Image Upscale - DeepFX Studio
+{% endblock title %}
+{% block body %}
+    <div class="bg-gradient-to-b from-gray-900 to-black text-aliceblue font-poppins min-h-screen pb-20">
+        <div class="flex justify-center items-center pt-10">
+            <img width=""
+                 height=""
+                 class="mx-auto w-12"
+                 src="{% static 'images/ai_upscale.svg' %}"
+                 alt="AI Image Upscale Logo">
+        </div>
+        <div class="heading text-center">
+            <div class="tool-name pt-10">
+                <p class="text-2xl md:text-5xl font-bold text-white" id="tool-name">AI Image Upscale</p>
+            </div>
+            <div class="tool-desc my-4">
+                <p class="text-sm md:text-lg text-gray-300" id="tool-desc">
+                    Improve image quality, enhance details, and upscale resolution with AI-powered enhancement.
+                </p>
+            </div>
+        </div>
+        <div id="form-section"
+             class="flex md:flex-row flex-col md:w-[60vw] md:mx-auto justify-center items-center flex-wrap m-10 gap-10">
+            <!-- Diff Section -->
+            <div class="relative w-full md:w-[50%] h-full flex items-center justify-center">
+                <a href="{% if processed_image %}{{ processed_image }}{% else %}{% static 'images/ai_upscale_output_image.jpg' %}{% endif %}"
+                   download="processed_image.png"
+                   class="btn absolute top-2 left-2 bg-black cursor-pointer z-20">
+                    <img width=""
+                         height=""
+                         alt="download-icon"
+                         src="{% static 'images/download.svg' %}"
+                         class="w-4 h-4" />
+                </a>
+                <div class="diff aspect-[4/3] w-full h-full border-2 border-gray-500 rounded-xl shadow-lg">
+                    <div class="diff-item-1">
+                        <img height=""
+                             width=""
+                             alt="input_image"
+                             src="{% if input_image %}{{ input_image }}{% else %}{% static 'images/ai_upscale_input_image.jpeg' %}{% endif %}"
+                             class="object-contain rounded-xl" />
+                    </div>
+                    <div class="diff-item-2">
+                        <img height=""
+                             width=""
+                             alt="processed_image"
+                             src="{% if processed_image %}{{ processed_image }}{% else %}{% static 'images/ai_upscale_output_image.jpg' %}{% endif %}"
+                             class="object-contain rounded-xl" />
+                    </div>
+                    <div class="diff-resizer"></div>
+                </div>
+            </div>
+            <!-- Upload Section -->
+            <form id="upload-form"
+                  action="{% url 'ai-image-upscale:ai_image_upscale' %}"
+                  method="post"
+                  enctype="multipart/form-data"
+                  class="w-full md:w-[35%] flex flex-col justify-between gap-6">
+                {% csrf_token %}
+                <!-- Upload Box -->
+                <div id="uploadBox"
+                     class="flex flex-col items-center justify-center rounded-lg p-3 h-[20] md:h-56 border-dashed border-gray-600 border-2">
+                    <img height=""
+                         width=""
+                         id="upload_image"
+                         src="{% static 'images/upload.svg' %}"
+                         class="text-gray-500 m-3 w-8 h-8"
+                         alt="upload" />
+                    <p id="upload_container"
+                       class="text-center text-sm text-gray-300 mb-4 font-light">
+                        Drop Image Here
+                        <br />
+                        Click to Upload
+                    </p>
+                </div>
+                <input hidden
+                       id="file_input"
+                       type="file"
+                       name="file"
+                       accept=".jpg, .jpeg, .png">
+                <!-- Select Options -->
+                <div class="flex flex-col w-full md:flex-row gap-2">
+                    <select name="scale_size"
+                            class="text-xs select select-bordered select-sm w-full max-w-xs">
+                        <option disabled selected>Choose Scale</option>
+                        <option value="2">2x</option>
+                        <option selected value="4">4x</option>
+                        <option value="4plus">4 Plus</option>
+                        <option value="8">8x</option>
+                    </select>
+                    <select name="saved_ex"
+                            class="text-xs select select-bordered select-sm w-full max-w-xs">
+                        <option disabled selected>Select Format</option>
+                        <option value="jpg">JPG</option>
+                        <option value="png">PNG</option>
+                    </select>
+                </div>
+                <!-- Submit Button -->
+                <button id="generateBtn" type="submit" class="btn btn-primary w-full mt-1">
+                    <i class="fa-solid fa-magic mr-2"></i> Generate Upscaled Image
+                </button>
+            </form>
+        </div>
+        {% if processed_image %}
+            <div class="processed_image_content flex justify-center items-center flex-col">
+                <div class="relative">
+                    <button onclick="my_modal_4.showModal()"
+                            class="btn absolute top-2 left-2 border rounded-full bg-black cursor-pointer">
+                        <i class="fa-solid fa-arrows-up-down-left-right fa-lg bg-white"></i>
+                    </button>
+                    <dialog id="my_modal_4" class="modal">
+                        <div class="modal-box w-fit max-w-5xl">
+                            <img height=""
+                                 width=""
+                                 src="data:image/png;base64,{{ processed_image }}"
+                                 alt="Processed Image"
+                                 class="mb-4 rounded-md border-2 border-gray-300 shadow-lg max-w-xs md:max-w-md bg-[url('https://png.pngtree.com/thumb_back/fw800/background/20220703/pngtree-gray-and-white-checkered-illustration-perfect-for-a-background-photo-image_32339476.jpg')] bg-cover bg-cente">
+                            <div class="modal-action">
+                                <form method="dialog">
+                                    <button class="btn">Close</button>
+                                </form>
+                            </div>
+                        </div>
+                    </dialog>
+                    <img src="data:image/png;base64,{{ processed_image }}"
+                         alt="Processed Image"
+                         class="mb-4 rounded-md border-2 border-gray-300 shadow-lg max-w-xs md:max-w-md bg-[url('https://png.pngtree.com/thumb_back/fw800/background/20220703/pngtree-gray-and-white-checkered-illustration-perfect-for-a-background-photo-image_32339476.jpg')] bg-cover bg-cente"
+                         height=""
+                         width="">
+                </div>
+                <div class="button-group flex gap-4">
+                    <a href="data:image/png;base64,{{ processed_image }}"
+                       download="processed_image.png"
+                       class="btn btn-wide text-lg rounded-md px-4 py-2 bg-blue-500 text-white hover:bg-blue-600">
+                        Download
+                    </a>
+                    <a href="{% url 'website:clear_session' %}"
+                       class="btn rounded-md px-4 py-2 bg-red-500 text-white hover:bg-red-600">Delete</a>
+                </div>
+            </div>
+        {% endif %}
+        {% if error %}
+            <div id="message-box"
+                 class="absolute top-5 left-5 right-5 md:left-auto md:top-10 md:right-10 animate-appear">
+                {% component "toast" title="Error Occured" content="{{ error }}" %}{% endcomponent %}
+            </div>
+        {% endif %}
+    </div>
+    <script src="{% static "./scripts/ai-upscale.js" %}"></script>
+{% endblock body %}
