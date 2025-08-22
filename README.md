@@ -199,7 +199,7 @@ Our platform reproduces state-of-the-art computer vision models from peer-review
 
 ---
 
-## ✅ Project Status & Todo
+## 📌 Todos
 
 - [x] **DeOldify Image Colorization** - Self-attention GAN with NoGAN training
 - [x] **Real-ESRGAN Super Resolution** - Enhanced ESRGAN with pure synthetic data training
