@@ -276,6 +276,7 @@ Experience DeepFX Studio live at: **[https://deepfx-studio.azurewebsites.net/](h
           allowfullscreen>
   </iframe>
 </div>
+
 ![Website Preview 1](media/showcase.png)
 
 ![Website Preview 2](media/showcase_2.png)
