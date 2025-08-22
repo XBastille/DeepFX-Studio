@@ -13,6 +13,7 @@ RUN apt-get update \
         curl \
         gnupg \
         build-essential \
+        bash \
         libglib2.0-0 \
         libsm6 \
         libxext6 \
@@ -56,9 +57,8 @@ COPY --chown=python:python . .
 RUN mkdir -p static/css staticfiles media tmp
 
 RUN chmod +x ./startup.sh
-
 RUN chmod +x ./download-models.sh
-RUN ./download-models.sh
+RUN bash ./download-models.sh
 
 RUN npm run build
 
