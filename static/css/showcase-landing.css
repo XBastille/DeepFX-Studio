@@ -1,0 +1,105 @@
+/* Landing page showcase button enhancement */
+.ai-showcase .showcase-cta {
+    display: flex;
+    justify-content: center;
+    margin-top: 3rem;
+    padding: 2rem 0;
+}
+
+.showcase-btn-landing {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.2rem 2.5rem;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(147, 51, 234, 0.15));
+    border: 2px solid rgba(59, 130, 246, 0.4);
+    border-radius: 16px;
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.2);
+}
+
+.showcase-btn-landing::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+    transition: left 0.6s ease;
+}
+
+.showcase-btn-landing:hover::before {
+    left: 100%;
+}
+
+.showcase-btn-landing:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(59, 130, 246, 0.4);
+    border-color: rgba(59, 130, 246, 0.6);
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.25), rgba(147, 51, 234, 0.25));
+}
+
+.showcase-btn-landing:active {
+    transform: translateY(-1px);
+    transition: transform 0.1s ease;
+}
+
+.showcase-icon-landing {
+    width: 26px;
+    height: 26px;
+    transition: transform 0.4s ease;
+    filter: drop-shadow(0 2px 4px rgba(59, 130, 246, 0.3));
+}
+
+.showcase-btn-landing:hover .showcase-icon-landing {
+    transform: scale(1.15) rotate(10deg);
+    filter: drop-shadow(0 4px 8px rgba(59, 130, 246, 0.5));
+}
+
+.showcase-text-landing {
+    position: relative;
+    z-index: 2;
+    transition: all 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.showcase-btn-landing:hover .showcase-text-landing {
+    color: #ffffff;
+    text-shadow: 0 2px 8px rgba(59, 130, 246, 0.4);
+}
+
+/* Mobile responsive showcase button */
+@media (max-width: 768px) {
+    .showcase-btn-landing {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        gap: 0.5rem;
+    }
+    
+    .showcase-icon-landing {
+        width: 22px;
+        height: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .ai-showcase .showcase-cta {
+        margin-top: 2rem;
+        padding: 1rem 0;
+    }
+    
+    .showcase-btn-landing {
+        padding: 0.9rem 1.5rem;
+        font-size: 0.95rem;
+        border-radius: 12px;
+    }
+}
