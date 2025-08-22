@@ -57,9 +57,7 @@ RUN mkdir -p static/css staticfiles media tmp
 
 RUN chmod +x ./startup.sh
 
-RUN apt-get update && apt-get install -y dos2unix
-RUN dos2unix download-models.sh
-RUN chmod +x download-models.sh
+RUN chmod +x ./download-models.sh
 RUN ./download-models.sh
 
 RUN npm run build
@@ -72,6 +70,5 @@ HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 \
   CMD curl -f http://localhost:8000/admin/login/ || exit 1
 
 EXPOSE 8000
-
 
 CMD ["./startup.sh"]
