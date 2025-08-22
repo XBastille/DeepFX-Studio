@@ -1,14 +1,17 @@
 from pathlib import Path
+
 import torch
 from PIL import Image
-import logging
-from core.dependency_manager import ensure_flux_inpaint_environment, ModelType
-from core.task_queue import add_task, get_task_status
+
+from ai_image_editor.models.controlnet_flux import FluxControlNetModel
+from ai_image_editor.models.pipeline_flux_controlnet_inpaint import (
+    FluxControlNetInpaintingPipeline,
+)
+from ai_image_editor.models.transformer_flux import FluxTransformer2DModel
 from ai_image_editor.models.utils import load_img_to_array
 
-logger = logging.getLogger(__name__)
 
-def _apply_fill_internal(
+def apply_fill(
     negative_prompt,
     input_img,
     masks_dir,
@@ -18,13 +21,6 @@ def _apply_fill_internal(
     num_inference_steps=40,
     seed=None,
 ):
-    """Internal function for actual FLUX inpainting"""
-    from ai_image_editor.models.controlnet_flux import FluxControlNetModel
-    from ai_image_editor.models.pipeline_flux_controlnet_inpaint import (
-        FluxControlNetInpaintingPipeline,
-    )
-    from ai_image_editor.models.transformer_flux import FluxTransformer2DModel
-    
     device = "cuda" if torch.cuda.is_available() else "cpu"
     img = load_img_to_array(input_img)
     masks_dir = Path(masks_dir)
@@ -37,7 +33,6 @@ def _apply_fill_internal(
     if not mask_file.exists():
         raise ValueError(f"No mask files found in {masks_dir}")
 
-    logger.info("Loading FLUX inpaint models...")
     controlnet = FluxControlNetModel.from_pretrained(
         "alimama-creative/FLUX.1-dev-Controlnet-Inpainting-Beta",
         torch_dtype=torch.bfloat16,
@@ -72,8 +67,6 @@ def _apply_fill_internal(
     mask_pil = Image.fromarray(mask).resize(flux_size)
 
     generator = torch.Generator(device=device).manual_seed(1)
-    
-    logger.info("Running FLUX inpainting...")
     result = pipe(
         prompt=text_prompt,
         height=flux_size[1],
@@ -90,65 +83,6 @@ def _apply_fill_internal(
 
     result = result.resize(original_size)
     result.save(img_filled_p)
-    
-    return str(img_filled_p)
-
-def apply_fill(
-    negative_prompt,
-    input_img,
-    masks_dir,
-    text_prompt,
-    controlnet_scale=0.9,
-    guidance_scale=3.5,
-    num_inference_steps=40,
-    seed=None,
-):
-    """Apply FLUX inpainting with smart dependency management"""
-    
-    env_status = ensure_flux_inpaint_environment(wait=False)
-    
-    if env_status["ready"]:
-        logger.info("FLUX inpaint environment ready, processing...")
-        return _apply_fill_internal(
-            negative_prompt, input_img, masks_dir, text_prompt,
-            controlnet_scale, guidance_scale, num_inference_steps, seed
-        )
-    
-    elif env_status["downloading"]:
-        logger.info("FLUX inpaint environment being prepared, adding to queue...")
-        task_id = add_task(
-            "flux_inpaint",
-            _apply_fill_internal,
-            negative_prompt, input_img, masks_dir, text_prompt,
-            controlnet_scale, guidance_scale, num_inference_steps, seed
-        )
-        
-        return {
-            "task_id": task_id,
-            "status": "queued",
-            "message": "FLUX inpaint environment is being prepared. Your inpainting task has been queued and will start automatically once ready."
-        }
-    
-    else:
-        logger.info("Starting FLUX inpaint environment preparation...")
-        task_id = add_task(
-            "flux_inpaint",
-            _apply_fill_internal,
-            negative_prompt, input_img, masks_dir, text_prompt,
-            controlnet_scale, guidance_scale, num_inference_steps, seed
-        )
-        
-        ensure_flux_inpaint_environment(wait=False)
-        
-        return {
-            "task_id": task_id,
-            "status": "queued", 
-            "message": "Preparing FLUX inpaint environment (diffusers v0.30.2) and queuing your task. This may take a few minutes on first use."
-        }
-
-def get_inpaint_status(task_id):
-    """Get the status of a queued inpaint task"""
-    return get_task_status(task_id)
 
 
 if __name__ == "__main__":
