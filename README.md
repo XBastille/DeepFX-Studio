@@ -370,20 +370,11 @@ DeepFX-Studio/
 
 ---
 
-## 📖 Documentation & Resources
-
-### Comprehensive Documentation Suite
-- 📋 **[Installation Guide](INSTALLATION.md)**: Complete setup with model placement diagrams
-- 🛠️ **[Setup Guide](SETUP.md)**: Docker configuration and development environment
-- 📙 **Training Logs**: Detailed training curves and hyperparameter configurations
-- 📕 **Model Cards**: Individual documentation for each implemented model
-
 ### 🐛 Issue Reporting
 Found a bug or have a feature request? We'd love to hear from you!
 - **Report Issues**: [GitHub Issues](https://github.com/XBastille/DeepFX-Studio/issues)
 
 ## 📜 Attribution
-
 
 ### Original Paper Attributions
 We gratefully acknowledge the original authors of all reproduced papers:
@@ -412,4 +403,5 @@ We gratefully acknowledge the original authors of all reproduced papers:
   
   <a href="#top">⬆️ Back to Top</a>
 </div>
+
 
