@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Auto-prepare SD 3.5 environment on page load
   async function autoPrepareEnvironment() {
     try {
       await fetch('/api/auto-prepare/', {
@@ -17,7 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
   
-  // Trigger environment preparation immediately
   autoPrepareEnvironment();
 
   const textarea = document.getElementById("prompt-input");
