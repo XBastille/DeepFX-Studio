@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect
 from .models import Text2ImageModel, GeneratedImages
 
-from ai_text_to_image_generator.txt2image import generate_images
+from ai_text_to_image_generator.txt2image import generate_images, get_generation_status
 
 # Create your views here.
 
@@ -21,7 +21,6 @@ def text_to_image(request):
     return render(request, "pages/text-to-image.html",{"user_data" : user_data})
 
 
-# @login_required
 @csrf_exempt
 def api_text_to_image(request):
     if request.method == "POST":
@@ -42,7 +41,19 @@ def api_text_to_image(request):
                 "num_images": int(data.get("num_images", 1)),
             }
 
-            output_paths = generate_images(**params)
+            result = generate_images(**params)
+            
+            if isinstance(result, dict) and "task_id" in result:
+                return JsonResponse({
+                    "status": 202, 
+                    "task_id": result["task_id"],
+                    "message": result["message"],
+                    "queued": True
+                })
+
+            output_paths = result
+            if not output_paths:
+                return JsonResponse({"status": 500, "message": "Image generation failed"})
 
             instance = Text2ImageModel.objects.create( # type: ignore
                 user=request.user,
@@ -67,6 +78,19 @@ def api_text_to_image(request):
 
             return JsonResponse({"status": 200, "images": output_paths})
         except Exception as e:
-            return render(request, "pages/text-to-image.html", { "error": str(e) })
+            return JsonResponse({"status": 500, "message": str(e)})
 
     return redirect("ai_text_to_image")
+
+
+@csrf_exempt 
+def api_task_status(request, task_id):
+    """Check status of a queued generation task"""
+    if request.method == "GET":
+        try:
+            status = get_generation_status(task_id)
+            return JsonResponse(status)
+        except Exception as e:
+            return JsonResponse({"status": 500, "message": str(e)})
+    
+    return JsonResponse({"status": 405, "message": "Method not allowed"})

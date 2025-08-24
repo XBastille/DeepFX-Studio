@@ -42,7 +42,7 @@ OAUTH_REDIRECT_BASE = os.environ.get(
 DEBUG = os.environ.get("DEBUG", "False").lower() in ("true", "1", "yes", "on")
 
 # Production
-ALLOWED_HOSTS = ["*"]  # In production, specify exact domains
+ALLOWED_HOSTS = ["*"]  
 
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
 
@@ -84,6 +84,7 @@ CSRF_TRUSTED_ORIGINS.extend(_extra_csrf)
 
 # Application definition
 EXTERNAL_INSTALLED_APP = [
+    "core",
     "website",
     "background_remover",
     "artistic_image_creator",

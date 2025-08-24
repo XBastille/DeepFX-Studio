@@ -15,19 +15,19 @@ document.addEventListener("DOMContentLoaded", () => {
       console.warn('Failed to trigger environment preparation:', error);
     }
   }
-  
+
   autoPrepareEnvironment();
 
   const textarea = document.getElementById("prompt-input");
 
   if (textarea) {
-    textarea.addEventListener('focus', function() {
+    textarea.addEventListener('focus', function () {
       if (window.innerWidth <= 768) {
         this.style.fontSize = '16px';
       }
     });
 
-    textarea.addEventListener('input', function() {
+    textarea.addEventListener('input', function () {
       if (window.innerWidth <= 768) {
         setTimeout(() => {
           this.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if ('ontouchstart' in window) {
-      textarea.addEventListener('focus', function() {
+      textarea.addEventListener('focus', function () {
         setTimeout(() => {
           window.scrollTo(0, 0);
         }, 300);
@@ -69,24 +69,24 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   updateGenerateButtonState();
-  textarea.addEventListener("input", updateGenerateButtonState);  
-  window.openImageModal = function(imageElement) {
+  textarea.addEventListener("input", updateGenerateButtonState);
+  window.openImageModal = function (imageElement) {
     const modal = document.getElementById('imageModal');
     const modalImage = document.getElementById('modalImage');
     const modalParams = document.getElementById('modalParams');
-    
+
     if (!modal || !modalImage || !modalParams) {
       console.error('Modal elements not found');
       return;
     }
-    
+
     modalImage.src = imageElement.src;
     const prompt = imageElement.dataset.prompt || '';
     const guidanceScale = imageElement.dataset.guidanceScale || '';
     const inferenceSteps = imageElement.dataset.inferenceSteps || '';
     const seed = imageElement.dataset.seed || '';
     const creationTime = imageElement.dataset.creationTime || new Date().toLocaleString();
-      modalParams.innerHTML = `
+    modalParams.innerHTML = `
       <div class="param-item">
         <div class="param-label">Prompt</div>
         <div class="param-value-with-copy">
@@ -115,39 +115,39 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="param-value">${creationTime}</div>
       </div>
     `;
-    
+
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
   };
 
-  window.closeImageModal = function() {
+  window.closeImageModal = function () {
     const modal = document.getElementById('imageModal');
     modal.classList.remove('active');
     document.body.style.overflow = 'auto';
   };
 
-  document.getElementById('imageModal').addEventListener('click', function(e) {
+  document.getElementById('imageModal').addEventListener('click', function (e) {
     if (e.target === this) {
       closeImageModal();
     }
   });
 
-  document.addEventListener('keydown', function(e) {
+  document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
       closeImageModal();
     }
-  });  
-  document.addEventListener('click', function(e) {
+  });
+  document.addEventListener('click', function (e) {
     if (e.target.closest('.modal-close')) {
       closeImageModal();
       return;
     }
-    
+
     if (e.target.classList.contains('generated-image')) {
       openImageModal(e.target);
       return;
     }
-    
+
     if (e.target.closest('.relative.group')) {
       const parentContainer = e.target.closest('.relative.group');
       const imageElement = parentContainer.querySelector('.generated-image');
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
     }
-    
+
     if (e.target.closest('.btn-download-single')) {
       e.stopPropagation();
       const imageElement = e.target.closest('.relative').querySelector('.generated-image');
@@ -165,7 +165,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       return;
     }
-    
+
     if (e.target.closest('.btn-download')) {
       e.stopPropagation();
       const generationEntry = e.target.closest('.generation-entry');
@@ -190,10 +190,10 @@ document.addEventListener("DOMContentLoaded", () => {
     images.forEach((img, index) => {
       setTimeout(() => {
         downloadImage(img.src);
-      }, index * 100); 
+      }, index * 100);
     });
   }
-  
+
   function createLoadingAnimation() {
     return `
       <div class="loading-skeleton">
@@ -667,12 +667,12 @@ document.addEventListener("DOMContentLoaded", () => {
         seedInput.classList.remove("opacity-50");
       }
     }
-  }  function setupImageActions() {
+  } function setupImageActions() {
     const actions = generatedImagesContainer.querySelectorAll(".image-actions");
 
     actions.forEach((actionContainer) => {
       const entry = actionContainer.closest(".generation-entry");
-      
+
       if (!entry || !entry.dataset) {
         return;
       }
@@ -714,7 +714,7 @@ document.addEventListener("DOMContentLoaded", () => {
           allDropdowns.forEach((d) => {
             if (d !== dropdown) d.classList.remove("active");
           });
-        });        const downloadBtn = actionContainer.querySelector(".btn-download");
+        }); const downloadBtn = actionContainer.querySelector(".btn-download");
         if (downloadBtn) {
         }
 
@@ -833,9 +833,9 @@ document.addEventListener("DOMContentLoaded", () => {
           num_images: currentSettings.quantity
         })
       });
-      
+
       const result = await response.json();
-      
+
       if (result.status === 200) {
         const generationTime = new Date().toLocaleString();
         const imagesHtml = result.images
@@ -872,10 +872,10 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
             `,
           )
-          .join("");      
+          .join("");
         const gridImagesContainer = generationEntry.querySelector('.grid-images');
         gridImagesContainer.innerHTML = imagesHtml;
-        
+
         setupImageActions();
       } else if (result.status === 202 && result.queued) {
         // Handle queued task
@@ -886,7 +886,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="text-sm text-gray-400">Task ID: ${result.task_id}</div>
           </div>
         `;
-        
+
         // Poll for task completion
         pollTaskStatus(result.task_id, generationEntry, promptText, currentSettings, imageSettings, seedInput.value, randomSeedCheckbox.checked);
       } else {
@@ -898,21 +898,21 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error('Error:', error);
       const gridImagesContainer = generationEntry.querySelector('.grid-images');
       gridImagesContainer.innerHTML = `<div class="text-red-500 text-center p-4">Network error: ${error.message}</div>`;
-    }    autoResize();
+    } autoResize();
   });
-  
+
   // Function to poll task status for queued generations
   async function pollTaskStatus(taskId, generationEntry, promptText, currentSettings, imageSettings, seed, randomSeed) {
     const maxAttempts = 180; // 3 minutes with 1-second intervals
     let attempts = 0;
-    
+
     const poll = async () => {
       try {
         const response = await fetch(`/text-to-image/status/${taskId}/`);
         const status = await response.json();
-        
+
         const gridImagesContainer = generationEntry.querySelector('.grid-images');
-        
+
         if (status.status === 'completed' && status.result) {
           // Task completed successfully
           const generationTime = new Date().toLocaleString();
@@ -953,7 +953,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 `,
             )
             .join("");
-          
+
           gridImagesContainer.innerHTML = imagesHtml;
           setupImageActions();
           return;
@@ -978,7 +978,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
           `;
         }
-        
+
         // Continue polling if not completed and within retry limit
         attempts++;
         if (attempts < maxAttempts) {
@@ -986,7 +986,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           gridImagesContainer.innerHTML = `<div class="text-red-500 text-center p-4">⏰ Generation timeout. Please try again.</div>`;
         }
-        
+
       } catch (error) {
         console.error('Error polling task status:', error);
         attempts++;
@@ -998,13 +998,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     };
-    
+
     // Start polling
     poll();
   }
-  
-  window.copyToClipboard = function(text, button) {
-    navigator.clipboard.writeText(text).then(function() {
+
+  window.copyToClipboard = function (text, button) {
+    navigator.clipboard.writeText(text).then(function () {
       const originalHTML = button.innerHTML;
       button.innerHTML = `
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
@@ -1012,12 +1012,12 @@ document.addEventListener("DOMContentLoaded", () => {
         </svg>
       `;
       button.classList.add('copied');
-      
+
       setTimeout(() => {
         button.innerHTML = originalHTML;
         button.classList.remove('copied');
       }, 2000);
-    }).catch(function(err) {
+    }).catch(function (err) {
       console.error('Failed to copy text: ', err);
     });
   };
@@ -1105,7 +1105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     } else {
       sidebar.classList.remove("mobile-mode");
     }
-  }  handleResponsiveLayout();
+  } handleResponsiveLayout();
 
   window.addEventListener("resize", handleResponsiveLayout);
 
@@ -1113,7 +1113,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentTooltip = null;
 
   infoButtons.forEach(btn => {
-    btn.addEventListener('mouseenter', function() {
+    btn.addEventListener('mouseenter', function () {
       if (currentTooltip) {
         currentTooltip.remove();
       }
@@ -1128,7 +1128,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const rect = this.getBoundingClientRect();
       const tooltipRect = tooltip.getBoundingClientRect();
-      
+
       let left = rect.left + (rect.width / 2) - (tooltipRect.width / 2);
       let top = rect.top - tooltipRect.height - 12;
 
@@ -1147,7 +1147,7 @@ document.addEventListener("DOMContentLoaded", () => {
       currentTooltip = tooltip;
     });
 
-    btn.addEventListener('mouseleave', function() {
+    btn.addEventListener('mouseleave', function () {
       if (currentTooltip) {
         currentTooltip.classList.remove('show');
         setTimeout(() => {
@@ -1158,18 +1158,18 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 300);
       }
     });
-  }); 
+  });
   function updateResponsiveLayout() {
     const isMobile = window.innerWidth <= 768;
     const isTablet = window.innerWidth <= 1024 && window.innerWidth > 768;
-    
+
     if (isMobile) {
       const modal = document.getElementById('imageModal');
       if (modal) {
         modal.style.padding = '10px';
       }
     }
-    
+
     const gridImages = document.querySelectorAll('.grid-images');
     gridImages.forEach(grid => {
       if (window.innerWidth <= 480) {
@@ -1183,22 +1183,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   updateResponsiveLayout();
-  
+
   window.addEventListener('resize', updateResponsiveLayout);
 
   if ('ontouchstart' in window) {
-    document.addEventListener('touchstart', function(e) {
+    document.addEventListener('touchstart', function (e) {
       if (e.target.classList.contains('generated-image')) {
         e.target.style.opacity = '0.8';
       }
     });
-    
-    document.addEventListener('touchend', function(e) {
+
+    document.addEventListener('touchend', function (e) {
       if (e.target.classList.contains('generated-image')) {
         e.target.style.opacity = '1';
       }
     });
-  }  setTimeout(() => {
+  } setTimeout(() => {
     updateGenerateButtonState();
   }, 500);
   setTimeout(() => {
@@ -1215,10 +1215,10 @@ document.addEventListener("DOMContentLoaded", () => {
       sidebarToggle: !!sidebarToggle,
       hamburgerIcon: !!hamburgerIcon,
       closeIcon: !!closeIcon
-    });    function toggleSidebar() {
-      console.log('Toggle sidebar clicked', sidebarOpen); 
-      console.log('Sidebar elements:', { sidebarContainer, sidebar }); 
-      
+    }); function toggleSidebar() {
+      console.log('Toggle sidebar clicked', sidebarOpen);
+      console.log('Sidebar elements:', { sidebarContainer, sidebar });
+
       sidebarOpen = !sidebarOpen;
       if (sidebarOpen) {
         if (sidebarContainer) {
@@ -1236,12 +1236,12 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
           console.error('Sidebar container not found!');
         }
-        
+
         if (hamburgerIcon && closeIcon) {
           hamburgerIcon.classList.add('hidden');
           closeIcon.classList.remove('hidden');
         }
-        
+
         sidebarToggle.classList.add('active');
         document.body.style.overflow = 'hidden';
       } else {
@@ -1252,16 +1252,16 @@ document.addEventListener("DOMContentLoaded", () => {
           sidebarContainer.style.pointerEvents = 'none';
           console.log('Removed open class from sidebar container');
         }
-        
+
         if (hamburgerIcon && closeIcon) {
           hamburgerIcon.classList.remove('hidden');
           closeIcon.classList.add('hidden');
         }
-        
+
         sidebarToggle.classList.remove('active');
         document.body.style.overflow = 'auto';
       }
-    }    function closeSidebar() {
+    } function closeSidebar() {
       if (sidebarOpen) {
         sidebarOpen = false;
         if (sidebarContainer) {
@@ -1270,12 +1270,12 @@ document.addEventListener("DOMContentLoaded", () => {
           sidebarContainer.style.opacity = '0';
           sidebarContainer.style.pointerEvents = 'none';
         }
-        
+
         if (hamburgerIcon && closeIcon) {
           hamburgerIcon.classList.remove('hidden');
           closeIcon.classList.add('hidden');
         }
-        
+
         sidebarToggle.classList.remove('active');
         document.body.style.overflow = 'auto';
       }
@@ -1288,10 +1288,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     sidebarToggle.addEventListener('click', toggleSidebar);
 
-    document.addEventListener('click', function(e) {
-      if (window.innerWidth <= 1024 && sidebarOpen && 
-          !e.target.closest('.sidebar') && 
-          !e.target.closest('.sidebar-toggle')) {
+    document.addEventListener('click', function (e) {
+      if (window.innerWidth <= 1024 && sidebarOpen &&
+        !e.target.closest('.sidebar') &&
+        !e.target.closest('.sidebar-toggle')) {
         closeSidebar();
       }
     });
@@ -1303,6 +1303,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     window.addEventListener('resize', handleSidebarResponsive);
-    handleSidebarResponsive(); 
-  }, 200); 
+    handleSidebarResponsive();
+  }, 200);
 });
