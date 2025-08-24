@@ -27,7 +27,7 @@ class DependencyManager:
             try:
                 from importlib import metadata
             except Exception:
-                import importlib_metadata as metadata 
+                import importlib_metadata as metadata  # type: ignore
 
             version = metadata.version('diffusers')
 
@@ -52,7 +52,7 @@ class DependencyManager:
             try:
                 from importlib import metadata
             except Exception:
-                import importlib_metadata as metadata 
+                import importlib_metadata as metadata  # type: ignore
 
             numpy_before = None
             try:
@@ -170,7 +170,7 @@ def ensure_sd35_environment(wait=True):
         try:
             from importlib import metadata
         except Exception:
-            import importlib_metadata as metadata 
+            import importlib_metadata as metadata  # type: ignore
 
         current_version = None
         try:
@@ -225,7 +225,7 @@ def get_environment_status():
         try:
             from importlib import metadata
         except Exception:
-            import importlib_metadata as metadata 
+            import importlib_metadata as metadata  # type: ignore
 
         try:
             current_version = metadata.version('diffusers')
