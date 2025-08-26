@@ -2,9 +2,13 @@
 
 ## Important Notes
 
-⚠️ **GPU Features**: NVIDIA Docker support is not ready yet. Docker setup only supports CPU-based features. For GPU-based features (Text-to-Image, Advanced Inpainting, Arcane Filter, Image Upscaling), manual setup is recommended.
+⚠️ **GPU Docker (available)**: A GPU-enabled Dockerfile (`Dockerfile.gpu`) is now provided. Use it if you want a container image with CUDA and GPU support. See the [SETUP.md](SETUP.md) 
 
-⚠️ **Version Compatibility Issue**: There's a known dependency conflict where inpainting requires diffusers 0.30.2 while text-to-image requires diffusers 0.34.0. This hasn't been resolved in Docker yet. For full functionality, manual setup is recommended where you can switch between versions as needed.
+⚠️ **Version Compatibility Issue**: There is a known dependency difference where the inpainting integrations are compatible with `diffusers==0.30.2` while some text-to-image pipelines work best with `diffusers==0.34.0`.
+
+Notes about version changes and Docker:
+- You can change the `diffusers` version locally to try different features, but changing the pinned version in the container or in `requirements.txt` and rebuilding the Docker image will trigger re-downloads of models (including gated HuggingFace models) during the rebuild. For that reason, switching diffusers versions inside Docker is not recommended unless you understand the rebuild/model-download consequences.
+- For local development (non-Docker), the project includes runtime logic so you don't need to stop the server and rebuild to switch `diffusers` behavior: the application `core` will select the appropriate pipeline implementation when you visit the corresponding page, allowing feature-specific behavior to load at runtime.
 
 ## Docker Setup (CPU Features Only)
 
@@ -49,6 +53,17 @@
 
 🎉 **Ready to go!** Visit `http://localhost:8000` to start using DeepFX Studio!
 
+### Optional: GPU Docker (build & run commands)
+
+If you have an NVIDIA GPU and the NVIDIA Container Toolkit installed, build and run the provided GPU image with these commands.
+
+```bash
+docker build -f Dockerfile.gpu --build-arg HF_TOKEN="$HF_TOKEN" -t deepfx-studio-gpu .
+docker run --gpus all -p 8000:8000 deepfx-studio-gpu
+```
+
+Note: requires NVIDIA Container Toolkit / nvidia-docker on the host.
+
 ## Manual Setup (Recommended for Full GPU Support)
 
 ### Prerequisites
@@ -75,7 +90,7 @@
     
     📋 **Model Placement**: Refer to [SETUP.md](SETUP.md) for detailed instructions on where to place each model file.
 
-    *Set Up HuggingFace CLI* (Required for Stable Diffusion 3.5 and Flux Inpaint)
+    *Set Up HuggingFace CLI* (Required for Stable Diffusion 3.5 Large and Flux Inpaint)
 
     ```bash
     huggingface-cli login

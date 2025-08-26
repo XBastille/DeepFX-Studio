@@ -16,13 +16,15 @@ This text is not AI-generated—I have personally written it. Please take the ti
 ├── artistic_image_creator
 ├── background_remover
 ├── components
-├── CONTRIBUTING.md
+├── SETUP.md
 ├── dashboard
 ├── db.sqlite3
 ├── deepfx_studio
 ├── docker-compose.yml
 ├── Dockerfile
 ├── Dockerfile.gpu
+├── build-gpu.bat
+├── build-gpu.sh
 ├── download-models.bat          
 ├── download-models.sh           
 ├── INSTALLATION.md
@@ -71,6 +73,32 @@ For easy model setup, we provide automated download scripts:
   ```
 
 These scripts automatically download all required models from our GitHub releases and Google Drive, placing them in the correct directory structure.
+
+## GPU build scripts (exact commands)
+
+Run the included GPU build helpers to build the GPU Docker image. The scripts use the `HF_TOKEN` / `hf_token` environment variable to optionally pre-download gated HuggingFace models. Examples (copy-paste):
+
+- Windows (PowerShell):
+
+```powershell
+$env:HF_TOKEN = 'hf_token'
+.\build-gpu.bat
+```
+
+- Windows (CMD):
+
+```cmd
+set HF_TOKEN=hf_token
+build-gpu.bat
+```
+
+- Linux / macOS (bash):
+
+```bash
+export HF_TOKEN=hf_token
+chmod +x build-gpu.sh
+./build-gpu.sh
+```
 
 ## Model Placement Guide
 
