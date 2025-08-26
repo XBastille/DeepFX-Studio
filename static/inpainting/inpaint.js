@@ -1,3 +1,22 @@
+async function autoPrepareEnvironment() {
+    try {
+        await fetch('/api/auto-prepare/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                page_type: 'image-editor'
+            })
+        });
+        console.log('FLUX inpaint environment preparation triggered');
+    } catch (error) {
+        console.warn('Failed to trigger environment preparation:', error);
+    }
+}
+
+autoPrepareEnvironment();
+
 const dragAndDrop = document.querySelector('.drag-and-drop');
 const fileInput = document.querySelector('.file-input');
 const msg = document.querySelector('.drag-drop-msg');

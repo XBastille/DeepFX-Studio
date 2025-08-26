@@ -83,21 +83,3 @@ def apply_fill(
 
     result = result.resize(original_size)
     result.save(img_filled_p)
-
-
-if __name__ == "__main__":
-    input_img = "test.jpg"
-    img_stem = Path(input_img).stem
-    masks_dir = f"./results/{img_stem}"
-    text_prompt = "front view of a blond woman with a warm smile"
-
-    apply_fill(
-        input_img=input_img,
-        masks_dir=masks_dir,
-        text_prompt=text_prompt,
-        controlnet_scale=0.9,
-        guidance_scale=3.5,
-        num_inference_steps=40,
-        negative_prompt="Low quality, Blurry, Overexposed, Underexposed, Grainy, Pixelated, Low resolution, Distorted, Over-saturated, Washed out",
-        seed=None,
-    )

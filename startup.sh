@@ -5,10 +5,10 @@ set -e
 echo "Starting Django application in production mode..."
 
 echo "Collecting static files..."
-python manage.py collectstatic --no-input --clear
+python3 manage.py collectstatic --no-input --clear
 
 echo "Running database migrations..."
-python manage.py migrate
+python3 manage.py migrate
 
 if [ -z "$SECRET_KEY" ]; then
     echo "WARNING: SECRET_KEY environment variable is not set!"

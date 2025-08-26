@@ -67,7 +67,10 @@ echo "=============================="
 echo "Installing gdown if not available..."
 echo "=============================="
 
-pip show gdown > /dev/null 2>&1 || pip3 install gdown --break-system-packages
+if ! pip3 show gdown > /dev/null 2>&1; then
+    echo "Installing gdown..."
+    pip3 install gdown --break-system-packages 2>/dev/null || pip3 install gdown
+fi
 
 echo "=============================="
 echo "Downloading models from Google Drive..."
