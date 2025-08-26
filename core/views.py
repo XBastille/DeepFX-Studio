@@ -6,8 +6,6 @@ import logging
 
 from core.dependency_manager import get_environment_status, ensure_sd35_environment, ensure_flux_inpaint_environment
 from core.task_queue import get_task_status, task_queue
-from ai_text_to_image_generator.txt2image import get_generation_status
-from ai_image_editor.models.apply_fill import get_inpaint_status
 
 logger = logging.getLogger(__name__)
 
