@@ -72,7 +72,7 @@ RUN ./download-models.sh
 ARG HF_TOKEN
 ENV HF_TOKEN=${HF_TOKEN}
 RUN if [ -n "$HF_TOKEN" ]; then \
-        echo "🚀 Downloading HuggingFace models..."; \
+        echo "Downloading HuggingFace models..."; \
         python3 download-hf-models.py; \
     else \
         echo "HF_TOKEN not provided - models will be downloaded at runtime"; \

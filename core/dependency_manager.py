@@ -137,7 +137,7 @@ class DependencyManager:
                 
                 if model_type == ModelType.SD35:
                     required_version = "0.34.0"
-                else:  
+                else: 
                     required_version = "0.30.2"
                 
                 success = self._install_diffusers_version(required_version)

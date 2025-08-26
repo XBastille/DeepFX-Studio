@@ -1,72 +1,86 @@
 import os
-import json
-from django.core.files import File
-from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
-from django.shortcuts import render
-from django.views.decorators.csrf import csrf_exempt
-from django.shortcuts import redirect
-from .models import Text2ImageModel, GeneratedImages
+import torch
+from gradio_client import Client
+from diffusers import StableDiffusion3Pipeline
+import shutil
+import uuid
 
-from ai_text_to_image_generator.txt2image import generate_images
+def get_pipeline():
+    """Get or create the Diffusers pipeline"""
+    pipeline = StableDiffusion3Pipeline.from_pretrained(
+        "stabilityai/stable-diffusion-3.5-large",
+        torch_dtype=torch.bfloat16
+    )
+    pipeline = pipeline.to("cuda")
+    return pipeline
 
-# Create your views here.
-
-
-@login_required
-def text_to_image(request):
-    user_data = Text2ImageModel.objects.filter(user=request.user).prefetch_related("images") # type: ignore
-
-    print("user_data :", user_data)
-    return render(request, "pages/text-to-image.html",{"user_data" : user_data})
-
-
-# @login_required
-@csrf_exempt
-def api_text_to_image(request):
-    if request.method == "POST":
-        try:
-            data = json.loads(request.body)
-            if not data.get("prompt"):
-                return JsonResponse({"status": 400, "message": "Prompt is required"})
-
-            params = {
-                "prompt": data.get("prompt"),
-                "negative_prompt": data.get("negative_prompt", ""),
-                "seed": int(data.get("seed", 0)),
-                "randomize_seed": data.get("randomize_seed", "true") == "true",
-                "width": int(data.get("width", 1024)),
-                "height": int(data.get("height", 768)),
-                "guidance_scale": float(data.get("guidance_scale", 4.5)),
-                "num_inference_steps": int(data.get("num_inference_steps", 40)),
-                "num_images": int(data.get("num_images", 1)),
-            }
-
-            output_paths = generate_images(**params)
-
-            instance = Text2ImageModel.objects.create( # type: ignore
-                user=request.user,
-                prompt=params["prompt"],
-                negative_prompt=params["negative_prompt"],
-                seed=params["seed"],
-                randomize_seed=params["randomize_seed"],
-                width=params["width"],
-                height=params["height"],
-                guidance_scale=params["guidance_scale"],
-                num_inference_steps=params["num_inference_steps"],
-                num_images=params["num_images"],
+def generate_images_batch(prompt, negative_prompt, seed, randomize_seed, width, height, guidance_scale, num_inference_steps, num_images):
+    """Generate multiple images in a single batch - MUCH faster than sequential"""
+    output_paths = []
+    output_dir = os.path.join('static', 'images')
+    os.makedirs(output_dir, exist_ok=True)
+    
+    try:
+        print("Attempting batch generation with Gradio...")
+        client = Client("stabilityai/stable-diffusion-3.5-large")
+        
+        for i in range(num_images):
+            current_seed = seed + i if not randomize_seed else None
+            
+            result = client.predict(
+                prompt=prompt,
+                negative_prompt=negative_prompt,
+                seed=current_seed,
+                randomize_seed=randomize_seed,
+                width=width,
+                height=height,
+                guidance_scale=guidance_scale,
+                num_inference_steps=num_inference_steps,
+                api_name="/infer"
             )
+            
+            output_path = os.path.join(output_dir, f'generated_image_{uuid.uuid4()}.png')
+            shutil.copy(result[0], output_path)
+            output_paths.append(output_path)
+            print(f"Generated image {i + 1}/{num_images} via Gradio")
+            
+        return output_paths
+        
+    except Exception as e:
+        print(f"Gradio failed: {e}")
+        print("Falling back to local Diffusers pipeline...")
+    
+    try:
+        pipeline = get_pipeline()
+        
+        if not randomize_seed and seed is not None:
+            generator = torch.Generator("cuda").manual_seed(seed)
+        else:
+            generator = None
+        
+        print(f"Generating {num_images} images in batch...")
+        images = pipeline(
+            prompt=[prompt] * num_images,  
+            negative_prompt=[negative_prompt] * num_images if negative_prompt else None,
+            width=width,
+            height=height,
+            guidance_scale=guidance_scale,
+            num_inference_steps=num_inference_steps,
+            generator=generator,
+            num_images_per_prompt=1
+        ).images
+        
+        for i, image in enumerate(images):
+            output_path = os.path.join(output_dir, f'generated_image_{uuid.uuid4()}.png')
+            image.save(output_path)
+            output_paths.append(output_path)
+            print(f"Saved image {i + 1}/{num_images}")
+            
+        return output_paths
+        
+    except Exception as e:
+        print(f"Batch generation failed: {e}")
+        return []
 
-            for path in output_paths:
-                with open(path, 'rb') as f:
-                    django_file = File(f)
-                    GeneratedImages.objects.create( # type: ignore
-                       text2image = instance,
-                       image = django_file
-                    )
-
-            return JsonResponse({"status": 200, "images": output_paths})
-        except Exception as e:
-            return render(request, "pages/text-to-image.html", { "error": str(e) })
-
-    return redirect("ai_text_to_image")
+def generate_images(prompt, negative_prompt, seed, randomize_seed, width, height, guidance_scale, num_inference_steps, num_images):
+    return generate_images_batch(prompt, negative_prompt, seed, randomize_seed, width, height, guidance_scale, num_inference_steps, num_images)
