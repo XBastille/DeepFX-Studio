@@ -225,7 +225,7 @@ If you appreciate our efforts in building this project, your support would mean 
   </a>
 </div>
 
-Your donations directly support the development of cutting-edge computer vision tools and help keep this project free and open-source for everyone!
+Your support directly contributes to the development of cutting-edge computer vision tools and helps keep this project free and open-source for everyone!
 
 ---
 
@@ -246,7 +246,7 @@ We envision expanding DeepFX Studio into a comprehensive **AI-Enhanced Canvas Ed
 
 This represents our vision for democratizing advanced image editing by combining the power of AI with user-friendly creative tools.
 
-> **Development Roadmap**: The implementation of these features depends on community support and project popularity. With sufficient backing through donations and community engagement, we can dedicate the resources needed to make this vision a reality.
+> **Development Roadmap**: The implementation of these features depends on community support and project popularity. With sufficient backing through community engagement, we can dedicate the resources needed to make this vision a reality.
 
 ---
 
