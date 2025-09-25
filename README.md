@@ -5,10 +5,6 @@
   
   <br>
   
-  🌐 **Live Demo**: [https://deepfx-studio.azurewebsites.net/](https://deepfx-studio.azurewebsites.net/) *(Available until September 22, 2025)*
-  
-  <br>
-  
   <a href="https://github.com/XBastille/DeepFX-Studio">
     <img src="https://img.shields.io/github/stars/XBastille/DeepFX-Studio?style=social" alt="GitHub Stars">
   </a>
@@ -250,20 +246,6 @@ This represents our vision for democratizing advanced image editing by combining
 
 ---
 
-## 🌐 Live Demo
-
-### 🚀 **Live Deployment**
-Experience DeepFX Studio live at: **[https://deepfx-studio.azurewebsites.net/](https://deepfx-studio.azurewebsites.net/)**
-
-> ⏰ **Availability**: The live demo will be available until **September 22, 2025**
-
-> ⚠️ **Note**: Due to lack of funding and resources, some GPU-intensive features are not available in the live demo:
-> - **Text-to-Image Generation** (Stable Diffusion 3.5 Large)
-> - **Advanced Inpainting** (Fill/Replace features using FLUX models)
-> - **Arcane Filter** (in AI Filters section)
-> - **Image Upscaling** (Real-ESRGAN super-resolution)
-> 
-> All other features including colorization, background removal, other AI filters, and neural style transfer work perfectly! **For full experience, installing the platform in your local computer or in cloud platforms such as lightning.ai is recommended, see** [Installation Guide](INSTALLATION.md)
 
 ### 📸 **Showcase**
 
@@ -414,4 +396,5 @@ We gratefully acknowledge the original authors of all reproduced papers:
   **Quick Links**: [Installation](INSTALLATION.md) • [Setup](SETUP.md) 
   
   <a href="#top">⬆️ Back to Top</a>
+
 </div>
