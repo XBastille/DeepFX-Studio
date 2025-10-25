@@ -182,7 +182,7 @@ Our platform reproduces state-of-the-art computer vision models from peer-review
 
 ### 🖼️ **Text-to-Image Synthesis**
 - **Primary Model**: Stable Diffusion 3.5 Large via HuggingFace Diffusers
-- **Implementation**: HuggingFace Transformers pipeline with Gradio fallback
+- **Implementation**: HuggingFace Transformers pipeline
 - **Architecture**: Multimodal Diffusion Transformer (MMDiT) with CLIP text encoder
 - **Pipeline**: "stabilityai/stable-diffusion-3.5-large"
 - **Features**:
@@ -398,3 +398,4 @@ We gratefully acknowledge the original authors of all reproduced papers:
   <a href="#top">⬆️ Back to Top</a>
 
 </div>
+
