@@ -14,6 +14,9 @@
   <a href="https://github.com/XBastille/DeepFX-Studio/fork">
     <img src="https://img.shields.io/github/forks/XBastille/DeepFX-Studio?style=social" alt="GitHub Forks">
   </a>
+  <a href="https://deepwiki.com/XBastille/DeepFX-Studio">
+    <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki">
+  </a>
 
   <br><br>
   
@@ -398,4 +401,5 @@ We gratefully acknowledge the original authors of all reproduced papers:
   <a href="#top">⬆️ Back to Top</a>
 
 </div>
+
 
